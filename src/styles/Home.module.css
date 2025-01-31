@@ -29,38 +29,34 @@
 
 .main {
   position: relative;
-  display: inline-block;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
   grid-row-start: 2;
+  text-align: center;
 }
 
 .desc {
-  position: absolute;
-  top: 140%; left: 50%;
-  transform: translate(-50%, -50%);
-  /* padding-bottom: 50px; */
+  padding: 10px 20px;
+  font-size: 1.2em;
+  color: #666;
 }
 
 .button1 {
-  position: absolute;
-  top: 160%; left: 50%;
-  transform: translate(-50%, -50%);
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5px;
   border: none;
+  background-color: #000;
+  color: #fff;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
 }
 
 .button1:hover {
-  border-radius: 5px;
-  padding: 5px 15px;
-  border: none;
-  background: #1a1a1a;
-  transition: 0.5s ease;
-  color: #fff;
-  padding-left: 5px ; padding-right: 5px;
+  background-color: #383838;
 }
 
 .main ol {
@@ -135,6 +131,29 @@ a.secondary {
 
 .footer img {
   flex-shrink: 0;
+}
+
+.scatterText {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.scatterLetter {
+  display: inline-block;
+  position: relative;
+  animation: scatter 2s forwards;
+}
+
+@keyframes scatter {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(
+      var(--translate-x, 0),
+      var(--translate-y, 0)
+    );
+  }
 }
 
 /* Enable hover only on non-touch devices */

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
+import { useState } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 
@@ -14,6 +14,22 @@ const geistMono = Geist_Mono({
 });
 
 export default function Home() {
+  const [scatter, setScatter] = useState(false);
+
+  const handleButtonClick = () => {
+    setScatter(true);
+  };
+
+  // Generate random translate values for each letter
+  const getRandomTranslateValues = () => {
+    return Array.from({ length: "It's Menath".length }, () => ({
+      x: Math.random() * 100 - 50, // Random value between -50 and 50
+      y: Math.random() * 100 - 50, // Random value between -50 and 50
+    }));
+  };
+
+  const translateValues = scatter ? getRandomTranslateValues() : [];
+
   return (
     <>
       <Head>
@@ -27,12 +43,27 @@ export default function Home() {
       >
         <main className={styles.main}>
           <div>
-            <h1>It's Menath Lakvindu</h1>
-            <p className={styles.desc}>Developer</p>
-            <button className={styles.button1}>Don't Press this 😶‍🌫️</button>
+            <h1 className={scatter ? styles.scatterText : ""}>
+              {"It's Menath".split("").map((char, index) => (
+                <span
+                  key={index}
+                  className={scatter ? styles.scatterLetter : ""}
+                  style={{
+                    animationDelay: `${index * 0.1}s`,
+                    "--translate-x": `${translateValues[index]?.x || 0}vw`,
+                    "--translate-y": `${translateValues[index]?.y || 0}vh`,
+                  } as React.CSSProperties}
+                >
+                  {char}
+                </span>
+              ))}
+            </h1>
+            <p className={styles.desc}>Creative Developer</p>
+            <button className={styles.button1} onClick={handleButtonClick}>
+              Do not press this!
+            </button>
           </div>
         </main>
-        
       </div>
     </>
   );

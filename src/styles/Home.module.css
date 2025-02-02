@@ -27,7 +27,54 @@
   }
 }
 
+/* Contact Me Section */
+
+.contactContainer {
+  position: fixed;
+  top: 20px; right: 20px;
+  z-index: 1000;
+}
+
+.contactButton {
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  background-color: #0a0a0a;
+  color: #fff;
+  font-size: 1em;
+  font-family: "Times New Roman";
+  transition: background-color 0.3s ease;
+}
+
+/* .contactButton:hover { */
+  /* background-color: #383838; */
+/* } */
+
+.contactInfo {
+  position: fixed;
+  top: 60px; right: -300px;
+  background-color: #0a0a0a;
+  /* background-color: rgba(255, 2555, 255, 0.9); */
+  padding: 20px; 
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: right 0.5s ease;
+}
+
+.contactInfoVisible {
+  right: 20px;
+}
+
+.contactInfo p {
+  margin: 0;
+  padding: 5px;
+  font-size: 1em;
+  color: #f8f5f5;
+} 
+
 .main {
+  font-family: 'Times New Roman', Times, serif;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -37,6 +84,8 @@
   grid-row-start: 2;
   text-align: center;
 }
+
+/* Main Details on the page, name and title */
 
 .desc {
   padding: 10px 20px;
@@ -52,6 +101,7 @@
   background-color: #000;
   color: #fff;
   font-size: 1em;
+  font-family: 'Times New Roman', Times, serif;
   transition: background-color 0.3s ease;
 }
 
@@ -79,6 +129,10 @@
   padding: 2px 4px;
   border-radius: 4px;
   font-weight: 600;
+}
+
+.main h1 {
+  font-size: 4.4rem;
 }
 
 .ctas {
@@ -133,7 +187,10 @@ a.secondary {
   flex-shrink: 0;
 }
 
+/* Don't press that button animation  */
+
 .scatterText {
+  font-size: 5rem;
   display: inline-block;
   white-space: nowrap;
 }
@@ -141,17 +198,26 @@ a.secondary {
 .scatterLetter {
   display: inline-block;
   position: relative;
-  animation: scatter 2s forwards;
+  animation: float 5s infinite ease-in-out;
 }
 
-@keyframes scatter {
+@keyframes float {
   0% {
-    transform: translate(0, 0);
+    transform: translate(
+      var(--translate-x-start, 0),
+      var(--trasnlate-y-start,0)
+    );
+  }
+  50% {
+    transform: translate(
+      var(--translate-x-end, 0),
+      var(--translate-y-end, 0)
+    );
   }
   100% {
     transform: translate(
-      var(--translate-x, 0),
-      var(--translate-y, 0)
+      var(--translate-x-start, 0),
+      var(--trasnlate-y-start,0)
     );
   }
 }

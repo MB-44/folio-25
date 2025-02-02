@@ -17,6 +17,7 @@ export default function Home() {
   const [scatter, setScatter] = useState(false);
   const [translateValues, setTranslateValues] = useState<{ x: number; y: number }[]>([]);
   const [showContact, setShowContact] = useState(false);
+  const [buttonText, setButtonText] = useState("Do not press this!")
 
   const handleButtonClick = () => {
     // Generate new random translate values for each letter
@@ -26,6 +27,7 @@ export default function Home() {
     }));
     setTranslateValues(newTranslateValues);
     setScatter(true);
+    setButtonText("Dammit! Now Scroll down!")
   };
 
   const toggleContact = () => {
@@ -77,7 +79,7 @@ export default function Home() {
             </h1>
             <p className={styles.desc}>Creative Developer</p>
             <button className={styles.button1} onClick={handleButtonClick}>
-              Do not press this!
+              {buttonText}
             </button>
           </div>
           

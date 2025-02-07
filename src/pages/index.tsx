@@ -1,7 +1,9 @@
+// index.tsx
 import Head from "next/head";
 import { useState } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import SiteInfo from "@/config/siteInfo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,22 +18,16 @@ const geistMono = Geist_Mono({
 export default function Home() {
   const [scatter, setScatter] = useState(false);
   const [translateValues, setTranslateValues] = useState<{ x: number; y: number }[]>([]);
-  const [showContact, setShowContact] = useState(false);
-  const [buttonText, setButtonText] = useState("Do not press this!")
+  const [buttonText, setButtonText] = useState("Do not press this!");
 
   const handleButtonClick = () => {
-    // Generate new random translate values for each letter
     const newTranslateValues = Array.from({ length: "It's Menath".length }, () => ({
-      x: Math.random() * 100 - 50, // Random value between -50 and 50 (vw)
-      y: Math.random() * 100 - 50, // Random value between -50 and 50 (vh)
+      x: Math.random() * 100 - 50, 
+      y: Math.random() * 100 - 50, 
     }));
     setTranslateValues(newTranslateValues);
     setScatter(true);
-    setButtonText("Dammit! Now Scroll down!")
-  };
-
-  const toggleContact = () => {
-    setShowContact(!showContact);
+    setButtonText("Dammit! Now Scroll down!");
   };
 
   return (
@@ -42,26 +38,23 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div
-        className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}
-      >
+      <div className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}>
         {/* Contact Me Section */}
         <div className={styles.contactContainer}>
-          <button className={styles.contactButton} onClick={toggleContact}>
+          <button className={styles.contactButton}>
             Contact Me
           </button>
-          <div className={`${styles.contactInfo} ${showContact ? styles.contactInfoVisible : ""}`}>
-            <p>Email : menathbaddegama@gmail.com</p>
-            <p>Phone: +97 76 814 6535</p>
+          <div className={styles.contactInfo}>
+            <p>Email: {SiteInfo.email}</p>
+            <p>Phone: {SiteInfo.phone}</p>
           </div>
         </div>
 
         <main className={styles.main}>
-          
           {/* Name Container */}
           <div className={styles.nameContainer}>
             <h1 className={scatter ? styles.scatterText : ""}>
-              {"It's Menath Baddegama".split("").map((char, index) => (
+              {SiteInfo.description.split("").map((char, index) => (
                 <span
                   key={index}
                   className={scatter ? styles.scatterLetter : ""}
@@ -77,20 +70,14 @@ export default function Home() {
                 </span>
               ))}
             </h1>
-            <p className={styles.desc}>Creative Developer</p>
+            <p className={styles.desc}>{SiteInfo.title}</p>
             <button className={styles.button1} onClick={handleButtonClick}>
               {buttonText}
             </button>
           </div>
           
           {/* Experience & Education Container */}
-          <div className={styles.expEduContainer}>
-              
-          </div>
-
-
-
-
+          <div className={styles.expEduContainer}></div>
         </main>
       </div>
     </>

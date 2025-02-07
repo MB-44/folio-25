@@ -45,21 +45,33 @@
   font-size: 1em;
   font-family: "Times New Roman";
   transition: background-color 0.3s ease;
+  position: relative;
 }
 
-/* .contactButton:hover { */
-  /* background-color: #383838; */
-/* } */
+.contactButton::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -2px;
+  height: 2px;
+  width: 0;
+  background-color: #fff;
+  transition: width 0.3s ease;
+}
+
+.contactButton:hover ::after {
+  width: 100%;
+}
 
 .contactInfo {
   position: fixed;
   top: 60px; right: -300px;
   background-color: #0a0a0a;
-  /* background-color: rgba(255, 2555, 255, 0.9); */
   padding: 20px; 
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: right 0.5s ease;
+}
+
+.contactContainer:hover .contactInfo {
+  right: 20px;
 }
 
 .contactInfoVisible {
@@ -94,19 +106,36 @@
 }
 
 .button1 {
+  font-family: 'Times New Roman', Times, serif;
   padding: 10px 20px;
   cursor: pointer;
+  position: relative;
+  outline: none;
   border-radius: 5px;
   border: none;
-  background-color: #000;
+  background-color: var(--background-color);
   color: #fff;
   font-size: 1em;
-  font-family: 'Times New Roman', Times, serif;
-  transition: background-color 0.3s ease;
+  
+  --background-color: #000;
+  --border-size: 1.5px;
+  --accent-color: #0AF;
 }
 
-.button1:hover {
-  background-color: #383838;
+.button1::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: var(--border-size);
+  background-color: var(--accent-color);
+  transition: transform 450ms ease-in-out;
+
+  transform: scaleX(0);
+}
+
+.button1:hover::before,
+.button1:hover::after {
+  transform: scaleX(0.97);
 }
 
 .main ol {
@@ -280,3 +309,4 @@ a.secondary {
     filter: invert();
   }
 }
+

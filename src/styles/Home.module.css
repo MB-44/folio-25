@@ -27,40 +27,115 @@
   }
 }
 
-.main {
-  position: relative;
-  display: inline-block;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  grid-row-start: 2;
+/* Contact Me Section */
+
+.contactContainer {
+  position: fixed;
+  top: 20px; right: 20px;
+  z-index: 1000;
 }
 
-.desc {
-  position: absolute;
-  top: 140%; left: 50%;
-  transform: translate(-50%, -50%);
-  /* padding-bottom: 50px; */
-}
-
-.button1 {
-  position: absolute;
-  top: 160%; left: 50%;
-  transform: translate(-50%, -50%);
+.contactButton {
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5px;
   border: none;
+  background-color: #0a0a0a;
+  color: #fff;
+  font-size: 1em;
+  font-family: "Times New Roman";
+  transition: background-color 0.3s ease;
+  position: relative;
 }
 
-.button1:hover {
+.contactButton::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -2px;
+  height: 2px;
+  width: 0;
+  background-color: #fff;
+  transition: width 0.3s ease;
+}
+
+.contactButton:hover ::after {
+  width: 100%;
+}
+
+.contactInfo {
+  position: fixed;
+  top: 60px; right: -300px;
+  background-color: #0a0a0a;
+  padding: 20px; 
+  transition: right 0.5s ease;
+}
+
+.contactContainer:hover .contactInfo {
+  right: 20px;
+}
+
+.contactInfoVisible {
+  right: 20px;
+}
+
+.contactInfo p {
+  margin: 0;
+  padding: 5px;
+  font-size: 1em;
+  color: #f8f5f5;
+} 
+
+.main {
+  font-family: 'Times New Roman', Times, serif;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  grid-row-start: 2;
+  text-align: center;
+}
+
+/* Main Details on the page, name and title */
+
+.desc {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  color: #666;
+}
+
+.button1 {
+  font-family: 'Times New Roman', Times, serif;
+  padding: 10px 20px;
+  cursor: pointer;
+  position: relative;
+  outline: none;
   border-radius: 5px;
-  padding: 5px 15px;
   border: none;
-  background: #1a1a1a;
-  transition: 0.5s ease;
+  background-color: var(--background-color);
   color: #fff;
-  padding-left: 5px ; padding-right: 5px;
+  font-size: 1em;
+  
+  --background-color: #000;
+  --border-size: 1.5px;
+  --accent-color: #0AF;
+}
+
+.button1::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: var(--border-size);
+  background-color: var(--accent-color);
+  transition: transform 450ms ease-in-out;
+
+  transform: scaleX(0);
+}
+
+.button1:hover::before,
+.button1:hover::after {
+  transform: scaleX(0.97);
 }
 
 .main ol {
@@ -83,6 +158,10 @@
   padding: 2px 4px;
   border-radius: 4px;
   font-weight: 600;
+}
+
+.main h1 {
+  font-size: 4.4rem;
 }
 
 .ctas {
@@ -135,6 +214,41 @@ a.secondary {
 
 .footer img {
   flex-shrink: 0;
+}
+
+/* Don't press that button animation  */
+
+.scatterText {
+  font-size: 5rem;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.scatterLetter {
+  display: inline-block;
+  position: relative;
+  animation: float 5s infinite ease-in-out;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(
+      var(--translate-x-start, 0),
+      var(--trasnlate-y-start,0)
+    );
+  }
+  50% {
+    transform: translate(
+      var(--translate-x-end, 0),
+      var(--translate-y-end, 0)
+    );
+  }
+  100% {
+    transform: translate(
+      var(--translate-x-start, 0),
+      var(--trasnlate-y-start,0)
+    );
+  }
 }
 
 /* Enable hover only on non-touch devices */
@@ -195,3 +309,4 @@ a.secondary {
     filter: invert();
   }
 }
+

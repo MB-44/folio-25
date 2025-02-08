@@ -1,0 +1,72 @@
+.desc {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: #666;
+  }
+  
+.button1 {
+    font-family: 'Times New Roman', Times, serif;
+    padding: 10px 20px;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--background-color);
+    color: #fff;
+    font-size: 1em;
+    
+    --background-color: #000;
+    --border-size: 1.5px;
+    --accent-color: #0AF;
+}
+  
+.button1::before {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: var(--border-size);
+    background-color: var(--accent-color);
+    transition: transform 450ms ease-in-out;
+  
+    transform: scaleX(0);
+}
+  
+.button1:hover::before,
+.button1:hover::after {
+    transform: scaleX(0.97);
+}
+
+.scatterText {
+    font-size: 5rem;
+    display: inline-block;
+    white-space: nowrap;
+}
+  
+.scatterLetter {
+    display: inline-block;
+    position: relative;
+    animation: float 5s infinite ease-in-out;
+}
+
+/* letter floating animation */
+@keyframes float {
+    0% {
+      transform: translate(
+        var(--translate-x-start, 0),
+        var(--trasnlate-y-start,0)
+      );
+    }
+    50% {
+      transform: translate(
+        var(--translate-x-end, 0),
+        var(--translate-y-end, 0)
+      );
+    }
+    100% {
+      transform: translate(
+        var(--translate-x-start, 0),
+        var(--trasnlate-y-start,0)
+      );
+    }
+  }

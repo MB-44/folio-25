@@ -1,9 +1,10 @@
-// index.tsx
 import Head from "next/head";
 import { useState } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
-import styles from "@/styles/Home.module.css";
+import styles from "@/styles/main.module.css";
 import SiteInfo from "@/config/siteInfo";
+import NavigationBar from "@/comps/navBar/navBar";
+import HomePage from "@/pages/Home/home";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,19 +17,6 @@ const geistMono = Geist_Mono({
 });
 
 export default function Home() {
-  const [scatter, setScatter] = useState(false);
-  const [translateValues, setTranslateValues] = useState<{ x: number; y: number }[]>([]);
-  const [buttonText, setButtonText] = useState("Do not press this!");
-
-  const handleButtonClick = () => {
-    const newTranslateValues = Array.from({ length: "It's Menath".length }, () => ({
-      x: Math.random() * 100 - 50, 
-      y: Math.random() * 100 - 50, 
-    }));
-    setTranslateValues(newTranslateValues);
-    setScatter(true);
-    setButtonText("Dammit! Now Scroll down!");
-  };
 
   return (
     <>
@@ -38,9 +26,14 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <div className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}>
+        
+        {/* Navigation bar */}
+        <NavigationBar/>
+        
         {/* Contact Me Section */}
-        <div className={styles.contactContainer}>
+        {/* <div className={styles.contactContainer}>
           <button className={styles.contactButton}>
             Contact Me
           </button>
@@ -48,33 +41,12 @@ export default function Home() {
             <p>Email: {SiteInfo.email}</p>
             <p>Phone: {SiteInfo.phone}</p>
           </div>
-        </div>
+        </div> */}
 
         <main className={styles.main}>
-          {/* Name Container */}
-          <div className={styles.nameContainer}>
-            <h1 className={scatter ? styles.scatterText : ""}>
-              {SiteInfo.description.split("").map((char, index) => (
-                <span
-                  key={index}
-                  className={scatter ? styles.scatterLetter : ""}
-                  style={{
-                    animationDelay: `${index * 0.1}s`,
-                    "--translate-x-start": `${translateValues[index]?.x || 0}vw`,
-                    "--translate-y-start": `${translateValues[index]?.y || 0}vh`,
-                    "--translate-x-end": `${Math.random() * 100 - 50}vw`,
-                    "--translate-y-end": `${Math.random() * 100 - 50}vh`,
-                  } as React.CSSProperties}
-                >
-                  {char}
-                </span>
-              ))}
-            </h1>
-            <p className={styles.desc}>{SiteInfo.title}</p>
-            <button className={styles.button1} onClick={handleButtonClick}>
-              {buttonText}
-            </button>
-          </div>
+          {/* Home Page */}
+          <HomePage/>
+          
           
           {/* Experience & Education Container */}
           <div className={styles.expEduContainer}></div>

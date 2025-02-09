@@ -8,7 +8,7 @@ export default function NavigationBar() {
         <header className={styles.navBar}>
             {/* Navigation Links */}
             <nav className={`${styles.navLinks} ${menuOpen ? styles.active : ""}`}>
-                <a href="#Home">Home</a>
+                <a href="#home">Home</a>
                 <a href="#about">About</a>
                 <a href="#stack">Stack</a>
                 <a href="#services">Services</a>

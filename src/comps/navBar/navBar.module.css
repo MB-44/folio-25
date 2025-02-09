@@ -32,7 +32,7 @@
     padding: 0.5rem 0;
   }
   
-  .navLinks a:hover {
+  .navLinks a:active {
     background-color: #f59330;
     color: #fff;
     border: none;
@@ -41,7 +41,7 @@
     padding-right: 15px; padding-left: 15px;
   }
 
-  /* .navLinks a::after {
+  .navLinks a::after {
     content: "";
     position: absolute;
     left: 0;
@@ -54,7 +54,7 @@
 
   .navLinks a:hover::after {
     width: 100%;
-  } */
+  } 
   
   .hamburger {
     display: none;

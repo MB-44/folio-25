@@ -6,15 +6,15 @@ import SiteInfo from "@/config/siteInfo";
 import NavigationBar from "@/comps/navBar/navBar";
 import HomePage from "@/pages/Home/home";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
 export default function Home() {
 
@@ -27,7 +27,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}>
+      <div className={`${styles.page}`}>
         
         {/* Navigation bar */}
         <NavigationBar/>
@@ -42,14 +42,11 @@ export default function Home() {
             <p>Phone: {SiteInfo.phone}</p>
           </div>
         </div> */}
-
+        
         <main className={styles.main}>
-          {/* Home Page */}
-          <HomePage/>
-          
-          
-          {/* Experience & Education Container */}
-          <div className={styles.expEduContainer}></div>
+          <section id="home">
+            <HomePage/>
+          </section>
         </main>
       </div>
     </>

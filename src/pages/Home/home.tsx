@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styles from "@/pages/Home/home.module.css";
 import {useState } from "react";
 import SiteInfo from "@/config/siteInfo";
@@ -6,7 +6,16 @@ import SiteInfo from "@/config/siteInfo";
 export default function HomePage() {
     const [scatter, setScatter] = useState(false);
     const [translateValues, setTranslateValues] = useState<{ x: number; y: number }[]>([]);
-    const [buttonText, setButtonText] = useState("Do not press this!")
+    const [buttonText, setButtonText] = useState("Do not press this! 💀")
+
+    const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setCurrentTitleIndex((prevIndex) => (prevIndex + 1) % SiteInfo.titles.length);
+      }, 5000)
+      return () => clearInterval(interval);
+    }, [SiteInfo.titles.length]);
 
     const handleButtonClick = () => {
         const newTranslateValues = Array.from({length: "It's Menath".length}, () => ({
@@ -21,7 +30,7 @@ export default function HomePage() {
     return (
     <div className={styles.nameContainer}>
             <h1 className={scatter ? styles.scatterText : ""}>
-              {SiteInfo.description.split("").map((char, index) => (
+              {SiteInfo.home_title.split("").map((char, index) => (
                 <span
                   key={index}
                   className={scatter ? styles.scatterLetter : ""}
@@ -37,7 +46,9 @@ export default function HomePage() {
                 </span>
               ))}
             </h1>
-            <p className={styles.desc}>{SiteInfo.title}</p>
+            <p key={currentTitleIndex} className={`${styles.desc} ${styles.slideup}`}>
+              {SiteInfo.titles[currentTitleIndex]}
+            </p>
             <button className={styles.button1} onClick={handleButtonClick}>
               {buttonText}
             </button>

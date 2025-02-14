@@ -2,9 +2,9 @@ import Head from "next/head";
 import { useState } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import styles from "@/styles/main.module.css";
-import SiteInfo from "@/config/siteInfo";
-import NavigationBar from "@/comps/navBar/navBar";
-import HomePage from "@/pages/Home/home";
+import SiteInfo from "@/_config/siteInfo";
+import NavigationBar from "@/_layout/navBar/navBar";
+import HomePage from "@/_pages/Home/home";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",

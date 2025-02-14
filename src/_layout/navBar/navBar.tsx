@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import styles from "./navBar.module.css";
+import { element } from "three/tsl";
 
 export default function NavigationBar() {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return(
         <header className={styles.navBar}>
-            {/* Navigation Links */}
             <nav className={`${styles.navLinks} ${menuOpen ? styles.active : ""}`}>
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
@@ -16,7 +16,6 @@ export default function NavigationBar() {
                 <a href="#social">Social</a>
             </nav>
 
-            {/* Hamburger Icon  */}
             <div 
                 className={styles.hamburger}
                 onClick={() => setMenuOpen((prev) => !prev)}

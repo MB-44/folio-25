@@ -4,7 +4,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background: rgba(255, 255, 255, 0.9);
+    /* background: rgba(255, 255, 255, 0.9); */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: fixed;
     width: 100%;
@@ -15,7 +15,7 @@
   .navLinks {
     display: flex;
     gap: 2rem;
-    transition: right 0.3s ease;
+    transition: left 0.3s ease;
 
     border-image: 8px;
     border-radius: 50px;
@@ -32,7 +32,7 @@
     padding: 0.5rem 0;
   }
   
-  .navLinks a:hover {
+  .navLinks a:active {
     background-color: #f59330;
     color: #fff;
     border: none;
@@ -41,7 +41,7 @@
     padding-right: 15px; padding-left: 15px;
   }
 
-  /* .navLinks a::after {
+  .navLinks a::after {
     content: "";
     position: absolute;
     left: 0;
@@ -54,15 +54,15 @@
 
   .navLinks a:hover::after {
     width: 100%;
-  } */
+  } 
   
   .hamburger {
     display: none;
     flex-direction: column;
     gap: 5px;
     cursor: pointer;
+    margin-right: auto;
   }
-  
   
   .bar {
     width: 25px;
@@ -75,10 +75,10 @@
     .navLinks {
       position: fixed;
       top: 0;
-      right: -100%;
+      left: -100%;
       height: 100vh;
       width: 200px;
-      background: rgba(255, 255, 255, 0.95);
+      background: #0a0a0a;
       flex-direction: column;
       align-items: center;
       justify-content: center;
@@ -87,7 +87,7 @@
     }
     
     .navLinks.active {
-      right: 0;
+      left: 0;
     }
 
     .hamburger {

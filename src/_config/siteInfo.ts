@@ -1,5 +1,3 @@
-
-
 export default class SiteInfo {
     public static readonly username: string = "Menath Baddegama";
     public static readonly home_title: string = `Hi, I'm Menath`;

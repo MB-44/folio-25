@@ -1,12 +1,30 @@
-import {
-  Header, 
-  Transition,
-  NavigationBar,
-} from '@/_layout';
-
 import Head from "next/head";
+import { useState, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
+import PreLoader from "@/_components/preloader";
+import Landing from "@/_components/landing";
+import Description from "@/_components/description";
+import Header from "@/_components/header"
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect( () => {
+    (
+      async () => {
+        const LocomotiveScroll = (await import('locomotive-scroll')).default
+        const locomotiveScroll = new LocomotiveScroll();
+
+        setTimeout(() => {
+          setIsLoading(false);
+          document.body.style.cursor = 'default'
+          window.scrollTo(0,0);
+        }, 2000);
+      }
+    )()
+  }, [])
+
+
   return (
     <>
       <Head>
@@ -15,14 +33,14 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <Transition>
-        <NavigationBar/>
-          <Header/>
-            <main>
-              
-            </main>
-      </Transition>
+      <Header/>
+      <main>
+        <AnimatePresence mode="wait">
+          {isLoading && <PreLoader/>}
+        </AnimatePresence>
+        <Landing/>
+        <Description/>
+      </main>
     </>
   );
 }

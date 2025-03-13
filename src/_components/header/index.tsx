@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import styles from './style.module.scss';
+import styles from './style.module.css';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence } from 'framer-motion';
 import Nav from './nav';
@@ -42,8 +42,8 @@ export default function index() {
                 <p className={styles.copyright}>©</p>
                 <div className={styles.name}>
                     <p className={styles.codeBy}>Code by</p>
-                    <p className={styles.dennis}>Dennis</p>
-                    <p className={styles.snellenberg}>Snellenberg</p>
+                    <p className={styles.dennis}>Menath</p>
+                    <p className={styles.snellenberg}>Baddegama</p>
                 </div>
             </div>
             <div className={styles.nav}>

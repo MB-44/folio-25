@@ -3,12 +3,14 @@ import { useInView, motion } from 'framer-motion';
 import { useRef } from 'react';
 import { slideUp, opacity } from './animation';
 import Rounded from '../common/rounded';
+import { descriptionWording } from '@/_data';
 
 export default function index() {
 
-    const phrase = "Helping brands to stand out in the digital era. Together we will set the new status quo. No nonsense, always on the cutting edge.";
+    const phrase = descriptionWording[0]?.phrase || '';
     const description = useRef(null);
     const isInView = useInView(description)
+
     return (
         <div ref={description} className={styles.description}>
             <div className={styles.body}>
@@ -19,7 +21,9 @@ export default function index() {
                     })
                 }
                 </p>
-                <motion.p variants={opacity} animate={isInView ? "open" : "closed"}>The combination of my passion for design, code & interaction positions me in a unique place in the web design world.</motion.p>
+                <motion.p variants={opacity} animate={isInView ? "open" : "closed"}>
+                    {descriptionWording[1].subDesc}
+                </motion.p>
                 <div data-scroll data-scroll-speed={0.1}>
                     <Rounded className={styles.button}>
                         <p>About me</p>

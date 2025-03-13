@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { AnimatePresence } from "framer-motion";
 import PreLoader from "@/_components/preloader";
+import Landing from "@/_components/landing";
 
 export default function Home() {
   return (

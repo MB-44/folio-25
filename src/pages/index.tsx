@@ -1,10 +1,6 @@
-import {
-  Header, 
-  Transition,
-  NavigationBar,
-} from '@/_layout';
-
 import Head from "next/head";
+import { AnimatePresence } from "framer-motion";
+import PreLoader from "@/_components/preloader";
 
 export default function Home() {
   return (
@@ -16,13 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Transition>
-        <NavigationBar/>
-          <Header/>
-            <main>
-              
-            </main>
-      </Transition>
+      <main></main>
     </>
   );
 }

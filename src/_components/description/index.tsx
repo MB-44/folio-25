@@ -1,4 +1,4 @@
-import styles from './style.module.scss';
+import styles from './style.module.css';
 import { useInView, motion } from 'framer-motion';
 import { useRef } from 'react';
 import { slideUp, opacity } from './animation';

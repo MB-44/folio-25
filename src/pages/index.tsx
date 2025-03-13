@@ -4,6 +4,7 @@ import { AnimatePresence } from "framer-motion";
 import PreLoader from "@/_components/preloader";
 import Landing from "@/_components/landing";
 import Description from "@/_components/description";
+import Header from "@/_components/header"
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,6 +33,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header/>
       <main>
         <AnimatePresence mode="wait">
           {isLoading && <PreLoader/>}

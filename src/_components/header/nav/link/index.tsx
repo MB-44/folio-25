@@ -1,4 +1,4 @@
-import styles from './style.module.scss';
+import styles from './style.module.css';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { slide, scale } from '../../animations';

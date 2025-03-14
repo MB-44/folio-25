@@ -2,7 +2,7 @@ import styles from './style.module.css';
 import { useInView, motion } from 'framer-motion';
 import { useRef } from 'react';
 import { slideUp, opacity } from './animation';
-import Rounded from '../common/rounded';
+import Rounded from '../../_components/common/rounded';
 import { descriptionWording } from '@/_data';
 
 export default function index() {

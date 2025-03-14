@@ -47,11 +47,11 @@ export default function index() {
                     {
                       navItems.map( (data, index) => {
                         return <Link 
-                        key={index} 
-                        data={{...data, index}} 
-                        isActive={selectedIndicator == data.href} 
-                        setSelectedIndicator={setSelectedIndicator}>
-                        </Link>
+                                key={index} 
+                                data={{...data, index}} 
+                                isActive={selectedIndicator == data.href} 
+                                setSelectedIndicator={setSelectedIndicator}>
+                              </Link>
                       })
                     }
             </div>

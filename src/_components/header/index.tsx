@@ -8,6 +8,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Rounded from '../common/rounded';
 import Magnetic from '../common/magnetic';
+import HackerText from '../common/hacker';
 
 export default function index() {
     const header = useRef(null);
@@ -42,26 +43,26 @@ export default function index() {
                 <p className={styles.copyright}>©</p>
                 <div className={styles.name}>
                     <p className={styles.codeBy}>Code by</p>
-                    <p className={styles.dennis}>Menath</p>
-                    <p className={styles.snellenberg}>Baddegama</p>
+                    <p className={styles.menath}>Menath</p>
+                    <p className={styles.baddegama}>Baddegama</p>
                 </div>
             </div>
             <div className={styles.nav}>
                 <Magnetic>
                     <div className={styles.el}>
-                        <a>Work</a>
+                        <a><HackerText text='Work'/></a>
                         <div className={styles.indicator}></div>
                     </div>
                 </Magnetic>
                 <Magnetic>
                     <div className={styles.el}>
-                        <a>About</a>
+                        <a><HackerText text='About'/></a>
                         <div className={styles.indicator}></div>
                     </div>
                 </Magnetic>
                 <Magnetic>
                     <div className={styles.el}>
-                        <a>Contact</a>
+                        <a><HackerText text='Contact'/></a>
                         <div className={styles.indicator}></div>
                     </div>
                 </Magnetic>

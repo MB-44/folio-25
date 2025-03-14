@@ -38,7 +38,16 @@ const HackerText: React.FC<HackerTextProps> = ({
           if (index < Math.floor(iteration)) {
             return text[index];
           }
-          return charSet[Math.floor(Math.random() * charSet.length)];
+          
+          if (letter.match(/[a-z]/)) {
+            return charSet.toLowerCase()[Math.floor(Math.random() * charSet.length)];
+          } else if (letter.match(/[A-Z]/)) {
+            return charSet[Math.floor(Math.random() * charSet.length)];
+          } else if (letter.match(/[0-9]/)) {
+            return "0123456789"[Math.floor(Math.random() * 10)];
+          } else {
+            return letter;
+          }
         })
         .join("");
       

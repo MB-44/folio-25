@@ -4,11 +4,14 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Balancer from 'react-wrap-balancer';
 
+import { ParallaxFade, ParallaxReveal } from '@/_components';
+
 import Rounded from "../../_components/common/rounded";
+
 import { descriptionWording } from '@/_data';
 import { Title, Wrapper } from './index.styled';
 
-const phrase = descriptionWording[0].phrase;
+const phrase = descriptionWording[0].phrase ?? '';
 
 export function Description() {
   return (
@@ -23,8 +26,7 @@ export function Description() {
         <div className='basis-7/12 lg:basis-3/12'>
           <ParallaxFade>
             <Balancer as='p' className='mt-2 text-base lg:text-lg'>
-              The combination of my passion for design, code & interaction
-              positions me in a unique place in the web design world.
+              {descriptionWording[1].subDesc}
             </Balancer>
           </ParallaxFade>
         </div>

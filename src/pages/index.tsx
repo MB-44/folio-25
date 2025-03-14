@@ -2,8 +2,8 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import PreLoader from "@/_components/preloader";
-import Landing from "@/_components/landing";
-import Description from "@/_components/description";
+import Landing from "@/_layout/landing";
+import Description from "@/_layout/description";
 import Header from "@/_components/header"
 
 export default function Home() {

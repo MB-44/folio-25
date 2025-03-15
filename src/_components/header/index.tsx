@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { JSX, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import styles from './style.module.css';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence } from 'framer-motion';
@@ -10,18 +10,32 @@ import Rounded from '../common/rounded';
 import Magnetic from '../common/magnetic';
 import HackerText from '../common/hacker';
 
-export default function index() {
-    const header = useRef(null);
-    const [isActive, setIsActive] = useState(false);
+export default function Header(): JSX.Element {
+    const header = useRef<HTMLDivElement>(null);
+    const [isActive, setIsActive] = useState<boolean>(false);
     const pathname = usePathname();
-    const button = useRef(null);
+    const button = useRef<HTMLDivElement>(null);
+    const audioRef = useRef<HTMLAudioElement | null>(null);
 
-    useEffect( () => {
-      if(isActive) setIsActive(false)
-    }, [pathname])
+    useEffect(() => {
+        // Create audio element
+        audioRef.current = new Audio('/audio/ui.mp3'); // Make sure to add your sound file to the public folder
+        
+        return () => {
+            // Cleanup audio when component unmounts
+            if (audioRef.current) {
+                audioRef.current.pause();
+                audioRef.current = null;
+            }
+        };
+    }, []);
 
-    useLayoutEffect( () => {
-        gsap.registerPlugin(ScrollTrigger)
+    useEffect(() => {
+        if(isActive) setIsActive(false);
+    }, [pathname]);
+
+    useLayoutEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
         gsap.to(button.current, {
             scrollTrigger: {
                 trigger: document.documentElement,
@@ -33,8 +47,17 @@ export default function index() {
                     setIsActive(false);
                 }
             }
-        })
-    }, [])
+        });
+    }, []);
+
+    // Function to handle navigation item hover - play sound every time
+    const handleNavItemHover = (): void => {
+        if (audioRef.current) {
+            // Reset audio to beginning and play
+            audioRef.current.currentTime = 0;
+            audioRef.current.play();
+        }
+    };
 
     return (
         <>
@@ -49,19 +72,19 @@ export default function index() {
             </div>
             <div className={styles.nav}>
                 <Magnetic>
-                    <div className={styles.el}>
+                    <div className={styles.el} onMouseEnter={handleNavItemHover}>
                         <a><HackerText text='Work'/></a>
                         <div className={styles.indicator}></div>
                     </div>
                 </Magnetic>
                 <Magnetic>
-                    <div className={styles.el}>
+                    <div className={styles.el} onMouseEnter={handleNavItemHover}>
                         <a><HackerText text='About'/></a>
                         <div className={styles.indicator}></div>
                     </div>
                 </Magnetic>
                 <Magnetic>
-                    <div className={styles.el}>
+                    <div className={styles.el} onMouseEnter={handleNavItemHover}>
                         <a><HackerText text='Contact'/></a>
                         <div className={styles.indicator}></div>
                     </div>
@@ -77,5 +100,5 @@ export default function index() {
             {isActive && <Nav />}
         </AnimatePresence>
         </>
-    )
+    );
 }

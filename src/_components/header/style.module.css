@@ -156,3 +156,9 @@
     transform: rotate(-45deg);
     top: 0px;
 }
+
+.audioButtonWrapper {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}

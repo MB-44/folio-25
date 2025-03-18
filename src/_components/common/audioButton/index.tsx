@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import styles from "./style.module.css";
 
 declare global {
   interface Window {
@@ -151,7 +152,7 @@ const AudioControlButton = ({
       {[1, 2, 3, 4].map((bar) => (
         <div
           key={bar}
-          className={`indicator-line ${isIndicatorActive ? "active" : ""}`} 
+          className={`${styles['indicator-line']} ${isIndicatorActive ? styles.active : ""}`}
           style={{ animationDelay: `${bar * 0.1}s` }}
         />
       ))}

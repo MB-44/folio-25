@@ -8,7 +8,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Rounded from '../common/rounded';
 import Magnetic from '../common/magnetic';
-import HackerText from '../common/hacker';
 
 export default function Header(): JSX.Element {
     const header = useRef<HTMLDivElement>(null);
@@ -18,11 +17,9 @@ export default function Header(): JSX.Element {
     const audioRef = useRef<HTMLAudioElement | null>(null);
 
     useEffect(() => {
-        // Create audio element
-        audioRef.current = new Audio('/audio/ui.mp3'); // Make sure to add your sound file to the public folder
+        audioRef.current = new Audio('/audio/ui_magbutton.mp3'); 
         
         return () => {
-            // Cleanup audio when component unmounts
             if (audioRef.current) {
                 audioRef.current.pause();
                 audioRef.current = null;
@@ -50,10 +47,8 @@ export default function Header(): JSX.Element {
         });
     }, []);
 
-    // Function to handle navigation item hover - play sound every time
     const handleNavItemHover = (): void => {
         if (audioRef.current) {
-            // Reset audio to beginning and play
             audioRef.current.currentTime = 0;
             audioRef.current.play();
         }
@@ -73,19 +68,19 @@ export default function Header(): JSX.Element {
             <div className={styles.nav}>
                 <Magnetic>
                     <div className={styles.el} onMouseEnter={handleNavItemHover}>
-                        <a><HackerText text='Work'/></a>
+                        <a>Work</a>
                         <div className={styles.indicator}></div>
                     </div>
                 </Magnetic>
                 <Magnetic>
                     <div className={styles.el} onMouseEnter={handleNavItemHover}>
-                        <a><HackerText text='About'/></a>
+                        <a>About</a>
                         <div className={styles.indicator}></div>
                     </div>
                 </Magnetic>
                 <Magnetic>
                     <div className={styles.el} onMouseEnter={handleNavItemHover}>
-                        <a><HackerText text='Contact'/></a>
+                        <a>Contact</a>
                         <div className={styles.indicator}></div>
                     </div>
                 </Magnetic>

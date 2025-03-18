@@ -8,6 +8,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Rounded from '../common/rounded';
 import Magnetic from '../common/magnetic';
+import AudioControlButton from '@/_components/common/audioButton';
 
 export default function Header(): JSX.Element {
     const header = useRef<HTMLDivElement>(null);
@@ -54,6 +55,10 @@ export default function Header(): JSX.Element {
         }
     };
 
+    const handleAudioToggle = (isPlaying: boolean): void => {
+        console.log("Background audio is now:", isPlaying ? "playing" : "paused");
+    };
+
     return (
         <>
         <div ref={header} className={styles.header}>
@@ -84,6 +89,14 @@ export default function Header(): JSX.Element {
                         <div className={styles.indicator}></div>
                     </div>
                 </Magnetic>
+                <div className={styles.audioButtonWrapper}>
+                    <AudioControlButton 
+                        initialPlayState={false}
+                        onToggle={handleAudioToggle}
+                        loopAudioSrc="/audio/loop.mp3"
+                        uiSoundSrc="/audio/ui.mp3"
+                    />
+                </div>
             </div>
         </div>
         <div ref={button} className={styles.headerButtonContainer}>

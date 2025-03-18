@@ -8,7 +8,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Rounded from '../common/rounded';
 import Magnetic from '../common/magnetic';
-import HackerText from '../common/hacker';
 
 export default function Header(): JSX.Element {
     const header = useRef<HTMLDivElement>(null);
@@ -69,19 +68,19 @@ export default function Header(): JSX.Element {
             <div className={styles.nav}>
                 <Magnetic>
                     <div className={styles.el} onMouseEnter={handleNavItemHover}>
-                        <a><HackerText text='Work'/></a>
+                        <a>Work</a>
                         <div className={styles.indicator}></div>
                     </div>
                 </Magnetic>
                 <Magnetic>
                     <div className={styles.el} onMouseEnter={handleNavItemHover}>
-                        <a><HackerText text='About'/></a>
+                        <a>About</a>
                         <div className={styles.indicator}></div>
                     </div>
                 </Magnetic>
                 <Magnetic>
                     <div className={styles.el} onMouseEnter={handleNavItemHover}>
-                        <a><HackerText text='Contact'/></a>
+                        <a>Contact</a>
                         <div className={styles.indicator}></div>
                     </div>
                 </Magnetic>

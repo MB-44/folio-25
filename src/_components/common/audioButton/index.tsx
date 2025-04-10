@@ -16,8 +16,8 @@ interface AudioControlButtonProps {
 
 const AudioControlButton = ({ 
   initialPlayState = false, 
-  onToggle,
-  loopAudioSrc = "/audio/cosmic_drift.mp3", 
+  onToggle, 
+  loopAudioSrc = "/audio/loop.mp3", 
   uiSoundSrc = "/audio/ui.mp3"
 }: AudioControlButtonProps) => {
   const [isAudioPlaying, setIsAudioPlaying] = useState(initialPlayState);
@@ -32,38 +32,70 @@ const AudioControlButton = ({
   const sourceNodeRef = useRef<MediaElementAudioSourceNode | null>(null);
   const animationFrameRef = useRef<number | null>(null);
 
+  // Create or recreate audio context
+  const setupAudioContext = () => {
+    // Clean up existing audio context if it exists
+    if (audioContextRef.current) {
+      if (sourceNodeRef.current) {
+        sourceNodeRef.current.disconnect();
+      }
+      if (analyserRef.current) {
+        analyserRef.current.disconnect();
+      }
+    }
+
+    try {
+      if (!audioElementRef.current) return;
+      
+      // Create new audio context
+      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const analyser = audioContext.createAnalyser();
+      analyser.fftSize = 32; // Small size for better performance
+      
+      const sourceNode = audioContext.createMediaElementSource(audioElementRef.current);
+      sourceNode.connect(analyser);
+      analyser.connect(audioContext.destination);
+      
+      audioContextRef.current = audioContext;
+      analyserRef.current = analyser;
+      sourceNodeRef.current = sourceNode;
+      
+      startAudioVisualization();
+    } catch (error) {
+      console.error("Error setting up audio analysis:", error);
+    }
+  };
+
   useEffect(() => {
     window.isAudioEnabled = isAudioPlaying;
     
-    if (isAudioPlaying && audioElementRef.current && !audioContextRef.current) {
-      try {
-        const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-        const analyser = audioContext.createAnalyser();
-        analyser.fftSize = 32; 
-        
-        const sourceNode = audioContext.createMediaElementSource(audioElementRef.current);
-        sourceNode.connect(analyser);
-        analyser.connect(audioContext.destination);
-        
-        audioContextRef.current = audioContext;
-        analyserRef.current = analyser;
-        sourceNodeRef.current = sourceNode;
-        
-        startAudioVisualization();
-      } catch (error) {
-        console.error("Error setting up audio analysis:", error);
-      }
+    // Initialize Web Audio API
+    if (isAudioPlaying && audioElementRef.current) {
+      setupAudioContext();
     }
     
     return () => {
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
+      
+      // Clean up audio connections
+      if (sourceNodeRef.current) {
+        sourceNodeRef.current.disconnect();
+      }
+      if (analyserRef.current) {
+        analyserRef.current.disconnect();
+      }
     };
   }, [isAudioPlaying]);
 
   const startAudioVisualization = () => {
     if (!analyserRef.current) return;
+    
+    // Cancel any existing animation frame
+    if (animationFrameRef.current) {
+      cancelAnimationFrame(animationFrameRef.current);
+    }
     
     const dataArray = new Uint8Array(analyserRef.current.frequencyBinCount);
     
@@ -72,6 +104,7 @@ const AudioControlButton = ({
       
       analyserRef.current.getByteFrequencyData(dataArray);
       
+      // Use frequency data to set heights of lines
       const numBars = 4;
       const sampleSize = Math.floor(dataArray.length / numBars);
       
@@ -82,6 +115,8 @@ const AudioControlButton = ({
           sum += dataArray[startIndex + j] || 0;
         }
         const average = sum / sampleSize;
+        // Dramatically amplify the effect - multiply by 3 for more movement
+        // Add a minimum of 0.2 so they're always slightly visible
         return Math.max(0.2, Math.min(1, (average / 255) * 3));
       });
       
@@ -93,7 +128,7 @@ const AudioControlButton = ({
   };
 
   const playUISound = () => {
-    if (!uiSoundRef.current || !window.isAudioEnabled) return;
+    if (!uiSoundRef.current) return;
     
     uiSoundRef.current.currentTime = 0;
     
@@ -122,9 +157,8 @@ const AudioControlButton = ({
     
     if (!newState && animationFrameRef.current) {
       cancelAnimationFrame(animationFrameRef.current);
+      // Set to small default values instead of 0
       setAudioData([0.2, 0.2, 0.2, 0.2]);
-    } else if (newState) {
-      startAudioVisualization();
     }
     
     playUISound();
@@ -156,7 +190,12 @@ const AudioControlButton = ({
     const handleAudio = async () => {
       try {
         if (isAudioPlaying) {
-          await audioElementRef.current?.play();
+          if (audioElementRef.current) {
+            // If the audio element is paused and we're toggling on, restart playback
+            if (audioElementRef.current.paused) {
+              await audioElementRef.current.play();
+            }
+          }
         } else {
           audioElementRef.current?.pause();
         }
@@ -185,7 +224,7 @@ const AudioControlButton = ({
             console.log("Audio resume failed:", error);
           });
           setIsAudioPlaying(true);
-          startAudioVisualization();
+          setupAudioContext(); // Re-setup audio context when tab becomes visible
         }
       }
     };
@@ -223,8 +262,8 @@ const AudioControlButton = ({
             <div
               className={styles['indicator-line']}
               style={{ 
-                transform: `scaleY(${value * 3})`, 
-                transitionDuration: isAudioPlaying ? '0.05s' : '0.2s' 
+                transform: `scaleY(${value * 3})`, // Make more dramatic (scale by 3)
+                transitionDuration: isAudioPlaying ? '0.05s' : '0.2s' // Faster reaction when playing
               }}
             />
           </div>

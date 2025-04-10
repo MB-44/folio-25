@@ -9,6 +9,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Rounded from '../common/rounded';
 import Magnetic from '../common/magnetic';
 import AudioControlButton from '@/_components/common/audioButton';
+import { Copyright } from 'lucide-react';
 
 export default function Header(): JSX.Element {
     const header = useRef<HTMLDivElement>(null);
@@ -93,7 +94,7 @@ export default function Header(): JSX.Element {
                     <AudioControlButton 
                         initialPlayState={false}
                         onToggle={handleAudioToggle}
-                        loopAudioSrc="/audio/loop.mp3"
+                        loopAudioSrc="/audio/cosmic_drift.mp3"
                         uiSoundSrc="/audio/ui.mp3"
                     />
                 </div>

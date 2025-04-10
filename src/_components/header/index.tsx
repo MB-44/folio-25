@@ -94,7 +94,7 @@ export default function Header(): JSX.Element {
                     <AudioControlButton 
                         initialPlayState={false}
                         onToggle={handleAudioToggle}
-                        loopAudioSrc="/audio/loop.mp3"
+                        loopAudioSrc="/audio/cosmic_drift.mp3"
                         uiSoundSrc="/audio/ui.mp3"
                     />
                 </div>

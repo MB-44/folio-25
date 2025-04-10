@@ -18,7 +18,7 @@ const AudioControlButton = ({
   initialPlayState = false, 
   onToggle, 
   loopAudioSrc = "/audio/loop.mp3", 
-  uiSoundSrc = "/audio/ui.mp3" 
+  uiSoundSrc = "/audio/ui.mp3"
 }: AudioControlButtonProps) => {
   const [isAudioPlaying, setIsAudioPlaying] = useState(initialPlayState);
   const [isIndicatorActive, setIsIndicatorActive] = useState(initialPlayState);
@@ -35,10 +35,8 @@ const AudioControlButton = ({
   const playUISound = () => {
     if (!uiSoundRef.current || !window.isAudioEnabled) return;
     
-    // Reset audio to beginning
     uiSoundRef.current.currentTime = 0;
     
-    // Play only first second
     const playPromise = uiSoundRef.current.play();
     if (playPromise !== undefined) {
       playPromise.then(() => {
@@ -107,7 +105,6 @@ const AudioControlButton = ({
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        // Tab is hidden, store current playing state and pause
         setWasPlayingBeforeHidden(isAudioPlaying);
         if (isAudioPlaying) {
           audioElementRef.current?.pause();

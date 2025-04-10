@@ -6,7 +6,7 @@ export const preloaderWords = [
   
 export const descriptionWording = [
     {
-        "phrase" : "Helping brands to stand out in the digital era. Together we will set the new status quo. No nonsense, always on the cutting edge."
+        "phrase" : "Empowering brands to rise above the noise in the digital age. Together, we don’t follow trends, we redefine them. No fluff, just bold moves and boundary-pushing innovation."
     },
     {
         "subDesc" : "The combination of my passion for design, code & interaction positions me in a unique place in the web design world."

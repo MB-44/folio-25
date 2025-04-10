@@ -9,6 +9,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Rounded from '../common/rounded';
 import Magnetic from '../common/magnetic';
 import AudioControlButton from '@/_components/common/audioButton';
+import { Copyright } from 'lucide-react';
 
 export default function Header(): JSX.Element {
     const header = useRef<HTMLDivElement>(null);

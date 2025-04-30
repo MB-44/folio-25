@@ -33,6 +33,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/images/logo.png" />
       </Head>
+      <main></main>
       <Header/>
       <main>
         <AnimatePresence mode="wait">

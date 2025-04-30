@@ -60,20 +60,21 @@ export default function Home() {
     gsap.set(firstText.current, {xPercent: xPercent})
     gsap.set(secondText.current, {xPercent: xPercent})
     requestAnimationFrame(animate);
-    xPercent -= 0.08 * direction;
+      xPercent -= 0.03 * direction;
   }
 
   return (
     <motion.main variants={slideUp} initial="initial" animate="enter" className={styles.landing}>
       <Image 
-        src="/images/rosie-sun.jpg"
+        src="/images/wallpaper.jpg"
         fill={true}
         alt="background"
       />
       <div className={styles.sliderContainer}>
         <div ref={slider} className={styles.slider}>
-          <p ref={firstText}>Menath Baddegama -</p>
-          <p ref={secondText}>Menath Baddegama -</p>
+          <p ref={firstText}>Menath Lakvindu -</p>
+          <p ref={secondText}>Menath Lakvindu -</p>
+
         </div>
       </div>
       <div data-scroll data-scroll-speed={0.1} className={styles.description}>

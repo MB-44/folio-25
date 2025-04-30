@@ -1,2 +1,2 @@
 export * from "./nav-items";
-export * from "./preload-words";
+export * from "./wording";

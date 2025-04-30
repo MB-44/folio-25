@@ -1,51 +1,35 @@
-'use client';
+import styles from './style.module.css';
+import { useInView, motion } from 'framer-motion';
+import { useRef } from 'react';
+import { slideUp, opacity } from './animation';
+import Rounded from '../../_components/common/rounded';
+import { descriptionWording } from '@/_data';
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import Balancer from 'react-wrap-balancer';
+export default function index() {
 
-import { MagneticButton, ParallaxFade, ParallaxReveal } from '@/_components';
+    const phrase = descriptionWording[0]?.phrase || '';
+    const description = useRef(null);
+    const isInView = useInView(description)
 
-import { Title, Wrapper } from './index.styled';
-
-const phrase =
-  'Helping brands to stand out in the digital era. Together we will set the new status quo. No nonsense, always on the cutting edge.';
-
-export function Description() {
-  return (
-    <article className='container relative'>
-      <Wrapper>
-        <div className='basis-full lg:basis-9/12'>
-          <Title>
-            <ParallaxReveal paragraph={phrase} />
-          </Title>
+    return (
+        <div ref={description} className={styles.description}>
+            <div className={styles.body}>
+                <p>
+                {
+                    phrase.split(" ").map( (word, index) => {
+                        return <span key={index} className={styles.mask}><motion.span variants={slideUp} custom={index} animate={isInView ? "open" : "closed"} key={index}>{word}</motion.span></span>
+                    })
+                }
+                </p>
+                <motion.p variants={opacity} animate={isInView ? "open" : "closed"}>
+                    {descriptionWording[1].subDesc}
+                </motion.p>
+                <div data-scroll data-scroll-speed={0.1}>
+                    <Rounded className={styles.button}>
+                        <p>About me</p>
+                    </Rounded>
+                </div>
+            </div>
         </div>
-
-        <div className='basis-7/12 lg:basis-3/12'>
-          <ParallaxFade>
-            <Balancer as='p' className='mt-2 text-base lg:text-lg'>
-              The combination of my passion for design, code & interaction
-              positions me in a unique place in the web design world.
-            </Balancer>
-          </ParallaxFade>
-        </div>
-
-        <motion.div
-          whileInView={{ y: '-15%' }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.5,
-          }}
-        >
-          <div className='absolute right-0 top-3/4 lg:top-full lg:me-10'>
-            <Link href='/about' passHref>
-              <MagneticButton variant='ghost' size='xl'>
-                About me
-              </MagneticButton>
-            </Link>
-          </div>
-        </motion.div>
-      </Wrapper>
-    </article>
-  );
+    )
 }

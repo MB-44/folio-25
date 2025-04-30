@@ -1,0 +1,42 @@
+.audioButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    border-radius: 50%;
+    padding: 4px;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .linesContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 16px;
+    width: 100%;
+  }
+  
+  .lineWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin: 0 1px;
+  }
+  
+  .indicator-line {
+    width: 2px;
+    height: 5px;
+    background-color: white;
+    border: none;
+    border-radius: 1px;
+    transform-origin: center;
+    transition: transform 0.05s ease-out;
+  }
+  
+  .hidden {
+    display: none;
+  }

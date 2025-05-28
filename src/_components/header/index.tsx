@@ -63,6 +63,7 @@ export default function Header(): JSX.Element {
     return (
         <>
         <div ref={header} className={styles.header}>
+        <Magnetic>
             <div className={styles.logo}>
                 <p className={styles.copyright}>©</p>
                 <div className={styles.name}>
@@ -71,6 +72,7 @@ export default function Header(): JSX.Element {
                     <p className={styles.baddegama}>Baddegama</p>
                 </div>
             </div>
+        </Magnetic>
             <div className={styles.nav}>
                 <Magnetic>
                     <div className={styles.el} onMouseEnter={handleNavItemHover}>

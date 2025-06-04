@@ -179,7 +179,7 @@ const AudioControlButton = ({
   return (
     <button className={styles.audioButton} onClick={toggleAudioIndicator} aria-label={isAudioPlaying ? "Mute audio" : "Play audio"}>
       <audio ref={audioElementRef} className="hidden" src={loopAudioSrc} loop preload="auto" />
-      <audio ref={uiSoundRef} className="hidden" src={uiSoundSrc} preload="auto" />
+      {/* <audio ref={uiSoundRef} className="hidden" src={uiSoundSrc} preload="auto" /> */}
       <div className={styles.linesContainer}>
         {audioData.map((value, index) => (
           <div key={index} className={styles.lineWrapper}>

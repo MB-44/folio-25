@@ -12,7 +12,7 @@ interface Props {
   [key: string]: any;
 }
 
-export default function index({children, backgroundColor="#455CE9", ...attributes}: Props) {
+export default function index({children, backgroundColor="#964555", ...attributes}: Props) {
 
   const circle = useRef(null);
   let timeline = useRef<gsap.core.Timeline | null>(null);

@@ -6,10 +6,9 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { slideUp } from './animation';
 import { motion } from 'framer-motion';
-import HackerText from '@/_components/common/hacker';
+import HackerText from '@/components/common/hacker';
 
 export default function Home() {
-
   const firstText = useRef(null);
   const secondText = useRef(null);
   const slider = useRef(null);
@@ -66,7 +65,7 @@ export default function Home() {
   return (
     <motion.main variants={slideUp} initial="initial" animate="enter" className={styles.landing}>
       <Image 
-        src="/images/wallpaper.jpg"
+        src="/images/ferrari-wallpaper.png"
         fill={true}
         alt="background"
       />

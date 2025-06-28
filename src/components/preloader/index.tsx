@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { opacity, slideUp } from "./animation";
-import { preloaderWords } from "@/_data";
+import { preloaderWords } from "@/data";
 import styles from "./style.module.css";
 
 export default function PreLoader() {

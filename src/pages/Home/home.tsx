@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
-import styles from "@/pages/Home/home.module.css";
 import {useState } from "react";
-import SiteInfo from "@/_config/siteInfo";
+import SiteInfo  from "@/config/siteInfo";
+import styles from "./home.module.css"
 
 export default function HomePage() {
     const [currentTitleIndex, setCurrentTitleIndex] = useState(0);

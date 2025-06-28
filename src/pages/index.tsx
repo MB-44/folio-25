@@ -1,10 +1,10 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
-import PreLoader from "@/_components/preloader";
-import Landing from "@/_layout/landing";
-import Description from "@/_layout/description";
-import Header from "@/_components/header"
+import PreLoader from "@/components/preloader";
+import Landing from "@/layout/landing";
+import Description from "@/layout/description";
+import Header from "@/components/header"
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);

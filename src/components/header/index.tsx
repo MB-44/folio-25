@@ -1,15 +1,13 @@
 'use client';
 import { JSX, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import styles from './style.module.css';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence } from 'framer-motion';
-import Nav from './nav';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Rounded from '../common/rounded';
-import Magnetic from '../common/magnetic';
-import AudioControlButton from '@/_components/common/audioButton';
-import { Copyright } from 'lucide-react';
+import { AudioControlButton, Rounded, Magnetic } from "@/components";
+import styles from './style.module.css';
+import Nav from './nav';
+// import { Copyright } from 'lucide-react';
 
 export default function Header(): JSX.Element {
     const header = useRef<HTMLDivElement>(null);

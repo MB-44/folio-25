@@ -1,9 +1,9 @@
-import styles from './style.module.css';
 import { useInView, motion } from 'framer-motion';
 import { useRef } from 'react';
 import { slideUp, opacity } from './animation';
-import Rounded from '../../_components/common/rounded';
-import { descriptionWording } from '@/_data';
+import styles from './style.module.css';
+import { Rounded } from '@/components';
+import { descriptionWording } from '@/data';
 
 export default function index() {
 

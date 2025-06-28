@@ -1,4 +1,4 @@
-import HackerText from '@/_components/common/hacker';
+import { HackerText } from "@/components";
 import styles from './style.module.css';
 
 export default function index() {

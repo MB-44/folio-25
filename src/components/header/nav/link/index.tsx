@@ -1,6 +1,6 @@
-import styles from './style.module.css';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+import styles from './style.module.css';
 import { slide, scale } from '../../animations';
 
 interface Data {

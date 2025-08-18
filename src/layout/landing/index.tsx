@@ -13,6 +13,7 @@ export default function Home() {
   const secondText = useRef(null);
   const slider = useRef(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+
   let xPercent = 0;
   let direction = -1;
 

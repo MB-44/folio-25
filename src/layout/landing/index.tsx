@@ -74,7 +74,6 @@ export default function Home() {
         <div ref={slider} className={styles.slider}>
           <p ref={firstText}>Menath Lakvindu -</p>
           <p ref={secondText}>Menath Lakvindu -</p>
-
         </div>
       </div>
       <div data-scroll data-scroll-speed={0.1} className={styles.description}>

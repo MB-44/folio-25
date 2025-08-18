@@ -52,3 +52,163 @@
   transform: scale(2);
   margin-bottom: 100px;
 }
+
+.hangerOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hanger {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hangerText {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+  padding-right: 5em;
+  padding-left: 16px;
+  line-height: 1.4;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 400;
+  white-space: normal; 
+}
+
+.hangerSvg {
+  width: auto;
+  height: 6em;
+}
+
+.digitalBall {
+  position: absolute;
+  right: 0.9em;
+  top: 0.9em;
+  width: 4.2em;
+  height: 4.2em;
+  border-radius: 50%;
+  overflow: hidden;
+  background: transparent;
+}
+
+.digitalBallOverlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: digitalball 6s ease-in-out infinite;
+  transition: opacity 1s ease-in-out;
+  background: #455CE9;
+}
+
+@keyframes digitalball {
+  0%   { background: #455CE9; }
+  50%  { background: #ff4444; }
+  100% { background: #455CE9; }
+}
+
+.digitalBall:hover .digitalBallOverlay {
+  opacity: 1;
+}
+
+.globe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.globeWrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%) rotate(30deg);
+  animation: globeRotate 5.4s cubic-bezier(0.35, 0, 0.65, 1) infinite;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 0.125em #ffffff;
+}
+
+@keyframes globeRotate {
+  0%   { transform: translate(-50%, -50%) rotate(15deg); }
+  50%  { transform: translate(-50%, -50%) rotate(-15deg); }
+  100% { transform: translate(-50%, -50%) rotate(15deg); }
+}
+
+.circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  box-shadow: inset 0.1em 0 0 0.08em #ffffff;
+  animation: circleSweep 2.7s linear infinite;
+  font-size: 0.75em;
+}
+
+@keyframes circleSweep {
+  0%   { border-radius: 50%; box-shadow: inset 0.1em 0 0 0.08em #ffffff; width: 100%; background: transparent; }
+  49%  { border-radius: 50%; box-shadow: inset 0.1em 0 0 0.08em #ffffff; background: transparent; }
+  50%  { border-radius: 0%; width: 0.175em; background: #ffffff; }
+  51%  { border-radius: 50%; box-shadow: inset -0.1em 0 0 0.08em #ffffff; background: transparent; }
+  100% { border-radius: 50%; box-shadow: inset -0.1em 0 0 0.08em #ffffff; width: 100%; background: transparent; }
+}
+
+.circle:nth-child(1) { animation-delay: -1.8s; }
+.circle:nth-child(2) { animation-delay: -0.9s; }
+
+.circleHor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 55%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 0.15em #ffffff;
+}
+
+.circleHorMiddle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 0.15em;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  border-radius: 0;
+}
+
+@media (max-width: 720px) {
+  .hanger {
+    width: 6em;
+    height: 6em;
+    left: auto;
+    right: 0;
+    top: 100vh;
+    transform: translate(0, -110%);
+  }
+
+  .hangerText,
+  .hangerSvg {
+    display: none;
+  }
+
+  .globe {
+    width: 3em;
+    height: 3em;
+  }
+}

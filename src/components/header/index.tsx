@@ -63,7 +63,7 @@ export default function Header(): JSX.Element {
         <div ref={header} className={styles.header}>
         <Magnetic>
             <div className={styles.logo}>
-                <p className={styles.copyright}>©</p>
+                {/* <p className={styles.copyright}>©</p> */}
                 <div className={styles.name}>
                     <p className={styles.codeBy}>Code by</p>
                     <p className={styles.menath}>Menath</p>

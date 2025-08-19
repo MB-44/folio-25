@@ -1,0 +1,135 @@
+/* container size & section spacing to mirror "container medium" */
+.section {
+  color: #1c1a1a;
+  background: transparent;
+}
+
+.containerMedium {
+  max-width: 1140px;      /* tight like many "medium" containers */
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 0.62fr 0.38fr; /* left text wider like original */
+  column-gap: 56px;
+  align-items: start;
+  padding-top: 140px;     /* vertical rhythm similar to original section */
+  padding-bottom: 140px;
+}
+
+/* columns */
+.leftCol { position: relative; }
+.rightCol { position: relative; margin-top: 2px; }
+
+/* headline (h4.span-lines) */
+.headline {
+  margin: 0;
+  font-size: clamp(22px, 2.2vw, 36px);
+  line-height: 1.35;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.mask {
+  display: inline-flex;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.word {
+  display: inline-block;
+  transform: translateY(110%);
+  opacity: 0;
+  transition: transform 600ms cubic-bezier(.22,1,.36,1), opacity 600ms ease;
+}
+.in .word { transform: translateY(0%); opacity: 1; }
+
+/* paragraph on right */
+.subtext {
+  margin: 0;
+  font-size: clamp(16px, 1.15vw, 18px);
+  line-height: 1.7;
+  font-weight: 300;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: transform 600ms ease, opacity 600ms ease;
+  transition-delay: 360ms;
+}
+.in .subtext { opacity: 1; transform: translateY(0); }
+
+/* parallax wrapper keeps layout stable */
+.btnParallax { margin-top: clamp(24px, 3vw, 36px); will-change: transform; }
+
+/* magnetic wrapper (no layout shift) */
+.magnet { display: inline-block; padding: 18px; margin: -18px; }
+.magnetInner { display: inline-block; will-change: transform; }
+
+/* ROUND BUTTON — match original scale with clamp */
+.btnRound {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: clamp(120px, 10.5vw, 180px);
+  height: clamp(120px, 10.5vw, 180px);
+
+  border-radius: 50%;
+  overflow: hidden;
+  text-decoration: none;
+  color: #fff;
+  isolation: isolate;
+  transform: translateZ(0);
+}
+
+/* fill layer + text group to mimic .btn-fill / .btn-text */
+.btnFill {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #1c1d20;
+  z-index: 1;
+  transform: scale(1);
+  transition: transform .4s cubic-bezier(.34,1,.64,1), background-color .3s ease;
+}
+
+.btnText {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: clamp(38px, 3.3vw, 48px);
+  padding: 0 20px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.btnTextInner {
+  font-size: clamp(14px, 1vw, 16px);
+  font-weight: 500;
+  letter-spacing: .2px;
+  white-space: nowrap;
+  transition: transform .35s cubic-bezier(.34,1.5,.64,1), opacity .35s ease;
+}
+
+/* hover/active — gentle zoom like original */
+.btnRound:hover .btnFill,
+.btnRound:focus-visible .btnFill { transform: scale(1.04); background: #2a2c30; }
+.btnRound:hover .btnTextInner,
+.btnRound:focus-visible .btnTextInner { transform: translateY(-1px); }
+
+/* tablet: keep left/right but reduce spacing */
+@media (max-width: 1024px) {
+  .containerMedium { padding: 0 20px; }
+  .row { grid-template-columns: 1fr; column-gap: 0; row-gap: 32px; padding-top: 120px; padding-bottom: 120px; }
+  .rightCol { margin-top: 0; }
+}
+
+/* mobile */
+@media (max-width: 640px) {
+  .containerMedium { padding: 0 16px; }
+  .row { row-gap: 22px; padding-top: 96px; padding-bottom: 96px; }
+}

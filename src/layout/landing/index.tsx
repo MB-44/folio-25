@@ -84,7 +84,7 @@ export default function Home() {
   return (
     <motion.main variants={slideUp} initial="initial" animate="enter" className={styles.landing}>
       <Image 
-        src="/images/ferrari-wallpaper.jpg"
+        src="/images/ds-wallpaper.jpg"
         fill={true}
         alt="background"
       />

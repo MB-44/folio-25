@@ -1,11 +1,7 @@
 .section {
-  --fg: #ffffff;
-  --bg: transparent;
-  --ink: #1c1d20;
-
   width: 100%;
-  background: var(--bg);
-  color: var(--fg);
+  background: transparent;
+  color: #000000;
 }
 
 .container {
@@ -25,6 +21,7 @@
 .leftCol { position: relative; }
 .rightCol { position: relative; }
 
+/* Headline: span-lines style reveal */
 .headline {
   margin: 0;
   font-size: 36px;
@@ -51,6 +48,7 @@
   opacity: 1;
 }
 
+/* Right paragraph */
 .subtext {
   margin: 0;
   margin-top: 8px;
@@ -68,48 +66,85 @@
   transform: translateY(0);
 }
 
+/* Parallax container for CTA */
+.ctaParallax {
+  position: relative;
+  margin-top: 32px;
+  will-change: transform;
+}
+
+/* Magnetic wrapper */
+.magnet {
+  display: inline-block;
+  position: relative;
+  perspective: 600px;
+  /* gives room for inner to move without clipping */
+  padding: 16px;
+  margin: -16px; /* negate padding so layout doesn't shift */
+}
+
+.magnetInner {
+  display: inline-block;
+  will-change: transform;
+  transition: transform 0.25s cubic-bezier(.22,1,.36,1);
+}
+
+/* Round CTA button (matches original round style + fill layer + text) */
 .btnRound {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-top: 32px;
   width: 180px;
   height: 180px;
   border-radius: 50%;
-  background: var(--ink);
-  color: #fff;
   text-decoration: none;
-  user-select: none;
-  position: relative;
+  color: #ffffff;
   overflow: hidden;
-  transform: translateZ(0);
+  isolation: isolate;
+  transform: translateZ(0); /* new stacking for smoothness */
 }
 
-.btnInner {
+.btnFill {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #1c1d20;  /* dark ink */
+  z-index: 1;
+  transform: scale(1);
+  transition: transform .4s cubic-bezier(.34,1,.64,1), background-color .3s ease;
+}
+
+.btnText {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px;
+  height: 44px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.btnTextInner {
   font-size: 16px;
   font-weight: 500;
   letter-spacing: .2px;
-  z-index: 2;
+  white-space: nowrap;
+  transition: transform .35s cubic-bezier(.34,1.5,.64,1), opacity .35s ease;
 }
 
-.btnRound::before {
-  content: "";
-  position: absolute;
-  inset: -50%;
-  margin: auto;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255,255,255,.12);
-  transition: width .5s ease, height .5s ease, opacity .5s ease;
-  opacity: 0;
+/* Hover: subtle zoom of fill + lift text (pairs well with magnetic pull) */
+.btnRound:hover .btnFill,
+.btnRound:focus-visible .btnFill {
+  transform: scale(1.04);
+  background: #2a2c30;
 }
 
-.btnRound:hover::before,
-.btnRound:focus-visible::before {
-  width: 220%;
-  height: 220%;
-  opacity: 1;
+.btnRound:hover .btnTextInner,
+.btnRound:focus-visible .btnTextInner {
+  transform: translateY(-1px);
 }
 
 /* Tablet */

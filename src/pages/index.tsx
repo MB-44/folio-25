@@ -41,8 +41,8 @@ export default function Home() {
           {isLoading && <PreLoader/>}
         </AnimatePresence>
         <Landing/>
-        <Description/>
-        {/* <HomeIntro/> */}
+        {/* <Description/> */}
+        <HomeIntro/>
       </main>
     </>
   );

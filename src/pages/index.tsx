@@ -5,6 +5,7 @@ import PreLoader from "@/components/preloader";
 import Landing from "@/layout/landing";
 import Description from "@/layout/description";
 import Header from "@/components/header"
+import HomeIntro from "@/layout/homeIntro";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -41,6 +42,7 @@ export default function Home() {
         </AnimatePresence>
         <Landing/>
         <Description/>
+        {/* <HomeIntro/> */}
       </main>
     </>
   );

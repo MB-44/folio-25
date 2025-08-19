@@ -1,0 +1,133 @@
+.section {
+  --fg: #ffffff;
+  --bg: transparent;
+  --ink: #1c1d20;
+
+  width: 100%;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 56px;
+  align-items: start;
+  padding: 160px 0;
+}
+
+.leftCol { position: relative; }
+.rightCol { position: relative; }
+
+.headline {
+  margin: 0;
+  font-size: 36px;
+  line-height: 1.3;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.mask {
+  display: inline-flex;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.word {
+  display: inline-block;
+  transform: translateY(110%);
+  opacity: 0;
+  transition: transform 600ms cubic-bezier(.22,1,.36,1), opacity 600ms ease;
+}
+
+.in .word {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+.subtext {
+  margin: 0;
+  margin-top: 8px;
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 300;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: transform 600ms ease, opacity 600ms ease;
+  transition-delay: 420ms;
+}
+
+.in .subtext {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btnRound {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 32px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  text-decoration: none;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.btnInner {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: .2px;
+  z-index: 2;
+}
+
+.btnRound::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  margin: auto;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,.12);
+  transition: width .5s ease, height .5s ease, opacity .5s ease;
+  opacity: 0;
+}
+
+.btnRound:hover::before,
+.btnRound:focus-visible::before {
+  width: 220%;
+  height: 220%;
+  opacity: 1;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .row {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 120px 0;
+  }
+  .headline { font-size: 32px; }
+  .btnRound { width: 160px; height: 160px; }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .container { padding: 0 16px; }
+  .row { gap: 24px; padding: 96px 0; }
+  .headline { font-size: 26px; line-height: 1.35; }
+  .subtext { font-size: 16px; }
+  .btnRound { width: 136px; height: 136px; }
+}

@@ -10,7 +10,7 @@ type Props = {
   ctaText?: string;
 };
 
-function useInViewOnce<T extends Element>(margin = '-10% 0px', threshold = 0.15) {
+function useInViewOnce<T extends Element>(margin = '-12% 0px', threshold = 0.2) {
   const ref = useRef<T | null>(null);
   useEffect(() => {
     const el = ref.current;
@@ -32,11 +32,10 @@ function useInViewOnce<T extends Element>(margin = '-10% 0px', threshold = 0.15)
   return ref;
 }
 
-/** Magnetic wrapper (pulls child toward cursor; resets on leave) */
 function Magnetic({
   children,
-  strength = 0.4, // 0..1 (how far it moves toward cursor)
-  spring = 0.15,  // 0..1 (how snappy it returns)
+  strength = 0.45,
+  spring = 0.12,
   className = '',
 }: {
   children: React.ReactNode;
@@ -62,7 +61,6 @@ function Magnetic({
       const my = e.clientY - rect.top;
       const cx = rect.width / 2;
       const cy = rect.height / 2;
-      // Move toward cursor; limit by strength
       target.current.x = (mx - cx) * strength;
       target.current.y = (my - cy) * strength;
     };
@@ -74,7 +72,6 @@ function Magnetic({
     };
 
     const tick = () => {
-      // spring toward target
       current.current.x += (target.current.x - current.current.x) * (over.current ? 0.18 : spring);
       current.current.y += (target.current.y - current.current.y) * (over.current ? 0.18 : spring);
       inner.style.transform = `translate3d(${current.current.x}px, ${current.current.y}px, 0)`;
@@ -112,24 +109,23 @@ export default function HomeIntro({
   const sectionRef = useInViewOnce<HTMLElement>();
   const btnWrapRef = useRef<HTMLDivElement | null>(null);
 
-  // Parallax for the button (mimics data-scroll-speed="2")
+  // parallax (mimics data-scroll-speed="2")
   useEffect(() => {
     const el = btnWrapRef.current;
     if (!el) return;
 
-    const speed = 0.18; // tune for stronger/weaker effect
     let raf: number | null = null;
+    const speedPx = 120; // total travel range
 
     const onScroll = () => {
       if (raf) return;
       raf = requestAnimationFrame(() => {
         const rect = el.getBoundingClientRect();
-        const windowH = window.innerHeight || 0;
-        // only parallax while visible
-        if (rect.bottom > 0 && rect.top < windowH) {
-          const progress = (windowH - rect.top) / (windowH + rect.height); // 0..1
-          const offset = (progress - 0.5) * 200 * speed; // px
-          el.style.transform = `translate3d(0, ${offset.toFixed(2)}px, 0)`;
+        const h = window.innerHeight || 0;
+        if (rect.bottom > 0 && rect.top < h) {
+          const v = (h * 0.5 - rect.top) / h; // centered around mid viewport
+          const y = v * speedPx;
+          el.style.transform = `translate3d(0, ${y.toFixed(1)}px, 0)`;
         }
         raf = null;
       });
@@ -149,7 +145,7 @@ export default function HomeIntro({
 
   return (
     <section ref={sectionRef} className={styles.section} aria-label="Intro">
-      <div className={styles.container}>
+      <div className={styles.containerMedium}>
         <div className={styles.row}>
           <div className={styles.leftCol}>
             <h4 className={styles.headline}>
@@ -157,7 +153,7 @@ export default function HomeIntro({
                 <span className={styles.mask} key={`${w}-${i}`}>
                   <span
                     className={styles.word}
-                    style={{ transitionDelay: `${i * 40}ms` }}
+                    style={{ transitionDelay: `${i * 38}ms` }}
                   >
                     {w}&nbsp;
                   </span>
@@ -169,8 +165,8 @@ export default function HomeIntro({
           <div className={styles.rightCol}>
             <p className={styles.subtext}>{subtext}</p>
 
-            <div className={styles.ctaParallax} ref={btnWrapRef}>
-              <Magnetic strength={0.45} spring={0.12}>
+            <div className={styles.btnParallax} ref={btnWrapRef}>
+              <Magnetic strength={0.5} spring={0.14}>
                 <a href={ctaHref} className={styles.btnRound} aria-label={ctaText}>
                   <span className={styles.btnFill} />
                   <span className={styles.btnText}>

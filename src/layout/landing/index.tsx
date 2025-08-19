@@ -125,28 +125,32 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Header mini-block with arrow + h4 */}
-      {/* <div className={styles.headerContainer}>
+      {/* NEW: header mini-block (arrow + h4) */}
+      <div className={styles.headerContainer}>
         <div className={styles.headerRow}>
           <div className={styles.headerCol}>
-            <div className={styles.headerAbove} data-scroll data-scroll-speed={1}>
+            <div className={styles.headerAbove}>
               <div className={styles.arrowBig}>
                 <svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <g fill="none" fillRule="evenodd">
                     <g transform="translate(-1019, -279)" stroke="#FFFFFF" strokeWidth="1.5">
                       <g transform="translate(1026, 286) rotate(90) translate(-1026, -286) translate(1020, 280)">
-                      <polyline points="2.76923077 0 12 0 12 9.23076923"></polyline>
-                      <line x1="12" y1="0" x2="0" y2="12"></line>
+                        <polyline points="2.76923077 0 12 0 12 9.23076923"></polyline>
+                        <line x1="12" y1="0" x2="0" y2="12"></line>
                       </g>
                     </g>
                   </g>
                 </svg>
               </div>
             </div>
-          <h4 className={styles.subheading}><span>Freelance</span> Designer &amp; Developer</h4>
+            <h4 className={styles.subheading}>
+              <span>Freelance</span> 
+              <span>Creative Developer</span>
+            </h4>
+          </div>
         </div>
       </div>
-      </div> */}
+      {/* END NEW */}
 
       <div ref={sliderContainer} className={styles.sliderContainer}>
         <div ref={slider} className={styles.slider}>
@@ -155,13 +159,13 @@ export default function Home() {
         </div>
       </div>
 
-      <div data-scroll data-scroll-speed={0.1} className={styles.description}>
+      {/* <div data-scroll data-scroll-speed={0.1} className={styles.description}>
         <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M8 8.5C8.27614 8.5 8.5 8.27614 8.5 8L8.5 3.5C8.5 3.22386 8.27614 3 8 3C7.72386 3 7.5 3.22386 7.5 3.5V7.5H3.5C3.22386 7.5 3 7.72386 3 8C3 8.27614 3.22386 8.5 3.5 8.5L8 8.5ZM0.646447 1.35355L7.64645 8.35355L8.35355 7.64645L1.35355 0.646447L0.646447 1.35355Z" fill="white"/>
         </svg>
         <p onMouseEnter={handleTextHover}><HackerText text='Freelance'/></p>
         <p onMouseEnter={handleTextHover}><HackerText text='Creative Developer'/></p>
-      </div>
+      </div> */}
     </motion.main>
   )
 }

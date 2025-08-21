@@ -145,8 +145,12 @@ export default function Home() {
               </div>
             </div>
             <h4 className={styles.subheading}>
-              <span>Freelance</span> 
-              <span>Creative Developer</span>
+              <p onMouseEnter={handleTextHover}>
+                <HackerText text="Freelance" />
+              </p>
+              <p onMouseEnter={handleTextHover}>
+                <HackerText text="Creative Developer" />
+              </p>
             </h4>
           </div>
         </div>

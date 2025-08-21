@@ -5,7 +5,6 @@ import PreLoader from "@/components/preloader";
 import Landing from "@/layout/landing";
 import Description from "@/layout/description";
 import Header from "@/components/header"
-import HomeIntro from "@/layout/homeIntro";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -34,7 +33,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/images/logo.png" />
       </Head>
-      <main></main>
+      {/* <main></main> */}
       <Header/>
       <main>
         <AnimatePresence mode="wait">
@@ -42,7 +41,6 @@ export default function Home() {
         </AnimatePresence>
         <Landing/>
         <Description/>
-        {/* <HomeIntro/> */}
       </main>
     </>
   );

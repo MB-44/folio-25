@@ -1,0 +1,32 @@
+.aboutWrap {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(16px, 3vw, 40px);
+}
+
+.aboutText {
+  color: #000;
+  max-width: 78ch;
+  font-weight: 400;
+  line-height: 1.75;
+
+  font-size: clamp(16px, 1.25vw + 14px, 24px);
+  letter-spacing: 0.01em;
+}
+
+.aboutText span {
+  font-weight: 600;
+  color: #000;
+}
+
+.aboutText {
+  hyphens: auto;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 540px) {
+  .aboutText {
+    line-height: 1.8;
+  }
+}

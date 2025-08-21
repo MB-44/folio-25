@@ -1,5 +1,6 @@
 'use client'
-import { useRef, useLayoutEffect, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
+import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import { ScrollTrigger } from 'gsap/all';
 import { motion } from 'framer-motion';
 import Image from 'next/image'
@@ -37,7 +38,7 @@ export default function Home() {
     }
   };
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {

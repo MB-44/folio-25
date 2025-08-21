@@ -1,5 +1,6 @@
 'use client';
-import { JSX, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { JSX, useEffect, useRef, useState } from 'react';
+import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence } from 'framer-motion';
@@ -31,7 +32,7 @@ export default function Header(): JSX.Element {
         if(isActive) setIsActive(false);
     }, [pathname]);
 
-    useLayoutEffect(() => {
+    useIsomorphicLayoutEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
         gsap.to(button.current, {
             scrollTrigger: {

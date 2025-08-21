@@ -237,7 +237,7 @@
 }
 
 .headerAbove {
-  margin-bottom: 1.2vh;
+  margin-bottom: 60px;
 }
 
 .arrowBig {
@@ -271,5 +271,9 @@
 
   .subheading {
     font-size: 24px;
+  }
+
+  .headerAbove {
+    margin-bottom: 4px;
   }
 }

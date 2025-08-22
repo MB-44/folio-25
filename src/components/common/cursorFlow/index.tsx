@@ -1,31 +1,31 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 type Props = {
-  smoothing?: number;     // 0–1 (higher = snappier)
-  dotSize?: number;       // px
-  ringSize?: number;      // px
+  smoothing?: number;   // how laggy the trail is (0–1)
+  lineWidth?: number;   // stroke thickness
+  glow?: number;        // glow softness
+  color?: string;       // trail color
   hideNativeCursor?: boolean;
 };
 
-const CursorFlow: React.FC<Props> = ({
-  smoothing = 0.12,
-  dotSize = 8,
-  ringSize = 28,
+const FlowCursor: React.FC<Props> = ({
+  smoothing = 0.18,
+  lineWidth = 3,
+  glow = 18,
+  color = "rgba(255, 80, 80, 0.9)", // light red default
   hideNativeCursor = false,
 }) => {
   const [mounted, setMounted] = useState(false);
-  const dotRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const rafRef = useRef<number | null>(null);
+  const dprRef = useRef<number>(1);
 
-  const mx = useRef(0);
-  const my = useRef(0);
-
-  const vx = useRef(0);
-  const vy = useRef(0);
-  const raf = useRef<number | null>(null);
+  const mx = useRef(0), my = useRef(0);   // real mouse
+  const vx = useRef(0), vy = useRef(0);   // virtual smoothed
+  const pmx = useRef(0), pmy = useRef(0); // previous virtual
 
   useEffect(() => {
     setMounted(true);
@@ -38,25 +38,59 @@ const CursorFlow: React.FC<Props> = ({
 
   useEffect(() => {
     if (!mounted) return;
+    const canvas = canvasRef.current!;
+    const ctx = canvas.getContext("2d", { alpha: true })!;
+    let w = 0, h = 0;
 
-    // Start visible immediately, position at center
-    const cx = window.innerWidth / 2;
-    const cy = window.innerHeight / 2;
-    mx.current = cx; my.current = cy; vx.current = cx; vy.current = cy;
-
-    const setTransforms = () => {
-      if (dotRef.current) {
-        dotRef.current.style.transform =
-          `translate(${mx.current - dotSize / 2}px, ${my.current - dotSize / 2}px)`;
-        dotRef.current.style.opacity = "1";
-      }
-      if (ringRef.current) {
-        ringRef.current.style.transform =
-          `translate(${vx.current - ringSize / 2}px, ${vy.current - ringSize / 2}px)`;
-        ringRef.current.style.opacity = "1";
-      }
+    const resize = () => {
+      dprRef.current = Math.min(window.devicePixelRatio || 1, 2);
+      w = window.innerWidth;
+      h = window.innerHeight;
+      canvas.width = Math.floor(w * dprRef.current);
+      canvas.height = Math.floor(h * dprRef.current);
+      canvas.style.width = `${w}px`;
+      canvas.style.height = `${h}px`;
+      ctx.setTransform(dprRef.current, 0, 0, dprRef.current, 0, 0);
     };
-    setTransforms();
+    resize();
+    window.addEventListener("resize", resize);
+
+    // initialize positions
+    const cx = w / 2, cy = h / 2;
+    mx.current = cx; my.current = cy;
+    vx.current = cx; vy.current = cy;
+    pmx.current = cx; pmy.current = cy;
+
+    const loop = () => {
+      ctx.clearRect(0, 0, w, h); // clear every frame
+
+      // smooth lerp
+      vx.current += (mx.current - vx.current) * smoothing;
+      vy.current += (my.current - vy.current) * smoothing;
+
+      // glowing stroke
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      ctx.strokeStyle = color;
+      ctx.shadowColor = color;
+      ctx.shadowBlur = glow;
+      ctx.lineWidth = lineWidth;
+
+      const midX = (pmx.current + vx.current) / 2;
+      const midY = (pmy.current + vy.current) / 2;
+
+      ctx.beginPath();
+      ctx.moveTo(pmx.current, pmy.current);
+      ctx.quadraticCurveTo(pmx.current, pmy.current, midX, midY);
+      ctx.quadraticCurveTo(midX, midY, vx.current, vy.current);
+      ctx.stroke();
+
+      pmx.current = vx.current;
+      pmy.current = vy.current;
+
+      rafRef.current = requestAnimationFrame(loop);
+    };
+    rafRef.current = requestAnimationFrame(loop);
 
     const onMove = (e: MouseEvent) => {
       mx.current = e.clientX;
@@ -64,107 +98,27 @@ const CursorFlow: React.FC<Props> = ({
     };
     window.addEventListener("mousemove", onMove, { passive: true });
 
-    const loop = () => {
-      // lerp the ring
-      vx.current += (mx.current - vx.current) * smoothing;
-      vy.current += (my.current - vy.current) * smoothing;
-
-      if (dotRef.current) {
-        dotRef.current.style.transform =
-          `translate(${mx.current - dotSize / 2}px, ${my.current - dotSize / 2}px)`;
-      }
-      if (ringRef.current) {
-        ringRef.current.style.transform =
-          `translate(${vx.current - ringSize / 2}px, ${vy.current - ringSize / 2}px)`;
-      }
-      raf.current = requestAnimationFrame(loop);
-    };
-    raf.current = requestAnimationFrame(loop);
-
-    // magnet hover (optional)
-    const onOver = (e: MouseEvent) => {
-      const el = (e.target as HTMLElement)?.closest<HTMLElement>('[data-cursor="magnet"]');
-      if (!dotRef.current || !ringRef.current) return;
-      ringRef.current.style.transition = "transform 0.18s ease, opacity 0.2s ease";
-      dotRef.current.style.transition  = "transform 0.18s ease, opacity 0.2s ease";
-      if (el) {
-        ringRef.current.style.transform += " scale(1.35)";
-        dotRef.current.style.transform  += " scale(0.82)";
-      }
-    };
-    const onOut = () => {
-      if (!dotRef.current || !ringRef.current) return;
-      ringRef.current.style.transition = "transform 0.25s ease, opacity 0.2s ease";
-      dotRef.current.style.transition  = "transform 0.25s ease, opacity 0.2s ease";
-    };
-    document.addEventListener("mouseover", onOver);
-    document.addEventListener("mouseout", onOut);
-
-    // keep centered on resize
-    const onResize = () => {
-      const nx = window.innerWidth / 2;
-      const ny = window.innerHeight / 2;
-      mx.current = nx; my.current = ny; vx.current = nx; vy.current = ny;
-      setTransforms();
-    };
-    window.addEventListener("resize", onResize);
-
     return () => {
+      window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", onMove);
-      window.removeEventListener("resize", onResize);
-      document.removeEventListener("mouseover", onOver);
-      document.removeEventListener("mouseout", onOut);
-      if (raf.current) cancelAnimationFrame(raf.current);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [mounted, smoothing, dotSize, ringSize]);
+  }, [mounted, color, glow, lineWidth, smoothing]);
 
   if (!mounted) return null;
 
   return createPortal(
-    <>
-      {/* trailing ring (lerped) */}
-      <div
-        ref={ringRef}
-        style={{
-          position: "fixed",
-          left: 0,
-          top: 0,
-          width: ringSize,
-          height: ringSize,
-          borderRadius: "50%",
-          border: "1px solid rgba(255,255,255,0.45)",
-          // If your background is very light, try "normal" instead of "difference".
-          mixBlendMode: "difference",
-          pointerEvents: "none",
-          // put this above any preloader/header
-          zIndex: 2147483646,
-          opacity: 0,
-          willChange: "transform",
-          transition: "opacity 0.25s ease",
-        }}
-      />
-      {/* crisp dot at true mouse pos */}
-      <div
-        ref={dotRef}
-        style={{
-          position: "fixed",
-          left: 0,
-          top: 0,
-          width: dotSize,
-          height: dotSize,
-          borderRadius: "50%",
-          background: "#ffffff",
-          mixBlendMode: "difference",
-          pointerEvents: "none",
-          zIndex: 2147483647,
-          opacity: 0,
-          willChange: "transform",
-          transition: "opacity 0.25s ease",
-        }}
-      />
-    </>,
+    <canvas
+      ref={canvasRef}
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 2147483647,
+        pointerEvents: "none",
+      }}
+    />,
     document.body
   );
 };
 
-export default CursorFlow;
+export default FlowCursor;

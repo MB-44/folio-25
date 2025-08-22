@@ -43,13 +43,13 @@ export default function Home() {
 
     const ctx = gsap.context(() => {
       gsap.to(slider.current, {
-        x: () => -window.innerWidth * 0.3,   
+        x: () => -window.innerWidth * 0.6, // 0.3   
         ease: 'none',
         scrollTrigger: {
           trigger: sliderContainer.current,  
           start: 'top bottom',
           end: 'bottom top',
-          scrub: 0.5
+          scrub: 0.15 // 0.5 - 1
         }
       });
 
@@ -93,8 +93,8 @@ export default function Home() {
       <div className={styles.hangerOverlay}>
         <div className={styles.hanger}>
         <p className={styles.hangerText}>
-          <span>From</span><br />
-          <span>Sri Lanka</span>
+          <span onMouseEnter={handleTextHover}><HackerText text="From"/></span><br />
+          <span onMouseEnter={handleTextHover}><HackerText text="Sri Lanka"/></span>
         </p>
 
         <svg

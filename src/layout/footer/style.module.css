@@ -1,0 +1,212 @@
+.footer-rounded-div {
+  position: relative;
+  width: 100%;
+  height: 10vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.rounded-div-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.rounded-div {
+  position: absolute;
+  left: 50%;
+  bottom: -40vw;
+  transform: translateX(-50%);
+  width: 160vw;
+  height: 160vw;
+  background: #0f1114;
+  border-radius: 50%;
+}
+
+.footer-wrap {
+  position: relative;
+  background: #0f1114;
+  color: #fff;
+  overflow: hidden;
+}
+
+.footer-footer-wrap.theme-dark {
+  background: #0f1114;
+}
+
+.section.footer {
+  position: relative;
+  padding: 14vh 0 8vh;
+}
+
+.container {
+  width: 100%;
+  padding: 0 24px;
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+.container.medium { max-width: 1140px; }
+.container.no-padding { padding-left: 0; padding-right: 0; }
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.flex-col {
+  flex: 1 1 100%;
+  min-width: 0;
+}
+
+.arrow {
+  width: 14px;
+  height: 14px;
+  margin-bottom: 18px;
+}
+
+.footer-title {
+  margin: 0 0 24px 0;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.footer-title span {
+  display: block;
+}
+
+.profile-picture {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  margin-right: 12px;
+  border-radius: 50%;
+  vertical-align: -8px;
+  background: linear-gradient(135deg, #6a8dff, #9a6aff);
+}
+
+.stripe {
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.14);
+  margin: 28px 0;
+}
+
+.btn-fixed {
+  position: relative;
+  width: 100%;
+}
+
+.btn { position: relative; display: inline-block; }
+
+.btn-round {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(140px, 12vw, 200px);
+  height: clamp(140px, 12vw, 200px);
+  border-radius: 50%;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn-click { text-decoration: none; color: #fff; display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
+
+.btn-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #1c1d20;
+  z-index: 1;
+  transition: transform .4s cubic-bezier(.34,1,.64,1), background-color .3s ease;
+}
+
+.btn-text {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: clamp(40px, 3.2vw, 48px);
+  padding: 0 20px;
+  border-radius: 999px;
+}
+
+.btn-text-inner {
+  font-size: clamp(14px, 1vw, 16px);
+  font-weight: 500;
+  letter-spacing: .2px;
+  white-space: nowrap;
+  transition: transform .35s cubic-bezier(.34,1.5,.64,1);
+}
+
+.btn-round:hover .btn-fill,
+.btn-round:focus-visible .btn-fill { transform: scale(1.04); background: #2a2c30; }
+
+.btn-round:hover .btn-text-inner,
+.btn-round:focus-visible .btn-text-inner { transform: translateY(-1px); }
+
+.btn-normal {
+  display: inline-block;
+  margin-right: 14px;
+  margin-bottom: 10px;
+}
+
+.btn-link { display: inline-block; }
+.btn-link-external { margin-right: 16px; }
+
+.change { opacity: 0.9; }
+
+.bottom-footer {
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.credits h5,
+.time h5,
+.socials h5 {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin: 0 0 10px 0;
+}
+
+.credits p,
+.time p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.socials ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 8px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+}
+
+.overlay.overlay-gradient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(120% 140% at 50% 10%, rgba(255,255,255,0.06), rgba(0,0,0,0) 40%),
+              linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 100%);
+}
+
+@media (max-width: 1024px) {
+  .section.footer { padding: 12vh 0 7vh; }
+}
+
+@media (max-width: 720px) {
+  .footer-title { font-size: clamp(34px, 7.2vw, 44px); }
+  .btn-round { width: 160px; height: 160px; }
+  .profile-picture { width: 32px; height: 32px; vertical-align: -6px; }
+}

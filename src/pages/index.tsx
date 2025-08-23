@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import PreLoader from "@/components/preloader";
 import { Landing, Description, HomeIntro, Footer } from "@/layout";
-import Header from "@/components/header";
+// import Header from "@/components/header";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -33,14 +33,14 @@ export default function Home() {
         <link rel="icon" href="/images/logo.png" />
       </Head>
 
-      <Header/>
+      {/* <Header/> */}
       <main>
         <AnimatePresence mode="wait">
           {isLoading && <PreLoader/>}
         </AnimatePresence>
         <Landing/>
         <Description/>
-        <Footer/>
+        {/* <Footer/> */}
       </main>
     </>
   );

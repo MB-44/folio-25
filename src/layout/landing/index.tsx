@@ -7,6 +7,7 @@ import Image from 'next/image'
 import gsap from 'gsap';
 import { slideUp } from './animation';
 import { HackerText } from "@/components";
+import  Header  from "@/components/header";
 import styles from './style.module.css'
 
 export default function Home() {
@@ -84,11 +85,15 @@ export default function Home() {
 
   return (
     <motion.main variants={slideUp} initial="initial" animate="enter" className={styles.landing}>
-      <Image 
-        src="/images/ds-wallpaper.jpg"
-        fill={true}
-        alt="background"
-      />
+      <Header />
+  
+      <div className={styles.bg}>
+        <Image 
+          src="/images/ds-wallpaper.jpg"
+          fill={true}
+          alt="background"
+        />
+      </div>
 
       <div className={styles.hangerOverlay}>
         <div className={styles.hanger}>

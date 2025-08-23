@@ -5,9 +5,16 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'NeueMontreal Regular';
+    src: url("/fonts/NeueMontreal-Regular.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
 html, body {
+    font-family: "NeueMontreal Regular";
     width: 100%;
     height: 100%;
     overflow-x: hidden;
 }
-

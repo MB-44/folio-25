@@ -7,6 +7,7 @@ import Image from 'next/image'
 import gsap from 'gsap';
 import { slideUp } from './animation';
 import { HackerText } from "@/components";
+import  Header  from "@/components/header";
 import styles from './style.module.css'
 
 export default function Home() {
@@ -43,13 +44,13 @@ export default function Home() {
 
     const ctx = gsap.context(() => {
       gsap.to(slider.current, {
-        x: () => -window.innerWidth * 0.3,   
+        x: () => -window.innerWidth * 0.6, // 0.3   
         ease: 'none',
         scrollTrigger: {
           trigger: sliderContainer.current,  
           start: 'top bottom',
           end: 'bottom top',
-          scrub: 0.5
+          scrub: 0.15 // 0.5 - 1
         }
       });
 
@@ -84,17 +85,21 @@ export default function Home() {
 
   return (
     <motion.main variants={slideUp} initial="initial" animate="enter" className={styles.landing}>
-      <Image 
-        src="/images/ds-wallpaper.jpg"
-        fill={true}
-        alt="background"
-      />
+      <Header />
+  
+      <div className={styles.bg}>
+        <Image 
+          src="/images/ds-wallpaper.jpg"
+          fill={true}
+          alt="background"
+        />
+      </div>
 
       <div className={styles.hangerOverlay}>
         <div className={styles.hanger}>
         <p className={styles.hangerText}>
-          <span>From</span><br />
-          <span>Sri Lanka</span>
+          <span onMouseEnter={handleTextHover}><HackerText text="From"/></span><br />
+          <span onMouseEnter={handleTextHover}><HackerText text="Sri Lanka"/></span>
         </p>
 
         <svg
@@ -145,8 +150,12 @@ export default function Home() {
               </div>
             </div>
             <h4 className={styles.subheading}>
-              <span>Freelance</span> 
-              <span>Creative Developer</span>
+              <p onMouseEnter={handleTextHover}>
+                <HackerText text="Freelance" />
+              </p>
+              <p onMouseEnter={handleTextHover}>
+                <HackerText text="Creative Developer" />
+              </p>
             </h4>
           </div>
         </div>

@@ -1,3 +1,8 @@
+.bg {
+  position: absolute;
+  inset: 0; z-index: 0;
+}
+
 .landing {
   position: relative;
   display: flex;
@@ -17,6 +22,8 @@
 .landing .slider {
   position: relative;
   white-space: nowrap;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .landing .slider p {
@@ -56,7 +63,7 @@
 .hangerOverlay {
   position: absolute;
   inset: 0;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .hanger {
@@ -237,7 +244,7 @@
 }
 
 .headerAbove {
-  margin-bottom: 1.2vh;
+  margin-bottom: 60px;
 }
 
 .arrowBig {
@@ -256,7 +263,7 @@
   font-size: 32px;
   font-weight: 400;
   margin: 0;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .subheading span {
@@ -265,11 +272,15 @@
 
 @media (max-width: 720px) {
   .headerContainer {
-    bottom: 4vh;   /* mobile: lower number = closer to bottom (down); higher = up */
+    bottom: 4vh;   
     left: 4vw;
   }
 
   .subheading {
     font-size: 24px;
+  }
+
+  .headerAbove {
+    margin-bottom: 4px;
   }
 }

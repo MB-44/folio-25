@@ -28,11 +28,11 @@
   }
   
   .indicator-line {
-    width: 2px;
-    height: 5px;
+    width: 1.2px;
+    height: 6px;
     background-color: white;
     border: none;
-    border-radius: 1px;
+    /* border-radius: 1px; */
     transform-origin: center;
     transition: transform 0.05s ease-out;
   }

@@ -89,7 +89,7 @@ export default function Home() {
   
       <div className={styles.bg}>
         <Image 
-          src="/images/ds-wallpaper.jpg"
+          src="/images/animated-wallpaper.png"
           fill={true}
           alt="background"
         />

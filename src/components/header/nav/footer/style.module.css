@@ -1,7 +1,25 @@
-.footer{
+.footer {
     display: flex;
+    flex-direction: column;
     width: 100%;
-    justify-content: space-between;
-    font-size: 12px;
-    gap: 40px;
+    font-size: 15px;
+    gap: 20px; /* space between heading and links */
+}
+
+.footerHeading {
+    color: rgb(153, 153, 153);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 15px;
+    margin: 0;
+}
+
+.footerLinks {
+    display: flex;
+    gap: 40px; /* keep the social links spaced apart */
+}
+
+.footerLinks a {
+    font-weight: 500;
+    text-decoration: none; /* removes underline */
 }

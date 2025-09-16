@@ -3,6 +3,7 @@
     flex-direction: column;
     width: 100%;
     font-size: 15px;
+    /* text-transform: uppercase; */
     gap: 20px; /* space between heading and links */
 }
 
@@ -10,7 +11,7 @@
     color: rgb(153, 153, 153);
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 11px;
     margin: 0;
 }
 

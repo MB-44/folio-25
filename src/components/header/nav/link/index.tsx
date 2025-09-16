@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
-import Link from 'next/link';
+import NextLink from 'next/link';
 import styles from './style.module.css';
 import { slide, scale } from '../../animations';
+import { forwardRef } from 'react';
 
 interface Data {
   title: string;
@@ -9,26 +10,34 @@ interface Data {
   index: number;
 }
 
-export default function Index({data, isActive, setSelectedIndicator}: {data: Data, isActive: boolean, setSelectedIndicator: (href: string) => void}) {
-  
-    const { title, href, index} = data;
-  
-    return (
-      <motion.div 
-        className={styles.link} 
-        onMouseEnter={() => {setSelectedIndicator(href)}} 
-        custom={index} 
-        variants={slide} 
-        initial="initial" 
-        animate="enter" 
-        exit="exit"
-      >
-        <motion.div 
-          variants={scale} 
-          animate={isActive ? "open" : "closed"} 
-          className={styles.indicator}>
-        </motion.div>
-        <Link href={href}>{title}</Link>
-      </motion.div>
-    )
+interface Props {
+  data: Data;
+  isActive: boolean;
+  setSelectedIndicator: (href: string) => void;
 }
+
+const LinkItem = ({ data, isActive, setSelectedIndicator }: Props, ref: React.Ref<HTMLDivElement>) => {
+  const { title, href, index } = data;
+
+  return (
+    <motion.div
+      ref={ref}
+      className={styles.link}
+      onMouseEnter={() => { setSelectedIndicator(href); }}
+      custom={index}
+      variants={slide}
+      initial="initial"
+      animate="enter"
+      exit="exit"
+    >
+      <motion.div
+        variants={scale}
+        animate={isActive ? "open" : "closed"}
+        className={styles.indicator}
+      />
+      <NextLink href={href}>{title}</NextLink>
+    </motion.div>
+  );
+};
+
+export default forwardRef<HTMLDivElement, Props>(LinkItem);

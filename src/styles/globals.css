@@ -7,7 +7,7 @@
 
 @font-face {
     font-family: 'NeueMontreal Regular';
-    src: url("/fonts/NeueMontreal-Regular.woff2") format("woff2");
+    src: url("/fonts/NeueMontreal-Regular.otfsf") format("opentype");
     font-weight: normal;
     font-style: normal;
 }

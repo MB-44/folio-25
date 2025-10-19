@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import PreLoader from "@/components/preloader";
 import { Landing, Description, HomeIntro, Footer } from "@/layout";
+// import ScannerDemo from "@/components/scanner/scanner";
 // import Header from "@/components/header";
 
 export default function Home() {
@@ -41,6 +42,7 @@ export default function Home() {
         <Landing/>
         <Description/>
         <Description/>
+        {/* <ScannerDemo/> */}
         {/* <Footer/> */}
       </main>
     </>

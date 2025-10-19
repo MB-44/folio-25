@@ -73,6 +73,7 @@ export default function Header(): JSX.Element {
             </div>
         </Magnetic>
             <div className={styles.nav}>
+                <div className={styles.navLinks}>
                 <Magnetic>
                     <div className={styles.el} onMouseEnter={handleNavItemHover}>
                         <a>Work</a>
@@ -91,6 +92,8 @@ export default function Header(): JSX.Element {
                         <div className={styles.indicator}></div>
                     </div>
                 </Magnetic>
+                </div>
+                
                 <div className={styles.audioButtonWrapper}>
                     <AudioControlButton 
                         initialPlayState={false}

@@ -12,6 +12,12 @@
     align-items: center;
 }
 
+.navLinks {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .header .logo {
     font-size: large;
     display: flex;
@@ -162,4 +168,10 @@
     margin-left: 20px;
     display: flex;
     align-items: center;
+}
+
+@media (max-width: 768px) {
+    .navLinks {
+        display: none;
+    }
 }

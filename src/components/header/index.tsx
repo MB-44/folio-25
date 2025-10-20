@@ -110,7 +110,9 @@ export default function Header(): JSX.Element {
         </div>
         <div ref={button} className={styles.headerButtonContainer}>
             <Rounded onClick={() => { setIsActive(!isActive) }} className={`${styles.button}`}>
-                <div className={`${styles.burger} ${isActive ? styles.burgerActive : ""}`}></div>
+                <Magnetic>
+                    <div className={`${styles.burger} ${isActive ? styles.burgerActive : ""}`}></div>
+                </Magnetic>
             </Rounded>
         </div>
         <AnimatePresence mode="wait">

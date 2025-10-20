@@ -170,6 +170,14 @@
     align-items: center;
 }
 
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(2px);
+  z-index: 3; /* below Nav (which slides above) and above page content */
+}
+
 @media (max-width: 768px) {
     .navLinks {
         display: none;

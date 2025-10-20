@@ -116,7 +116,12 @@ export default function Header(): JSX.Element {
             </Rounded>
         </div>
         <AnimatePresence mode="wait">
-            {isActive && <Nav />}
+            {isActive && (
+                <>
+                    <div className={styles.backdrop} onClick={() => setIsActive(false)} />
+                    <Nav />
+                </>
+            )}
         </AnimatePresence>
         </>
     );

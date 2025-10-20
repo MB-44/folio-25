@@ -44,13 +44,13 @@ export default function Home() {
 
     const ctx = gsap.context(() => {
       gsap.to(slider.current, {
-        x: () => -window.innerWidth * 0.6, // 0.3   
+        x: () => -window.innerWidth * 0.8, // 0.3   
         ease: 'none',
         scrollTrigger: {
           trigger: sliderContainer.current,  
           start: 'top bottom',
           end: 'bottom top',
-          scrub: 0.15 // 0.5 - 1
+          scrub: 1.2 // 0.5 - 1
         }
       });
 

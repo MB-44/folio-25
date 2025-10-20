@@ -41,6 +41,7 @@ export default function Home() {
         </AnimatePresence>
         <Landing/>
         <Description/>
+        <Description/>
       </main>
     </>
   );

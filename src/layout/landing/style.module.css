@@ -16,7 +16,7 @@
 
 .landing .sliderContainer {
   position: absolute;
-  top: calc(100vh - 330px);
+  top: calc(107vh - 330px);
 }
 
 .landing .slider {
@@ -274,6 +274,14 @@
   .headerContainer {
     bottom: 4vh;   
     left: 4vw;
+  }
+  
+  .landing .sliderContainer {
+    top: calc(95vh - 260px);
+  }
+
+  .landing .slider p {
+    font-size: 150px;
   }
 
   .subheading {

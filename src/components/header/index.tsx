@@ -8,7 +8,6 @@ import gsap from 'gsap';
 import { AudioControlButton, Rounded, Magnetic } from "@/components";
 import styles from './style.module.css';
 import Nav from './nav';
-// import { Copyright } from 'lucide-react';
 
 export default function Header(): JSX.Element {
     const header = useRef<HTMLDivElement>(null);
@@ -19,7 +18,6 @@ export default function Header(): JSX.Element {
 
     useEffect(() => {
         audioRef.current = new Audio('/audio/ui_magbutton.mp3'); 
-        
         return () => {
             if (audioRef.current) {
                 audioRef.current.pause();
@@ -29,23 +27,31 @@ export default function Header(): JSX.Element {
     }, []);
 
     useEffect(() => {
-        if(isActive) setIsActive(false);
+        if (isActive) setIsActive(false);
     }, [pathname]);
 
     useIsomorphicLayoutEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
-        gsap.to(button.current, {
-            scrollTrigger: {
-                trigger: document.documentElement,
-                start: 0,
-                end: window.innerHeight,
-                onLeave: () => {gsap.to(button.current, {scale: 1, duration: 0.25, ease: "power1.out"})},
-                onEnterBack: () => {
-                    gsap.to(button.current, {scale: 0, duration: 0.25, ease: "power1.out"});
-                    setIsActive(false);
-                }
-            }
+
+        const show = () => gsap.to(button.current, { scale: 1, duration: 0.25, ease: "power1.out" });
+        const hide = () => gsap.to(button.current, { scale: 0, duration: 0.25, ease: "power1.out" });
+
+        const st = ScrollTrigger.create({
+            trigger: header.current,
+            start: "bottom top",
+            end: "bottom top",
+            onEnter: show,
+            onLeaveBack: hide
         });
+
+        if (header.current) {
+            const headerBottom = header.current.getBoundingClientRect().bottom + window.scrollY;
+            if (window.scrollY >= headerBottom) show(); else hide();
+        }
+
+        return () => {
+            st.kill();
+        };
     }, []);
 
     const handleNavItemHover = (): void => {
@@ -62,35 +68,36 @@ export default function Header(): JSX.Element {
     return (
         <>
         <div ref={header} className={styles.header}>
-        <Magnetic>
-            <div className={styles.logo}>
-                {/* <p className={styles.copyright}>©</p> */}
-                <div className={styles.name}>
-                    <p className={styles.codeBy}>Code by</p>
-                    <p className={styles.menath}>Menath</p>
-                    <p className={styles.baddegama}>Baddegama</p>
+            <Magnetic>
+                <div className={styles.logo}>
+                    <div className={styles.name}>
+                        <p className={styles.codeBy}>Code by</p>
+                        <p className={styles.menath}>Menath</p>
+                        <p className={styles.baddegama}>Baddegama</p>
+                    </div>
                 </div>
-            </div>
-        </Magnetic>
+            </Magnetic>
             <div className={styles.nav}>
-                <Magnetic>
-                    <div className={styles.el} onMouseEnter={handleNavItemHover}>
-                        <a>Work</a>
-                        <div className={styles.indicator}></div>
-                    </div>
-                </Magnetic>
-                <Magnetic>
-                    <div className={styles.el} onMouseEnter={handleNavItemHover}>
-                        <a>About</a>
-                        <div className={styles.indicator}></div>
-                    </div>
-                </Magnetic>
-                <Magnetic>
-                    <div className={styles.el} onMouseEnter={handleNavItemHover}>
-                        <a>Contact</a>
-                        <div className={styles.indicator}></div>
-                    </div>
-                </Magnetic>
+                <div className={styles.navLinks}>
+                    <Magnetic>
+                        <div className={styles.el} onMouseEnter={handleNavItemHover}>
+                            <a>Work</a>
+                            <div className={styles.indicator}></div>
+                        </div>
+                    </Magnetic>
+                    <Magnetic>
+                        <div className={styles.el} onMouseEnter={handleNavItemHover}>
+                            <a>About</a>
+                            <div className={styles.indicator}></div>
+                        </div>
+                    </Magnetic>
+                    <Magnetic>
+                        <div className={styles.el} onMouseEnter={handleNavItemHover}>
+                            <a>Contact</a>
+                            <div className={styles.indicator}></div>
+                        </div>
+                    </Magnetic>
+                </div>
                 <div className={styles.audioButtonWrapper}>
                     <AudioControlButton 
                         initialPlayState={false}
@@ -102,12 +109,19 @@ export default function Header(): JSX.Element {
             </div>
         </div>
         <div ref={button} className={styles.headerButtonContainer}>
-            <Rounded onClick={() => {setIsActive(!isActive)}} className={`${styles.button}`}>
-                <div className={`${styles.burger} ${isActive ? styles.burgerActive : ""}`}></div>
+            <Rounded onClick={() => { setIsActive(!isActive) }} className={`${styles.button}`}>
+                <Magnetic>
+                    <div className={`${styles.burger} ${isActive ? styles.burgerActive : ""}`}></div>
+                </Magnetic>
             </Rounded>
         </div>
         <AnimatePresence mode="wait">
-            {isActive && <Nav />}
+            {isActive && (
+                <>
+                    <div className={styles.backdrop} onClick={() => setIsActive(false)} />
+                    <Nav />
+                </>
+            )}
         </AnimatePresence>
         </>
     );

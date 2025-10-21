@@ -5,9 +5,13 @@ import PreLoader from "@/components/preloader";
 import { Landing, Description, HomeIntro, Footer } from "@/layout";
 // import ScannerDemo from "@/components/scanner/scanner";
 // import Header from "@/components/header";
+// import SmileUnlock from "@/components/smileUnlock/smileUnlock";
+
+type Phase = "loading" | "unlock" | "content";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
+  // const [phase, setPhase] = useState<Phase>("loading");
 
   useEffect( () => {
     (
@@ -16,6 +20,7 @@ export default function Home() {
         const locomotiveScroll = new LocomotiveScroll();
 
         setTimeout(() => {
+          // setPhase("unlock")
           setIsLoading(false);
           document.body.style.cursor = 'default'
           window.scrollTo(0,0);
@@ -38,7 +43,24 @@ export default function Home() {
       <main>
         <AnimatePresence mode="wait">
           {isLoading && <PreLoader/>}
+          {/* {phase === "loading" && <PreLoader />} */}
         </AnimatePresence>
+
+        {/* {phase === "unlock" && (
+          <SmileUnlock
+            backgroundImage="/images/animated-wallpaper.png"
+            onUnlock={() => setPhase("content")}
+            autoShowButtonMs={3000}
+          />
+        )}
+
+        {phase === "content" && (
+          <>
+            <Landing />
+            <Description />
+          </>
+        )} */}
+
         <Landing/>
         <Description/>
         <Description/>

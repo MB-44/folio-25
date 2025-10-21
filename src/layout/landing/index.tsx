@@ -131,7 +131,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* NEW: header mini-block (arrow + h4) */}
       <div className={styles.headerContainer}>
         <div className={styles.headerRow}>
           <div className={styles.headerCol}>

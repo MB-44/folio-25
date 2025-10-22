@@ -1,9 +1,8 @@
-/* Gray panel with padding; white space around it on all sides */
 .footer {
   width: 100%;
-  background: #f3f3f3;   /* light gray panel */
-  padding: 32px;         /* inner padding */
-  margin: 24px;          /* white space around the gray panel */
+  background: #f3f3f3;   
+  padding: 32px;         
+  margin: 24px;          
   box-sizing: border-box;
 }
 
@@ -17,7 +16,6 @@
 
 .top { display: grid; gap: 40px; }
 
-/* Brand row */
 .brandRow {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -40,7 +38,7 @@
 /* Newsletter */
 .newsletter { display: grid; gap: 20px; }
 
-.newsHeading { display: grid; gap: 16px; }       /* more space between title and sub */
+.newsHeading { display: grid; gap: 16px; }       
 .newsTitle {
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: 700;
@@ -49,7 +47,7 @@
   font-size: 48px;
   color: #0c0c0c;
 }
-.newsTitle span { display: block; }   /* forces 2 lines: Stay / connected */
+.newsTitle span { display: block; }   
 
 .newsSub {
   color: rgba(12,12,12,0.6);
@@ -58,7 +56,7 @@
 
 .form {
   display: grid;
-  grid-template-columns: 1fr 44px;    /* CTA smaller */
+  grid-template-columns: 1fr 44px;   
   gap: 16px;
   align-items: stretch;
 }
@@ -76,7 +74,6 @@
 }
 .input::placeholder { color: rgba(12,12,12,0.6); }
 
-/* Smaller red circle with arrow; hover -> pure black */
 .cta {
   width: 44px;
   height: 44px;
@@ -91,13 +88,12 @@
 .cta:hover { background: #000; }
 
 .ctaArrow {
-  color: #fff;                 /* white arrow */
+  color: #fff;                 
   font-size: 18px;
   line-height: 1;
-  transform: translateX(1px);  /* optical centering */
+  transform: translateX(1px);  
 }
 
-/* Links columns */
 .linksWrap {
   display: grid;
   grid-template-columns: repeat(2, minmax(0,1fr));
@@ -112,17 +108,15 @@
   text-decoration: none;
   color: #0b0b0c;
   font-size: 16px;
-  transition: color .25s ease;     /* smooth hover */
+  transition: color .25s ease;     
 }
 .link:hover { color: #df332e; }
 
-/* Bottom row — pushed further down; no top border */
 .bottom {
   display: grid;
   gap: 32px;
-  padding-top: 40px;            /* more down */
-  margin-top: 24px;             /* spacing from the block above */
-  /* border-top removed */
+  padding-top: 100px;            
+  margin-top: 12px;
 }
 
 .contactEmail {
@@ -131,24 +125,23 @@
   font-size: 28px;
   color: #0b0b0c;
   text-decoration: none;
-  transition: color .25s ease;  /* smooth hover */
+  transition: color .25s ease;  
 }
 .contactEmail:hover { color: #df332e; }
 
-/* Left-align bio to match "Stay connected" column start */
 .bioBlock {
-  justify-self: start;          /* align to left edge of its column */
+  justify-self: start;             
 }
 .bioText {
-  max-width: 740px;
-  text-align: left;             /* left aligned */
+  max-width: 740px;                
+  text-align: center;           
   color: rgba(12,12,12,0.75);
   font-size: 16px;
   line-height: 1.5;
   margin-top: 12px;
 }
+.line { display: block; }          
 
-/* Responsive */
 @media (min-width: 900px) {
   .top {
     grid-template-columns: 1fr 1fr 1fr;
@@ -156,13 +149,26 @@
   }
   .newsletter { padding-right: 40px; }
   .bottom {
-    grid-template-columns: 1fr 1fr;  /* left: email, right: bio (aligned with Stay connected) */
+    grid-template-columns: 1fr 1fr; 
     align-items: start;
   }
   .contactEmail { font-size: 32px; }
 }
 
+@media (max-width: 900px) {
+  .bottom {
+    padding-top: 20px;    
+    gap: 20px;
+  }
+}
+
 @media (max-width: 600px) {
   .newsTitle { font-size: 36px; }
-  .footer { padding: 20px; margin: 16px; }  /* keep white space around on small screens */
+  .footer { padding: 20px; margin: 16px; }  
+  .contactEmail { 
+    font-size: 50px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+  }        
 }

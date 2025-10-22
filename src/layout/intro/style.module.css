@@ -1,0 +1,88 @@
+.section {
+  width: 100%;
+  padding: 72px 20px;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 520px 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.media {
+  width: 100%;
+}
+
+.mediaInner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #f2f2f2;
+}
+
+.img {
+  object-fit: cover;
+}
+
+.content {
+  display: grid;
+  gap: 28px;
+}
+
+.lede {
+  font-size: clamp(20px, 2.2vw, 28px);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: #0b0b0c;
+}
+
+.copy {
+  font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.55;
+  color: rgba(12,12,12,0.72);
+  max-width: 52ch;
+}
+
+.person {
+  display: grid;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.name {
+  font-size: 18px;
+  color: #0b0b0c;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+.role {
+  font-size: 14px;
+  color: rgba(12,12,12,0.6);
+}
+
+@media (max-width: 900px) {
+  .wrap {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .mediaInner {
+    border-radius: 14px;
+  }
+  .content {
+    gap: 22px;
+  }
+  .copy {
+    max-width: none;
+  }
+  .person {
+    gap: 4px;
+  }
+}

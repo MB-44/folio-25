@@ -89,7 +89,7 @@ export default function Home() {
   
       <div className={styles.bg}>
         <Image 
-          src="/images/animated-wallpaper.png"
+          src="/images/ferrari-wallpaper.jpg"
           fill={true}
           alt="background"
         />

@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
+import { Footer } from '@/layout';
 import styles from './style.module.css';
-import Footer from '@/layout/footer';
 
 export default function Contact() {
   return (

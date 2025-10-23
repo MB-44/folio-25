@@ -1,20 +1,21 @@
 'use client'
-import { useRef, useEffect } from 'react';
-import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
+import gsap from 'gsap';
+import { useRef, useEffect, useState } from 'react';
 import { ScrollTrigger } from 'gsap/all';
 import { motion } from 'framer-motion';
 import Image from 'next/image'
-import gsap from 'gsap';
-import { slideUp } from './animation';
+import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import { HackerText } from "@/components";
 import  Header  from "@/components/header";
 import styles from './style.module.css'
+import { slideUp } from './animation';
 
 export default function Home() {
   const firstText = useRef(null);
   const secondText = useRef(null);
   const slider = useRef(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [active, setActive] = useState(false);
 
   const sliderContainer = useRef<HTMLDivElement | null>(null);
 
@@ -112,6 +113,7 @@ export default function Home() {
           focusable="false"
         >
           <g fill="#1C1D20">
+          {/* <g fill="#df332e"> */}
             <path d="M239.633657,0 C272.770742,1.0182436e-15 299.633657,26.862915 299.633657,60 C299.633657,93.137085 272.770742,120 239.633657,120 L0,120 L0,0 L239.633657,0 Z M239.633657,18.7755102 C216.866,18.7755102 198.409167,37.232343 198.409167,60 C198.409167,82.767657 216.866,101.22449 239.633657,101.22449 C262.401314,101.22449 280.858147,82.767657 280.858147,60 C280.858147,37.232343 262.401314,18.7755102 239.633657,18.7755102 Z"/>
           </g>
         </svg>

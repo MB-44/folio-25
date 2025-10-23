@@ -22,7 +22,7 @@ export default function Footer() {
                 <span>connected</span>
               </p>
               <p className={styles.newsSub}>
-                Leave your email — we’ll write back.
+                Leave your email — I will write back.
               </p>
             </div>
             <form className={styles.form} onSubmit={(e)=>e.preventDefault()}>

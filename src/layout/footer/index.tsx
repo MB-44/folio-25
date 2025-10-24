@@ -1,9 +1,17 @@
 'use client';
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
 import styles from './style.module.css';
 import { Magnetic } from '@/components';
 
 export default function Footer() {
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -88,6 +96,13 @@ export default function Footer() {
               <span className={styles.line}>products that feel real, work beautifully, and grow with you.</span>
             </p>
           </div>
+        </div>
+
+        <div className={styles.metaRow}>
+          <p className={styles.version}>2025 © Edition</p>
+          <p className={styles.localTime}>
+            LT {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+          </p>
         </div>
       </div>
     </footer>

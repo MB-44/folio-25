@@ -7,7 +7,6 @@ const ContactPage = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    company: '',
     message: ''
   });
 
@@ -55,29 +54,88 @@ const ContactPage = () => {
       {/* Hero Section */}
       <section className={styles.heroSection}>
         <div className={styles.heroContainer}>
-          <div className={styles.heroContent}>
-            <h1 className={styles.heroTitle}>Let's talk</h1>
-            <p className={styles.heroSubtitle}>
-              Whether it's a new project or a quick question, I'm here to connect.
-            </p>
-          </div>
+          <h1 className={styles.heroTitle}>Let's talk</h1>
           
-          <div className={styles.profileCard}>
-            <img 
-              src="images/profile/profile-img.jpg" 
-              alt="Andrew Koktò"
-              className={styles.profileImage}
-            />
-            <div className={styles.profileInfo}>
-              <h3 className={styles.profileName}>Menath Lakvindu</h3>
-              <p className={styles.profileRole}>Creative Developer</p>
+          <div className={styles.contentWrapper}>
+            <div className={styles.leftContent}>
+              <p className={styles.heroSubtitle}>
+                Whether it's a new project or a quick question, we're here to connect.
+              </p>
+              
+              <div className={styles.profileCard}>
+                <img 
+                  src="images/profile/profile-img.png" 
+                  alt="Menath"
+                  className={styles.profileImage}
+                />
+                <div className={styles.profileInfo}>
+                  <h3 className={styles.profileName}>Menath Lakvindu</h3>
+                  <p className={styles.profileRole}>Creative Developer</p>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.rightContent}>
+              <div className={styles.emailSection}>
+                <h2 className={styles.emailTitle}>hello@menath.b</h2>
+              </div>
+
+              <form className={styles.contactForm} onSubmit={handleSubmit}>
+                <div className={styles.formGroup}>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className={styles.input}
+                    placeholder="Name *"
+                    required
+                  />
+                </div>
+
+                <div className={styles.formGroup}>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className={styles.input}
+                    placeholder="E-mail *"
+                    required
+                  />
+                </div>
+
+                <div className={styles.formGroup}>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    className={styles.textarea}
+                    placeholder="Message (Tell us about your project)"
+                    rows={4}
+                    required
+                  />
+                </div>
+              </form>
+
+              <div className={styles.linksSection}>
+                <a href="#" className={styles.link}>
+                  <span className={styles.arrow}>↗</span> Instagram
+                </a>
+                <button type="submit" className={styles.submitLink} onClick={handleSubmit}>
+                  <span className={styles.arrow}>↪</span> Get in touch
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Form Section */}
-      <section className={styles.formSection}>
+      {/* <section className={styles.formSection}>
         <div className={styles.formContainer}>
           <div className={styles.formLeft}>
             <h2 className={styles.formTitle}>Get in Touch</h2>
@@ -152,7 +210,7 @@ const ContactPage = () => {
             </form>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* FAQ Section */}
       {/* <section className={styles.faqSection}>

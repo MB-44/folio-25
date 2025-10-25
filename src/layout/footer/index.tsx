@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import styles from './style.module.css';
 import { Magnetic } from '@/components';
+import Clock from './clock';
 
 export default function Footer() {
   const [time, setTime] = useState(new Date());
@@ -101,7 +102,7 @@ export default function Footer() {
         <div className={styles.metaRow}>
           <p className={styles.version}>2025 © Edition</p>
           <p className={styles.localTime}>
-            LT {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+            <Clock/>
           </p>
         </div>
       </div>

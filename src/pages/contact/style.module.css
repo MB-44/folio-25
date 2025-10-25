@@ -1,4 +1,3 @@
-/* Global Styles */
 .contactPage {
   width: 100%;
   min-height: 100vh;
@@ -6,7 +5,6 @@
   color: #161616;
 }
 
-/* Hero Section */
 .heroSection {
   background: #ffffff;
   padding: 80px 40px 120px;
@@ -27,13 +25,13 @@
   color: #161616;
   letter-spacing: -0.02em;
   text-align: left;
-  padding-left: 40px;
+  padding-left: 370px;
 }
 
 .contentWrapper {
   display: grid;
   grid-template-columns: 380px 1fr;
-  gap: 100px;
+  gap: 0px;
   align-items: start;
 }
 
@@ -44,7 +42,7 @@
 }
 
 .heroSubtitle {
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.6;
   color: #666666;
   margin: 0;
@@ -191,10 +189,52 @@
   padding: 0;
   font-family: inherit;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.link:hover {
-  opacity: 0.6;
+.link {
+  padding-right: 8px;
+}
+
+.linkText {
+  display: inline-block;
+  position: relative;
+}
+
+.link:hover .linkText {
+  animation: scroll 0.6s ease-in-out;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  51% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.arrowSvg {
+  width: 20px;
+  height: 20px;
+  color: #df332e;
+  transform: rotate(-45deg);
+  transition: transform 0.4s ease;
+  flex-shrink: 0;
+}
+
+.link:hover .arrowSvg {
+  transform: rotate(0deg);
 }
 
 .submitLink:hover {
@@ -440,7 +480,7 @@
   }
 
   .heroSubtitle {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .rightContent {

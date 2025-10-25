@@ -59,13 +59,13 @@ const ContactPage = () => {
           <div className={styles.contentWrapper}>
             <div className={styles.leftContent}>
               <p className={styles.heroSubtitle}>
-                Whether it's a new project or a quick question, we're here to connect.
+                Whether it's a new project or a quick question, I'm here to connect.
               </p>
               
               <div className={styles.profileCard}>
                 <img 
                   src="images/profile/profile-img.png" 
-                  alt="Menath"
+                  alt="Menath Lakvindu"
                   className={styles.profileImage}
                 />
                 <div className={styles.profileInfo}>
@@ -77,7 +77,7 @@ const ContactPage = () => {
 
             <div className={styles.rightContent}>
               <div className={styles.emailSection}>
-                <h2 className={styles.emailTitle}>hello@menath.b</h2>
+                <h2 className={styles.emailTitle}>hello@menath</h2>
               </div>
 
               <form className={styles.contactForm} onSubmit={handleSubmit}>
@@ -123,7 +123,11 @@ const ContactPage = () => {
 
               <div className={styles.linksSection}>
                 <a href="#" className={styles.link}>
-                  <span className={styles.arrow}>↗</span> Instagram
+                  <svg className={styles.arrowSvg} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M12 5L19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  <span className={styles.linkText}>Instagram</span>
                 </a>
                 <button type="submit" className={styles.submitLink} onClick={handleSubmit}>
                   <span className={styles.arrow}>↪</span> Get in touch

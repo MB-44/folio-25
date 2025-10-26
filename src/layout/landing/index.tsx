@@ -1,12 +1,11 @@
 'use client'
 import gsap from 'gsap';
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import { ScrollTrigger } from 'gsap/all';
 import { motion } from 'framer-motion';
 import Image from 'next/image'
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import { HackerText } from "@/components";
-import  Header  from "@/components/header";
 import styles from './style.module.css'
 import { slideUp } from './animation';
 
@@ -15,8 +14,6 @@ export default function Home() {
   const secondText = useRef(null);
   const slider = useRef(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [active, setActive] = useState(false);
-
   const sliderContainer = useRef<HTMLDivElement | null>(null);
 
   let xPercent = 0;
@@ -86,7 +83,6 @@ export default function Home() {
 
   return (
     <motion.main variants={slideUp} initial="initial" animate="enter" className={styles.landing}>
-      <Header />
   
       <div className={styles.bg}>
         <Image 

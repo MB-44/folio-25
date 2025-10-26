@@ -2,8 +2,9 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import PreLoader from "@/components/preloader";
-import { Landing, Description, HomeIntro, Footer } from "@/layout";
+import { Landing, Footer } from "@/layout";
 import Intro from "@/layout/intro";
+import Header from "@/components/header";
 
 type Phase = "loading" | "unlock" | "content";
 
@@ -25,7 +26,6 @@ export default function Home() {
     )()
   }, [])
 
-
   return (
     <>
       <Head>
@@ -40,11 +40,11 @@ export default function Home() {
           {isLoading && <PreLoader/>}
         </AnimatePresence>
 
+        <Header/>
         <Landing/>
         <Intro/>
-        {/* <Description/> */}
-        {/* <Description/> */}
         <Footer/>
+
       </main>
     </>
   );

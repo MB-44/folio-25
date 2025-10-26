@@ -1,0 +1,572 @@
+.contactPage {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+  color: #161616;
+  scroll-behavior: smooth;
+}
+
+.heroSection {
+  background: #ffffff;
+  padding: 80px 40px 120px;
+  position: relative;
+  color: #161616;
+}
+
+.heroContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  font-size: 110px;
+  font-weight: 400;
+  line-height: 1;
+  margin: 150px 0 120px 0;
+  color: #0d0d0d;
+  letter-spacing: -0.02em;
+  text-align: left;
+  padding-left: 315px;
+}
+
+.contentWrapper {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 0px;
+  align-items: start;
+}
+
+.leftContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: fit-content;
+}
+
+.heroSubtitle {
+  font-size: 15.2px;
+  line-height: 1.6;
+  color: #666666;
+  margin: 0;
+  max-width: 280px;
+}
+
+.profileCard {
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0;
+}
+
+.profileImage {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.profileName {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+  color: #0d0d0d;
+  letter-spacing: -0.01em;
+}
+
+.profileRole {
+  font-size: 14px;
+  color: #999999;
+  margin: 0;
+  font-weight: 400;
+}
+
+.rightContent {
+  background: #f5f5f5;
+  padding: 60px 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  gap: 50px 0px;
+}
+
+.emailSection {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  align-items: flex-start;
+  padding-bottom: 0;
+}
+
+.emailTitle {
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0 0 -10px 0;
+  color: #0d0d0d;
+  letter-spacing: -0.02em;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.emailTitle:hover {
+  color: #de322c;
+}
+
+.contactForm {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-self: start;
+  padding-top: 0;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0 0 16px 0;
+  font-size: 18px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #d0d0d0;
+  color: #0d0d0d;
+  font-family: inherit;
+  transition: border-bottom-color 0.3s ease;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: #999999;
+  font-size: 18px;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-bottom-color: #de322c;
+}
+
+.textarea {
+  resize: none;
+  min-height: auto;
+  line-height: 1.6;
+  padding-top: 0;
+  padding-bottom: 16px;
+}
+
+.linksSection {
+  grid-column: 1 / 3;
+  grid-row: 3;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 80px;  
+  gap: 240px;
+}
+
+.link,
+.submitLink {
+  font-size: 23px;
+  color: #0d0d0d;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.link {
+  padding-right: 8px;
+}
+
+.linkText {
+  display: inline-block;
+  position: relative;
+}
+
+.link:hover .linkText {
+  animation: scroll 0.6s ease-in-out;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  51% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.arrowSvg {
+  width: 20px;
+  height: 20px;
+  color: #de322c;
+  transform: rotate(-45deg);
+  transition: transform 0.4s ease;
+  flex-shrink: 0;
+}
+
+.link:hover .arrowSvg {
+  transform: rotate(0deg);
+}
+
+.submitLink span:not(.arrow) {
+  transition: transform 0.3s ease;
+}
+
+.submitLink:hover span:not(.arrow) {
+  transform: translateX(10px);
+}
+
+.arrow {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.formSection {
+  background: #ffffff;
+  padding: 100px 40px;
+  border-top: 1px solid #1a1a1a;
+}
+
+.formContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 100px;
+  align-items: start;
+}
+
+.formLeft {
+  position: sticky;
+  top: 100px;
+}
+
+.formTitle {
+  font-size: 56px;
+  font-weight: 500;
+  line-height: 1.1;
+  margin: 0 0 32px 0;
+  color: #161616;
+  letter-spacing: -0.02em;
+}
+
+.formText {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #525050;
+  margin: 0 0 20px 0;
+  font-weight: 400;
+}
+
+.formRight {
+  width: 100%;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #161616;
+  letter-spacing: 0.02em;
+}
+
+.submitBtn {
+  padding: 18px 48px;
+  font-size: 16px;
+  font-weight: 500;
+  background: #ffffff;
+  color: #0d0d0d;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  letter-spacing: 0.01em;
+}
+
+.submitBtn:hover {
+  background: #e0e0e0;
+  transform: translateY(-2px);
+}
+
+.submitBtn:active {
+  transform: translateY(0);
+}
+
+.faqSection {
+  background: #0a0a0a;
+  padding: 100px 40px 140px;
+  border-top: 1px solid #1a1a1a;
+}
+
+.faqContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.faqHeader {
+  margin-bottom: 64px;
+}
+
+.faqTitle {
+  font-size: 56px;
+  font-weight: 500;
+  line-height: 1.1;
+  margin: 0 0 20px 0;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.faqSubtitle {
+  font-size: 20px;
+  line-height: 1.6;
+  color: #999999;
+  margin: 0;
+  font-weight: 400;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.faqItem {
+  background: #141414;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #1a1a1a;
+  transition: all 0.3s ease;
+}
+
+.faqItem:hover {
+  border-color: #2a2a2a;
+}
+
+.faqButton {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 36px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.3s ease;
+}
+
+.faqButton:hover {
+  background: #1a1a1a;
+}
+
+.faqQuestion {
+  font-size: 20px;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  flex: 1;
+  padding-right: 24px;
+}
+
+.faqIcon {
+  font-size: 28px;
+  color: #ffffff;
+  font-weight: 300;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.faqAnswer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.faqAnswer.open {
+  max-height: 500px;
+  padding: 0 36px 32px;
+}
+
+.faqAnswer p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #999999;
+  margin: 0;
+  font-weight: 400;
+}
+
+@media (max-width: 1200px) {
+  .contentWrapper {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .rightContent {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 40px;
+  }
+
+  .contactForm {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .linksSection {
+    grid-column: 1;
+    grid-row: 3;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .formContainer {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .formLeft {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 60px 24px 80px;
+  }
+
+  .heroTitle {
+    font-size: 72px;
+    margin-bottom: 60px;
+    padding-left: 0;
+  }
+
+  .contentWrapper {
+    gap: 40px;
+  }
+
+  .heroSubtitle {
+    font-size: 14px;
+  }
+
+  .rightContent {
+    padding: 40px;
+  }
+
+  .emailTitle {
+    font-size: 32px;
+  }
+
+  .input,
+  .textarea,
+  .input::placeholder,
+  .textarea::placeholder {
+    font-size: 16px;
+  }
+
+  .link,
+  .submitLink {
+    font-size: 16px;
+  }
+
+  .formSection {
+    padding: 80px 24px;
+  }
+
+  .formTitle {
+    font-size: 40px;
+  }
+
+  .formText {
+    font-size: 16px;
+  }
+
+  .faqSection {
+    padding: 80px 24px 100px;
+  }
+
+  .faqTitle {
+    font-size: 40px;
+  }
+
+  .faqSubtitle {
+    font-size: 18px;
+  }
+
+  .faqButton {
+    padding: 24px 24px;
+  }
+
+  .faqQuestion {
+    font-size: 18px;
+  }
+
+  .faqAnswer.open {
+    padding: 0 24px 24px;
+  }
+
+  .faqAnswer p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroTitle {
+    font-size: 48px;
+  }
+
+  .rightContent {
+    padding: 30px;
+  }
+
+  .emailTitle {
+    font-size: 24px;
+  }
+
+  .formTitle {
+    font-size: 32px;
+  }
+
+  .faqTitle {
+    font-size: 32px;
+  }
+}

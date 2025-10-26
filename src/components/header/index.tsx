@@ -73,7 +73,7 @@ export default function Header(): JSX.Element {
                     <div className={styles.name}>
                         <p className={styles.codeBy}>Code by</p>
                         <p className={styles.menath}>Menath</p>
-                        <p className={styles.baddegama}>Baddegama</p>
+                        {/* <p className={styles.baddegama}>Baddegama</p> */}
                     </div>
                 </div>
             </Magnetic>

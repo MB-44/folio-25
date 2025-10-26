@@ -17,6 +17,7 @@
     justify-content: center;
     height: 16px;
     width: 100%;
+    gap: 1.5px;
   }
   
   .lineWrapper {
@@ -28,8 +29,8 @@
   }
   
   .indicator-line {
-    width: 1.2px;
-    height: 6px;
+    width: 2px;
+    height: 8px;
     background-color: white;
     border: none;
     /* border-radius: 1px; */

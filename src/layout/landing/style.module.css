@@ -220,11 +220,10 @@
   }
 }
 
-/* header mini-block (arrow + heading) — UPDATED POSITIONS */
 .headerContainer {
   position: absolute;
-  bottom: 45vh;      /* desktop: increase to move UP, decrease to move DOWN */
-  left: 70vw;         /* desktop: smaller = more LEFT, larger = more RIGHT */
+  bottom: 45vh;      
+  left: 70vw;         
   display: flex;
   justify-content: flex-start;
   pointer-events: none;
@@ -260,7 +259,7 @@
 .subheading {
   color: #ffffff;
   line-height: 1.3;
-  font-size: 32px;
+  font-size: 25px;
   font-weight: 400;
   margin: 0;
   pointer-events: auto;
@@ -290,5 +289,11 @@
 
   .headerAbove {
     margin-bottom: 4px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .landing .sliderContainer {
+    top: calc(115vh - 330px); 
   }
 }

@@ -5,7 +5,7 @@ import styles from './style.module.css';
 const AboutPage = () => {
   return (
     <div className={styles.aboutPage}>
-      {/* Hero Section */}
+      {/* Heo Section */}
       <section className={styles.heroSection}>
         <div className={styles.heroContainer}>
           <h1 className={styles.heroTitle}>About me</h1>
@@ -13,6 +13,9 @@ const AboutPage = () => {
           <div className={styles.contentWrapper}>
             <div className={styles.leftContent}>
               <h2 className={styles.sectionTitle}>Meet Menath</h2>
+            </div>
+
+            <div className={styles.middleContent}>
               <p className={styles.description}>
                 I've always wanted to make work I'm proud of. Every project is a chance to do something different, something we actually care about.
               </p>
@@ -20,12 +23,12 @@ const AboutPage = () => {
               <div className={styles.profileCard}>
                 <img 
                   src="images/profile/profile-img.png" 
-                  alt="Andrew Koktò"
+                  alt="Menath Baddegama"
                   className={styles.profileImage}
                 />
                 <div className={styles.profileInfo}>
-                  <h3 className={styles.profileName}>Andrew Koktò</h3>
-                  <p className={styles.profileRole}>Founder and Lead Designer</p>
+                  <h3 className={styles.profileName}>Menath Baddegama</h3>
+                  <p className={styles.profileRole}>Creative Developer</p>
                 </div>
               </div>
             </div>
@@ -41,42 +44,6 @@ const AboutPage = () => {
           </div>
         </div>
       </section>
-
-      {/* Team Section */}
-      {/* <section className={styles.teamSection}>
-        <div className={styles.teamContainer}>
-          <h2 className={styles.teamTitle}>Join us</h2>
-          <p className={styles.teamSubtitle}>
-            If you're ready to shape the future with us, your journey could start here.
-          </p>
-
-          <div className={styles.teamGrid}>
-            <div className={styles.teamMember}>
-              <div className={styles.imageWrapper}>
-                <img 
-                  src="images/profile/profile-img.png"
-                  alt="Andrew Koktò"
-                  className={styles.teamImage}
-                />
-              </div>
-              <h3 className={styles.memberName}>Andrew Koktò</h3>
-              <p className={styles.memberRole}>Founder & Lead Designer</p>
-            </div>
-
-            <div className={styles.teamMember}>
-              <div className={styles.imageWrapper}>
-                <img 
-                  src="images/profile/profile-img.png"
-                  alt="Olga Koktò"
-                  className={styles.teamImage}
-                />
-              </div>
-              <h3 className={styles.memberName}>Olga Koktò</h3>
-              <p className={styles.memberRole}>Co-Founder & Studio Manager</p>
-            </div>
-          </div>
-        </div>
-      </section> */}
 
       {/* Approach Section */}
       {/* <section className={styles.approachSection}>

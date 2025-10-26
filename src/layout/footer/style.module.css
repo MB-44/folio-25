@@ -185,7 +185,7 @@
     grid-template-columns: 1fr 1fr; 
     align-items: start;
   }
-  .contactEmail { font-size: 32px; }
+  .contactEmail { font-size: 38px; }
 }
 
 @media (max-width: 900px) {

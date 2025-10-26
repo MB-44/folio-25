@@ -102,7 +102,7 @@ export default function Footer() {
         <div className={styles.metaRow}>
           <p className={styles.version}>2025 © Edition</p>
           <p className={styles.localTime}>
-            <Clock/>
+            Local Time - <Clock/>
           </p>
         </div>
       </div>

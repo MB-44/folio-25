@@ -3,6 +3,7 @@
   min-height: 100vh;
   background: #ffffff;
   color: #161616;
+  scroll-behavior: smooth;
 }
 
 .heroSection {
@@ -18,19 +19,19 @@
 }
 
 .heroTitle {
-  font-size: 120px;
+  font-size: 110px;
   font-weight: 400;
   line-height: 1;
-  margin: 0 0 100px 0;
-  color: #161616;
+  margin: 150px 0 120px 0;
+  color: #0d0d0d;
   letter-spacing: -0.02em;
   text-align: left;
-  padding-left: 370px;
+  padding-left: 315px;
 }
 
 .contentWrapper {
   display: grid;
-  grid-template-columns: 380px 1fr;
+  grid-template-columns: 320px 1fr;
   gap: 0px;
   align-items: start;
 }
@@ -39,14 +40,15 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  max-width: fit-content;
 }
 
 .heroSubtitle {
-  font-size: 15px;
+  font-size: 15.2px;
   line-height: 1.6;
   color: #666666;
   margin: 0;
-  font-weight: 400;
+  max-width: 280px;
 }
 
 .profileCard {
@@ -75,7 +77,7 @@
   font-size: 16px;
   font-weight: 500;
   margin: 0;
-  color: #161616;
+  color: #0d0d0d;
   letter-spacing: -0.01em;
 }
 
@@ -87,13 +89,12 @@
 }
 
 .rightContent {
-  background: #f3f3f3;
+  background: #f5f5f5;
   padding: 60px 80px;
-  /* border-radius: 24px; */
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto 1fr auto;
-  gap: 50px 60px;
+  gap: 50px 0px;
 }
 
 .emailSection {
@@ -101,21 +102,22 @@
   grid-row: 1;
   display: flex;
   align-items: flex-start;
+  padding-bottom: 0;
 }
 
 .emailTitle {
   font-size: 40px;
   font-weight: 400;
   line-height: 1.2;
-  margin: 0;
-  color: #161616;
+  margin: 0 0 -10px 0;
+  color: #0d0d0d;
   letter-spacing: -0.02em;
   transition: color 0.3s ease;
   cursor: pointer;
 }
 
 .emailTitle:hover {
-  color: #df332e;
+  color: #de322c;
 }
 
 .contactForm {
@@ -123,8 +125,9 @@
   grid-row: 1 / 3;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 40px;
   align-self: start;
+  padding-top: 0;
 }
 
 .formGroup {
@@ -140,7 +143,7 @@
   background: transparent;
   border: none;
   border-bottom: 1px solid #d0d0d0;
-  color: #161616;
+  color: #0d0d0d;
   font-family: inherit;
   transition: border-bottom-color 0.3s ease;
 }
@@ -154,7 +157,7 @@
 .input:focus,
 .textarea:focus {
   outline: none;
-  border-bottom-color: #df332e;
+  border-bottom-color: #de322c;
 }
 
 .textarea {
@@ -169,15 +172,16 @@
   grid-column: 1 / 3;
   grid-row: 3;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 80px;  
+  gap: 240px;
 }
 
 .link,
 .submitLink {
-  font-size: 18px;
-  color: #161616;
+  font-size: 23px;
+  color: #0d0d0d;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -227,7 +231,7 @@
 .arrowSvg {
   width: 20px;
   height: 20px;
-  color: #df332e;
+  color: #de322c;
   transform: rotate(-45deg);
   transition: transform 0.4s ease;
   flex-shrink: 0;
@@ -237,17 +241,20 @@
   transform: rotate(0deg);
 }
 
-.submitLink:hover {
-  transform: translateX(8px);
+.submitLink span:not(.arrow) {
+  transition: transform 0.3s ease;
+}
+
+.submitLink:hover span:not(.arrow) {
+  transform: translateX(10px);
 }
 
 .arrow {
-  font-size: 20px;
-  color: #df332e;
-  font-weight: 300;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
 }
 
-/* Form Section */
 .formSection {
   background: #ffffff;
   padding: 100px 40px;
@@ -301,7 +308,7 @@
   font-size: 16px;
   font-weight: 500;
   background: #ffffff;
-  color: #0a0a0a;
+  color: #0d0d0d;
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -319,7 +326,6 @@
   transform: translateY(0);
 }
 
-/* FAQ Section */
 .faqSection {
   background: #0a0a0a;
   padding: 100px 40px 140px;
@@ -428,7 +434,6 @@
   font-weight: 400;
 }
 
-/* Responsive Design */
 @media (max-width: 1200px) {
   .contentWrapper {
     grid-template-columns: 1fr;

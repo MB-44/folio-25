@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Footer} from '@/layout';
+import { Footer } from '@/layout';
 import styles from './style.module.css';
 
 const ContactPage = () => {
@@ -130,7 +130,23 @@ const ContactPage = () => {
                   <span className={styles.linkText}>Instagram</span>
                 </a>
                 <button type="submit" className={styles.submitLink} onClick={handleSubmit}>
-                  <span className={styles.arrow}>↪</span> Get in touch
+                  <svg className={styles.arrow} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path 
+                        d="M9 5L9 14C9 14.5523 9.44772 15 10 15H19" 
+                        stroke="#de322c" 
+                        strokeWidth="2" 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round"
+                    />
+                    <path 
+                        d="M15 11L19 15L15 19" 
+                        stroke="#de322c" 
+                        strokeWidth="2" 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round"
+                    />
+                    </svg>
+                  <span>Get in touch</span>
                 </button>
               </div>
             </div>

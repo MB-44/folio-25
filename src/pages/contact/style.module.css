@@ -105,8 +105,18 @@
   padding-bottom: 0;
 }
 
+.emailSection > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.emailSection .link {
+  display: none;
+}
+
 .emailTitle {
-  font-size: 40px;
+  font-size: 48px;
   font-weight: 400;
   line-height: 1.2;
   margin: 0 0 -10px 0;
@@ -478,7 +488,7 @@
 
   .heroTitle {
     font-size: 72px;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
     padding-left: 0;
   }
 
@@ -492,21 +502,62 @@
 
   .rightContent {
     padding: 40px;
+    gap: 30px;
+  }
+
+  .emailSection {
+    grid-row: 1;
+    /* EXTRA vertical space between the email/Instagram and the contact form */
+    margin-bottom: 20px; /* NEW */
+  }
+
+  /* Increased the space between email and Instagram link on mobile */
+  .emailSection > div {
+    gap: 40px; /* was 30px */
+  }
+
+  /* Show only the Instagram link in the email section on mobile */
+  .emailSection .link {
+    display: flex;
   }
 
   .emailTitle {
-    font-size: 32px;
+    font-size: 56px;
+  }
+
+  .contactForm {
+    grid-row: 2;
+    gap: 30px;
+  }
+
+  /* Hide the bottom Instagram link under the form on mobile (keep the button) */
+  .linksSection .link {
+    display: none;
+  }
+
+  .linksSection {
+    grid-row: 3;
+    margin-top: 10px;
+    gap: 30px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Mobile font sizing baseline (Instagram + button text) */
+  .link,
+  .submitLink {
+    font-size: 18px; /* baseline */
+  }
+
+  /* Bump ONLY the submitLink above 18px on mobile */
+  .submitLink {
+    font-size: 20px; /* NEW: larger than 18px */
   }
 
   .input,
   .textarea,
   .input::placeholder,
   .textarea::placeholder {
-    font-size: 16px;
-  }
-
-  .link,
-  .submitLink {
     font-size: 16px;
   }
 
@@ -561,7 +612,7 @@
   }
 
   .emailTitle {
-    font-size: 24px;
+    font-size: 38px;
   }
 
   .formTitle {

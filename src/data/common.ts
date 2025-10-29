@@ -1,3 +1,7 @@
+export const Home = {
+    description: "I craft web experiences where beauty meets function — turning ideas into intuitive interfaces that come alive.",
+};
+
 export const socialLinks = [
   {
     name: "Instagram",

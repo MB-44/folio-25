@@ -1,7 +1,32 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styles from './style.module.css';
+import { Home } from '@/data';
 
 export default function Description() {
+    const text = Home.description;
+    const words = text.split(' ');
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>, wordRef: EventTarget & HTMLSpanElement) => {
+        const rect = wordRef.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        const distance = Math.sqrt(x * x + y * y);
+        const maxDistance = 100;
+        
+        if (distance < maxDistance) {
+            const strength = (maxDistance - distance) / maxDistance;
+            const moveX = (x / distance) * strength * 15;
+            const moveY = (y / distance) * strength * 15;
+            
+            wordRef.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        }
+    };
+
+    const handleMouseLeave = (wordRef: EventTarget & HTMLSpanElement) => {
+        wordRef.style.transform = 'translate(0px, 0px)';
+    };
+
     return (
         <div className={styles.description}>
             <div className={styles.content}>
@@ -29,9 +54,18 @@ export default function Description() {
                 
                 <div className={styles.rightContent}>
                     <p className={styles.descriptionText}>
-                        I'm a creative developer passionate about building beautiful 
-                        and functional web experiences. I specialize in crafting 
-                        intuitive interfaces that bring ideas to life.
+                        {words.map((word, index) => (
+                            <React.Fragment key={index}>
+                                <span
+                                    className={styles.magneticWord}
+                                    onMouseMove={(e) => handleMouseMove(e, e.currentTarget)}
+                                    onMouseLeave={(e) => handleMouseLeave(e.currentTarget)}
+                                >
+                                    {word}
+                                </span>
+                                {index < words.length - 1 && ' '}
+                            </React.Fragment>
+                        ))}
                     </p>
                 </div>
             </div>

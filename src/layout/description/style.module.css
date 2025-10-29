@@ -73,6 +73,16 @@
     font-weight: 300;
 }
 
+.magneticWord {
+    display: inline-block;
+    transition: transform 0.2s ease-out, color 0.2s ease;
+    cursor: default;
+}
+
+.magneticWord:hover {
+    color: #de322c;
+}
+
 @media (max-width: 1200px) {
     .content {
         grid-template-columns: 1fr;

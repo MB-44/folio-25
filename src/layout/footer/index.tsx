@@ -1,9 +1,10 @@
 'use client';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import styles from './style.module.css';
 import { Magnetic } from '@/components';
 import Clock from './clock';
+import { socialLinks } from '@/data';
+import styles from './style.module.css';
 
 export default function Footer() {
   const [time, setTime] = useState(new Date());
@@ -78,10 +79,21 @@ export default function Footer() {
               <Magnetic><Link href="/contact" className={styles.link}>Contact</Link></Magnetic>
             </div>
             <div className={styles.socialCol}>
-              <a href="https://www.instagram.com/kokto.studio/" target="_blank" rel="noopener" className={styles.link}>Instagram</a>
-              <a href="https://www.behance.net/andreykokto" target="_blank" rel="noopener" className={styles.link}>Linkedin</a>
-              <a href="https://www.behance.net/andreykokto" target="_blank" rel="noopener" className={styles.link}>X</a>
-              <a href="https://www.behance.net/andreykokto" target="_blank" rel="noopener" className={styles.link}>FaceBook</a>
+              {socialLinks
+                .filter(link => link.visible)
+                .map(link => (
+                    <Magnetic key={link.name}>
+                      <a
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.link}
+                        aria-label={link.name}
+                      >
+                        {link.name}
+                      </a>
+                    </Magnetic>
+                ))}
             </div>
           </div>
         </div>

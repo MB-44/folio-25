@@ -77,7 +77,16 @@ const ContactPage = () => {
 
             <div className={styles.rightContent}>
               <div className={styles.emailSection}>
-                <h2 className={styles.emailTitle}>hello@menath</h2>
+                <div>
+                  <h2 className={styles.emailTitle}>hello@menath</h2>
+                  <a href="#" className={styles.link}>
+                    <svg className={styles.arrowSvg} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M12 5L19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    <span className={styles.linkText}>Instagram</span>
+                  </a>
+                </div>
               </div>
 
               <form className={styles.contactForm} onSubmit={handleSubmit}>
@@ -145,7 +154,7 @@ const ContactPage = () => {
                         strokeLinecap="round" 
                         strokeLinejoin="round"
                     />
-                    </svg>
+                  </svg>
                   <span>Get in touch</span>
                 </button>
               </div>
@@ -233,35 +242,60 @@ const ContactPage = () => {
       </section> */}
 
       {/* FAQ Section */}
-      {/* <section className={styles.faqSection}>
+      <section className={styles.faqSection}>
         <div className={styles.faqContainer}>
-          <div className={styles.faqHeader}>
-            <h2 className={styles.faqTitle}>FAQ</h2>
-            <p className={styles.faqSubtitle}>
-              We've heard it all. Here's everything you need to know before working with us.
-            </p>
-          </div>
-
-          <div className={styles.faqList}>
-            {faqs.map((faq, index) => (
-              <div key={index} className={styles.faqItem}>
-                <button
-                  className={styles.faqButton}
-                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                >
-                  <span className={styles.faqQuestion}>{faq.question}</span>
-                  <span className={styles.faqIcon}>
-                    {openFaq === index ? '−' : '+'}
-                  </span>
-                </button>
-                <div className={`${styles.faqAnswer} ${openFaq === index ? styles.open : ''}`}>
-                  <p>{faq.answer}</p>
-                </div>
+          <div className={styles.faqGrid}>
+            <div className={styles.faqLeft}>
+              <div className={styles.faqHeader}>
+                <h2 className={styles.faqTitle}>FAQ</h2>
+                <p className={styles.faqSubtitle}>
+                  We've heard it all. Here's everything you need to know before working with us.
+                </p>
               </div>
-            ))}
+              <button className={styles.faqAskBtn}>
+                <svg className={styles.arrow} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path 
+                    d="M9 5L9 14C9 14.5523 9.44772 15 10 15H19" 
+                    stroke="#de322c" 
+                    strokeWidth="2" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"
+                  />
+                  <path 
+                    d="M15 11L19 15L15 19" 
+                    stroke="#de322c" 
+                    strokeWidth="2" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span>Ask a question</span>
+              </button>
+            </div>
+
+            <div className={styles.faqRight}>
+              <div className={styles.faqList}>
+                {faqs.map((faq, index) => (
+                  <div key={index} className={styles.faqItem}>
+                    <button
+                      className={styles.faqButton}
+                      onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                    >
+                      <span className={styles.faqQuestion}>{faq.question}</span>
+                      <span className={styles.faqIcon}>
+                        {openFaq === index ? '−' : '+'}
+                      </span>
+                    </button>
+                    <div className={`${styles.faqAnswer} ${openFaq === index ? styles.open : ''}`}>
+                      <p>{faq.answer}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       <Footer />
     </div>

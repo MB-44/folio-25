@@ -6,8 +6,6 @@ import { Landing, Footer, Description } from "@/layout";
 import Intro from "@/layout/intro";
 import Header from "@/components/header";
 
-type Phase = "loading" | "unlock" | "content";
-
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 

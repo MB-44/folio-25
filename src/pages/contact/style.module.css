@@ -339,36 +339,51 @@
 }
 
 .faqSection {
-  background: #0a0a0a;
+  background: #ffffff;          
+  color: #0d0d0d;                
   padding: 100px 40px 140px;
-  border-top: 1px solid #1a1a1a;
+  /* border-top: 1px solid #e0e0e0; */
 }
 
 .faqContainer {
-  max-width: 1000px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
+.faqGrid {
+  display: grid;
+  grid-template-columns: 320px 1fr; 
+  gap: 0px;
+  align-items: start;
+}
+
 .faqHeader {
-  margin-bottom: 64px;
+  margin-bottom: 0;  
+  padding-left: 0;
 }
 
 .faqTitle {
-  font-size: 56px;
+  font-size: 110px;
   font-weight: 500;
   line-height: 1.1;
   margin: 0 0 20px 0;
-  color: #ffffff;
+  color: #0d0d0d;             
   letter-spacing: -0.02em;
+  text-align: left;
+  max-width: 420px;            
 }
 
 .faqSubtitle {
   font-size: 20px;
   line-height: 1.6;
-  color: #999999;
+  color: #666666;               
   margin: 0;
   font-weight: 400;
+  text-align: left;
+  max-width: 420px;
 }
+
+/* .faqRight {} */
 
 .faqList {
   display: flex;
@@ -400,6 +415,41 @@
   text-align: left;
   transition: background 0.3s ease;
 }
+
+.faqAskBtn {
+  font-size: 23px;
+  color: #0d0d0d;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: visible;
+  padding: 0;
+  margin-top: 90px; 
+}
+
+.faqAskBtn span {
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.faqAskBtn:hover span {
+  transform: translateX(10px);
+}
+
+.faqAskBtn .arrow {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
 
 .faqButton:hover {
   background: #1a1a1a;
@@ -479,6 +529,11 @@
   .formLeft {
     position: static;
   }
+
+  .faqGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -507,16 +562,13 @@
 
   .emailSection {
     grid-row: 1;
-    /* EXTRA vertical space between the email/Instagram and the contact form */
-    margin-bottom: 20px; /* NEW */
+    margin-bottom: 20px; 
   }
 
-  /* Increased the space between email and Instagram link on mobile */
   .emailSection > div {
-    gap: 40px; /* was 30px */
+    gap: 40px; 
   }
 
-  /* Show only the Instagram link in the email section on mobile */
   .emailSection .link {
     display: flex;
   }
@@ -530,7 +582,6 @@
     gap: 30px;
   }
 
-  /* Hide the bottom Instagram link under the form on mobile (keep the button) */
   .linksSection .link {
     display: none;
   }
@@ -542,16 +593,14 @@
     flex-direction: column;
     align-items: flex-start;
   }
-
-  /* Mobile font sizing baseline (Instagram + button text) */
+  
   .link,
   .submitLink {
-    font-size: 18px; /* baseline */
+    font-size: 18px;
   }
 
-  /* Bump ONLY the submitLink above 18px on mobile */
   .submitLink {
-    font-size: 20px; /* NEW: larger than 18px */
+    font-size: 20px; 
   }
 
   .input,
@@ -577,8 +626,17 @@
     padding: 80px 24px 100px;
   }
 
+  .faqHeader {
+    padding-left: 0; 
+  }
+
   .faqTitle {
     font-size: 40px;
+  }
+
+  .faqGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
   }
 
   .faqSubtitle {

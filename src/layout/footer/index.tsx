@@ -78,7 +78,7 @@ export default function Footer() {
               <Magnetic><Link href="/contact" className={styles.link}>Contact</Link></Magnetic>
             </div>
             <div className={styles.socialCol}>
-              <a href="https://www.instagram.com/kokto.studio/" target="_blank" rel="noopener" className={styles.link}>Instagram</a>
+              <a href="" target="_blank" rel="noopener" className={styles.link}>Instagram</a>
               <a href="https://www.behance.net/andreykokto" target="_blank" rel="noopener" className={styles.link}>Linkedin</a>
               <a href="https://www.behance.net/andreykokto" target="_blank" rel="noopener" className={styles.link}>X</a>
               <a href="https://www.behance.net/andreykokto" target="_blank" rel="noopener" className={styles.link}>FaceBook</a>

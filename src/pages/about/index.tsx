@@ -5,7 +5,7 @@ import styles from './style.module.css';
 const AboutPage = () => {
   return (
     <div className={styles.aboutPage}>
-      {/* Heo Section */}
+      {/* Hero Section */}
       <section className={styles.heroSection}>
         <div className={styles.heroContainer}>
           <h1 className={styles.heroTitle}>About me</h1>

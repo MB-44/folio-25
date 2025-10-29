@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import PreLoader from "@/components/preloader";
-import { Landing, Footer } from "@/layout";
+import { Landing, Footer, Description } from "@/layout";
 import Intro from "@/layout/intro";
 import Header from "@/components/header";
 
@@ -42,9 +42,9 @@ export default function Home() {
 
         <Header/>
         <Landing/>
+        <Description/>
         <Intro/>
         <Footer/>
-
       </main>
     </>
   );

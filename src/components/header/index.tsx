@@ -1,128 +1,65 @@
-'use client';
-import { JSX, useEffect, useRef, useState } from 'react';
-import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { usePathname } from 'next/navigation';
-import { AnimatePresence } from 'framer-motion';
-import gsap from 'gsap';
-import { AudioControlButton, Rounded, Magnetic } from "@/components";
-import styles from './style.module.css';
-import Nav from './nav';
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import styles from './style.module.css'
+import AudioButton from '@/components/common/audioButton'
+import Magnetic from '@/components/common/magnetic'
+import { useState } from 'react'
 
-export default function Header(): JSX.Element {
-    const header = useRef<HTMLDivElement>(null);
-    const [isActive, setIsActive] = useState<boolean>(false);
-    const pathname = usePathname();
-    const button = useRef<HTMLDivElement>(null);
-    const audioRef = useRef<HTMLAudioElement | null>(null);
+const leftItems = [
+  { title: 'Work', href: '/work' },
+  { title: 'About', href: '/about' }
+]
 
-    useEffect(() => {
-        audioRef.current = new Audio('/audio/ui_magbutton.mp3'); 
-        return () => {
-            if (audioRef.current) {
-                audioRef.current.pause();
-                audioRef.current = null;
-            }
-        };
-    }, []);
+const rightItems = [
+  { title: 'Contact', href: '/contact' }
+]
 
-    useEffect(() => {
-        if (isActive) setIsActive(false);
-    }, [pathname]);
+export default function Header() {
+  const pathname = usePathname()
+  const [hoverHref, setHoverHref] = useState<string | null>(null)
 
-    useIsomorphicLayoutEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
-
-        const show = () => gsap.to(button.current, { scale: 1, duration: 0.25, ease: "power1.out" });
-        const hide = () => gsap.to(button.current, { scale: 0, duration: 0.25, ease: "power1.out" });
-
-        const st = ScrollTrigger.create({
-            trigger: header.current,
-            start: "bottom top",
-            end: "bottom top",
-            onEnter: show,
-            onLeaveBack: hide
-        });
-
-        if (header.current) {
-            const headerBottom = header.current.getBoundingClientRect().bottom + window.scrollY;
-            if (window.scrollY >= headerBottom) show(); else hide();
-        }
-
-        return () => {
-            st.kill();
-        };
-    }, []);
-
-    const handleNavItemHover = (): void => {
-        if (audioRef.current) {
-            audioRef.current.currentTime = 0;
-            audioRef.current.play();
-        }
-    };
-
-    const handleAudioToggle = (isPlaying: boolean): void => {
-        console.log("Background audio is now:", isPlaying ? "playing" : "paused");
-    };
-
-    return (
-        <>
-        <div ref={header} className={styles.header}>
-            <Magnetic>
-                <div className={styles.logo}>
-                    <div className={styles.name}>
-                        <p className={styles.codeBy}>Code by</p>
-                        <p className={styles.menath}>Menath</p>
-                        {/* <p className={styles.baddegama}>Baddegama</p> */}
-                    </div>
-                </div>
+  return (
+    <header className={styles.header} onMouseLeave={() => setHoverHref(null)}>
+      <div className={styles.left}>
+        {leftItems.map((item) => {
+          const active = (hoverHref === item.href) || (hoverHref === null && pathname === item.href)
+          return (
+            <Magnetic key={item.href}>
+              <div
+                className={`${styles.el} ${active ? styles.active : ''}`}
+                onMouseEnter={() => setHoverHref(item.href)}
+              >
+                <Link href={item.href} className={styles.navItem}>{item.title}</Link>
+                <div className={styles.indicator}></div>
+              </div>
             </Magnetic>
-            <div className={styles.nav}>
-                <div className={styles.navLinks}>
-                    <Magnetic>
-                        <div className={styles.el} onMouseEnter={handleNavItemHover}>
-                            <a>Work</a>
-                            <div className={styles.indicator}></div>
-                        </div>
-                    </Magnetic>
-                    <Magnetic>
-                        <div className={styles.el} onMouseEnter={handleNavItemHover}>
-                            <a>About</a>
-                            <div className={styles.indicator}></div>
-                        </div>
-                    </Magnetic>
-                    <Magnetic>
-                        <div className={styles.el} onMouseEnter={handleNavItemHover}>
-                            <a>Contact</a>
-                            <div className={styles.indicator}></div>
-                        </div>
-                    </Magnetic>
-                </div>
-                <div className={styles.audioButtonWrapper}>
-                    <AudioControlButton 
-                        initialPlayState={false}
-                        onToggle={handleAudioToggle}
-                        loopAudioSrc="/audio/cosmic_drift.mp3"
-                        uiSoundSrc="/audio/ui.mp3"
-                    />
-                </div>
-            </div>
+          )
+        })}
+      </div>
+
+      <div className={styles.center}>
+        <span className={styles.brand}>Menath</span>
+      </div>
+
+      <div className={styles.right}>
+        {rightItems.map((item) => {
+          const active = (hoverHref === item.href) || (hoverHref === null && pathname === item.href)
+          return (
+            <Magnetic key={item.href}>
+              <div
+                className={`${styles.el} ${active ? styles.active : ''}`}
+                onMouseEnter={() => setHoverHref(item.href)}
+              >
+                <Link href={item.href} className={styles.navItem}>{item.title}</Link>
+                <div className={styles.indicator}></div>
+              </div>
+            </Magnetic>
+          )
+        })}
+        <div className={styles.audioWrap}>
+          <AudioButton />
         </div>
-        <div ref={button} className={styles.headerButtonContainer}>
-            <Rounded onClick={() => { setIsActive(!isActive) }} className={`${styles.button}`}>
-                <Magnetic>
-                    <div className={`${styles.burger} ${isActive ? styles.burgerActive : ""}`}></div>
-                </Magnetic>
-            </Rounded>
-        </div>
-        <AnimatePresence mode="wait">
-            {isActive && (
-                <>
-                    <div className={styles.backdrop} onClick={() => setIsActive(false)} />
-                    <Nav />
-                </>
-            )}
-        </AnimatePresence>
-        </>
-    );
+      </div>
+    </header>
+  )
 }

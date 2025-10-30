@@ -158,7 +158,6 @@
     transform: rotate(45deg);
     top: -1px;
 }
-
 .headerButtonContainer .burgerActive::before {
     transform: rotate(-45deg);
     top: 0px;

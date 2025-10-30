@@ -46,10 +46,12 @@ const AboutPage = () => {
       </section>
 
       {/* Approach Section */}
-      {/* <section className={styles.approachSection}>
+      <section className={styles.approachSection}>
         <div className={styles.approachContainer}>
-          <div className={styles.approachContent}>
+          <div className={styles.approachLeft}>
             <h2 className={styles.approachTitle}>Approach</h2>
+          </div>
+          <div className={styles.approachMiddle}>
             <div className={styles.approachText}>
               <p>
                 Every project starts with listening: to the users, the business, the pain points. Then we dig in with research, ideas, and sketches — shaping thoughtful, beautiful experiences with purpose behind every pixel.
@@ -59,14 +61,9 @@ const AboutPage = () => {
               </p>
             </div>
           </div>
-          <div className={styles.approachImage}>
-            <img 
-              src="images/profile/profile-img.png"
-              alt="Team working together"
-            />
-          </div>
         </div>
-      </section> */}
+      </section>
+
 
       {/* What Drives Us Section */}
       {/* <section className={styles.drivesSection}>

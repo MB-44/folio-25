@@ -282,7 +282,7 @@ const ContactPage = () => {
                       onClick={() => setOpenFaq(openFaq === index ? null : index)}
                     >
                       <span className={styles.faqQuestion}>{faq.question}</span>
-                      <span className={styles.faqIcon}>
+                      <span className={`${styles.faqIcon} ${openFaq === index ? styles.open : ''}`}>
                         {openFaq === index ? '−' : '+'}
                       </span>
                     </button>

@@ -23,6 +23,7 @@ const WordMagnet = ({ text }: { text: string }) => {
 const AboutPage = () => {
   return (
     <div className={styles.aboutPage}>
+      {/* Hero Section */}
       <section className={styles.heroSection}>
         <div className={styles.heroContainer}>
           <h1 className={styles.heroTitle}>{About.hero.title}</h1>
@@ -58,6 +59,7 @@ const AboutPage = () => {
         </div>
       </section>
 
+      {/* Approach Section */}
       <section className={styles.approachSection}>
         <div className={styles.approachContainer}>
           <div className={styles.approachLeft}>
@@ -67,6 +69,22 @@ const AboutPage = () => {
             <div className={styles.approachText}>
               <p><WordMagnet text={About.approach.paragraphs[0]} /></p>
               <p><WordMagnet text={About.approach.paragraphs[1]} /></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Drives Section */}
+      <section className={styles.drivesSection}>
+        <div className={styles.drivesContainer}>
+          <div className={styles.drivesLeft}>
+            <h2 className={styles.drivesTitle}>{About.drives.title}</h2>
+          </div>
+
+          <div className={styles.drivesMiddle}>
+            <div className={styles.drivesText}>
+              <p><WordMagnet text={About.drives.paragraphs[0]} /></p>
+              <p><WordMagnet text={About.drives.paragraphs[1]} /></p>
             </div>
           </div>
         </div>

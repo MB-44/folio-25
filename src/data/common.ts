@@ -1,3 +1,5 @@
+import { title } from "process";
+
 // Main Page Content
 export const Home = {
   description: "I craft web experiences where beauty meets function — turning ideas into intuitive interfaces that come alive.",
@@ -57,6 +59,13 @@ export const About = {
     paragraphs: [
       "Every project starts with listening: to the users, the business, the pain points. Then we dig in with research, ideas, and sketches — shaping thoughtful, beautiful experiences with purpose behind every pixel.",
       "We treat design like songwriting: You start with a problem, add structure, emotion, and just enough weirdness to make it memorable. No copy-paste. No templates. Just clear thinking and good taste."
+    ]
+  },
+  drives: {
+    title: "What drives me",
+    paragraphs: [
+      "Our work is shaped by what we live and love — family, art, skateboarding, loud music, and quiet moments.",
+      "We believe good taste comes from culture, curiosity, and care. That’s what we bring into every project — not just design skills, but soul."
     ]
   }
 };

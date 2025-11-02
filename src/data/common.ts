@@ -69,3 +69,68 @@ export const About = {
     ]
   }
 };
+
+// Contact Page Content
+export const contactContent = {
+  heroTitle: "Let's talk",
+  heroSubtitle: "Whether it's a new project or a quick question, I'm here to connect.",
+  profile: {
+    imageSrc: "images/profile/profile-img.png",
+    imageAlt: "Menath Lakvindu",
+    name: "Menath Lakvindu",
+    role: "Creative Developer"
+  },
+  email: {
+    display: "hello@menath",
+    href: "#",
+    ctaLabel: "Instagram"
+  },
+  form: {
+    placeholders: {
+      name: "Name *",
+      email: "E-mail *",
+      message: "Message (Tell us about your project)"
+    },
+    submitLabel: "Get in touch"
+  },
+  links: [
+    { href: "#", label: "Instagram" }
+  ],
+  faqHeader: {
+    title: "FAQ",
+    subtitle: "We've heard it all. Here's everything you need to know before working with us.",
+    askLabel: "Ask a question"
+  },
+  faq: [
+    {
+      question: "What's your process for Brand Identity?",
+      answer:
+        "We start by understanding the problem and how you solve it. Then define what makes your brand unique — its values, vision, and positioning. From there, we shape the identity: voice and tone, visual direction, trademark, brand colors, and typography. After that, we design social media guidelines, identity assets, and a full design system. The result? A brandbook your whole team can use — so no one's ever guessing the logo or forgetting the brand's purpose."
+    },
+    {
+      question: "What's included in your UX/UI process?",
+      answer:
+        "We start with research: interviews, BI data, competitor and support analysis — to define the problem and plan the project. Then we move to structure: user flows, low-fidelity wireframes, and quick sketches. From there, we build full product flows, UI in high fidelity, content guides, and run usability tests. Next comes visual design: direction, UI, animations, and a scalable design system. After launch, we don't disappear — we validate with real users, analyze feedback, test, and improve."
+    },
+    {
+      question: "Can I come back for updates after launch?",
+      answer:
+        "Absolutely. Most clients stay in touch, and we're happy to help with iterations, improvements, and new features as your product grows."
+    },
+    {
+      question: "What if I just need a logo?",
+      answer:
+        "We don't do \"just logos.\" We build identities that work — and that means research, context, and strategy. If you want something fast and generic, we might not be the right fit."
+    },
+    {
+      question: "What kind of research do you use?",
+      answer:
+        "Depending on the project, we combine user interviews, competitor analysis, BI data, support insights, and testing sessions to shape the right solution."
+    },
+    {
+      question: "Do you design fast MVPs?",
+      answer:
+        "Yes — but still with purpose. Even if we move fast, we validate core assumptions and design around real needs, not guesswork."
+    }
+  ]
+}

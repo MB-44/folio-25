@@ -443,6 +443,14 @@
   transform: translateX(10px);
 }
 
+.faqAskBtn:hover {
+  color: #de322c;
+}
+
+.faqAskBtn:hover .arrow path {
+  stroke: #0d0d0d;
+}
+
 .faqAskBtn .arrow {
   flex-shrink: 0;
   width: 24px;

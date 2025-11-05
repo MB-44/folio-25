@@ -217,8 +217,36 @@
   position: relative;
 }
 
-.link:hover .linkText {
+.link:not(.instagramLink):hover .linkText {
   animation: scroll 0.6s ease-in-out;
+}
+
+.instagramLink .arrowSvg {
+  color: #de322c;
+  transform: rotate(0deg);
+  transition: color 0.3s ease, transform 0.4s ease;
+}
+
+.instagramLink .linkText {
+  color: #0d0d0d;
+  transition: color 0.3s ease;
+}
+
+.instagramLink:hover .arrowSvg {
+  color: #0d0d0d;
+  transform: rotate(0deg);
+}
+
+.instagramLink:hover .linkText {
+  color: #de322c;
+  animation: scrollY 0.6s ease-in-out;
+}
+
+@keyframes scrollY {
+  0% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(-100%); opacity: 0; }
+  51% { transform: translateY(100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }
 
 @keyframes scroll {
@@ -248,7 +276,7 @@
   flex-shrink: 0;
 }
 
-.link:hover .arrowSvg {
+.link:not(.instagramLink):hover .arrowSvg {
   transform: rotate(0deg);
 }
 
@@ -620,7 +648,7 @@
   .textarea::placeholder {
     font-size: 16px;
   }
-
+  
   .formSection {
     padding: 80px 24px;
   }

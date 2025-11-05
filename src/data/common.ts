@@ -71,7 +71,7 @@ export const About = {
 };
 
 // Contact Page Content
-export const contactContent = {
+export const Contact = {
   heroTitle: "Let's talk",
   heroSubtitle: "Whether it's a new project or a quick question, I'm here to connect.",
   profile: {

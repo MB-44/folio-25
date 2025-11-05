@@ -44,7 +44,7 @@ export const About = {
     leftTitle: "Meet Menath",
     middleDescription: "I've always wanted to make work I'm proud of. Every project is a chance to do something different, something we actually care about.",
     profile: {
-      src: "images/profile/profile-img.png",
+      src: "images/profile/profileImage.png",
       alt: "Menath Baddegama",
       name: "Menath Baddegama",
       role: "Creative Developer"
@@ -75,7 +75,7 @@ export const Contact = {
   heroTitle: "Let's talk",
   heroSubtitle: "Whether it's a new project or a quick question, I'm here to connect.",
   profile: {
-    imageSrc: "images/profile/profile-img.png",
+    imageSrc: "images/profile/profileImage.png",
     imageAlt: "Menath Lakvindu",
     name: "Menath Lakvindu",
     role: "Creative Developer"

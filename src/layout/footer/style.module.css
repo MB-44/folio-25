@@ -22,14 +22,15 @@
   grid-template-columns: auto 1fr;
   align-items: center;
   gap: 24px;
+  margin-left: 0;
 }
 
 .logoLink { display: inline-block; line-height: 0; }
 .logo {
   display: inline-block;
-  width: 174px;
-  height: 74px;
-  background-image: url('https://framerusercontent.com/images/aVbp0QkUZBIjfbMURLlUbnwCIjs.svg');
+  width: 200px;
+  height: 150px;
+  background-image: url('/images/svg/logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

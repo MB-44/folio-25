@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Footer } from '@/layout'
 import { ParallaxEffect, RandomUnderline } from '@/components'
+import Reveal from '@/components/effects/reveal'
 import styles from './style.module.css'
 import { Contact } from '@/data'
 
@@ -166,7 +167,10 @@ const ContactPage = () => {
           </div>
         </div>
       </section>
-      <Footer />
+
+      <Reveal animation="fade-up" distance={20} duration={3000} once>
+        <Footer />
+      </Reveal>
     </div>
     </ParallaxEffect>
   )

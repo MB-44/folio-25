@@ -4,6 +4,7 @@ import styles from "./style.module.css";
 type Props = {
   children: string | JSX.Element;
   className?: string;
+  color?: string;
 };
 
 const SVG_VARIANTS = [
@@ -15,7 +16,7 @@ const SVG_VARIANTS = [
   `<svg width="310" height="40" viewBox="0 0 310 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 29.8857C52.3147 26.9322 99.4329 21.6611 146.503 17.1765C151.753 16.6763 157.115 15.9505 162.415 15.6551C163.28 15.6069 165.074 15.4123 164.383 16.4275C161.704 20.3627 157.134 23.7551 153.95 27.4983C153.209 28.3702 148.194 33.4751 150.669 34.6605C153.638 36.0819 163.621 32.6063 165.039 32.2029C178.55 28.3608 191.49 23.5968 204.869 19.5404C231.903 11.3436 259.347 5.83254 288.793 5.12258C294.094 4.99476 299.722 4.82265 305 5.45025" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg>`
 ];
 
-export default function RandomUnderline({ children, className }: Props) {
+export default function RandomUnderline({ children, className, color }: Props) {
   const wrapperRef = useRef<HTMLSpanElement | null>(null);
   const boxRef = useRef<HTMLDivElement | null>(null);
   const animRef = useRef<number | null>(null);
@@ -75,7 +76,7 @@ export default function RandomUnderline({ children, className }: Props) {
       svg.setAttribute("preserveAspectRatio", "none");
       const path = svg.querySelector("path") as SVGPathElement | null;
       if (path) {
-        path.setAttribute("stroke", "currentColor");
+        path.setAttribute("stroke", color || "currentColor");
         drawIn(path, 500);
       }
     }

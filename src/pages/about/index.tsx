@@ -1,7 +1,7 @@
 import React from 'react'
 import { About } from '@/data'
 import { Footer } from '@/layout'
-import { Magnetic } from '@/components'
+import { Magnetic, RandomUnderline } from '@/components'
 import styles from './style.module.css'
 
 const WordMagnet = ({ text }: { text: string }) => {
@@ -26,7 +26,10 @@ const AboutPage = () => {
       {/* Hero Section */}
       <section className={styles.heroSection}>
         <div className={styles.heroContainer}>
-          <h1 className={styles.heroTitle}>{About.hero.title}</h1>
+          <h1 className={styles.heroTitle}>
+            <RandomUnderline color="#de322c">{About.hero.title}</RandomUnderline>
+            {/* {About.hero.title} */}
+          </h1>
 
           <div className={styles.contentWrapper}>
             <div className={styles.leftContent}>

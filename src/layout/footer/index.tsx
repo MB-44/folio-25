@@ -1,8 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { Magnetic } from '@/components';
-import RandomUnderline from '@/components/effects/randomUnderline';
+import { Magnetic, RandomUnderline } from '@/components';
 import { Footer as FooterText , socialLinks } from '@/data';
 import styles from './style.module.css';
 import Clock from './clock';

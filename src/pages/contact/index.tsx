@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Footer } from '@/layout'
+import { ParallaxEffect, RandomUnderline } from '@/components'
 import styles from './style.module.css'
 import { Contact } from '@/data'
 
@@ -24,11 +25,15 @@ const ContactPage = () => {
   }
 
   return (
+    <ParallaxEffect>
     <div className={styles.contactPage}>
       {/* Hero Section  */}
       <section className={styles.heroSection}>
         <div className={styles.heroContainer}>
-          <h1 className={styles.heroTitle}>{Contact.heroTitle}</h1>
+          <h1 className={styles.heroTitle}>
+            <RandomUnderline color="#de322c">{Contact.heroTitle}</RandomUnderline>
+            {/* {Contact.heroTitle} */}
+          </h1>
           <div className={styles.contentWrapper}>
             <div className={styles.leftContent}>
               <p className={styles.heroSubtitle}>{Contact.heroSubtitle}</p>
@@ -163,6 +168,7 @@ const ContactPage = () => {
       </section>
       <Footer />
     </div>
+    </ParallaxEffect>
   )
 }
 

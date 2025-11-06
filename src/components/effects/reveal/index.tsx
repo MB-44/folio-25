@@ -10,25 +10,15 @@ type Animation =
   | "zoom-out";
 
 type RevealProps<T extends keyof JSX.IntrinsicElements = "div"> = {
-  /** Element tag to render (div, section, li, etc.) */
   as?: T;
-  /** Extra classNames */
   className?: string;
-  /** Children content */
   children: React.ReactNode;
-  /** IntersectionObserver threshold */
   threshold?: number | number[];
-  /** IntersectionObserver rootMargin */
   rootMargin?: string;
-  /** If true, reveals once and stays shown */
   once?: boolean;
-  /** Animation variant */
   animation?: Animation;
-  /** Transition duration in ms */
   duration?: number;
-  /** Transition delay in ms */
   delay?: number;
-  /** Translate/scale distance in px (or unitless for zoom) */
   distance?: number;
 } & Omit<JSX.IntrinsicElements[T], "ref" | "children" | "className">;
 
@@ -87,7 +77,6 @@ const Reveal = forwardRef<HTMLElement, RevealProps>((props, refFromParent) => {
   }, [threshold, rootMargin, once]);
 
   const styleVars: React.CSSProperties = {
-    // ms → s in CSS
     ["--reveal-duration" as any]: `${duration}ms`,
     ["--reveal-delay" as any]: `${delay}ms`,
     ["--reveal-distance" as any]: `${distance}px`,

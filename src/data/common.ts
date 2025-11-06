@@ -1,15 +1,30 @@
-import { title } from "process";
+// common.ts
 
-// Main Page Content
 export const Home = {
   description: "I craft web experiences where beauty meets function — turning ideas into intuitive interfaces that come alive.",
 };
 
-// Footer Content
 export const Footer = {
-  description: "I don’t just design — I help shape brands and products that feel real, work beautifully, and grow with you."
-}
-// Social Media links & content
+  newsTitleLines: ["Stay", "connected"],
+  newsSub: "Leave your email — I will write back.",
+  form: {
+    placeholders: {
+      email: "E-mail"
+    },
+    submitLabel: "Subscribe"
+  },
+  contactEmail: {
+    display: "hello@menath.b",
+    href: "mailto:hello@menath.b"
+  },
+  bioLines: [
+    "I don’t just design — I help shape brands and",
+    "products that feel real, work beautifully, and grow with you."
+  ],
+  version: "2025 © Edition",
+  localTimeLabel: "Local Time -"
+};
+
 export const socialLinks = [
   {
     name: "GitHub",
@@ -24,7 +39,7 @@ export const socialLinks = [
     visible: true,
   },
   {
-    name: "LinkedIn",
+    name: "Linkedin",
     url: "https://linkedin.com/in/menathbaddegama/",
     icon: "linkedin",
     visible: true,
@@ -37,7 +52,6 @@ export const socialLinks = [
   },
 ];
 
-// About Page Content
 export const About = {
   hero: {
     title: "About me",
@@ -70,7 +84,6 @@ export const About = {
   }
 };
 
-// Contact Page Content
 export const Contact = {
   heroTitle: "Let's talk",
   heroSubtitle: "Whether it's a new project or a quick question, I'm here to connect.",
@@ -110,7 +123,7 @@ export const Contact = {
     {
       question: "What's included in your UX/UI process?",
       answer:
-        "We start with research: interviews, BI data, competitor and support analysis — to define the problem and plan the project. Then we move to structure: user flows, low-fidelity wireframes, and quick sketches. From there, we build full product flows, UI in high fidelity, content guides, and run usability tests. Next comes visual design: direction, UI, animations, and a scalable design system. After launch, we don't disappear — we validate with real users, analyze feedback, test, and improve."
+        "We start with research: interviews, BI data, competitor and support analysis — to define the problem and plan the project. Then we move to structure: user flows, low-fidelity wireframes, and quick sketches. From there we build full product flows, UI in high fidelity, content guides, and run usability tests."
     },
     {
       question: "Can I come back for updates after launch?",
@@ -133,4 +146,4 @@ export const Contact = {
         "Yes — but still with purpose. Even if we move fast, we validate core assumptions and design around real needs, not guesswork."
     }
   ]
-}
+};

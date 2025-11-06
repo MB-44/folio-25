@@ -2,9 +2,10 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { Magnetic } from '@/components';
-import Clock from './clock';
-import { socialLinks } from '@/data';
+import RandomUnderline from '@/components/effects/randomUnderline';
+import { Footer as FooterText , socialLinks } from '@/data';
 import styles from './style.module.css';
+import Clock from './clock';
 
 export default function Footer() {
   const [time, setTime] = useState(new Date());
@@ -28,11 +29,11 @@ export default function Footer() {
           <div className={styles.newsletter}>
             <div className={styles.newsHeading}>
               <p className={styles.newsTitle}>
-                <span>Stay</span>
-                <span>connected</span>
+                <span>{FooterText.newsTitleLines[0]}</span>
+                <span>{FooterText.newsTitleLines[1]}</span>
               </p>
               <p className={styles.newsSub}>
-                Leave your email — I will write back.
+                {FooterText.newsSub}
               </p>
             </div>
             <form className={styles.form} onSubmit={(e)=>e.preventDefault()}>
@@ -40,12 +41,12 @@ export default function Footer() {
                 <input
                   type="email"
                   name="email"
-                  placeholder="E-mail"
+                  placeholder={FooterText.form.placeholders.email}
                   required
                   className={styles.input}
                 />
               </div>
-              <button type="submit" className={styles.cta} aria-label="Subscribe">
+              <button type="submit" className={styles.cta} aria-label={FooterText.form.submitLabel}>
                 <svg
                   width="24"
                   height="24"
@@ -100,21 +101,23 @@ export default function Footer() {
 
         <div className={styles.bottom}>
           <div className={styles.contactBlock}>
-            <a href="mailto:hello@menath.b" className={styles.contactEmail}>hello@menath.b</a>
+            <a href={FooterText.contactEmail.href} className={styles.contactEmail}>
+              <RandomUnderline>{FooterText.contactEmail.display}</RandomUnderline>
+            </a>
           </div>
 
           <div className={styles.bioBlock}>
             <p className={styles.bioText}>
-              <span className={styles.line}>I don’t just design — I help shape brands and</span>
-              <span className={styles.line}>products that feel real, work beautifully, and grow with you.</span>
+              <span className={styles.line}>{FooterText.bioLines[0]}</span>
+              <span className={styles.line}>{FooterText.bioLines[1]}</span>
             </p>
           </div>
         </div>
 
         <div className={styles.metaRow}>
-          <p className={styles.version}>2025 © Edition</p>
+          <p className={styles.version}>{FooterText.version}</p>
           <p className={styles.localTime}>
-            Local Time - <Clock/>
+            {FooterText.localTimeLabel} <Clock/>
           </p>
         </div>
       </div>

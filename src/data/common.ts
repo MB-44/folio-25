@@ -1,5 +1,7 @@
 // common.ts
 
+import { title } from "process";
+
 export const Home = {
   description: "I craft web experiences where beauty meets function — turning ideas into intuitive interfaces that come alive.",
 };
@@ -97,6 +99,13 @@ export const Contact = {
     display: "hello@menath",
     href: "#",
     ctaLabel: "Instagram"
+  },
+  getInTouch: {
+    title: "Get in touch",
+    paragraphs: [
+      "I'm always excited to connect with new people and explore potential collaborations. Whether you have a project in mind or just want to say hi, feel free to reach out!",
+      "Use the form below to send me a message, and I'll get back to you as soon as I can. Looking forward to hearing from you!"
+    ]
   },
   form: {
     placeholders: {

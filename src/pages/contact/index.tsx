@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Footer } from '@/layout'
-import { ParallaxEffect, RandomUnderline } from '@/components'
+import { ParallaxEffect, RandomUnderline, Magnetic } from '@/components'
 import Reveal from '@/components/effects/reveal'
-import styles from './style.module.css'
 import { Contact } from '@/data'
+import styles from './style.module.css'
 
 const ContactPage = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -25,10 +25,27 @@ const ContactPage = () => {
     console.log('Form submitted:', formData)
   }
 
+  const WordMagnet = ({ text }: { text: string }) => {
+    const words = text.split(' ')
+      return (
+        <>
+          {words.map((word, i) => (
+          <React.Fragment key={i}>
+            <Magnetic>
+              <span className={styles.magneticWord}>{word}</span>
+            </Magnetic>
+            {i < words.length - 1 && ' '}
+          </React.Fragment>
+          ))}
+        </>
+      )
+  }
+
   return (
     <ParallaxEffect>
     <div className={styles.contactPage}>
-      {/* Hero Section  */}
+    {/* Hero Section  */}
+    <Reveal animation="fade-up" distance={28} duration={1500} once>
       <section className={styles.heroSection}>
         <div className={styles.heroContainer}>
           <h1 className={styles.heroTitle}>
@@ -127,7 +144,25 @@ const ContactPage = () => {
           </div>
         </div>
       </section>
-      {/* FAQ Section */}
+    </Reveal>
+    {/* Get In touch section */}
+    <Reveal animation="fade-up" distance={28} duration={1500} once>
+      <section className={styles.getInTouchSection}>
+        <div className={styles.getInTouchContainer}>
+          <div className={styles.getInTouchLeft}>
+            <h2 className={styles.getInTouchTitle}>{Contact.getInTouch.title}</h2>
+          </div>
+          <div className={styles.getInTouchMiddle}>
+            <div className={styles.getInTouchText}>
+              <p><WordMagnet text={Contact.getInTouch.paragraphs[0]} /></p>
+              <p><WordMagnet text={Contact.getInTouch.paragraphs[1]} /></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </Reveal>
+    {/* FAQ Section */}
+    <Reveal animation="fade-up" distance={28} duration={1500} once>
       <section className={styles.faqSection}>
         <div className={styles.faqContainer}>
           <div className={styles.faqGrid}>
@@ -167,10 +202,11 @@ const ContactPage = () => {
           </div>
         </div>
       </section>
+    </Reveal>
 
-      <Reveal animation="fade-up" distance={20} duration={3000} once>
-        <Footer />
-      </Reveal>
+    <Reveal animation="fade-up" distance={28} duration={1500} once>
+      <Footer />
+    </Reveal>
     </div>
     </ParallaxEffect>
   )

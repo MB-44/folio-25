@@ -9,7 +9,7 @@ export default function Intro() {
         <div className={styles.media}>
           <div className={styles.mediaInner}>
             <Image
-              src="/images/intro-portrait.jpg"
+              src="/images/profile/profileImage.png"
               alt="Studio portrait"
               fill
               sizes="(max-width: 900px) 100vw, 520px"

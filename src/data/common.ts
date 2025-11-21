@@ -1,15 +1,32 @@
+// common.ts
+
 import { title } from "process";
 
-// Main Page Content
 export const Home = {
   description: "I craft web experiences where beauty meets function — turning ideas into intuitive interfaces that come alive.",
 };
 
-// Footer Content
 export const Footer = {
-  description: "I don’t just design — I help shape brands and products that feel real, work beautifully, and grow with you."
-}
-// Social Media links & content
+  newsTitleLines: ["Stay", "connected"],
+  newsSub: "Leave your email — I will write back.",
+  form: {
+    placeholders: {
+      email: "E-mail"
+    },
+    submitLabel: "Subscribe"
+  },
+  contactEmail: {
+    display: "hello@menath.b",
+    href: "mailto:hello@menath.b"
+  },
+  bioLines: [
+    "I don’t just design — I help shape brands and",
+    "products that feel real, work beautifully, and grow with you."
+  ],
+  version: "2025 © Edition",
+  localTimeLabel: "Local Time -"
+};
+
 export const socialLinks = [
   {
     name: "GitHub",
@@ -24,7 +41,7 @@ export const socialLinks = [
     visible: true,
   },
   {
-    name: "LinkedIn",
+    name: "Linkedin",
     url: "https://linkedin.com/in/menathbaddegama/",
     icon: "linkedin",
     visible: true,
@@ -37,14 +54,13 @@ export const socialLinks = [
   },
 ];
 
-// About Page Content
 export const About = {
   hero: {
     title: "About me",
     leftTitle: "Meet Menath",
     middleDescription: "I've always wanted to make work I'm proud of. Every project is a chance to do something different, something we actually care about.",
     profile: {
-      src: "images/profile/profile-img.png",
+      src: "images/profile/profileImage.png",
       alt: "Menath Baddegama",
       name: "Menath Baddegama",
       role: "Creative Developer"
@@ -70,12 +86,11 @@ export const About = {
   }
 };
 
-// Contact Page Content
-export const contactContent = {
+export const Contact = {
   heroTitle: "Let's talk",
   heroSubtitle: "Whether it's a new project or a quick question, I'm here to connect.",
   profile: {
-    imageSrc: "images/profile/profile-img.png",
+    imageSrc: "images/profile/profileImage.png",
     imageAlt: "Menath Lakvindu",
     name: "Menath Lakvindu",
     role: "Creative Developer"
@@ -84,6 +99,13 @@ export const contactContent = {
     display: "hello@menath",
     href: "#",
     ctaLabel: "Instagram"
+  },
+  getInTouch: {
+    title: "Get in touch",
+    paragraphs: [
+      "I'm always excited to connect with new people and explore potential collaborations. Whether you have a project in mind or just want to say hi, feel free to reach out!",
+      "Use the form below to send me a message, and I'll get back to you as soon as I can. Looking forward to hearing from you!"
+    ]
   },
   form: {
     placeholders: {
@@ -110,7 +132,7 @@ export const contactContent = {
     {
       question: "What's included in your UX/UI process?",
       answer:
-        "We start with research: interviews, BI data, competitor and support analysis — to define the problem and plan the project. Then we move to structure: user flows, low-fidelity wireframes, and quick sketches. From there, we build full product flows, UI in high fidelity, content guides, and run usability tests. Next comes visual design: direction, UI, animations, and a scalable design system. After launch, we don't disappear — we validate with real users, analyze feedback, test, and improve."
+        "We start with research: interviews, BI data, competitor and support analysis — to define the problem and plan the project. Then we move to structure: user flows, low-fidelity wireframes, and quick sketches. From there we build full product flows, UI in high fidelity, content guides, and run usability tests."
     },
     {
       question: "Can I come back for updates after launch?",
@@ -133,4 +155,4 @@ export const contactContent = {
         "Yes — but still with purpose. Even if we move fast, we validate core assumptions and design around real needs, not guesswork."
     }
   ]
-}
+};

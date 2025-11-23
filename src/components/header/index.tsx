@@ -4,6 +4,7 @@ import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 import gsap from 'gsap';
 import { AudioControlButton, Rounded, Magnetic } from "@/components";
 import styles from './style.module.css';
@@ -77,31 +78,33 @@ export default function Header(): JSX.Element {
         <>
         <div ref={header} className={styles.header}>
             <Magnetic>
-                <div className={styles.logo}>
-                    <div className={styles.name}>
-                        <p className={styles.codeBy}>Code by</p>
-                        <p className={styles.menath}>Menath</p>
-                        {/* <p className={styles.baddegama}>Baddegama</p> */}
+                <Link href="/">
+                    <div className={styles.logo}>
+                        <div className={styles.name}>
+                            <p className={styles.codeBy}>Code by</p>
+                            <p className={styles.menath}>Menath</p>
+                            {/* <p className={styles.baddegama}>Baddegama</p> */}
+                        </div>
                     </div>
-                </div>
+                </Link>
             </Magnetic>
             <div className={styles.nav}>
                 <div className={styles.navLinks}>
                     <Magnetic>
                         <div className={styles.el} onMouseEnter={handleNavItemHover}>
-                            <a>Work</a>
+                            <Link href="/work">Work</Link>
                             <div className={styles.indicator}></div>
                         </div>
                     </Magnetic>
                     <Magnetic>
                         <div className={styles.el} onMouseEnter={handleNavItemHover}>
-                            <a>About</a>
+                            <Link href="/about">About</Link>
                             <div className={styles.indicator}></div>
                         </div>
                     </Magnetic>
                     <Magnetic>
                         <div className={styles.el} onMouseEnter={handleNavItemHover}>
-                            <a>Contact</a>
+                            <Link href="/contact">Contact</Link>
                             <div className={styles.indicator}></div>
                         </div>
                     </Magnetic>

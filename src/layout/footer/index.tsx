@@ -75,7 +75,7 @@ export default function Footer() {
           <div className={styles.linksWrap}>
             <div className={styles.navCol}>
               <Magnetic><Link href="/about" className={styles.link}>About</Link></Magnetic>
-              <Magnetic><Link href="/projects" className={styles.link}>Work</Link></Magnetic>
+              <Magnetic><Link href="/work" className={styles.link}>Work</Link></Magnetic>
               <Magnetic><Link href="/contact" className={styles.link}>Contact</Link></Magnetic>
             </div>
             <div className={styles.socialCol}>

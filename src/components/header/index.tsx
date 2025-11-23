@@ -35,18 +35,26 @@ export default function Header(): JSX.Element {
 
         const show = () => gsap.to(button.current, { scale: 1, duration: 0.25, ease: "power1.out" });
         const hide = () => gsap.to(button.current, { scale: 0, duration: 0.25, ease: "power1.out" });
+        const hideHeader = () => gsap.set(header.current, { y: -100 });
+        const showHeader = () => gsap.set(header.current, { y: 0 });
 
         const st = ScrollTrigger.create({
             trigger: header.current,
             start: "bottom top",
             end: "bottom top",
-            onEnter: show,
-            onLeaveBack: hide
+            onEnter: () => {
+                show();
+                hideHeader();
+            },
+            onLeaveBack: () => {
+                hide();
+                showHeader();
+            }
         });
 
         if (header.current) {
             const headerBottom = header.current.getBoundingClientRect().bottom + window.scrollY;
-            if (window.scrollY >= headerBottom) show(); else hide();
+            if (window.scrollY >= headerBottom) { show(); hideHeader(); } else { hide(); showHeader(); }
         }
 
         return () => {

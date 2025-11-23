@@ -1,5 +1,5 @@
 .header {
-    position: absolute;
+    position: fixed;
     z-index: 3;
     display: flex;
     top: 0;
@@ -10,7 +10,7 @@
     font-weight: 300;
     box-sizing: border-box;
     align-items: center;
-} 
+}
 
 .navLinks {
     display: flex;
@@ -171,11 +171,11 @@
 }
 
 .backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(2px);
-  z-index: 3; 
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(2px);
+    z-index: 3;
 }
 
 @media (max-width: 768px) {

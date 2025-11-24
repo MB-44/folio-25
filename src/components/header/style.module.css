@@ -195,3 +195,12 @@
     text-decoration: none !important;
     color: inherit !important;
 }
+
+/* Light theme color overrides */
+.headerLight {
+    color: #0d0d0d;
+}
+
+.headerLight .indicator {
+    background-color: #0d0d0d !important;
+}

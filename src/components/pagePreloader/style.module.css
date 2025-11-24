@@ -1,0 +1,53 @@
+.introduction {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 99;
+    background-color: #de322c;
+}
+
+.introduction svg {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: calc(100% + 300px);
+}
+
+.introduction svg path {
+    fill: #de322c;
+}
+
+.introduction p {
+    display: flex;
+    color: #ffffff;
+    font-size: 42px;
+    align-items: center;
+    position: absolute;
+    z-index: 1;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.introduction p span {
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+    .introduction p {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .introduction p {
+        font-size: 24px;
+    }
+}

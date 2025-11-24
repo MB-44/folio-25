@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { AnimatePresence } from 'framer-motion'
 import { Footer } from '@/layout'
-import { ParallaxEffect, RandomUnderline, Magnetic } from '@/components'
+import { ParallaxEffect, RandomUnderline, Magnetic, PagePreLoader } from '@/components'
 import Reveal from '@/components/effects/reveal'
 import { Contact } from '@/data'
 import styles from './style.module.css'
 
 const ContactPage = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const [formData, setFormData] = useState({
     name: '',
@@ -41,8 +43,18 @@ const ContactPage = () => {
       )
   }
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
+
   return (
-    <ParallaxEffect>
+    <>
+      <AnimatePresence mode="wait">
+        {isLoading && <PagePreLoader pageName="Contact" />}
+      </AnimatePresence>
+      <ParallaxEffect>
     <div className={styles.contactPage}>
     {/* Hero Section  */}
     <Reveal animation="fade-up" distance={28} duration={1500} once>
@@ -208,7 +220,8 @@ const ContactPage = () => {
       <Footer />
     </Reveal>
     </div>
-    </ParallaxEffect>
+      </ParallaxEffect>
+    </>
   )
 }
 

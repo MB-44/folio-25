@@ -183,3 +183,15 @@
         display: none;
     }
 }
+
+/* Link styling */
+.header .logo a {
+    text-decoration: none !important;
+    color: inherit !important;
+    display: flex;
+}
+
+.header .nav a {
+    text-decoration: none !important;
+    color: inherit !important;
+}

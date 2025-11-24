@@ -18,7 +18,7 @@ export default function Header(): JSX.Element {
     const audioRef = useRef<HTMLAudioElement | null>(null);
 
     useEffect(() => {
-        audioRef.current = new Audio('/audio/ui_magbutton.mp3'); 
+        audioRef.current = new Audio('/audio/ui_magbutton.mp3');
         return () => {
             if (audioRef.current) {
                 audioRef.current.pause();
@@ -76,64 +76,64 @@ export default function Header(): JSX.Element {
 
     return (
         <>
-        <div ref={header} className={styles.header}>
-            <Magnetic>
-                <Link href="/">
-                    <div className={styles.logo}>
-                        <div className={styles.name}>
-                            <p className={styles.codeBy}>Code by</p>
-                            <p className={styles.menath}>Menath</p>
-                            {/* <p className={styles.baddegama}>Baddegama</p> */}
+            <div ref={header} className={styles.header}>
+                <Magnetic>
+                    <Link href="/">
+                        <div className={styles.logo}>
+                            <div className={styles.name}>
+                                <p className={styles.codeBy}>Code by</p>
+                                <p className={styles.menath}>Menath</p>
+                                {/* <p className={styles.baddegama}>Baddegama</p> */}
+                            </div>
                         </div>
+                    </Link>
+                </Magnetic>
+                <div className={styles.nav}>
+                    <div className={styles.navLinks}>
+                        <Magnetic>
+                            <div className={styles.el} onMouseEnter={handleNavItemHover}>
+                                <Link href="/work">Work</Link>
+                                <div className={styles.indicator}></div>
+                            </div>
+                        </Magnetic>
+                        <Magnetic>
+                            <div className={styles.el} onMouseEnter={handleNavItemHover}>
+                                <Link href="/about">About</Link>
+                                <div className={styles.indicator}></div>
+                            </div>
+                        </Magnetic>
+                        <Magnetic>
+                            <div className={styles.el} onMouseEnter={handleNavItemHover}>
+                                <Link href="/contact">Contact</Link>
+                                <div className={styles.indicator}></div>
+                            </div>
+                        </Magnetic>
                     </div>
-                </Link>
-            </Magnetic>
-            <div className={styles.nav}>
-                <div className={styles.navLinks}>
-                    <Magnetic>
-                        <div className={styles.el} onMouseEnter={handleNavItemHover}>
-                            <Link href="/work">Work</Link>
-                            <div className={styles.indicator}></div>
-                        </div>
-                    </Magnetic>
-                    <Magnetic>
-                        <div className={styles.el} onMouseEnter={handleNavItemHover}>
-                            <Link href="/about">About</Link>
-                            <div className={styles.indicator}></div>
-                        </div>
-                    </Magnetic>
-                    <Magnetic>
-                        <div className={styles.el} onMouseEnter={handleNavItemHover}>
-                            <Link href="/contact">Contact</Link>
-                            <div className={styles.indicator}></div>
-                        </div>
-                    </Magnetic>
-                </div>
-                <div className={styles.audioButtonWrapper}>
-                    <AudioControlButton 
-                        initialPlayState={false}
-                        onToggle={handleAudioToggle}
-                        loopAudioSrc="/audio/cosmic_drift.mp3"
-                        uiSoundSrc="/audio/ui.mp3"
-                    />
+                    <div className={styles.audioButtonWrapper}>
+                        <AudioControlButton
+                            initialPlayState={false}
+                            onToggle={handleAudioToggle}
+                            loopAudioSrc="/audio/cosmic_drift.mp3"
+                            uiSoundSrc="/audio/ui.mp3"
+                        />
+                    </div>
                 </div>
             </div>
-        </div>
-        <div ref={button} className={styles.headerButtonContainer}>
-            <Rounded onClick={() => { setIsActive(!isActive) }} className={`${styles.button}`}>
-                <Magnetic>
-                    <div className={`${styles.burger} ${isActive ? styles.burgerActive : ""}`}></div>
-                </Magnetic>
-            </Rounded>
-        </div>
-        <AnimatePresence mode="wait">
-            {isActive && (
-                <>
-                    <div className={styles.backdrop} onClick={() => setIsActive(false)} />
-                    <Nav />
-                </>
-            )}
-        </AnimatePresence>
+            <div ref={button} className={styles.headerButtonContainer}>
+                <Rounded onClick={() => { setIsActive(!isActive) }} className={`${styles.button}`}>
+                    <Magnetic>
+                        <div className={`${styles.burger} ${isActive ? styles.burgerActive : ""}`}></div>
+                    </Magnetic>
+                </Rounded>
+            </div>
+            <AnimatePresence mode="wait">
+                {isActive && (
+                    <>
+                        <div className={styles.backdrop} onClick={() => setIsActive(false)} />
+                        <Nav />
+                    </>
+                )}
+            </AnimatePresence>
         </>
     );
 }

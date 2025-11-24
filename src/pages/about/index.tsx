@@ -3,6 +3,7 @@ import { AnimatePresence } from 'framer-motion'
 import { About } from '@/data'
 import { Footer } from '@/layout'
 import { Magnetic, RandomUnderline, PagePreLoader } from '@/components'
+import Header from '@/components/header'
 import styles from './style.module.css'
 
 const WordMagnet = ({ text }: { text: string }) => {
@@ -33,15 +34,17 @@ const AboutPage = () => {
   return (
     <>
       <AnimatePresence mode="wait">
-        {isLoading && <PagePreLoader pageName="About Me" />}
+        {isLoading && <PagePreLoader pageName="About me" />}
       </AnimatePresence>
+
+      <Header theme="light" />
+
       <div className={styles.aboutPage}>
         {/* Hero Section */}
         <section className={styles.heroSection}>
           <div className={styles.heroContainer}>
             <h1 className={styles.heroTitle}>
               <RandomUnderline color="#de322c">{About.hero.title}</RandomUnderline>
-              {/* {About.hero.title} */}
             </h1>
 
             <div className={styles.contentWrapper}>

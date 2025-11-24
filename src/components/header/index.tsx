@@ -10,7 +10,11 @@ import { AudioControlButton, Rounded, Magnetic } from "@/components";
 import styles from './style.module.css';
 import Nav from './nav';
 
-export default function Header(): JSX.Element {
+interface HeaderProps {
+    theme?: 'light' | 'dark';
+}
+
+export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Element {
     const header = useRef<HTMLDivElement>(null);
     const [isActive, setIsActive] = useState<boolean>(false);
     const pathname = usePathname();
@@ -76,7 +80,7 @@ export default function Header(): JSX.Element {
 
     return (
         <>
-            <div ref={header} className={styles.header}>
+            <div ref={header} className={`${styles.header} ${theme === 'light' ? styles.headerLight : ''}`}>
                 <Magnetic>
                     <Link href="/">
                         <div className={styles.logo}>

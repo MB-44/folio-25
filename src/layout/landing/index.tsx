@@ -15,7 +15,6 @@ export default function Home() {
   const slider = useRef(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const sliderContainer = useRef<HTMLDivElement | null>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   let xPercent = 0;
   let direction = -1;
@@ -31,25 +30,7 @@ export default function Home() {
     };
   }, []);
 
-  // Mouse parallax effect
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const { clientX, clientY } = e;
-      const { innerWidth, innerHeight } = window;
 
-      // Calculate position relative to center (-1 to 1)
-      const x = (clientX - innerWidth / 2) / (innerWidth / 2);
-      const y = (clientY - innerHeight / 2) / (innerHeight / 2);
-
-      setMousePosition({ x, y });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
 
   const handleTextHover = () => {
     if (audioRef.current) {
@@ -102,23 +83,12 @@ export default function Home() {
     xPercent -= 0.03 * direction;
   }
 
-  // Calculate parallax transform with 3D effect
-  const parallaxStrength = 20; // pixels for translation
-  const rotationStrength = 5; // degrees for rotation
-  const parallaxTransform = {
-    transform: `
-      translate3d(${mousePosition.x * parallaxStrength}px, ${mousePosition.y * parallaxStrength}px, 0)
-      rotateX(${-mousePosition.y * rotationStrength}deg)
-      rotateY(${mousePosition.x * rotationStrength}deg)
-      scale(1.05)
-    `,
-    transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-  };
+
 
   return (
     <motion.main variants={slideUp} initial="initial" animate="enter" className={styles.landing}>
 
-      <div className={styles.bg} style={parallaxTransform}>
+      <div className={styles.bg}>
         <Image
           src="/images/ferrari-wallpaper.jpg"
           fill={true}

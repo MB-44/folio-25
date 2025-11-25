@@ -209,6 +209,23 @@
   overflow: visible;
 }
 
+.submitLink span:not(.arrow) {
+  transition: transform 0.3s ease;
+  display: inline-block
+}
+
+.submitLink:hover span:not(.arrow) {
+  transform: translateX(10px);
+}
+
+.submitLink:hover {
+  color: #de322c;
+}
+
+.submitLink:hover .arrow path {
+  stroke: #0d0d0d;
+}
+
 .link {
   padding-right: 8px;
 }

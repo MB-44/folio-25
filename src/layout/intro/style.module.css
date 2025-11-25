@@ -3,6 +3,8 @@
   padding: 72px 20px;
   box-sizing: border-box;
   background: #ffffff;
+  position: relative;
+  z-index: 10;
 }
 
 .wrap {
@@ -46,7 +48,7 @@
 .copy {
   font-size: clamp(16px, 1.6vw, 20px);
   line-height: 1.55;
-  color: rgba(12,12,12,0.72);
+  color: rgba(12, 12, 12, 0.72);
   max-width: 52ch;
 }
 
@@ -65,7 +67,7 @@
 
 .role {
   font-size: 14px;
-  color: rgba(12,12,12,0.6);
+  color: rgba(12, 12, 12, 0.6);
 }
 
 @media (max-width: 900px) {
@@ -73,15 +75,19 @@
     grid-template-columns: 1fr;
     gap: 32px;
   }
+
   .mediaInner {
     border-radius: 14px;
   }
+
   .content {
     gap: 22px;
   }
+
   .copy {
     max-width: none;
   }
+
   .person {
     gap: 4px;
   }

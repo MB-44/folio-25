@@ -4,6 +4,7 @@ import { AnimatePresence } from "framer-motion";
 import PreLoader from "@/components/preloader";
 import { Landing, Footer, Description, Intro } from "@/layout";
 import Header from "@/components/header";
+import { StickyScroll } from "@/components/effects";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -38,10 +39,15 @@ export default function Home() {
         </AnimatePresence>
 
         <Header />
-        <Landing />
-        <Description />
-        <Intro />
-        <Footer />
+        <StickyScroll>
+          <Landing />
+        </StickyScroll>
+
+        <div style={{ position: 'relative', zIndex: 10, backgroundColor: '#ffffff' }}>
+          <Description />
+          <Intro />
+          <Footer />
+        </div>
       </main>
     </>
   );

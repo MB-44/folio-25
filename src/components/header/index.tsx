@@ -82,13 +82,10 @@ export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Elemen
         <>
             <div ref={header} className={`${styles.header} ${theme === 'light' ? styles.headerLight : ''}`}>
                 <Magnetic>
-                    <Link href="/">
-                        <div className={styles.logo}>
-                            <div className={styles.name}>
-                                <p className={styles.codeBy}>Code by</p>
-                                <p className={styles.menath}>Menath</p>
-                                {/* <p className={styles.baddegama}>Baddegama</p> */}
-                            </div>
+                    <Link href="/" className={styles.logo}>
+                        <div className={styles.name}>
+                            <p className={styles.codeBy}>Code by</p>
+                            <p className={styles.menath}>Menath</p>
                         </div>
                     </Link>
                 </Magnetic>

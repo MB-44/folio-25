@@ -185,10 +185,21 @@
 }
 
 /* Link styling */
-.header .logo a {
-    text-decoration: none !important;
-    color: inherit !important;
+.header .logo {
+    font-size: 16px;
     display: flex;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.header .logo:hover,
+.header .logo:visited,
+.header .logo:active,
+.header .logo:focus {
+    text-decoration: none;
+    color: inherit;
+    outline: none;
 }
 
 .header .nav a {

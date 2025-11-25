@@ -1,9 +1,9 @@
 'use client'
 import gsap from 'gsap';
+import Image from 'next/image'
 import { useRef, useEffect, useState } from 'react';
 import { ScrollTrigger } from 'gsap/all';
 import { motion } from 'framer-motion';
-import Image from 'next/image'
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import { HackerText } from "@/components";
 import styles from './style.module.css'

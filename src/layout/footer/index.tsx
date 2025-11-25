@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { Magnetic, RandomUnderline } from '@/components';
-import { Footer as FooterText , socialLinks } from '@/data';
+import { Footer as FooterText, socialLinks } from '@/data';
 import styles from './style.module.css';
 import Clock from './clock';
 
@@ -17,7 +17,9 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
+        {/* Top Section */}
         <div className={styles.top}>
+          {/* Logo */}
           <div className={styles.brandRow}>
             <Link href="/" className={styles.logoLink} aria-label="Home">
               <span className={styles.logo} />
@@ -25,6 +27,7 @@ export default function Footer() {
             <div className={styles.brandFill} />
           </div>
 
+          {/* News Letter Section */}
           <div className={styles.newsletter}>
             <div className={styles.newsHeading}>
               <p className={styles.newsTitle}>
@@ -35,7 +38,7 @@ export default function Footer() {
                 {FooterText.newsSub}
               </p>
             </div>
-            <form className={styles.form} onSubmit={(e)=>e.preventDefault()}>
+            <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
               <div className={styles.inputs}>
                 <input
                   type="email"
@@ -72,6 +75,7 @@ export default function Footer() {
             </form>
           </div>
 
+          {/* Navigation & Social Link Wrap */}
           <div className={styles.linksWrap}>
             <div className={styles.navCol}>
               <Magnetic><Link href="/about" className={styles.link}>About</Link></Magnetic>
@@ -82,22 +86,23 @@ export default function Footer() {
               {socialLinks
                 .filter(link => link.visible)
                 .map(link => (
-                    <Magnetic key={link.name}>
-                      <a
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.link}
-                        aria-label={link.name}
-                      >
-                        {link.name}
-                      </a>
-                    </Magnetic>
+                  <Magnetic key={link.name}>
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.link}
+                      aria-label={link.name}
+                    >
+                      {link.name}
+                    </a>
+                  </Magnetic>
                 ))}
             </div>
           </div>
         </div>
 
+        {/* Bottom section */}
         <div className={styles.bottom}>
           <div className={styles.contactBlock}>
             <a href={FooterText.contactEmail.href} className={styles.contactEmail}>
@@ -113,10 +118,11 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Meta Row */}
         <div className={styles.metaRow}>
           <p className={styles.version}>{FooterText.version}</p>
           <p className={styles.localTime}>
-            {FooterText.localTimeLabel} <Clock/>
+            {FooterText.localTimeLabel} <Clock />
           </p>
         </div>
       </div>

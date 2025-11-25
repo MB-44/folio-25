@@ -20,6 +20,7 @@
 .top {
   display: grid;
   gap: 40px;
+  padding-top: 50px;
 }
 
 .brandRow {
@@ -43,7 +44,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  margin-top: -20px;
+  margin-top: -40px;
   margin-left: -20px;
   color: #df332e;
 }
@@ -133,20 +134,18 @@
   animation: spinOnce 0.9s ease;
 }
 
-.ctaArrow {
-  color: #fff;
-  font-size: 18px;
-  line-height: 1;
-  transform: translateX(1px);
-}
-
 .linksWrap {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
 }
 
-.navCol,
+.navCol {
+  display: grid;
+  gap: 8px;
+  margin-left: 60px;
+}
+
 .socialCol {
   display: grid;
   gap: 8px;
@@ -169,7 +168,7 @@
   display: grid;
   gap: 32px;
   padding-top: 100px;
-  margin-top: 12px;
+  margin-top: -18px;
 }
 
 .contactEmail {

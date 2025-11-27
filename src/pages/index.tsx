@@ -4,11 +4,12 @@ import { AnimatePresence } from "framer-motion";
 import PreLoader from "@/components/preloader";
 import { Landing, Footer, Description, Intro } from "@/layout";
 import Header from "@/components/header";
+import { StickyScroll } from "@/components/effects";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect( () => {
+  useEffect(() => {
     (
       async () => {
         const LocomotiveScroll = (await import('locomotive-scroll')).default
@@ -17,7 +18,7 @@ export default function Home() {
         setTimeout(() => {
           setIsLoading(false);
           document.body.style.cursor = 'default'
-          window.scrollTo(0,0);
+          window.scrollTo(0, 0);
         }, 2000);
       }
     )()
@@ -34,14 +35,19 @@ export default function Home() {
 
       <main>
         <AnimatePresence mode="wait">
-          {isLoading && <PreLoader/>}
+          {isLoading && <PreLoader />}
         </AnimatePresence>
 
-        <Header/>
-        <Landing/>
-        <Description/>
-        <Intro/>
-        <Footer/>
+        <Header />
+        <StickyScroll>
+          <Landing />
+        </StickyScroll>
+
+        <div style={{ position: 'relative', zIndex: 10, backgroundColor: '#ffffff' }}>
+          <Description />
+          <Intro />
+          <Footer />
+        </div>
       </main>
     </>
   );

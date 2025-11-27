@@ -1,9 +1,9 @@
 'use client'
 import gsap from 'gsap';
-import { useRef, useEffect } from 'react';
+import Image from 'next/image'
+import { useRef, useEffect, useState } from 'react';
 import { ScrollTrigger } from 'gsap/all';
 import { motion } from 'framer-motion';
-import Image from 'next/image'
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import { HackerText } from "@/components";
 import styles from './style.module.css'
@@ -20,8 +20,8 @@ export default function Home() {
   let direction = -1;
 
   useEffect(() => {
-    audioRef.current = new Audio('/audio/ui_hover.mp3'); 
-    
+    audioRef.current = new Audio('/audio/ui_hover.mp3');
+
     return () => {
       if (audioRef.current) {
         audioRef.current.pause();
@@ -29,6 +29,8 @@ export default function Home() {
       }
     };
   }, []);
+
+
 
   const handleTextHover = () => {
     if (audioRef.current) {
@@ -45,7 +47,7 @@ export default function Home() {
         x: () => -window.innerWidth * 0.8, // 0.3   
         ease: 'none',
         scrollTrigger: {
-          trigger: sliderContainer.current,  
+          trigger: sliderContainer.current,
           start: 'top bottom',
           end: 'bottom top',
           scrub: 1.2 // 0.5 - 1
@@ -69,23 +71,25 @@ export default function Home() {
   }, []);
 
   const animate = () => {
-    if(xPercent < -100){
+    if (xPercent < -100) {
       xPercent = 0;
     }
-    else if(xPercent > 0){
+    else if (xPercent > 0) {
       xPercent = -100;
     }
-    gsap.set(firstText.current, {xPercent: xPercent})
-    gsap.set(secondText.current, {xPercent: xPercent})
+    gsap.set(firstText.current, { xPercent: xPercent })
+    gsap.set(secondText.current, { xPercent: xPercent })
     requestAnimationFrame(animate);
-      xPercent -= 0.03 * direction;
+    xPercent -= 0.03 * direction;
   }
+
+
 
   return (
     <motion.main variants={slideUp} initial="initial" animate="enter" className={styles.landing}>
-  
+
       <div className={styles.bg}>
-        <Image 
+        <Image
           src="/images/ferrari-wallpaper.jpg"
           fill={true}
           alt="background"
@@ -94,28 +98,28 @@ export default function Home() {
 
       <div className={styles.hangerOverlay}>
         <div className={styles.hanger}>
-        <p className={styles.hangerText}>
-          <span onMouseEnter={handleTextHover}><HackerText text="From"/></span><br />
-          <span onMouseEnter={handleTextHover}><HackerText text="Sri Lanka"/></span>
-        </p>
+          <p className={styles.hangerText}>
+            <span onMouseEnter={handleTextHover}><HackerText text="From" /></span><br />
+            <span onMouseEnter={handleTextHover}><HackerText text="Sri Lanka" /></span>
+          </p>
 
-        <svg
-          className={styles.hangerSvg}
-          width="300"
-          height="121"
-          viewBox="0 0 300 121"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <g fill="#1C1D20">
-          {/* <g fill="#df332e"> */}
-            <path d="M239.633657,0 C272.770742,1.0182436e-15 299.633657,26.862915 299.633657,60 C299.633657,93.137085 272.770742,120 239.633657,120 L0,120 L0,0 L239.633657,0 Z M239.633657,18.7755102 C216.866,18.7755102 198.409167,37.232343 198.409167,60 C198.409167,82.767657 216.866,101.22449 239.633657,101.22449 C262.401314,101.22449 280.858147,82.767657 280.858147,60 C280.858147,37.232343 262.401314,18.7755102 239.633657,18.7755102 Z"/>
-          </g>
-        </svg>
+          <svg
+            className={styles.hangerSvg}
+            width="300"
+            height="121"
+            viewBox="0 0 300 121"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <g fill="#1C1D20">
+              {/* <g fill="#df332e"> */}
+              <path d="M239.633657,0 C272.770742,1.0182436e-15 299.633657,26.862915 299.633657,60 C299.633657,93.137085 272.770742,120 239.633657,120 L0,120 L0,0 L239.633657,0 Z M239.633657,18.7755102 C216.866,18.7755102 198.409167,37.232343 198.409167,60 C198.409167,82.767657 216.866,101.22449 239.633657,101.22449 C262.401314,101.22449 280.858147,82.767657 280.858147,60 C280.858147,37.232343 262.401314,18.7755102 239.633657,18.7755102 Z" />
+            </g>
+          </svg>
 
-        <div className={styles.digitalBall}>
-          <div className={styles.digitalBallOverlay} />
+          <div className={styles.digitalBall}>
+            <div className={styles.digitalBallOverlay} />
             <div className={styles.globe}>
               <div className={styles.globeWrap}>
                 <div className={styles.circle} />

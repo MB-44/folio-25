@@ -4,6 +4,7 @@
   min-height: 100vh;
   background: #ffffff;
   color: #0d0d0d;
+  padding-top: 120px;
 }
 
 .magneticWord {
@@ -121,6 +122,7 @@
   gap: 20px;
   padding-top: 0;
   margin-top: 0;
+  margin-left: -50px;
 }
 
 .mainText:first-of-type {
@@ -287,6 +289,7 @@
 
 /* prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
+
   .sectionTitle,
   .approachTitle,
   .drivesTitle {
@@ -332,6 +335,7 @@
 
 /* <=768px */
 @media (max-width: 768px) {
+
   .heroSection,
   .approachSection,
   .drivesSection {

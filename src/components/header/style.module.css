@@ -1,5 +1,5 @@
 .header {
-    position: absolute;
+    position: fixed;
     z-index: 3;
     display: flex;
     top: 0;
@@ -10,7 +10,7 @@
     font-weight: 300;
     box-sizing: border-box;
     align-items: center;
-} 
+}
 
 .navLinks {
     display: flex;
@@ -171,15 +171,47 @@
 }
 
 .backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(2px);
-  z-index: 3; 
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(2px);
+    z-index: 3;
 }
 
 @media (max-width: 768px) {
     .navLinks {
         display: none;
     }
+}
+
+/* Link styling */
+.header .logo {
+    font-size: 16px;
+    display: flex;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.header .logo:hover,
+.header .logo:visited,
+.header .logo:active,
+.header .logo:focus {
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+}
+
+.header .nav a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+/* Light theme color overrides */
+.headerLight {
+    color: #0d0d0d;
+}
+
+.headerLight .indicator {
+    background-color: #0d0d0d !important;
 }

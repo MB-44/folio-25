@@ -58,7 +58,7 @@ export const About = {
   hero: {
     title: "About me",
     leftTitle: "Meet Menath",
-    middleDescription: "I've always wanted to make work I'm proud of. Every project is a chance to do something different, something we actually care about.",
+    middleDescription: "I've always wanted to make work I'm proud of. Every project is a chance to do something different, something I actually care about.",
     profile: {
       src: "images/profile/profileImage.png",
       alt: "Menath Baddegama",

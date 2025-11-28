@@ -14,11 +14,56 @@
     color: #ffffff;
 }
 
+/* Custom Scrollbar Styles */
+/* For Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #ffffff;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #de322c !important;
+    border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #c42a24 !important;
+}
+
+/* Remove all scrollbar buttons (arrows and corners) */
+::-webkit-scrollbar-button {
+    display: none !important;
+    height: 0 !important;
+    width: 0 !important;
+}
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
+    display: none !important;
+}
+
+::-webkit-scrollbar-corner {
+    display: none !important;
+}
+
+/* For Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #de322c #ffffff;
+}
 
 @font-face {
     font-family: 'NeueMontreal Regular';
     src: url("/fonts/NeueMontreal-Regular.otfsf") format("opentype");
     font-weight: normal;
+
     font-style: normal;
 }
 

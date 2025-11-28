@@ -79,30 +79,32 @@
 }
 
 .hangerText {
+  transform: translateY(-50%);
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
   margin: 0;
   padding-right: 5em;
   padding-left: 16px;
   line-height: 1.4;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: #ffffff;
-  font-size: 20px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 500;
   white-space: normal;
 }
 
 .hangerSvg {
   width: auto;
-  height: 6em;
+  height: 5.2em;
 }
 
 .digitalBall {
   position: absolute;
-  right: 0.9em;
-  top: 0.9em;
-  width: 4.2em;
-  height: 4.2em;
+  right: 0.84em;
+  top: 0.82em;
+  width: 3.54em;
+  height: 3.54em;
   border-radius: 50%;
   overflow: hidden;
   background: transparent;

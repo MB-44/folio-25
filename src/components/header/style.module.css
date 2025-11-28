@@ -138,8 +138,8 @@
 .headerButtonContainer .burger::before {
     content: "";
     display: block;
-    height: 1px;
-    width: 40%;
+    height: 1.2px;
+    width: 24px;
     margin: auto;
     background-color: white;
     position: relative;
@@ -147,11 +147,11 @@
 }
 
 .headerButtonContainer .burger::after {
-    top: -5px;
+    top: -3px;
 }
 
 .headerButtonContainer .burger::before {
-    top: 5px;
+    top: 3px;
 }
 
 .headerButtonContainer .burgerActive::after {

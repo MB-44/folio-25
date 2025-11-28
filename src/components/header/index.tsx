@@ -93,13 +93,13 @@ export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Elemen
                     <div className={styles.navLinks}>
                         <Magnetic>
                             <div className={styles.el} onMouseEnter={handleNavItemHover}>
-                                <Link href="/work">Work</Link>
+                                <Link href="/about">About</Link>
                                 <div className={styles.indicator}></div>
                             </div>
                         </Magnetic>
                         <Magnetic>
                             <div className={styles.el} onMouseEnter={handleNavItemHover}>
-                                <Link href="/about">About</Link>
+                                <Link href="/projects">Porjects</Link>
                                 <div className={styles.indicator}></div>
                             </div>
                         </Magnetic>

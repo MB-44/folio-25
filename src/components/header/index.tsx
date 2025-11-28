@@ -57,6 +57,19 @@ export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Elemen
             }
         });
 
+        // Footer detection - hide button when footer is visible
+        const footerTrigger = ScrollTrigger.create({
+            trigger: "footer",
+            start: "top bottom",
+            end: "top bottom",
+            onEnter: () => {
+                hide();
+            },
+            onLeaveBack: () => {
+                show();
+            }
+        });
+
         if (header.current) {
             const headerBottom = header.current.getBoundingClientRect().bottom + window.scrollY;
             if (window.scrollY >= headerBottom) { show(); hideHeader(); } else { hide(); showHeader(); }
@@ -64,6 +77,7 @@ export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Elemen
 
         return () => {
             st.kill();
+            footerTrigger.kill();
         };
     }, []);
 

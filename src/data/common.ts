@@ -156,3 +156,42 @@ export const Contact = {
     }
   ]
 };
+
+export const Process = {
+  id: "process",
+  eyebrow: "Our process",
+  title: "Our process",
+  description:
+    "No guesswork — we research, test, and design around what truly works for your users.",
+  ctaLabel: "Schedule a consultation",
+  steps: [
+    {
+      id: "step-1",
+      stepNumber: "01",
+      title: "Research & Strategy",
+      description:
+        "We begin with interviews, data, and discovery to uncover user pains and business goals. Here we define your brand values, positioning, vision, and voice so everyone is aligned on the problem, the people, and the purpose.",
+    },
+    {
+      id: "step-2",
+      stepNumber: "02",
+      title: "Structure & Flow",
+      description:
+        "We map user journeys, sketch concepts, and build UX foundations — user flows, wireframes, and early tests — turning strategy into a clear, intuitive structure.",
+    },
+    {
+      id: "step-3",
+      stepNumber: "03",
+      title: "Visual Design & Prototyping",
+      description:
+        "We craft the visual language: design system, UI, motion, and brand identity. Then we pull it all together into an interactive prototype you can click through and test.",
+    },
+    {
+      id: "step-4",
+      stepNumber: "04",
+      title: "Launch, Test & Improve",
+      description:
+        "After launch, we learn from real users, real data, and real feedback. We refine and iterate, treating improvement as an ongoing part of the product.",
+    },
+  ],
+};

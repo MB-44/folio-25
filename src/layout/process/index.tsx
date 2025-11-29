@@ -26,6 +26,18 @@ const ProcessSection: React.FC = () => {
         <div className={styles.stepsCol}>
           {Process.steps?.map((step: any, index: number) => (
             <div key={step.id ?? step.stepNumber} className={`${styles.stepCard} ${index === 0 ? styles.firstCard : ''}`}>
+              {/* <svg className={styles.stepArrow} width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 12L12 4M12 4H6M12 4V10" stroke="#de322c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg> */}
+              <svg className={styles.stepArrow} width="10" height="10" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M2.5 2H13V12.5"
+                  stroke="#de322c"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
               <div className={styles.stepHeader}>
                 <span className={styles.stepNumber}>{step.stepNumber}</span>
                 <h3 className={styles.stepTitle}>{step.title}</h3>

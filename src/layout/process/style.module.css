@@ -126,6 +126,17 @@
   background: linear-gradient(to right, #d0d0d0 0%, #d0d0d0 70%, transparent 100%);
 }
 
+.stepArrow {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  transition: transform 0.3s ease;
+}
+
+.stepCard:hover .stepArrow {
+  transform: rotate(135deg);
+}
+
 .firstCard::before {
   content: '';
   position: absolute;

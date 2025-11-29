@@ -1,140 +1,188 @@
 .processSection {
-  padding: 6rem 1.5rem;
-  background: radial-gradient(circle at top left, #181824 0%, #050509 55%, #000000 100%);
-  color: #f5f5f5;
+  background: #ffffff;
+  color: #0d0d0d;
+  padding: 100px 40px 140px;
+  font-family: "Kokto", sans-serif;
 }
 
 .processInner {
-  max-width: 1120px;
+  max-width: 1400px;
   margin: 0 auto;
-  display: flex;
-  gap: 3rem;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 0px;
+  align-items: start;
 }
 
 .headerCol {
-  flex: 0 0 40%;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 24px;
+  padding-right: 40px;
 }
 
 .stepsCol {
-  flex: 1;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: 400px;
 }
 
 .eyebrow {
-  font-size: 0.875rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #f9735b;
+  font-size: 15.2px;
+  line-height: 1.6;
+  color: #6e6e6e;
+  margin: 0;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
 }
 
 .title {
-  font-size: 2.25rem;
+  font-size: 110px;
+  font-weight: 500;
   line-height: 1.1;
-  font-weight: 600;
+  margin: 0;
+  color: #161616;
+  letter-spacing: -0.02em;
 }
 
 .description {
-  font-size: 1rem;
+  font-size: 15.2px;
   line-height: 1.6;
-  color: #c4c4cf;
-  max-width: 26rem;
+  color: #6e6e6e;
+  margin: 0;
+  font-weight: 400;
+  max-width: 280px;
 }
 
 .ctaButton {
-  display: inline-flex;
+  font-size: 23px;
+  color: #0d0d0d;
+  text-decoration: none;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0.85rem 1.75rem;
-  border-radius: 999px;
-  border: 1px solid rgba(249, 115, 91, 0.5);
-  background: linear-gradient(135deg, #f9735b 0%, #ef4444 45%, #f9735b 100%);
-  color: #0b0b12;
-  font-size: 0.95rem;
-  font-weight: 500;
+  gap: 8px;
+  font-weight: 400;
+  background: none;
+  border: none;
   cursor: pointer;
-  transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: visible;
+  padding: 0;
+  margin-top: 66px;
+}
+
+.ctaButton span {
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.ctaButton:hover span {
+  transform: translateX(10px);
 }
 
 .ctaButton:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.5);
+  color: #de322c;
 }
 
-.ctaButton:active {
-  transform: translateY(0);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+.ctaButton:hover .arrow path {
+  stroke: #0d0d0d;
+}
+
+.ctaButton .arrow {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
 }
 
 .stepCard {
+  background: #ffffff;
+  overflow: hidden;
+  border-bottom: none;
+  transition: all 0.3s ease;
   position: relative;
-  padding: 1.5rem 1.5rem 1.75rem 1.5rem;
-  border-radius: 1.25rem;
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.12), transparent 55%);
-  backdrop-filter: blur(8px);
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  column-gap: 1.25rem;
-  row-gap: 0.5rem;
+  padding: 32px 36px 32px 0px;
+  border-radius: 0;
+  border: none;
+  display: block;
+}
+
+.stepCard::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, #e0e0e0 0%, #e0e0e0 70%, transparent 100%);
+}
+
+.stepCard:hover::after {
+  background: linear-gradient(to right, #d0d0d0 0%, #d0d0d0 70%, transparent 100%);
 }
 
 .stepNumber {
-  grid-row: span 2;
-  align-self: flex-start;
-  font-size: 0.95rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #9ca3af;
+  font-size: 15.2px;
+  line-height: 1.6;
+  color: #6e6e6e;
+  margin: 0 0 8px 0;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+  display: block;
 }
 
 .stepTitle {
-  font-size: 1.1rem;
+  font-size: 20px;
   font-weight: 500;
+  color: #161616;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  margin: 0 0 8px 0;
 }
 
 .stepDescription {
-  font-size: 0.95rem;
+  font-size: 15.2px;
   line-height: 1.6;
-  color: #d1d5db;
+  color: #6e6e6e;
+  margin: 0;
+  font-weight: 400;
 }
 
-@media (min-width: 900px) {
-  .stepsCol {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
   .processInner {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 
   .headerCol {
-    flex-basis: auto;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .processSection {
+    padding: 80px 30px;
+  }
+
+  .title {
+    font-size: 60px;
+  }
+
+  .stepCard {
+    padding: 24px 24px 24px 0px;
   }
 }
 
 @media (max-width: 640px) {
   .processSection {
-    padding: 3.5rem 1.25rem;
+    padding: 60px 20px;
   }
 
   .title {
-    font-size: 1.75rem;
-  }
-
-  .stepCard {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .stepNumber {
-    grid-row: auto;
-    margin-bottom: 0.25rem;
+    font-size: 48px;
   }
 }

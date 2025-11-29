@@ -9,9 +9,6 @@ const ProcessSection: React.FC = () => {
     <section id={Process.id} className={styles.processSection}>
       <div className={styles.processInner}>
         <div className={styles.headerCol}>
-          {Process.eyebrow && (
-            <p className={styles.eyebrow}>{Process.eyebrow}</p>
-          )}
           <h2 className={styles.title}>{Process.title}</h2>
           {Process.description && (
             <p className={styles.description}>{Process.description}</p>
@@ -27,10 +24,12 @@ const ProcessSection: React.FC = () => {
           )}
         </div>
         <div className={styles.stepsCol}>
-          {Process.steps?.map((step: any) => (
-            <div key={step.id ?? step.stepNumber} className={styles.stepCard}>
-              <span className={styles.stepNumber}>{step.stepNumber}</span>
-              <h3 className={styles.stepTitle}>{step.title}</h3>
+          {Process.steps?.map((step: any, index: number) => (
+            <div key={step.id ?? step.stepNumber} className={`${styles.stepCard} ${index === 0 ? styles.firstCard : ''}`}>
+              <div className={styles.stepHeader}>
+                <span className={styles.stepNumber}>{step.stepNumber}</span>
+                <h3 className={styles.stepTitle}>{step.title}</h3>
+              </div>
               {step.description && (
                 <p className={styles.stepDescription}>{step.description}</p>
               )}

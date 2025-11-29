@@ -159,8 +159,7 @@ export const Contact = {
 
 export const Process = {
   id: "process",
-  eyebrow: "Our process",
-  title: "Our process",
+  title: "My Process",
   description:
     "No guesswork — we research, test, and design around what truly works for your users.",
   ctaLabel: "Schedule a consultation",

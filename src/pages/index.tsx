@@ -46,7 +46,7 @@ export default function Home() {
         <div style={{ position: 'relative', zIndex: 10, backgroundColor: '#ffffff' }}>
           <Description />
           {/* <Intro /> */}
-          <ScrollPin/>
+          <ScrollPin />
           <ProcessSection />
           <Faq />
           <Footer />

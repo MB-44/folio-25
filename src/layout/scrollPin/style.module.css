@@ -50,8 +50,8 @@
   padding-top: 10vh;
   gap: 15vh;
   z-index: 2;
-  opacity: 0.04;
-  /* Slightly more visible */
+  opacity: 0.1;
+  /* More visible as requested */
   pointer-events: none;
   will-change: transform;
 }

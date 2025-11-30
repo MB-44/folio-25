@@ -9,43 +9,59 @@ if (typeof window !== 'undefined') {
 }
 
 const HeroCta = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const backgroundRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!sectionRef.current || !textRef.current) return;
+    if (!wrapperRef.current || !backgroundRef.current) return;
 
-    const section = sectionRef.current;
-    const text = textRef.current;
+    const wrapper = wrapperRef.current;
+    const background = backgroundRef.current;
 
-    // Pin the text in the center of the viewport
-    ScrollTrigger.create({
-      trigger: section,
-      start: 'top top',
-      end: '+=300%', // Scroll for 3x viewport height
-      pin: text,
-      pinSpacing: true, // Changed to true to prevent overlap
-    });
+    // Set initial state
+    gsap.set(background, { y: 0 });
+
+    // Animate the background scrolling relative to the wrapper's scroll
+    // We don't need to pin via GSAP anymore because we're using CSS sticky
+    const scrollTrigger = gsap.fromTo(background,
+      {
+        y: 0,
+      },
+      {
+        y: '100vh',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: wrapper,
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 0, // Instant scrubbing for direct control
+          invalidateOnRefresh: true,
+        },
+      }
+    );
 
     return () => {
+      scrollTrigger.kill();
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
 
   return (
-    <section ref={sectionRef} className={styles.heroSection}>
-      <div className={styles.background}>
-        <div className={styles.verticalLine} style={{ left: '10%' }}></div>
-        <div className={styles.verticalLine} style={{ right: '10%' }}></div>
-      </div>
+    <div ref={wrapperRef} className={styles.wrapper}>
+      <section className={styles.heroSection}>
+        <div ref={backgroundRef} className={styles.background}>
+          <div className={styles.verticalLine} style={{ left: '10%' }}></div>
+          <div className={styles.verticalLine} style={{ right: '10%' }}></div>
+        </div>
 
-      <div ref={textRef} className={styles.textContainer}>
-        <p className={styles.getStarted}>GET STARTED</p>
-        <h1 className={styles.heroText}>
-          Let's make<br />things happen.
-        </h1>
-      </div>
-    </section>
+        <div className={styles.textContainer}>
+          <p className={styles.getStarted}>GET STARTED</p>
+          <h1 className={styles.heroText}>
+            Let's make<br />things happen.
+          </h1>
+        </div>
+      </section>
+    </div>
   );
 };
 

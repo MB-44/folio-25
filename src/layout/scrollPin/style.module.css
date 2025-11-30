@@ -1,13 +1,12 @@
 .wrapper {
   position: relative;
-  height: 300vh;
-  /* Defines the scroll duration */
+  height: 400vh;
+  /* Increased for smoother, longer flow */
   width: 100%;
 }
 
 .heroSection {
   position: sticky;
-  /* Use native sticky positioning */
   top: 0;
   height: 100vh;
   width: 100%;
@@ -25,6 +24,7 @@
   width: 100%;
   height: 300vh;
   will-change: transform;
+  z-index: 1;
 }
 
 .verticalLine {
@@ -33,6 +33,38 @@
   width: 1px;
   height: 100%;
   background-color: rgba(222, 50, 44, 0.3);
+}
+
+.parallaxContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* Height doesn't matter as much if we center content, 
+     but let's make it tall enough to hold words */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  /* Start from top of container */
+  padding-top: 10vh;
+  gap: 15vh;
+  z-index: 2;
+  opacity: 0.04;
+  /* Slightly more visible */
+  pointer-events: none;
+  will-change: transform;
+}
+
+.bgText {
+  font-family: 'Kokto', sans-serif;
+  font-size: 12vw;
+  /* Slightly smaller to fit more */
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 2px #000;
+  white-space: nowrap;
+  line-height: 1;
 }
 
 .textContainer {
@@ -70,17 +102,21 @@
 
 @media (max-width: 768px) {
   .wrapper {
-    height: 250vh;
+    height: 300vh;
   }
 
   .heroText {
     white-space: normal;
   }
+
+  .bgText {
+    font-size: 18vw;
+  }
 }
 
 @media (max-width: 480px) {
   .wrapper {
-    height: 200vh;
+    height: 250vh;
   }
 
   .heroText {

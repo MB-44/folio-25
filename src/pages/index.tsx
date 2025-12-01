@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import PreLoader from "@/components/preloader";
-import { Landing, Footer, Description, Intro, Faq, ProcessSection, ScrollPin, HomeContact } from "@/layout";
+import { Landing, Footer, Description, Intro, Faq, ProcessSection, ScrollPin, ReachOut } from "@/layout";
 import Header from "@/components/header";
 import { StickyScroll } from "@/components/effects";
 
@@ -49,7 +49,7 @@ export default function Home() {
           <ScrollPin />
           <ProcessSection />
           <Faq />
-          <HomeContact />
+          <ReachOut />
           <Footer />
         </div>
       </main>

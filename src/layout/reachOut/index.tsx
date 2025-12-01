@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { HomeContactData } from '@/data'
+import { ReachOut as ReachOutData } from '@/data'
 import styles from './style.module.css'
 
-const HomeContact = () => {
+const ReachOut = () => {
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -28,8 +28,8 @@ const HomeContact = () => {
             <div className={styles.container}>
                 <div className={styles.contentWrapper}>
                     <div className={styles.leftContent}>
-                        <h2 className={styles.title}>{HomeContactData.title}</h2>
-                        <p className={styles.subtitle}>{HomeContactData.subtitle}</p>
+                        <h2 className={styles.title}>{ReachOutData.title}</h2>
+                        <p className={styles.subtitle}>{ReachOutData.subtitle}</p>
                     </div>
 
                     <div className={styles.rightContent}>
@@ -105,7 +105,7 @@ const HomeContact = () => {
                                     <path d="M9 5L9 14C9 14.5523 9.44772 15 10 15H19" stroke="#de322c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                     <path d="M15 11L19 15L15 19" stroke="#de322c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
-                                <span>{HomeContactData.form.submitLabel}</span>
+                                <span>{ReachOutData.form.submitLabel}</span>
                             </button>
                         </form>
                     </div>
@@ -115,4 +115,4 @@ const HomeContact = () => {
     )
 }
 
-export default HomeContact
+export default ReachOut

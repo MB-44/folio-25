@@ -195,8 +195,8 @@ export const Process = {
   ],
 };
 
-export const HomeContactData = {
-  title: "Speak to us",
+export const ReachOut = {
+  title: "Reach Out",
   subtitle: "If you want to start a project, share an idea or simply say hi, I want to hear from you.",
   form: {
     placeholders: {

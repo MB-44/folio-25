@@ -111,7 +111,7 @@ export const Contact = {
     placeholders: {
       name: "Name *",
       email: "E-mail *",
-      message: "Message (Tell us about your project)"
+      message: "Message (Tell me about your project)"
     },
     submitLabel: "Get in touch"
   },
@@ -193,4 +193,19 @@ export const Process = {
         "After launch, we learn from real users, real data, and real feedback. We refine and iterate, treating improvement as an ongoing part of the product.",
     },
   ],
+};
+
+export const HomeContactData = {
+  title: "Speak to us",
+  subtitle: "If you want to start a project, share an idea or simply say hi, I want to hear from you.",
+  form: {
+    placeholders: {
+      firstName: "First name*",
+      lastName: "Last name*",
+      email: "Email Address*",
+      phone: "Phone number*",
+      message: "Message (Tell me about your project)"
+    },
+    submitLabel: "Get In Touch"
+  }
 };

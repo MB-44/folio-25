@@ -32,6 +32,17 @@
   width: 1px;
   height: 100%;
   background-color: rgba(222, 50, 44, 0.3);
+
+  mask-image: linear-gradient(to bottom,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%);
 }
 
 .parallaxContainer {

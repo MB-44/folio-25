@@ -38,10 +38,10 @@
 
 .subtitle {
     font-size: 15.2px;
-    line-height: 1.6;
+    line-height: 1.8;
     color: #6e6e6e;
     margin: 0;
-    max-width: 450px;
+    width: 450px;
     font-family: 'Kokto', sans-serif;
 }
 
@@ -53,7 +53,7 @@
 .contactForm {
     display: flex;
     flex-direction: column;
-    gap: 60px;
+    gap: 40px;
 }
 
 .row {
@@ -66,6 +66,22 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    position: relative;
+    margin-top: 20px;
+}
+
+.label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0;
+    font-size: 18px;
+    color: #999999;
+    pointer-events: none;
+    transition: 0.3s ease all;
+    font-family: 'Kokto', sans-serif;
+    font-weight: 400;
+    transform-origin: left top;
 }
 
 .input,
@@ -81,6 +97,16 @@
     transition: border-bottom-color 0.3s ease;
     font-weight: 400;
     letter-spacing: -0.02em;
+}
+
+.input:focus~.label,
+.input:not(:placeholder-shown)~.label,
+.textarea:focus~.label,
+.textarea:not(:placeholder-shown)~.label {
+    top: -24px;
+    font-size: 14px;
+    color: #de322c;
+    transform: scale(1);
 }
 
 .input::placeholder,
@@ -122,6 +148,7 @@
     transition: all 0.3s ease;
     position: relative;
     overflow: visible;
+    margin-top: 50px;
 }
 
 .submitLink span:not(.arrow) {
@@ -176,6 +203,11 @@
     .title {
         font-size: 80px;
         white-space: normal;
+    }
+
+    .subtitle {
+        width: 100%;
+        max-width: 100%;
     }
 }
 

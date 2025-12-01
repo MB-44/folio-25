@@ -1,7 +1,5 @@
 // common.ts
 
-import { title } from "process";
-
 export const Home = {
   description: "I craft web experiences where beauty meets function — turning ideas into intuitive interfaces that come alive.",
 };

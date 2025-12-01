@@ -43,9 +43,12 @@ const ReachOut = () => {
                                         value={formData.firstName}
                                         onChange={handleInputChange}
                                         className={styles.input}
-                                        placeholder={ReachOutData.form.placeholders.firstName}
+                                        placeholder=" "
                                         required
                                     />
+                                    <label htmlFor="firstName" className={styles.label}>
+                                        {ReachOutData.form.placeholders.firstName}
+                                    </label>
                                 </div>
                                 <div className={styles.formGroup}>
                                     <input
@@ -55,9 +58,12 @@ const ReachOut = () => {
                                         value={formData.lastName}
                                         onChange={handleInputChange}
                                         className={styles.input}
-                                        placeholder={ReachOutData.form.placeholders.lastName}
+                                        placeholder=" "
                                         required
                                     />
+                                    <label htmlFor="lastName" className={styles.label}>
+                                        {ReachOutData.form.placeholders.lastName}
+                                    </label>
                                 </div>
                             </div>
 
@@ -70,9 +76,12 @@ const ReachOut = () => {
                                         value={formData.email}
                                         onChange={handleInputChange}
                                         className={styles.input}
-                                        placeholder={ReachOutData.form.placeholders.email}
+                                        placeholder=" "
                                         required
                                     />
+                                    <label htmlFor="email" className={styles.label}>
+                                        {ReachOutData.form.placeholders.email}
+                                    </label>
                                 </div>
                                 <div className={styles.formGroup}>
                                     <input
@@ -82,8 +91,11 @@ const ReachOut = () => {
                                         value={formData.phone}
                                         onChange={handleInputChange}
                                         className={styles.input}
-                                        placeholder={ReachOutData.form.placeholders.phone}
+                                        placeholder=" "
                                     />
+                                    <label htmlFor="phone" className={styles.label}>
+                                        {ReachOutData.form.placeholders.phone}
+                                    </label>
                                 </div>
                             </div>
 
@@ -94,10 +106,13 @@ const ReachOut = () => {
                                     value={formData.message}
                                     onChange={handleInputChange}
                                     className={styles.textarea}
-                                    placeholder={ReachOutData.form.placeholders.message}
+                                    placeholder=" "
                                     rows={1}
                                     required
                                 />
+                                <label htmlFor="message" className={styles.label}>
+                                    {ReachOutData.form.placeholders.message}
+                                </label>
                             </div>
 
                             <button type="submit" className={styles.submitLink} onClick={handleSubmit}>

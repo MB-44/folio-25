@@ -12,6 +12,7 @@ const HeroCta = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const backgroundRef = useRef<HTMLDivElement>(null);
   const parallaxTextRef = useRef<HTMLDivElement>(null);
+  const floatingLabelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!wrapperRef.current || !backgroundRef.current || !parallaxTextRef.current) return;
@@ -22,6 +23,9 @@ const HeroCta = () => {
 
     // Set initial state
     gsap.set(background, { y: 0 });
+    if (floatingLabelRef.current) {
+      gsap.set(floatingLabelRef.current, { scale: 0, opacity: 0 });
+    }
 
     // Animate the background lines (Scrolls DOWN)
     const bgTrigger = gsap.to(background, {
@@ -37,7 +41,6 @@ const HeroCta = () => {
     });
 
     // Animate the parallax text (Scrolls UP from bottom to top)
-    // Start below the viewport and move completely through it
     const textTrigger = gsap.fromTo(parallaxText,
       {
         y: '100vh', // Start below the screen
@@ -62,6 +65,45 @@ const HeroCta = () => {
     };
   }, []);
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (floatingLabelRef.current) {
+      // Get the bounding rectangle of the container
+      const rect = e.currentTarget.getBoundingClientRect();
+      // Calculate x and y relative to the container with an offset
+      const x = e.clientX - rect.left + 20;
+      const y = e.clientY - rect.top + 20;
+
+      gsap.to(floatingLabelRef.current, {
+        x: x,
+        y: y,
+        duration: 0.1,
+        ease: 'power2.out',
+      });
+    }
+  };
+
+  const handleMouseEnter = () => {
+    if (floatingLabelRef.current) {
+      gsap.to(floatingLabelRef.current, {
+        scale: 1,
+        opacity: 1,
+        duration: 0.3,
+        ease: 'back.out(1.7)',
+      });
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (floatingLabelRef.current) {
+      gsap.to(floatingLabelRef.current, {
+        scale: 0,
+        opacity: 0,
+        duration: 0.3,
+        ease: 'power2.in',
+      });
+    }
+  };
+
   return (
     <div ref={wrapperRef} className={styles.wrapper}>
       <section className={styles.heroSection}>
@@ -80,7 +122,15 @@ const HeroCta = () => {
           <span className={styles.bgText}>IMPACT</span>
         </div>
 
-        <div className={styles.textContainer}>
+        <div
+          className={styles.textContainer}
+          onMouseMove={handleMouseMove}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div ref={floatingLabelRef} className={styles.floatingLabel}>
+            Make it happen
+          </div>
           <p className={styles.getStarted}>GET STARTED</p>
           <h1 className={styles.heroText}>
             Let's make<br />things happen.

@@ -203,7 +203,7 @@ export const ReachOut = {
       firstName: "First name*",
       lastName: "Last name*",
       email: "Email Address*",
-      phone: "Phone number*",
+      phone: "Phone number (+94 ...)*",
       message: "Message (Tell me about your project)"
     },
     submitLabel: "Get In Touch"

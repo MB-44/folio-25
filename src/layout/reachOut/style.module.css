@@ -22,8 +22,6 @@
 .leftContent {
     display: flex;
     flex-direction: column;
-    position: sticky;
-    top: 120px;
     padding-right: 40px;
 }
 
@@ -49,7 +47,6 @@
 
 .rightContent {
     width: 100%;
-    /* Match Process section padding exactly */
     padding-left: 400px;
 }
 

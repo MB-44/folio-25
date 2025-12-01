@@ -43,7 +43,7 @@ const ReachOut = () => {
                                         value={formData.firstName}
                                         onChange={handleInputChange}
                                         className={styles.input}
-                                        placeholder="First name"
+                                        placeholder={ReachOutData.form.placeholders.firstName}
                                         required
                                     />
                                 </div>
@@ -55,7 +55,7 @@ const ReachOut = () => {
                                         value={formData.lastName}
                                         onChange={handleInputChange}
                                         className={styles.input}
-                                        placeholder="Last name"
+                                        placeholder={ReachOutData.form.placeholders.lastName}
                                         required
                                     />
                                 </div>
@@ -70,7 +70,7 @@ const ReachOut = () => {
                                         value={formData.email}
                                         onChange={handleInputChange}
                                         className={styles.input}
-                                        placeholder="Email Address"
+                                        placeholder={ReachOutData.form.placeholders.email}
                                         required
                                     />
                                 </div>
@@ -82,7 +82,7 @@ const ReachOut = () => {
                                         value={formData.phone}
                                         onChange={handleInputChange}
                                         className={styles.input}
-                                        placeholder="Phone number"
+                                        placeholder={ReachOutData.form.placeholders.phone}
                                     />
                                 </div>
                             </div>
@@ -94,7 +94,7 @@ const ReachOut = () => {
                                     value={formData.message}
                                     onChange={handleInputChange}
                                     className={styles.textarea}
-                                    placeholder="Tell us about your project..."
+                                    placeholder={ReachOutData.form.placeholders.message}
                                     rows={1}
                                     required
                                 />

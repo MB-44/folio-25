@@ -45,10 +45,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  /* Start from top of container */
   padding-top: 10vh;
   gap: 15vh;
   z-index: 2;
   opacity: 0.1;
+  /* More visible as requested */
   pointer-events: none;
   will-change: transform;
 }
@@ -56,6 +58,7 @@
 .bgText {
   font-family: 'Kokto', sans-serif;
   font-size: 12vw;
+  /* Slightly smaller to fit more */
   font-weight: 700;
   color: transparent;
   -webkit-text-stroke: 2px #000;
@@ -71,6 +74,7 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  cursor: pointer;
 }
 
 .getStarted {
@@ -80,6 +84,7 @@
   letter-spacing: 0.1em;
   color: #000000;
   margin: 0;
+  text-align: center;
   text-transform: uppercase;
   opacity: 0.6;
 }
@@ -129,7 +134,9 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #000000;
   padding: 0.5rem 1rem;
   font-family: 'Kokto', sans-serif;
@@ -139,6 +146,7 @@
   opacity: 0;
   z-index: 100;
   white-space: nowrap;
-  border: 1px solid black;
   border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }

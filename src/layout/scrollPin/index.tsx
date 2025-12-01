@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import styles from './style.module.css';
+import { useRouter } from 'next/router';
 
 // Register ScrollTrigger plugin
 if (typeof window !== 'undefined') {
@@ -9,6 +10,7 @@ if (typeof window !== 'undefined') {
 }
 
 const HeroCta = () => {
+  const router = useRouter();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const backgroundRef = useRef<HTMLDivElement>(null);
   const parallaxTextRef = useRef<HTMLDivElement>(null);
@@ -104,6 +106,10 @@ const HeroCta = () => {
     }
   };
 
+  const handleClick = () => {
+    router.push('/contact');
+  };
+
   return (
     <div ref={wrapperRef} className={styles.wrapper}>
       <section className={styles.heroSection}>
@@ -127,6 +133,7 @@ const HeroCta = () => {
           onMouseMove={handleMouseMove}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          onClick={handleClick}
         >
           <div ref={floatingLabelRef} className={styles.floatingLabel}>
             Make it happen

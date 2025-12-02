@@ -1,7 +1,7 @@
 // common.ts
 
 export const Home = {
-  description: "I craft web experiences where beauty meets function — turning ideas into intuitive interfaces that come alive.",
+  description: "Menath is a creative developer exploring the space where engineering meets visual storytelling. He crafts refined, atmospheric interfaces shaped by experimentation and modern web technologies.",
 };
 
 export const Footer = {

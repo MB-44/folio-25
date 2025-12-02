@@ -13,25 +13,25 @@ export default function Description() {
                 <div className={styles.leftContent}>
                     <button className={styles.talkButton}>
                         <svg className={styles.arrow} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path 
-                                d="M9 5L9 14C9 14.5523 9.44772 15 10 15H19" 
-                                stroke="currentColor" 
-                                strokeWidth="2" 
-                                strokeLinecap="round" 
+                            <path
+                                d="M9 5L9 14C9 14.5523 9.44772 15 10 15H19"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
                                 strokeLinejoin="round"
                             />
-                            <path 
-                                d="M15 11L19 15L15 19" 
-                                stroke="currentColor" 
-                                strokeWidth="2" 
-                                strokeLinecap="round" 
+                            <path
+                                d="M15 11L19 15L15 19"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
                                 strokeLinejoin="round"
                             />
                         </svg>
-                        <span>Let's talk</span>
+                        <span>About me</span>
                     </button>
                 </div>
-                
+
                 <div className={styles.rightContent}>
                     <p className={styles.descriptionText}>
                         {words.map((word, index) => (

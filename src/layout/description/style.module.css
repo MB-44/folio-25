@@ -1,5 +1,5 @@
 .description {
-    padding: 80px 40px 120px;
+    padding: 0px 40px 120px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,16 +28,17 @@
 .talkButton {
     background: none;
     border: none;
-    font-size: 23px;
-    font-weight: 400;
-    color: inherit;
+    font-size: x-large;
+    font-weight: 500;
+    color: var(--color-text-dark);
     cursor: pointer;
     padding: 0;
     display: flex;
     align-items: center;
     gap: 8px;
-    font-family: inherit;
+    font-family: var(--font-family-main);
     transition: color 0.3s ease;
+    letter-spacing: -0.01em;
 }
 
 .talkButton:hover {
@@ -70,7 +71,7 @@
 }
 
 .descriptionText {
-    font-size: 36px;
+    font-size: x-large;
     line-height: 1.4;
     margin: 0;
     font-weight: 300;
@@ -95,7 +96,7 @@
 
 @media (max-width: 1024px) {
     .description {
-        padding: 100px 50px;
+        padding: 0px 50px;
     }
 
     .content {
@@ -109,7 +110,7 @@
 
 @media (max-width: 768px) {
     .description {
-        padding: 80px 30px;
+        padding: 0px 30px;
     }
 
     .rightContent {

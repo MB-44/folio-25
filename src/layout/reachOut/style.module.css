@@ -1,5 +1,5 @@
 .homeContactSection {
-    background: #ffffff;
+    background: var(--color-background);
     padding: 120px 40px;
     position: relative;
     color: #161616;
@@ -105,7 +105,7 @@
 .textarea:not(:placeholder-shown)~.label {
     top: -24px;
     font-size: 14px;
-    color: #de322c;
+    color: var(--color-brand-red);
     transform: scale(1);
 }
 
@@ -120,7 +120,7 @@
 .input:focus,
 .textarea:focus {
     outline: none;
-    border-bottom-color: #de322c;
+    border-bottom-color: var(--color-brand-red);
 }
 
 .textarea {
@@ -133,7 +133,7 @@
 
 .submitLink {
     font-size: 23px;
-    color: #0d0d0d;
+    color: var(--color-primary);
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -161,22 +161,22 @@
 }
 
 .submitLink:hover {
-    color: #de322c;
+    color: var(--color-brand-red);
 }
 
 .submitLink:hover .arrow path {
-    stroke: #0d0d0d;
+    stroke: var(--color-primary);
 }
 
 .arrowContainer {
-    background: #ffffff;
+    background: var(--color-background);
     border-radius: 50%;
     width: 24px;
     height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #0d0d0d;
+    color: var(--color-primary);
     transition: transform 0.3s ease;
 }
 

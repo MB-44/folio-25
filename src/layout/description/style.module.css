@@ -5,7 +5,7 @@
     align-items: center;
     position: relative;
     z-index: 10;
-    background-color: #ffffff;
+    background-color: var(--color-background);
 }
 
 .content {
@@ -41,7 +41,7 @@
 }
 
 .talkButton:hover {
-    color: #de322c;
+    color: var(--color-brand-red);
 }
 
 .talkButton span {
@@ -57,12 +57,12 @@
     flex-shrink: 0;
     width: 24px;
     height: 24px;
-    color: #de322c;
+    color: var(--color-brand-red);
     transition: color 0.3s ease;
 }
 
 .talkButton:hover .arrow {
-    color: #0d0d0d;
+    color: var(--color-primary);
 }
 
 .rightContent {
@@ -83,7 +83,7 @@
 }
 
 .magneticWord:hover {
-    color: #de322c;
+    color: var(--color-brand-red);
 }
 
 @media (max-width: 1200px) {

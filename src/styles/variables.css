@@ -1,0 +1,42 @@
+:root {
+    /* Colors */
+    --color-primary: #0d0d0d;
+    --color-secondary: #777777;
+    --color-accent: #8c8c8c;
+    --color-background: #ffffff;
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-brand-red: #de322c;
+    --color-brand-blue: #455CE9;
+    --color-brand-blue-light: #455CE9;
+
+    /* Additional Colors */
+    --color-text-dark: #161616;
+    --color-text-gray: #666666;
+    --color-text-gray-2: #6e6e6e;
+    --color-text-light-gray: #999999;
+    --color-bg-gray: #f5f5f5;
+    --color-border-light: #d0d0d0;
+    --color-text-dark-gray: #525050;
+    --color-bg-hover: #e0e0e0;
+
+    /* Fonts */
+    --font-family-main: "Kokto", sans-serif;
+    --font-family-secondary: "NeueMontreal", sans-serif;
+    --font-family-regular: "NeueMontreal Regular", sans-serif;
+    --font-family-new: "Kokto New", sans-serif;
+
+    /* Font Sizes */
+    --font-size-xs: 11px;
+    --font-size-sm: 14px;
+    --font-size-base: 16px;
+    --font-size-lg: 20px;
+    --font-size-xl: 24px;
+    --font-size-xxl: 28px;
+
+    /* Font Weights */
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+}

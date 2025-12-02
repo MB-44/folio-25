@@ -43,7 +43,7 @@ export default function Home() {
           <Landing />
         </StickyScroll>
 
-        <div style={{ position: 'relative', zIndex: 10, backgroundColor: '#ffffff' }}>
+        <div style={{ position: 'relative', zIndex: 10, backgroundColor: 'var(--color-background)' }}>
           <Description />
           {/* <Intro /> */}
           <ScrollPin />

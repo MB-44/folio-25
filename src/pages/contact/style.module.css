@@ -25,7 +25,7 @@
   font-weight: 400;
   line-height: 1;
   margin: 150px 0 60px 0;
-  color: #0d0d0d;
+  color: var(--color-primary);
   letter-spacing: -0.02em;
   text-align: left;
   padding-left: 315px;
@@ -48,7 +48,7 @@
 .heroSubtitle {
   font-size: 15.2px;
   line-height: 1.6;
-  color: #666666;
+  color: var(--color-text-gray);
   margin: 0;
   max-width: 280px;
 }
@@ -79,19 +79,19 @@
   font-size: 16px;
   font-weight: 500;
   margin: 0;
-  color: #0d0d0d;
+  color: var(--color-primary);
   letter-spacing: -0.01em;
 }
 
 .profileRole {
   font-size: 14px;
-  color: #999999;
+  color: var(--color-text-light-gray);
   margin: 0;
   font-weight: 400;
 }
 
 .rightContent {
-  background: #f5f5f5;
+  background: var(--color-bg-gray);
   padding: 60px 80px;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -122,14 +122,14 @@
   font-weight: 400;
   line-height: 1.2;
   margin: 0 0 -10px 0;
-  color: #0d0d0d;
+  color: var(--color-primary);
   letter-spacing: -0.02em;
   transition: color 0.3s ease;
   cursor: pointer;
 }
 
 .emailTitle:hover {
-  color: #de322c;
+  color: var(--color-brand-red);
 }
 
 .contactForm {
@@ -162,14 +162,14 @@
 
 .input::placeholder,
 .textarea::placeholder {
-  color: #999999;
+  color: var(--color-text-light-gray);
   font-size: 18px;
 }
 
 .input:focus,
 .textarea:focus {
   outline: none;
-  border-bottom-color: #de322c;
+  border-bottom-color: var(--color-brand-red);
 }
 
 .textarea {
@@ -193,7 +193,7 @@
 .link,
 .submitLink {
   font-size: 23px;
-  color: #0d0d0d;
+  color: var(--color-primary);
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -220,11 +220,11 @@
 }
 
 .submitLink:hover {
-  color: #de322c;
+  color: var(--color-brand-red);
 }
 
 .submitLink:hover .arrow path {
-  stroke: #0d0d0d;
+  stroke: var(--color-primary);
 }
 
 .link {
@@ -241,23 +241,23 @@
 }
 
 .instagramLink .arrowSvg {
-  color: #de322c;
+  color: var(--color-brand-red);
   transform: rotate(0deg);
   transition: color 0.3s ease, transform 0.4s ease;
 }
 
 .instagramLink .linkText {
-  color: #0d0d0d;
+  color: var(--color-primary);
   transition: color 0.3s ease;
 }
 
 .instagramLink:hover .arrowSvg {
-  color: #0d0d0d;
+  color: var(--color-primary);
   transform: rotate(0deg);
 }
 
 .instagramLink:hover .linkText {
-  color: #de322c;
+  color: var(--color-brand-red);
   animation: scrollY 0.6s ease-in-out;
 }
 
@@ -307,7 +307,7 @@
 .arrowSvg {
   width: 20px;
   height: 20px;
-  color: #de322c;
+  color: var(--color-brand-red);
   transform: rotate(-45deg);
   transition: transform 0.4s ease;
   flex-shrink: 0;
@@ -333,7 +333,7 @@
 }
 
 .formSection {
-  background: #ffffff;
+  background: var(--color-background);
   padding: 100px 40px;
   border-top: 1px solid #1a1a1a;
 }
@@ -357,14 +357,14 @@
   font-weight: 500;
   line-height: 1.1;
   margin: 0 0 32px 0;
-  color: #161616;
+  color: var(--color-text-dark);
   letter-spacing: -0.02em;
 }
 
 .formText {
   font-size: 18px;
   line-height: 1.7;
-  color: #525050;
+  color: var(--color-text-dark-gray);
   margin: 0 0 20px 0;
   font-weight: 400;
 }
@@ -376,7 +376,7 @@
 .label {
   font-size: 14px;
   font-weight: 500;
-  color: #161616;
+  color: var(--color-text-dark);
   letter-spacing: 0.02em;
 }
 
@@ -395,7 +395,7 @@
 }
 
 .submitBtn:hover {
-  background: #e0e0e0;
+  background: var(--color-bg-hover);
   transform: translateY(-2px);
 }
 
@@ -411,11 +411,11 @@
 }
 
 .magneticWord:hover {
-  color: #de322c;
+  color: var(--color-brand-red);
 }
 
 .getInTouchSection {
-  background: #ffffff;
+  background: var(--color-background);
   padding: 60px 40px 120px;
 }
 
@@ -431,7 +431,7 @@
 }
 
 .getInTouchLeft {
-  color: #777777;
+  color: var(--color-secondary);
   display: flex;
   flex-direction: column;
 }
@@ -441,7 +441,7 @@
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 0;
-  color: #777777;
+  color: var(--color-secondary);
   display: inline-block;
   transition: transform 0.3s ease, color 0.3s ease;
   will-change: transform;
@@ -450,7 +450,7 @@
 
 .getInTouchTitle:hover {
   transform: translateX(10px);
-  color: #de322c;
+  color: var(--color-brand-red);
 }
 
 .getInTouchMiddle {
@@ -476,13 +476,13 @@
   line-height: 1.45;
   letter-spacing: -0.01em;
   font-weight: 600;
-  color: #0d0d0d;
+  color: var(--color-primary);
 }
 
 .getInTouchText p {
   font-size: 16px;
   line-height: 1.6;
-  color: #777777;
+  color: var(--color-secondary);
   margin: 0;
   font-weight: 400;
 }

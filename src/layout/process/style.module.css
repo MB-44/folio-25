@@ -31,7 +31,7 @@
 .eyebrow {
   font-size: 15.2px;
   line-height: 1.6;
-  color: #6e6e6e;
+  color: var(--color-text-gray-2);
   margin: 0;
   font-weight: 400;
   text-transform: none;
@@ -43,7 +43,7 @@
   font-weight: 500;
   line-height: 1.1;
   margin: 0;
-  color: #161616;
+  color: var(--color-text-dark);
   letter-spacing: -0.02em;
   white-space: nowrap;
 }
@@ -51,7 +51,7 @@
 .description {
   font-size: 15.2px;
   line-height: 1.8;
-  color: #6e6e6e;
+  color: var(--color-text-gray-2);
   margin: 24px 0 0 0;
   font-weight: 400;
   width: 450px;
@@ -59,7 +59,7 @@
 
 .ctaButton {
   font-size: 23px;
-  color: #0d0d0d;
+  color: var(--color-primary);
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -87,11 +87,11 @@
 }
 
 .ctaButton:hover {
-  color: #de322c;
+  color: var(--color-brand-red);
 }
 
 .ctaButton:hover .arrow path {
-  stroke: #0d0d0d;
+  stroke: var(--color-primary);
 }
 
 .ctaButton .arrow {
@@ -101,7 +101,7 @@
 }
 
 .stepCard {
-  background: #ffffff;
+  background: var(--color-background);
   overflow: hidden;
   border-bottom: none;
   transition: all 0.3s ease;
@@ -119,11 +119,11 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(to right, #e0e0e0 0%, #e0e0e0 70%, transparent 100%);
+  background: linear-gradient(to right, var(--color-bg-hover) 0%, var(--color-bg-hover) 70%, transparent 100%);
 }
 
 .stepCard:hover::after {
-  background: linear-gradient(to right, #d0d0d0 0%, #d0d0d0 70%, transparent 100%);
+  background: linear-gradient(to right, var(--color-border-light) 0%, var(--color-border-light) 70%, transparent 100%);
 }
 
 .stepArrow {
@@ -144,7 +144,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(to right, #e0e0e0 0%, #e0e0e0 70%, transparent 100%);
+  background: linear-gradient(to right, var(--color-bg-hover) 0%, var(--color-bg-hover) 70%, transparent 100%);
 }
 
 .stepHeader {
@@ -157,7 +157,7 @@
 .stepNumber {
   font-size: 14px;
   line-height: 1;
-  color: #6e6e6e;
+  color: var(--color-text-gray-2);
   margin: 0;
   font-weight: 400;
   text-transform: none;
@@ -167,7 +167,7 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--color-bg-hover);
   border-radius: 50%;
   flex-shrink: 0;
 }
@@ -175,7 +175,7 @@
 .stepTitle {
   font-size: 28px;
   font-weight: 500;
-  color: #161616;
+  color: var(--color-text-dark);
   line-height: 1.4;
   letter-spacing: -0.01em;
   margin: 0;
@@ -185,7 +185,7 @@
 .stepDescription {
   font-size: 16px;
   line-height: 1.6;
-  color: #6e6e6e;
+  color: var(--color-text-gray-2);
   margin: 0 0 0 56px;
   font-weight: 400;
 }

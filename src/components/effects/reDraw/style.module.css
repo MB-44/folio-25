@@ -1,0 +1,86 @@
+.container {
+    /* Optional: mimic original "content--layout" center layout + demo-redraw colors */
+    --color-text: #0c48a4;
+    --color-background: #7d96df;
+
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-background);
+}
+
+/* Common word styles from demo.css (.word) */
+.word {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0;
+    cursor: default;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* .word--redraw from redraw.css */
+.wordRedraw {
+    font-size: 12vw;
+    font-family: 'Montserrat', serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ededed;
+    line-height: 0.7125;
+    letter-spacing: -0.02em;
+}
+
+.wordRedraw span {
+    display: block;
+    position: relative;
+}
+
+.wordRedraw svg {
+    left: 50%;
+    position: absolute;
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    fill: none;
+    stroke: var(--color-text);
+    stroke-width: 4px;
+    transform: translateX(-50%);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.wordRedraw svg path {
+    opacity: 0;
+}
+
+.redrawWord span {
+    display: block;
+    position: relative;
+}
+
+.redrawWord svg {
+    left: 50%;
+    position: absolute;
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    fill: none;
+    stroke: var(--color-text-dark);
+    /* same as your header text color */
+    stroke-width: 4px;
+    transform: translateX(-50%);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.redrawWord svg path {
+    opacity: 0;
+}

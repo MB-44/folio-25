@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import styles from './style.module.css'
 import { Contact } from '@/data'
 import Reveal from '@/components/effects/reveal'
-import RedrawWord from '@/components/effects/reDraw'
 
 const Faq = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -14,11 +13,8 @@ const Faq = () => {
           <div className={styles.faqGrid}>
             <div className={styles.faqLeft}>
               <div className={styles.faqHeader}>
-                {/* <h2 className={styles.faqTitle}>{Contact.faqHeader.title}</h2> */}
-                <RedrawWord
-                  text={Contact.faqHeader.title as string}
-                  className={styles.faqTitle}
-                />
+                <h2 className={styles.faqTitle}>{Contact.faqHeader.title}</h2>
+                {/* <p className={styles.faqTitle}>{Contact.faqHeader.title}</p> */}
                 <p className={styles.faqSubtitle}>{Contact.faqHeader.subtitle}</p>
               </div>
               <button className={styles.faqAskBtn}>

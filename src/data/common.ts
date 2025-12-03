@@ -1,9 +1,5 @@
 // common.ts
 
-export const Home = {
-  description: "Menath is a creative developer exploring the space where engineering meets visual storytelling. He crafts refined, atmospheric interfaces shaped by experimentation and modern web technologies.",
-};
-
 export const Footer = {
   newsTitleLines: ["Stay", "connected"],
   newsSub: "Leave your email — I will write back.",
@@ -207,3 +203,10 @@ export const ReachOut = {
     submitLabel: "Get In Touch"
   }
 };
+
+export const Description = {
+  description: [
+    "Menath is a creative developer exploring where engineering meets visual storytelling. Working through experimentation and careful attention, crafting refined, atmospheric interfaces that feel intentional.",
+    "Ideas translate into user - focused experiences that drive brand growth. Collaborating with organizations globally, blending systematic thinking with creative exploration to deliver design solutions that resonate and feel authentic."
+  ]
+}

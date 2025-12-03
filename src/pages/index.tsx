@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import PreLoader from "@/components/preloader";
-import { Landing, Footer, Description, Faq, ProcessSection, ScrollPin, ReachOut } from "@/layout";
+import { Landing, Footer, Description, Faq, ProcessSection, ScrollPin, ReachOut, Collaboration } from "@/layout";
 import Header from "@/components/header";
 import { StickyScroll } from "@/components/effects";
 
@@ -45,6 +45,7 @@ export default function Home() {
 
         <div style={{ position: 'relative', zIndex: 10, backgroundColor: 'var(--color-background)' }}>
           <Description />
+          <Collaboration />
           <ScrollPin />
           <ProcessSection />
           <Faq />

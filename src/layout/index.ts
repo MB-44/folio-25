@@ -5,3 +5,4 @@ export { default as Faq } from './faq';
 export { default as ProcessSection } from './process';
 export { default as ScrollPin } from './scrollPin';
 export { default as ReachOut } from './reachOut';
+export { default as Collaboration } from './collaboration';

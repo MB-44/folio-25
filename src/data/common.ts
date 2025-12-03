@@ -209,4 +209,9 @@ export const Description = {
     "Menath is a creative developer exploring where engineering meets visual storytelling. Working through experimentation and careful attention, crafting refined, atmospheric interfaces that feel intentional.",
     "Ideas translate into user - focused experiences that drive brand growth. Collaborating with organizations globally, blending systematic thinking with creative exploration to deliver design solutions that resonate and feel authentic."
   ]
-}
+};
+
+export const Collaboration = {
+  text: "Let's work together!",
+  text2: "Let's work together!"
+};

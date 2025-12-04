@@ -212,6 +212,14 @@ export const Description = {
 };
 
 export const Collaboration = {
-  text: "Let's work together!",
-  text2: "Let's work together!"
+  text: "Build something together",
+  text2: "Build something together"
+};
+
+export const Work = {
+  heroTitle: "Design x dev"
+};
+
+export const ExplainGrid = {
+  text: "However, grids are just guidelines and breaking out of a grid can form completely different designs."
 };

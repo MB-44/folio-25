@@ -1,0 +1,64 @@
+.section {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 6rem 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.inner {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3rem;
+}
+
+/* Simple circular accent to mimic the original “hero dot / orb” feel */
+.circleWrapper {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 999px;
+    border: 2px solid currentColor;
+}
+
+/* Text block */
+.textWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+/* Each line mimics the H2 lines in the original */
+.line {
+    font-size: clamp(1.75rem, 1.4rem + 1vw, 2.25rem);
+    line-height: 1.1;
+    font-weight: 500;
+}
+
+/* Last word “emotion” – still black, but slightly emphasized */
+.highlight {
+    font-style: italic;
+    color: inherit;
+    /* stays black */
+}
+
+/* Responsive: center on small screens */
+@media (max-width: 768px) {
+    .inner {
+        align-items: center;
+        text-align: center;
+    }
+
+    .circleWrapper {
+        justify-content: center;
+    }
+}

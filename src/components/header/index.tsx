@@ -113,7 +113,7 @@ export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Elemen
                         </Magnetic>
                         <Magnetic>
                             <div className={styles.el} onMouseEnter={handleNavItemHover}>
-                                <Link href="/projects">Porjects</Link>
+                                <Link href="/work">Work</Link>
                                 <div className={styles.indicator}></div>
                             </div>
                         </Magnetic>

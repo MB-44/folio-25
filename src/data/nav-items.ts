@@ -4,8 +4,8 @@ export const navItems = [
         title: 'home',
     },
     {
-        href: '/project',
-        title: 'projects',
+        href: '/work',
+        title: 'work',
     },
     {
         href: '/services',

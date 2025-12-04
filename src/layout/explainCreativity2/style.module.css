@@ -1,64 +1,99 @@
-.section {
-    background-color: #ffffff;
-    color: #000000;
-    padding: 6rem 1.5rem;
+.root {
+    height: 250svh;
+    position: relative;
+}
+
+.container {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    padding: var(--site--margin);
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    color: #000;
 }
 
-.inner {
-    width: 100%;
-    max-width: 960px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 3rem;
+.svg {
+    --scroll-progress: 0;
+
+    position: absolute;
+    width: 45%;
+    max-width: 1000px;
+
+    color: var(--swatch--gray, #9a9a9a);
+
+    opacity: calc(0.15 + var(--scroll-progress) * 0.85);
+    transform:
+        translateY(calc((1 - var(--scroll-progress)) * 40px)) scale(calc(0.95 + var(--scroll-progress) * 0.05));
+
+    transition: opacity 0.15s linear;
+    pointer-events: none;
 }
 
-/* Simple circular accent to mimic the original “hero dot / orb” feel */
-.circleWrapper {
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
+.pathAccent {
+    color: #000;
 }
 
-.circle {
-    width: 80px;
-    height: 80px;
-    border-radius: 999px;
-    border: 2px solid currentColor;
+.textWrap {
+    position: relative;
+    display: grid;
+    grid-auto-rows: auto;
+    grid-row-gap: 0.6em;
+    grid-column-gap: 0.6em;
+    z-index: 1;
 }
 
-/* Text block */
-.textWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
+.heading {
+    margin: 0;
+    font-family: var(--_typography---font--primary-family);
+    font-size: var(--_typography---font-size--h2);
+    line-height: var(--_typography---line-height--1-1);
+    font-weight: var(--_typography---font--primary-medium);
+    letter-spacing: var(--_typography---letter-spacing--0-02em);
+    text-wrap: balance;
+    color: #000;
 }
 
-/* Each line mimics the H2 lines in the original */
-.line {
-    font-size: clamp(1.75rem, 1.4rem + 1vw, 2.25rem);
-    line-height: 1.1;
-    font-weight: 500;
-}
-
-/* Last word “emotion” – still black, but slightly emphasized */
 .highlight {
-    font-style: italic;
-    color: inherit;
-    /* stays black */
+    color: #000;
 }
 
-/* Responsive: center on small screens */
-@media (max-width: 768px) {
-    .inner {
-        align-items: center;
-        text-align: center;
+@media screen and (min-width: 1280px) {
+    .container {
+        max-width: var(--max-width--full);
+        margin-inline: auto;
     }
 
-    .circleWrapper {
-        justify-content: center;
+    .textWrap {
+        grid-row-gap: 0.6em;
+        grid-column-gap: 0.6em;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .svg {
+        width: 80%;
+    }
+
+    .textWrap {
+        grid-row-gap: 0.75em;
+        grid-column-gap: 0.75em;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container {
+        align-items: flex-start;
+    }
+
+    .heading {
+        font-size: clamp(1.75rem, 6vw, var(--_typography---font-size--h2));
+    }
+
+    .svg {
+        width: 80%;
     }
 }

@@ -223,3 +223,8 @@ export const Work = {
 export const ExplainGrid = {
   text: "However, grids are just guidelines and breaking out of a grid can form completely different designs."
 };
+
+export const ScrollPin = {
+  backgroundText: ["RESEARCH", "STRATEGY", "DESIGN", "DEVELOP", "LAUNCH", "SCALE", "IMPACT"],
+  floatingLabel: "Make it happen"
+}

@@ -211,9 +211,8 @@ export const Description = {
   ]
 };
 
-export const Collaboration = {
+export const TextSlider = {
   text: "Build something together",
-  text2: "Build something together"
 };
 
 export const Work = {

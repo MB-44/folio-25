@@ -57,12 +57,12 @@ export default function Home() {
 
         <div style={{ position: 'relative', zIndex: 10, backgroundColor: 'var(--color-background)' }}>
           <Description />
-          <TextSlider />
           {/* <ExplainCreativity1 /> */}
           {/* <ExplainCreativity2 /> */}
           <ScrollPin />
           <ExplainGrid />
           <ProcessSection />
+          <TextSlider />
           <Faq />
           <ReachOut />
           <Footer />

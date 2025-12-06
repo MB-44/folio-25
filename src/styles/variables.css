@@ -39,4 +39,31 @@
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
+
+    /* Webflow / Reference Design Tokens */
+    --swatch--white: #eaeaea;
+    --swatch--black: #070707;
+    --swatch--gray: #515151;
+    --swatch--light-dim: #ebebeb;
+    --swatch--dark-transparent: color-mix(in srgb, var(--swatch--black) 20%, transparent);
+    --swatch--brand-500: #c6fb50;
+    --swatch--brand-600: color-mix(in srgb, var(--swatch--brand-500), black 20%);
+    --swatch--brand-text: var(--swatch--black);
+    --swatch--brand-blue: #0055ff;
+    /* Added explicit blue based on previous context */
+
+    --site--viewport-max: 100;
+    --site--viewport-min: 20;
+
+    --_typography---font--primary-family: PPNeueMontreal, Arial, sans-serif;
+    --_typography---font--primary-medium: 500;
+    --_typography---font--primary-regular: 400;
+
+    --_typography---line-height--1-1: 1.1;
+    --_typography---letter-spacing--0-02em: -0.02em;
+
+    --_typography---font-size--h2: clamp(2 * 1rem, ((2 - ((4 - 2) / (var(--site--viewport-max) - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((4 - 2) / (var(--site--viewport-max) - var(--site--viewport-min))) * 100vw), 4 * 1rem);
+
+    --site--margin: clamp(1rem, .714286rem + 1.42857vw, 1rem);
+    --max-width--full: 100%;
 }

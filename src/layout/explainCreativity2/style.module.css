@@ -38,12 +38,15 @@
 }
 
 .textWrap {
-    position: relative;
-    display: grid;
-    grid-auto-rows: auto;
-    grid-row-gap: 0.6em;
-    grid-column-gap: 0.6em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
     z-index: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .heading {
@@ -58,18 +61,13 @@
 }
 
 .highlight {
-    color: #000;
+    color: var(--color-brand-blue, #0055ff);
 }
 
 @media screen and (min-width: 1280px) {
     .container {
         max-width: var(--max-width--full);
         margin-inline: auto;
-    }
-
-    .textWrap {
-        grid-row-gap: 0.6em;
-        grid-column-gap: 0.6em;
     }
 }
 

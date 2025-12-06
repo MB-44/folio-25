@@ -330,9 +330,7 @@
   text-align: right;
 }
 
-.subheading span {
-  display: block;
-}
+
 
 @media (max-width: 720px) {
   .headerContainer {

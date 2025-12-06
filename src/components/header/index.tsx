@@ -9,6 +9,7 @@ import gsap from 'gsap';
 import { AudioControlButton, Rounded, Magnetic } from "@/components";
 import styles from './style.module.css';
 import Nav from './nav';
+import AboutMenu from './aboutMenu';
 
 interface HeaderProps {
     theme?: 'light' | 'dark';
@@ -17,6 +18,7 @@ interface HeaderProps {
 export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Element {
     const header = useRef<HTMLDivElement>(null);
     const [isActive, setIsActive] = useState<boolean>(false);
+    const [isAboutActive, setIsAboutActive] = useState<boolean>(false);
     const pathname = usePathname();
     const button = useRef<HTMLDivElement>(null);
     const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -33,6 +35,7 @@ export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Elemen
 
     useEffect(() => {
         if (isActive) setIsActive(false);
+        if (isAboutActive) setIsAboutActive(false);
     }, [pathname]);
 
     useIsomorphicLayoutEffect(() => {
@@ -106,8 +109,8 @@ export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Elemen
                 <div className={styles.nav}>
                     <div className={styles.navLinks}>
                         <Magnetic>
-                            <div className={styles.el} onMouseEnter={handleNavItemHover}>
-                                <Link href="/about">About</Link>
+                            <div className={styles.el} onMouseEnter={handleNavItemHover} onClick={() => setIsAboutActive(true)}>
+                                <span style={{ cursor: 'pointer' }}>About</span>
                                 <div className={styles.indicator}></div>
                             </div>
                         </Magnetic>
@@ -147,6 +150,11 @@ export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Elemen
                         <div className={styles.backdrop} onClick={() => setIsActive(false)} />
                         <Nav />
                     </>
+                )}
+            </AnimatePresence>
+            <AnimatePresence mode="wait">
+                {isAboutActive && (
+                    <AboutMenu close={() => setIsAboutActive(false)} />
                 )}
             </AnimatePresence>
         </>

@@ -154,7 +154,7 @@ export default function Home() {
                 <HackerText text="Freelance" />
               </p>
               <p onMouseEnter={handleTextHover}>
-                <HackerText text="Creative Developer" />
+                <HackerText text="Creative" /> <HackerText text="Developer" />
               </p>
             </h4>
           </div>

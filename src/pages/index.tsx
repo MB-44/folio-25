@@ -2,7 +2,19 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import PreLoader from "@/components/preloader";
-import { Landing, Footer, Description, Faq, ProcessSection, ScrollPin, ReachOut, Collaboration, ExplainGrid, ExplainCreativity } from "@/layout";
+import {
+  Landing,
+  Footer,
+  Description,
+  Faq,
+  ProcessSection,
+  ScrollPin,
+  ReachOut,
+  TextSlider,
+  ExplainGrid,
+  ExplainCreativity1,
+  ExplainCreativity2
+} from "@/layout";
 import Header from "@/components/header";
 import { StickyScroll } from "@/components/effects";
 
@@ -45,8 +57,9 @@ export default function Home() {
 
         <div style={{ position: 'relative', zIndex: 10, backgroundColor: 'var(--color-background)' }}>
           <Description />
-          <Collaboration />
-          <ExplainCreativity />
+          <TextSlider />
+          {/* <ExplainCreativity1 /> */}
+          {/* <ExplainCreativity2 /> */}
           <ScrollPin />
           <ExplainGrid />
           <ProcessSection />

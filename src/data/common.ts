@@ -1,5 +1,3 @@
-// common.ts
-
 export const Footer = {
   newsTitleLines: ["Stay", "connected"],
   newsSub: "Leave your email — I will write back.",
@@ -14,8 +12,8 @@ export const Footer = {
     href: "mailto:hello@menath.b"
   },
   bioLines: [
-    "I don’t just design — I help shape brands and",
-    "products that feel real, work beautifully, and grow with you."
+    "Just like in nature, nothing moves in straight lines, every motion influences the next.",
+    "Delays and easings create that organic rhythm, turning motion into flow."
   ],
   version: "2025 © Edition",
   localTimeLabel: "Local Time -"

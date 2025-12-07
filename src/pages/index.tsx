@@ -58,8 +58,8 @@ export default function Home() {
         <div style={{ position: 'relative', zIndex: 10, backgroundColor: 'var(--color-background)' }}>
           <Description />
           {/* <ExplainCreativity1 /> */}
-          <ExplainCreativity2 />
-          <ScrollPin />
+          {/* <ExplainCreativity2 /> */}
+          {/* <ScrollPin /> */}
           <ExplainGrid />
           <ProcessSection />
           <TextSlider />

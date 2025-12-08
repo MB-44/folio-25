@@ -17,6 +17,7 @@ import {
 } from "@/layout";
 import Header from "@/components/header";
 import { StickyScroll } from "@/components/effects";
+import { ParticleBackground } from "@/components";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -61,6 +62,7 @@ export default function Home() {
           {/* <ExplainCreativity2 /> */}
           {/* <ScrollPin /> */}
           <ExplainGrid />
+          {/* <ParticleBackground /> */}
           <ProcessSection />
           <TextSlider />
           <Faq />

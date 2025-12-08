@@ -68,7 +68,13 @@ export default function Footer() {
         <div className={styles.topSection}>
           <div className={styles.bio}>
             {FooterText.bioLines.map((line, i) => (
-              <span key={i} className={styles.bioLine}>{line}</span>
+              <span key={i} className={styles.bioLine}>
+                {line.split(/(straight lines)/gi).map((part, j) =>
+                  part.toLowerCase() === 'straight lines' ? (
+                    <span key={j} className={styles.straightLinesEffect}>{part}</span>
+                  ) : part
+                )}
+              </span>
             ))}
           </div>
 

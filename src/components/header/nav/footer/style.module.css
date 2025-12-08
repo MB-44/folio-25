@@ -6,9 +6,15 @@
 }
 
 .email {
-    color: rgb(153, 153, 153);
+    color: #b9b9b9;
     font-size: 32px;
-    /* Large text as requested */
     margin: 0;
+    cursor: pointer;
     font-weight: 300;
+}
+
+.email:hover {
+    color: #de322c;
+    cursor: pointer;
+    transition: 0.3s ease-in;
 }

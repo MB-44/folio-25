@@ -7,5 +7,5 @@ export { default as ScrollPin } from './scrollPin';
 export { default as ReachOut } from './reachOut';
 export { default as TextSlider } from './textSlider';
 export { default as ExplainGrid } from './explainGrid';
-export { default as ExplainCreativity1 } from './explainCreativity1';
+export { default as creativeStickySection } from './creativeCard';
 export { default as ExplainCreativity2 } from './explainCreativity2';

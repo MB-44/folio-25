@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./style.module.css";
 
-const ParticleBackground: React.FC = () => {
+const ParticlesBackground: React.FC = () => {
     const containerRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
@@ -13,9 +13,7 @@ const ParticleBackground: React.FC = () => {
         try {
             const w = window as any;
             if (!w.__ringParticlesLoaded) {
-                // from your original script.js
-                // https://unpkg.com/css-houdini-ringparticles/dist/ringparticles.js
-                // :contentReference[oaicite:0]{index=0}
+                // same worklet you used before
                 // @ts-ignore
                 CSS.paintWorklet.addModule(
                     "https://unpkg.com/css-houdini-ringparticles/dist/ringparticles.js"
@@ -23,7 +21,7 @@ const ParticleBackground: React.FC = () => {
                 w.__ringParticlesLoaded = true;
             }
         } catch {
-            // fail silently if something goes wrong
+            // ignore errors
         }
 
         const el = containerRef.current;
@@ -51,20 +49,16 @@ const ParticleBackground: React.FC = () => {
             el.style.setProperty("--ring-y", "50");
         };
 
-        el.addEventListener("mousemove", handleMove);
-        el.addEventListener("mouseout", handleOut);
+        window.addEventListener("mousemove", handleMove);
+        window.addEventListener("mouseout", handleOut);
 
         return () => {
-            el.removeEventListener("mousemove", handleMove);
-            el.removeEventListener("mouseout", handleOut);
+            window.removeEventListener("mousemove", handleMove);
+            window.removeEventListener("mouseout", handleOut);
         };
     }, []);
 
-    return (
-        <section className={styles.particlesSection} aria-hidden="true">
-            <div ref={containerRef} className={styles.ringArea} />
-        </section>
-    );
+    return <div ref={containerRef} className={styles.particlesBackground} />;
 };
 
-export default ParticleBackground;
+export default ParticlesBackground;

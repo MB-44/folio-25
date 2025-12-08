@@ -110,6 +110,32 @@
   background: transparent;
 }
 
+.weatherIcon {
+  display: block;
+  width: 1em;
+  height: 1em;
+}
+
+.mouseTracker {
+  position: absolute;
+  top: 100%;
+  left: 13px;
+  margin-top: 1rem;
+  z-index: 10;
+  color: var(--color-white);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  font-family: monospace;
+}
+
+.mouseTracker p {
+  margin: 0;
+  line-height: 1.5;
+}
+
 .digitalBallOverlay {
   position: absolute;
   inset: 0;

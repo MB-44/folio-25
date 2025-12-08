@@ -19,6 +19,18 @@ export default function Home() {
   let xPercent = 0;
   let direction = -1;
 
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const updateMousePosition = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', updateMousePosition);
+    return () => {
+      window.removeEventListener('mousemove', updateMousePosition);
+    };
+  }, []);
+
   useEffect(() => {
     audioRef.current = new Audio('/audio/ui_hover.mp3');
 
@@ -29,8 +41,6 @@ export default function Home() {
       }
     };
   }, []);
-
-
 
   const handleTextHover = () => {
     if (audioRef.current) {
@@ -44,13 +54,13 @@ export default function Home() {
 
     const ctx = gsap.context(() => {
       gsap.to(slider.current, {
-        x: () => -window.innerWidth * 0.8, // 0.3   
+        x: () => -window.innerWidth * 0.8,
         ease: 'none',
         scrollTrigger: {
           trigger: sliderContainer.current,
           start: 'top bottom',
           end: 'bottom top',
-          scrub: 1.2 // 0.5 - 1
+          scrub: 1.2
         }
       });
 
@@ -82,8 +92,6 @@ export default function Home() {
     requestAnimationFrame(animate);
     xPercent -= 0.03 * direction;
   }
-
-
 
   return (
     <motion.main variants={slideUp} initial="initial" animate="enter" className={styles.landing}>
@@ -129,6 +137,11 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          <div className={styles.mouseTracker}>
+            <p>[X].{mousePosition.x}px</p>
+            <p>[Y].{mousePosition.y}px</p>
+          </div>
         </div>
       </div>
 
@@ -160,7 +173,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/* END NEW */}
 
       <div ref={sliderContainer} className={styles.sliderContainer}>
         <div ref={slider} className={styles.slider}>

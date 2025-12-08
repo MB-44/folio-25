@@ -1,59 +1,31 @@
-.particlesSection {
-    width: 100%;
-    min-height: 60vh;
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    /* match your portfolio bg if you like */
-    background: var(--color-background, #050816);
+.particlesBackground {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-color: var(--color-background);
 }
-
-/* The actual Houdini-powered background area */
-.ringArea {
-    width: 100%;
-    max-width: 1200px;
-    min-height: 400px;
-    border-radius: 24px;
-    overflow: hidden;
-
-    /* fallback background if Houdini isn't supported */
-    background:
-        radial-gradient(circle at 20% 20%, #243bff33, transparent 60%),
-        radial-gradient(circle at 80% 80%, #ff5f4333, transparent 60%),
-        #020617;
-}
-
-/* Just carries the “interactive” class for a hook if you want to style it differently when moving */
-.interactive {
-    /* e.g. slightly brighten on interaction (optional) */
-    box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
-}
-
-/* --- Houdini ring particles setup (adapted from #welcome) --- */
-/* :contentReference[oaicite:3]{index=3} */
 
 @supports (background: paint(something)) {
-    .ringArea {
-        --ring-radius: 100;
+    .particlesBackground {
+        --ring-radius: 10;
         --ring-thickness: 600;
-        --particle-count: 80;
+        --particle-count: 130;
         --particle-rows: 25;
         --particle-size: 2;
-        --particle-color: navy;
+        --particle-color: #de322c;
 
         --particle-min-alpha: 0.1;
         --particle-max-alpha: 1.0;
 
         --seed: 200;
 
-        /* mouse-follow defaults */
         --ring-x: 50;
         --ring-y: 50;
 
         background-image: paint(ring-particles);
     }
 
-    /* Animation properties from original CSS */
     @property --animation-tick {
         syntax: "<number>";
         inherits: false;
@@ -86,13 +58,12 @@
         }
     }
 
-    .ringArea {
+    .particlesBackground {
         animation:
             ripple 6s linear infinite,
             ring 6s ease-in-out infinite alternate;
     }
 
-    /* Follow mouse: --ring-x / --ring-y */
     @property --ring-x {
         syntax: "<number>";
         inherits: false;
@@ -105,7 +76,7 @@
         initial-value: 50;
     }
 
-    .ringArea {
+    .particlesBackground {
         transition:
             --ring-x 3s ease-out,
             --ring-y 3s ease-out;

@@ -12,12 +12,13 @@ import {
   ReachOut,
   TextSlider,
   ExplainGrid,
-  ExplainCreativity1,
+  // CreativeStickySection,
   ExplainCreativity2
 } from "@/layout";
 import Header from "@/components/header";
 import { StickyScroll } from "@/components/effects";
 import { ParticleBackground } from "@/components";
+import CreativeStickySection from "@/layout/creativeCard";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -58,7 +59,7 @@ export default function Home() {
 
         <div style={{ position: 'relative', zIndex: 10, backgroundColor: 'var(--color-background)' }}>
           <Description />
-          {/* <ExplainCreativity1 /> */}
+          {/* <CreativeStickySection /> */}
           {/* <ExplainCreativity2 /> */}
           {/* <ScrollPin /> */}
           <ExplainGrid />

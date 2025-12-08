@@ -29,9 +29,7 @@ export default function Index() {
     >
       <div className={styles.body}>
         <div onMouseLeave={() => { setSelectedIndicator(pathname); }} className={styles.nav}>
-          <div className={styles.header}>
-            <p>Navigation</p>
-          </div>
+
           {navItems.map((data, i) => (
             <Magnetic key={i}>
               <Link

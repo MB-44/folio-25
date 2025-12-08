@@ -1,11 +1,11 @@
 export const navItems = [
     {
         href: '/',
-        title: 'home',
+        title: 'Home',
     },
     {
         href: '/work',
-        title: 'work',
+        title: 'Work',
     },
     {
         href: '/services',

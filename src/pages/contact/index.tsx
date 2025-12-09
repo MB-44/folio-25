@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
-import { Footer, Faq } from '@/layout'
+import { Footer, FaqNew } from '@/layout'
 import { ParallaxEffect, RandomUnderline, Magnetic, PagePreLoader } from '@/components'
 import Reveal from '@/components/effects/reveal'
 import { Contact } from '@/data'
@@ -177,7 +177,7 @@ const ContactPage = () => {
             </section>
           </Reveal>
           {/* FAQ Section */}
-          <Faq />
+          <FaqNew />
 
           <Reveal animation="fade-up" distance={28} duration={1500} once>
             <Footer />

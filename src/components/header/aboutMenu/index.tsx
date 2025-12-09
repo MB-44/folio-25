@@ -1,6 +1,7 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import styles from './style.module.css';
-import Link from 'next/link';
+import { HoverLink } from '@/components/effects'; // Assuming this import path works based on previous file view
+// If direct import is safer: import HoverLink from '../../effects/hoverLink';
 import { useState } from 'react';
 
 const menuVariants = {
@@ -34,23 +35,6 @@ const slideUp = {
     })
 }
 
-const textSwap = {
-    initial: {
-        opacity: 0,
-        y: 20,
-    },
-    enter: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.3, ease: [0.76, 0, 0.24, 1] }
-    },
-    exit: {
-        opacity: 0,
-        y: -20,
-        transition: { duration: 0.3, ease: [0.76, 0, 0.24, 1] }
-    }
-}
-
 const navItems = [
     { title: "Menath", href: "/about#intro", description: "Creative Developer" },
     { title: "Approach", href: "/about#story", description: "my singular approach for craftmanship" },
@@ -62,8 +46,6 @@ interface AboutMenuProps {
 }
 
 export default function AboutMenu({ close }: AboutMenuProps) {
-    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
     return (
         <motion.div
             variants={menuVariants}
@@ -79,8 +61,6 @@ export default function AboutMenu({ close }: AboutMenuProps) {
                         key={index}
                         className={styles.linkContainer}
                         onClick={close}
-                        onMouseEnter={() => setHoveredIndex(index)}
-                        onMouseLeave={() => setHoveredIndex(null)}
                     >
                         <motion.div
                             custom={index}
@@ -88,22 +68,11 @@ export default function AboutMenu({ close }: AboutMenuProps) {
                             initial="initial"
                             animate="enter"
                             exit="exit"
-                            style={{ display: 'flex', alignItems: 'baseline' }}
+                            style={{ display: 'flex', alignItems: 'center' }}
                         >
-                            <Link href={item.href} className={styles.link}>
-                                <AnimatePresence mode="wait">
-                                    <motion.span
-                                        key={hoveredIndex === index ? "desc" : "title"}
-                                        variants={textSwap}
-                                        initial="initial"
-                                        animate="enter"
-                                        exit="exit"
-                                        style={{ display: "inline-block" }}
-                                    >
-                                        {hoveredIndex === index ? item.description : item.title}
-                                    </motion.span>
-                                </AnimatePresence>
-                            </Link>
+                            <HoverLink href={item.href} className={styles.link}>
+                                {item.title}
+                            </HoverLink>
                             <span className={styles.exploreHint}>click to explore</span>
                         </motion.div>
                     </div>

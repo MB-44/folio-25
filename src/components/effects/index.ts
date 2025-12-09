@@ -3,3 +3,4 @@ export * from "./parallax";
 export { default as RandomUnderline } from "./randomUnderline";
 export { default as ParallaxEffect } from "./parallaxEffect";
 export { default as StickyScroll } from "./stickyScroll";
+export { default as HoverLink } from "./hoverLink";

@@ -62,11 +62,11 @@ export default function Home() {
           <Description />
           {/* <CreativeStickySection /> */}
           {/* <ExplainCreativity2 /> */}
-          <ScrollPin />
+          {/* <ScrollPin /> */}
           <ExplainGrid />
           {/* <ParticleBackground /> */}
           <ProcessSection />
-          <TextSlider />
+          {/* <TextSlider /> */}
           {/* <Faq /> */}
           <FaqNew />
           <ReachOut />

@@ -10,6 +10,7 @@ import { AudioControlButton, Rounded, Magnetic } from "@/components";
 import styles from './style.module.css';
 import Nav from './nav';
 import AboutMenu from './aboutMenu';
+import ContactPanel from '../contactPanel';
 
 interface HeaderProps {
     theme?: 'light' | 'dark';
@@ -19,6 +20,7 @@ export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Elemen
     const header = useRef<HTMLDivElement>(null);
     const [isActive, setIsActive] = useState<boolean>(false);
     const [isAboutActive, setIsAboutActive] = useState<boolean>(false);
+    const [isContactActive, setIsContactActive] = useState<boolean>(false);
     const pathname = usePathname();
     const button = useRef<HTMLDivElement>(null);
     const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -36,6 +38,7 @@ export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Elemen
     useEffect(() => {
         if (isActive) setIsActive(false);
         if (isAboutActive) setIsAboutActive(false);
+        if (isContactActive) setIsContactActive(false);
     }, [pathname]);
 
     useIsomorphicLayoutEffect(() => {
@@ -121,8 +124,8 @@ export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Elemen
                             </div>
                         </Magnetic>
                         <Magnetic>
-                            <div className={styles.el} onMouseEnter={handleNavItemHover}>
-                                <Link href="/contact">Contact</Link>
+                            <div className={styles.el} onMouseEnter={handleNavItemHover} onClick={() => setIsContactActive(true)}>
+                                <span style={{ cursor: 'pointer' }}>Contact</span>
                                 <div className={styles.indicator}></div>
                             </div>
                         </Magnetic>
@@ -155,6 +158,11 @@ export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Elemen
             <AnimatePresence mode="wait">
                 {isAboutActive && (
                     <AboutMenu close={() => setIsAboutActive(false)} />
+                )}
+            </AnimatePresence>
+            <AnimatePresence mode="wait">
+                {isContactActive && (
+                    <ContactPanel close={() => setIsContactActive(false)} />
                 )}
             </AnimatePresence>
         </>

@@ -10,6 +10,8 @@
     font-weight: 300;
     box-sizing: border-box;
     align-items: center;
+    transition: opacity 0.5s ease-out;
+    transition-delay: 0.8s;
 }
 
 .navLinks {
@@ -113,6 +115,31 @@
     position: fixed;
     right: 0px;
     z-index: 101;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.5s ease-out;
+    transition-delay: 0.8s;
+}
+
+.contactButton {
+    width: 120px;
+    height: 60px;
+    background-color: #1C1D20;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-right: -10px;
+    /* Pull closer to the burger button */
+    position: relative;
+    overflow: hidden;
+}
+
+.contactButton .contactText {
+    color: var(--color-white);
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .headerButtonContainer .button {
@@ -214,4 +241,19 @@
 
 .headerLight .indicator {
     background-color: var(--color-primary) !important;
+}
+
+.headerLight .contactButton {
+    background-color: var(--color-primary);
+}
+
+.headerLight .contactButton .contactText {
+    color: var(--color-white);
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-out;
+    transition-delay: 0s;
 }

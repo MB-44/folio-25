@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import gsap from 'gsap';
-import { AudioControlButton, Rounded, Magnetic } from "@/components";
+import { AudioControlButton, Rounded, Magnetic, HoverLink } from "@/components";
 import styles from './style.module.css';
 import Nav from './nav';
 import AboutMenu from './aboutMenu';
@@ -100,7 +100,7 @@ export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Elemen
 
     return (
         <>
-            <div ref={header} className={`${styles.header} ${theme === 'light' ? styles.headerLight : ''}`}>
+            <div ref={header} className={`${styles.header} ${theme === 'light' ? styles.headerLight : ''} ${isContactActive ? styles.hidden : ''}`}>
                 <Magnetic>
                     <Link href="/" className={styles.logo}>
                         <div className={styles.name}>
@@ -112,23 +112,24 @@ export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Elemen
                 <div className={styles.nav}>
                     <div className={styles.navLinks}>
                         <Magnetic>
-                            <div className={styles.el} onMouseEnter={handleNavItemHover} onClick={() => setIsAboutActive(true)}>
-                                <span style={{ cursor: 'pointer' }}>About</span>
-                                <div className={styles.indicator}></div>
-                            </div>
-                        </Magnetic>
-                        <Magnetic>
                             <div className={styles.el} onMouseEnter={handleNavItemHover}>
                                 <Link href="/work">Work</Link>
                                 <div className={styles.indicator}></div>
                             </div>
                         </Magnetic>
                         <Magnetic>
-                            <div className={styles.el} onMouseEnter={handleNavItemHover} onClick={() => setIsContactActive(true)}>
-                                <span style={{ cursor: 'pointer' }}>Contact</span>
+                            <div className={styles.el} onMouseEnter={handleNavItemHover} onClick={() => setIsAboutActive(true)}>
+                                <span style={{ cursor: 'pointer' }}>About</span>
                                 <div className={styles.indicator}></div>
                             </div>
                         </Magnetic>
+                        <Magnetic>
+                            <div className={styles.el} onMouseEnter={handleNavItemHover} onClick={() => setIsAboutActive(true)}>
+                                <span style={{ cursor: 'pointer' }}>Vision</span>
+                                <div className={styles.indicator}></div>
+                            </div>
+                        </Magnetic>
+
                     </div>
                     <div className={styles.audioButtonWrapper}>
                         <AudioControlButton
@@ -140,7 +141,18 @@ export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Elemen
                     </div>
                 </div>
             </div>
-            <div ref={button} className={styles.headerButtonContainer}>
+            <div ref={button} className={`${styles.headerButtonContainer} ${isContactActive ? styles.hidden : ''}`}>
+                <Magnetic>
+                    <div className={styles.contactButton}>
+                        <HoverLink
+                            className={`${styles.contactText}`}
+                            onClick={() => setIsContactActive(true)}
+                            style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                        >
+                            Let's talk
+                        </HoverLink>
+                    </div>
+                </Magnetic>
                 <Rounded onClick={() => { setIsActive(!isActive) }} className={`${styles.button}`}>
                     <Magnetic>
                         <div className={`${styles.burger} ${isActive ? styles.burgerActive : ""}`}></div>

@@ -19,7 +19,7 @@ const AudioControlButton = ({
   const [isAudioPlaying, setIsAudioPlaying] = useState(initialPlayState);
   const [hasUserInteracted, setHasUserInteracted] = useState(false);
   const [wasPlayingBeforeHidden, setWasPlayingBeforeHidden] = useState(false);
-  const [audioData, setAudioData] = useState<number[]>([0.2, 0.2, 0.2, 0.2]);
+  const [audioData, setAudioData] = useState<number[]>([0.2, 0.2, 0.2, 0.2, 0.2]);
 
   const audioElementRef = useRef<HTMLAudioElement>(null);
   const uiSoundRef = useRef<HTMLAudioElement>(null);
@@ -71,7 +71,8 @@ const AudioControlButton = ({
     const updateVisualizer = () => {
       if (!analyserRef.current || !isAudioPlaying) return;
       analyserRef.current.getByteFrequencyData(dataArray);
-      const numBars = 4;
+      analyserRef.current.getByteFrequencyData(dataArray);
+      const numBars = 5;
       const sampleSize = Math.floor(dataArray.length / numBars);
       const newData = Array.from({ length: numBars }, (_, i) => {
         const startIndex = i * sampleSize;
@@ -97,7 +98,7 @@ const AudioControlButton = ({
       playPromise.then(() => {
         ui.pause();
         ui.currentTime = 0;
-      }).catch(() => {});
+      }).catch(() => { });
     }
   };
 
@@ -107,7 +108,7 @@ const AudioControlButton = ({
     onToggle?.(newState);
     if (!newState && animationFrameRef.current) {
       cancelAnimationFrame(animationFrameRef.current);
-      setAudioData([0.2, 0.2, 0.2, 0.2]);
+      setAudioData([0.2, 0.2, 0.2, 0.2, 0.2]);
     }
     playUISound();
   };
@@ -121,7 +122,7 @@ const AudioControlButton = ({
             await audioElementRef.current.play();
             setIsAudioPlaying(true);
             onToggle?.(true);
-          } catch {}
+          } catch { }
         }
       }
     };
@@ -133,10 +134,10 @@ const AudioControlButton = ({
     const handleAudio = async () => {
       if (isAudioPlaying) {
         if (audioContextRef.current?.state === "suspended") {
-          try { await audioContextRef.current.resume(); } catch {}
+          try { await audioContextRef.current.resume(); } catch { }
         }
         if (audioElementRef.current?.paused) {
-          try { await audioElementRef.current.play(); } catch {}
+          try { await audioElementRef.current.play(); } catch { }
         }
         if (!analyserRef.current || !sourceNodeRef.current) {
           setupAudioContext();
@@ -149,7 +150,7 @@ const AudioControlButton = ({
           cancelAnimationFrame(animationFrameRef.current);
           animationFrameRef.current = null;
         }
-        setAudioData([0.2, 0.2, 0.2, 0.2]);
+        setAudioData([0.2, 0.2, 0.2, 0.2, 0.2]);
       }
     };
     handleAudio();
@@ -167,7 +168,7 @@ const AudioControlButton = ({
           }
         }
       } else if (wasPlayingBeforeHidden && hasUserInteracted) {
-        try { audioElementRef.current?.play(); } catch {}
+        try { audioElementRef.current?.play(); } catch { }
         setIsAudioPlaying(true);
         setupAudioContext();
       }
@@ -177,7 +178,11 @@ const AudioControlButton = ({
   }, [isAudioPlaying, wasPlayingBeforeHidden, hasUserInteracted]);
 
   return (
-    <button className={styles.audioButton} onClick={toggleAudioIndicator} aria-label={isAudioPlaying ? "Mute audio" : "Play audio"}>
+    <button
+      className={`${styles.audioButton} ${isAudioPlaying ? styles.active : styles.inactive}`}
+      onClick={toggleAudioIndicator}
+      aria-label={isAudioPlaying ? "Mute audio" : "Play audio"}
+    >
       <audio ref={audioElementRef} className="hidden" src={loopAudioSrc} loop preload="auto" />
       {/* <audio ref={uiSoundRef} className="hidden" src={uiSoundSrc} preload="auto" /> */}
       <div className={styles.linesContainer}>

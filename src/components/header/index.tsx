@@ -131,16 +131,14 @@ export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Elemen
                         </Magnetic>
 
                     </div>
-                    <div className={styles.audioButtonWrapper}>
-                        <AudioControlButton
-                            initialPlayState={false}
-                            onToggle={handleAudioToggle}
-                            loopAudioSrc="/audio/cosmic_drift.mp3"
-                            uiSoundSrc="/audio/ui.mp3"
-                        />
-                    </div>
                 </div>
             </div>
+            <AudioControlButton
+                initialPlayState={false}
+                onToggle={handleAudioToggle}
+                loopAudioSrc="/audio/cosmic_drift.mp3"
+                uiSoundSrc="/audio/ui.mp3"
+            />
             <div ref={button} className={`${styles.headerButtonContainer} ${isContactActive ? styles.hidden : ''}`}>
                 <Magnetic>
                     <div className={styles.contactButton}>

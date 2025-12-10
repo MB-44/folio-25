@@ -1,43 +1,69 @@
 .audioButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    background-color: transparent;
-    border-radius: 50%;
-    padding: 4px;
-    cursor: pointer;
-    border: none;
-  }
-  
-  .linesContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 16px;
-    width: 100%;
-    gap: 1.5px;
-  }
-  
-  .lineWrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    margin: 0 1px;
-  }
-  
-  .indicator-line {
-    width: 2px;
-    height: 8px;
-    background-color: white;
-    border: none;
-    /* border-radius: 1px; */
-    transform-origin: center;
-    transition: transform 0.05s ease-out;
-  }
-  
-  .hidden {
-    display: none;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  padding: 6px;
+  cursor: pointer;
+  border: none;
+  position: fixed;
+  bottom: 32px;
+  left: 32px;
+  /* Keeping left alignment slightly in but adjusting bottom implies corner */
+  z-index: 99;
+  transition: background-color 0.3s ease;
+}
+
+.active {
+  background-color: white;
+}
+
+.inactive {
+  background-color: black;
+}
+
+.linesContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 12px;
+  width: 100%;
+  gap: 2px;
+}
+
+.lineWrapper {
+  display: flex;
+  align-items: flex-end;
+  /* Aligns content to bottom */
+  justify-content: center;
+  height: 100%;
+  width: 4px;
+}
+
+.indicator-line {
+  width: 2px;
+  height: 8px;
+  /* Base height for scaling */
+  background-color: currentColor;
+  border: none;
+  transform-origin: bottom;
+  transition: transform 0.05s ease-out, height 0.3s ease;
+}
+
+.active .indicator-line {
+  background-color: black;
+}
+
+.inactive .indicator-line {
+  background-color: white;
+  height: 2px !important;
+  /* Force dot height */
+  transform: scaleY(1) !important;
+  /* No scaling */
+}
+
+.hidden {
+  display: none;
+}

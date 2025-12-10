@@ -137,11 +137,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-          <div className={styles.mouseTracker}>
-            <p>[X].{mousePosition.x}px</p>
-            <p>[Y].{mousePosition.y}px</p>
-          </div>
         </div>
       </div>
 

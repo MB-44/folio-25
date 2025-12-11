@@ -1,20 +1,71 @@
 .footer {
     display: flex;
-    align-items: flex-end;
-    /* Align to the bottom if needed, or adjust as per layout */
+    justify-content: space-between;
     width: 100%;
+    padding-bottom: 20px;
+    gap: 100px;
 }
 
-.email {
+.contactCol,
+.socialCol {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.contactItem {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.arrow {
+    position: absolute;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.contactItem:hover .arrow {
+    opacity: 1;
+}
+
+.contactItem p {
+    transition: transform 0.3s ease;
+}
+
+.contactItem:hover p {
+    transform: translateX(18px);
+}
+
+.email,
+.phone,
+.socialLink {
     color: #b9b9b9;
-    font-size: 32px;
+    font-size: 16px;
     margin: 0;
     cursor: pointer;
     font-weight: 300;
+    transition: 0.3s ease-in;
 }
 
-.email:hover {
+/* .email:hover,
+.phone:hover,
+.socialLink:hover {
     color: #de322c;
-    cursor: pointer;
-    transition: 0.3s ease-in;
+}
+
+/* Ensure only contact items trigger the color change for their specific text */
+/* .contactItem:hover .email,
+.contactItem:hover .phone {
+    color: #de322c;
+} */
+
+.socialLink:hover {
+    color: #de322c;
 }

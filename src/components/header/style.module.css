@@ -55,11 +55,11 @@
     padding-left: 0.3em;
 }
 
-.header .logo:hover .copyright {
+/* .header .logo:hover .copyright {
     transform: rotate(360deg);
-}
+} */
 
-.header .logo:hover .name {
+/* .header .logo:hover .name {
     padding-right: 30px;
 }
 
@@ -73,7 +73,7 @@
 
 .header .logo:hover .name .baddegama {
     transform: translateX(-65px);
-}
+} */
 
 .header .nav {
     display: flex;

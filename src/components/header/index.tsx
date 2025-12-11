@@ -14,9 +14,10 @@ import ContactPanel from '../contactPanel';
 
 interface HeaderProps {
     theme?: 'light' | 'dark';
+    isLoading?: boolean;
 }
 
-export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Element {
+export default function Header({ theme = 'dark', isLoading = false }: HeaderProps = {}): JSX.Element {
     const header = useRef<HTMLDivElement>(null);
     const [isActive, setIsActive] = useState<boolean>(false);
     const [isAboutActive, setIsAboutActive] = useState<boolean>(false);
@@ -101,14 +102,11 @@ export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Elemen
     return (
         <>
             <div ref={header} className={`${styles.header} ${theme === 'light' ? styles.headerLight : ''} ${isContactActive ? styles.hidden : ''}`}>
-                <Magnetic>
-                    <Link href="/" className={styles.logo}>
-                        <div className={styles.name}>
-                            <p className={styles.codeBy}>Code by</p>
-                            <p className={styles.menath}>Menath</p>
-                        </div>
-                    </Link>
-                </Magnetic>
+                <Link href="/" className={styles.logo}>
+                    <div className={styles.name}>
+                        <p className={styles.menath}>Menath</p>
+                    </div>
+                </Link>
                 <div className={styles.nav}>
                     <div className={styles.navLinks}>
                         <Magnetic>
@@ -133,12 +131,14 @@ export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Elemen
                     </div>
                 </div>
             </div>
-            <AudioControlButton
-                initialPlayState={false}
-                onToggle={handleAudioToggle}
-                loopAudioSrc="/audio/cosmic_drift.mp3"
-                uiSoundSrc="/audio/ui.mp3"
-            />
+            {!isLoading && (
+                <AudioControlButton
+                    initialPlayState={false}
+                    onToggle={handleAudioToggle}
+                    loopAudioSrc="/audio/cosmic_drift.mp3"
+                    uiSoundSrc="/audio/ui.mp3"
+                />
+            )}
             <div ref={button} className={`${styles.headerButtonContainer} ${isContactActive ? styles.hidden : ''}`}>
                 <Magnetic>
                     <div className={styles.contactButton}>

@@ -25,6 +25,7 @@ const WordMagnet = ({ text }: { text: string }) => {
 
 const AboutPage = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isPreloaderFinished, setIsPreloaderFinished] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -34,11 +35,11 @@ const AboutPage = () => {
 
   return (
     <>
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" onExitComplete={() => setIsPreloaderFinished(true)}>
         {isLoading && <PagePreLoader pageName="About me" />}
       </AnimatePresence>
 
-      <Header theme="light" />
+      <Header theme="light" isLoading={!isPreloaderFinished} />
 
       <ParallaxEffect>
         <div className={styles.aboutPage}>

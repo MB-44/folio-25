@@ -23,6 +23,7 @@ import CreativeStickySection from "@/layout/creativeCard";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isPreloaderFinished, setIsPreloaderFinished] = useState(false);
 
   useEffect(() => {
     (
@@ -49,11 +50,11 @@ export default function Home() {
       </Head>
 
       <main>
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait" onExitComplete={() => setIsPreloaderFinished(true)}>
           {isLoading && <PreLoader />}
         </AnimatePresence>
 
-        <Header />
+        <Header isLoading={!isPreloaderFinished} />
         <StickyScroll>
           <Landing />
         </StickyScroll>

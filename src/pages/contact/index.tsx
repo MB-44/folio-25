@@ -9,6 +9,7 @@ import styles from './style.module.css'
 
 const ContactPage = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isPreloaderFinished, setIsPreloaderFinished] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -51,11 +52,11 @@ const ContactPage = () => {
 
   return (
     <>
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" onExitComplete={() => setIsPreloaderFinished(true)}>
         {isLoading && <PagePreLoader pageName="Contact" />}
       </AnimatePresence>
 
-      <Header theme="light" />
+      <Header theme="light" isLoading={!isPreloaderFinished} />
 
       <ParallaxEffect>
         <div className={styles.contactPage}>

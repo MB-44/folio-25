@@ -1,7 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./style.module.css";
 
-declare global { interface Window { isAudioEnabled: boolean; } }
+declare global {
+  interface Window {
+    isAudioEnabled: boolean;
+  }
+}
 
 interface AudioControlButtonProps {
   initialPlayState?: boolean;
@@ -30,29 +34,40 @@ const AudioControlButton = ({
 
   const setupAudioContext = () => {
     if (!audioElementRef.current) return;
+
     if (!audioContextRef.current) {
-      audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
+      audioContextRef.current = new (window.AudioContext ||
+        (window as any).webkitAudioContext)();
     }
+
     const audioContext = audioContextRef.current;
+
     if (!sourceNodeRef.current) {
-      sourceNodeRef.current = audioContext.createMediaElementSource(audioElementRef.current);
+      sourceNodeRef.current = audioContext.createMediaElementSource(
+        audioElementRef.current
+      );
     }
+
     if (!analyserRef.current) {
       analyserRef.current = audioContext.createAnalyser();
       analyserRef.current.fftSize = 32;
     }
+
     sourceNodeRef.current.disconnect();
     analyserRef.current.disconnect();
     sourceNodeRef.current.connect(analyserRef.current);
     analyserRef.current.connect(audioContext.destination);
+
     startAudioVisualization();
   };
 
   useEffect(() => {
     window.isAudioEnabled = isAudioPlaying;
+
     if (isAudioPlaying && audioElementRef.current) {
       setupAudioContext();
     }
+
     return () => {
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
@@ -64,16 +79,21 @@ const AudioControlButton = ({
 
   const startAudioVisualization = () => {
     if (!analyserRef.current) return;
+
     if (animationFrameRef.current) {
       cancelAnimationFrame(animationFrameRef.current);
     }
+
     const dataArray = new Uint8Array(analyserRef.current.frequencyBinCount);
+
     const updateVisualizer = () => {
       if (!analyserRef.current || !isAudioPlaying) return;
+
       analyserRef.current.getByteFrequencyData(dataArray);
-      analyserRef.current.getByteFrequencyData(dataArray);
+
       const numBars = 5;
       const sampleSize = Math.floor(dataArray.length / numBars);
+
       const newData = Array.from({ length: numBars }, (_, i) => {
         const startIndex = i * sampleSize;
         let sum = 0;
@@ -81,24 +101,30 @@ const AudioControlButton = ({
           sum += dataArray[startIndex + j] || 0;
         }
         const average = sum / sampleSize;
+        // keep within [0.2, 1] like before
         return Math.max(0.2, Math.min(1, (average / 255) * 3));
       });
+
       setAudioData(newData);
       animationFrameRef.current = requestAnimationFrame(updateVisualizer);
     };
+
     animationFrameRef.current = requestAnimationFrame(updateVisualizer);
   };
 
   const playUISound = () => {
     const ui = uiSoundRef.current;
     if (!ui) return;
+
     ui.currentTime = 0;
     const playPromise = ui.play();
     if (playPromise !== undefined) {
-      playPromise.then(() => {
-        ui.pause();
-        ui.currentTime = 0;
-      }).catch(() => { });
+      playPromise
+        .then(() => {
+          ui.pause();
+          ui.currentTime = 0;
+        })
+        .catch(() => {});
     }
   };
 
@@ -106,10 +132,12 @@ const AudioControlButton = ({
     const newState = !isAudioPlaying;
     setIsAudioPlaying(newState);
     onToggle?.(newState);
+
     if (!newState && animationFrameRef.current) {
       cancelAnimationFrame(animationFrameRef.current);
       setAudioData([0.2, 0.2, 0.2, 0.2, 0.2]);
     }
+
     playUISound();
   };
 
@@ -122,10 +150,13 @@ const AudioControlButton = ({
             await audioElementRef.current.play();
             setIsAudioPlaying(true);
             onToggle?.(true);
-          } catch { }
+          } catch {
+            // autoplay blocked – user can press the button
+          }
         }
       }
     };
+
     window.addEventListener("click", handleGlobalClick);
     return () => window.removeEventListener("click", handleGlobalClick);
   }, [hasUserInteracted, onToggle]);
@@ -134,10 +165,14 @@ const AudioControlButton = ({
     const handleAudio = async () => {
       if (isAudioPlaying) {
         if (audioContextRef.current?.state === "suspended") {
-          try { await audioContextRef.current.resume(); } catch { }
+          try {
+            await audioContextRef.current.resume();
+          } catch {}
         }
         if (audioElementRef.current?.paused) {
-          try { await audioElementRef.current.play(); } catch { }
+          try {
+            await audioElementRef.current.play();
+          } catch {}
         }
         if (!analyserRef.current || !sourceNodeRef.current) {
           setupAudioContext();
@@ -153,6 +188,7 @@ const AudioControlButton = ({
         setAudioData([0.2, 0.2, 0.2, 0.2, 0.2]);
       }
     };
+
     handleAudio();
   }, [isAudioPlaying]);
 
@@ -168,33 +204,81 @@ const AudioControlButton = ({
           }
         }
       } else if (wasPlayingBeforeHidden && hasUserInteracted) {
-        try { audioElementRef.current?.play(); } catch { }
+        try {
+          audioElementRef.current?.play();
+        } catch {}
         setIsAudioPlaying(true);
         setupAudioContext();
       }
     };
+
     document.addEventListener("visibilitychange", handleVisibilityChange);
-    return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
+    return () =>
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
   }, [isAudioPlaying, wasPlayingBeforeHidden, hasUserInteracted]);
+
+  // x positions for the 5 SVG bars, like the original HTML
+  const barXPositions = [1, 5, 9, 13, 17];
 
   return (
     <button
-      className={`${styles.audioButton} ${isAudioPlaying ? styles.active : styles.inactive}`}
+      className={`${styles.audioButton} ${
+        isAudioPlaying ? styles.active : styles.inactive
+      }`}
       onClick={toggleAudioIndicator}
       aria-label={isAudioPlaying ? "Mute audio" : "Play audio"}
+      data-cursor="hide"
     >
-      <audio ref={audioElementRef} className="hidden" src={loopAudioSrc} loop preload="auto" />
-      {/* <audio ref={uiSoundRef} className="hidden" src={uiSoundSrc} preload="auto" /> */}
-      <div className={styles.linesContainer}>
+      <span className={styles.srOnly}>Toggle Sound</span>
+
+      {/* background circle */}
+      <div className={styles.muteBg} />
+
+      {/* SVG icon with animated lines */}
+      <svg
+        className={styles.muteIcon}
+        viewBox="0 0 18 16"
+        aria-hidden="true"
+        focusable="false"
+      >
         {audioData.map((value, index) => (
-          <div key={index} className={styles.lineWrapper}>
-            <div
-              className={styles["indicator-line"]}
-              style={{ transform: `scaleY(${value * 3})`, transitionDuration: isAudioPlaying ? "0.05s" : "0.2s" }}
-            />
-          </div>
+          <line
+            key={index}
+            className={styles.muteIconLine}
+            x1={barXPositions[index]}
+            y1={0}
+            x2={barXPositions[index]}
+            y2={16}
+            style={{
+              transform: `scaleY(${
+                isAudioPlaying ? value * 3 : 0.25 // small bars when muted
+              })`,
+              transitionDuration: isAudioPlaying ? "0.08s" : "0.2s"
+            }}
+          />
         ))}
+      </svg>
+
+      {/* inner fill overlay (for subtle effect, like original) */}
+      <div className={styles.muteInner}>
+        <span className={styles.muteFill} />
       </div>
+
+      <audio
+        ref={audioElementRef}
+        className={styles.hidden}
+        src={loopAudioSrc}
+        loop
+        preload="auto"
+      />
+
+      {/* uncomment if you want a UI click sound */}
+      {/* <audio
+        ref={uiSoundRef}
+        className={styles.hidden}
+        src={uiSoundSrc}
+        preload="auto"
+      /> */}
     </button>
   );
 };

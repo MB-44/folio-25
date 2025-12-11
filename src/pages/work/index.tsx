@@ -21,6 +21,7 @@ const PlusIcon = () => (
 
 const WorkPage = () => {
     const [isLoading, setIsLoading] = useState(true);
+    const [isPreloaderFinished, setIsPreloaderFinished] = useState(false);
 
     useEffect(() => {
         setTimeout(() => {
@@ -47,11 +48,11 @@ const WorkPage = () => {
 
     return (
         <>
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" onExitComplete={() => setIsPreloaderFinished(true)}>
                 {isLoading && <PagePreLoader pageName="Work" />}
             </AnimatePresence>
 
-            <Header theme="light" />
+            <Header theme="light" isLoading={!isPreloaderFinished} />
 
             <ParallaxEffect>
                 <div className={styles.workPage}>

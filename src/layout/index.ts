@@ -10,3 +10,4 @@ export { default as TextSlider } from './textSlider';
 export { default as ExplainGrid } from './explainGrid';
 export { default as creativeStickySection } from './creativeCard';
 export { default as ExplainCreativity2 } from './explainCreativity2';
+export { default as ProcessNew } from './processNew';

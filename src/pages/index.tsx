@@ -14,7 +14,8 @@ import {
   ExplainGrid,
   // CreativeStickySection,
   ExplainCreativity2,
-  FaqNew
+  FaqNew,
+  ProcessNew
 } from "@/layout";
 import Header from "@/components/header";
 import { StickyScroll } from "@/components/effects";
@@ -66,7 +67,8 @@ export default function Home() {
           {/* <ScrollPin /> */}
           <ExplainGrid />
           {/* <ParticleBackground /> */}
-          <ProcessSection />
+          {/* <ProcessSection /> */}
+          <ProcessNew />
           {/* <TextSlider /> */}
           {/* <Faq /> */}
           <FaqNew />

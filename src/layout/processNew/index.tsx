@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './style.module.css';
 import { Process } from '@/data';
 import Reveal from '@/components/effects/reveal';
+import { HoverLink, Rounded } from '@/components';
 
 const ProcessNew: React.FC = () => {
     return (
@@ -33,9 +34,9 @@ const ProcessNew: React.FC = () => {
                             <br /><br />
                             With our 6-stage process, we prioritise clarity, collaboration, and your unique vision. At every step, we'll keep you informed, inspired, and involved.
                         </h2>
-                        <button className={styles.ctaButton}>
+                        <Rounded className={styles.ctaButton} backgroundColor="#ffffffff">
                             <span>Get To Know Approach</span>
-                        </button>
+                        </Rounded>
                     </div>
                 </div>
             </section>

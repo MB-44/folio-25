@@ -140,17 +140,18 @@ export default function Header({ theme = 'dark', isLoading = false }: HeaderProp
                 />
             )}
             <div ref={button} className={`${styles.headerButtonContainer} ${isContactActive ? styles.hidden : ''}`}>
-                <Magnetic>
-                    <div className={styles.contactButton}>
-                        <HoverLink
-                            className={`${styles.contactText}`}
-                            onClick={() => setIsContactActive(true)}
-                            style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                        >
-                            Let's talk
-                        </HoverLink>
-                    </div>
-                </Magnetic>
+                <Rounded
+                    className={styles.contactButton}
+                    backgroundColor="#ffffffff"
+                >
+                    <HoverLink
+                        className={`${styles.contactText}`}
+                        onClick={() => setIsContactActive(true)}
+                        style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                    >
+                        Let's talk
+                    </HoverLink>
+                </Rounded>
                 <Rounded onClick={() => { setIsActive(!isActive) }} className={`${styles.button}`}>
                     <Magnetic>
                         <div className={`${styles.burger} ${isActive ? styles.burgerActive : ""}`}></div>

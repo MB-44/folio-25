@@ -142,11 +142,6 @@
     font-weight: 500;
 }
 
-.contactButton:hover {
-    background-color: #ffff;
-    border: 0.5px solid #1C1D20;
-}
-
 .headerButtonContainer .button {
     position: relative;
     margin: 20px;

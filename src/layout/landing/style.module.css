@@ -37,6 +37,12 @@
   margin-bottom: 100px;
 }
 
+.commandLineTrigger {
+  color: #ffff;
+  padding-top: 50px;
+  cursor: pointer;
+}
+
 .centerContainer {
   position: absolute;
   top: 50%;

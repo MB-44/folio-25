@@ -4,8 +4,13 @@ import { navItems } from '@/data/nav-items';
 import { socialLinks } from '@/data/common';
 import { AnimatePresence, motion } from 'framer-motion';
 import styles from './style.module.css';
-import { menuSlide } from '@/components/header/animations';
-import Curve from './Curve'; // Local White Curve
+import Curve from './Curve';
+
+const slideUp = {
+    initial: { y: "100%" },
+    enter: { y: "0%", transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } },
+    exit: { y: "100%", transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } }
+};
 
 const CommandLine = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -94,7 +99,7 @@ const CommandLine = () => {
                         onClick={() => setIsOpen(false)}
                     />
                     <motion.div
-                        variants={menuSlide}
+                        variants={slideUp}
                         initial="initial"
                         animate="enter"
                         exit="exit"
@@ -103,7 +108,7 @@ const CommandLine = () => {
                         <div className={styles.body}>
                             <div className={styles.topSection}>
                                 <div className={styles.title}>
-                                    Command Terminal
+                                    Command Line
                                 </div>
 
                                 <div className={styles.inputWrapper}>
@@ -121,7 +126,6 @@ const CommandLine = () => {
                                 </div>
                             </div>
 
-                            {/* Bottom Footer */}
                             <div className={styles.footer}>
                                 Esc to close
                             </div>

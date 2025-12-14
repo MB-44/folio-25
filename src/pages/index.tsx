@@ -6,7 +6,7 @@ import {
   Landing,
   Footer,
   Description,
-  Faq,
+  faq,
   ProcessSection,
   ScrollPin,
   ReachOut,
@@ -14,13 +14,13 @@ import {
   ExplainGrid,
   // CreativeStickySection,
   ExplainCreativity2,
-  FaqNew,
   ProcessNew
 } from "@/layout";
 import Header from "@/components/header";
 import { StickyScroll } from "@/components/effects";
 import { ParticleBackground } from "@/components";
 import CreativeStickySection from "@/layout/creativeCard";
+import FAQ from "@/layout/faq";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -65,13 +65,12 @@ export default function Home() {
           {/* <CreativeStickySection /> */}
           {/* <ExplainCreativity2 /> */}
           {/* <ScrollPin /> */}
-          <ExplainGrid />
+          {/* <ExplainGrid /> */}
           {/* <ParticleBackground /> */}
           {/* <ProcessSection /> */}
           <ProcessNew />
           {/* <TextSlider /> */}
-          {/* <Faq /> */}
-          <FaqNew />
+          <FAQ />
           <ReachOut />
           <Footer />
         </div>

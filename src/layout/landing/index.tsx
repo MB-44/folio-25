@@ -3,15 +3,33 @@ import gsap from 'gsap';
 import Image from 'next/image'
 import { useRef, useEffect, useState } from 'react';
 import { ScrollTrigger } from 'gsap/all';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import { HackerText } from "@/components";
 import styles from './style.module.css'
 import { slideUp } from './animation';
 
 export default function Home() {
-  const [isHovered, setIsHovered] = useState(false);
+  const firstText = useRef(null);
+  const secondText = useRef(null);
+  const slider = useRef(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const sliderContainer = useRef<HTMLDivElement | null>(null);
+
+  let xPercent = 0;
+  let direction = -1;
+
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const updateMousePosition = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', updateMousePosition);
+    return () => {
+      window.removeEventListener('mousemove', updateMousePosition);
+    };
+  }, []);
 
   useEffect(() => {
     audioRef.current = new Audio('/audio/ui_hover.mp3');
@@ -33,10 +51,47 @@ export default function Home() {
 
   useIsomorphicLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      gsap.to(slider.current, {
+        x: () => -window.innerWidth * 0.8,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: sliderContainer.current,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1.2
+        }
+      });
+
+      ScrollTrigger.create({
+        trigger: document.documentElement,
+        start: 0,
+        end: window.innerHeight,
+        scrub: 0.25,
+        onUpdate: (e) => { direction = e.direction * -1; }
+      });
+      requestAnimationFrame(animate);
+    });
+
     return () => {
+      ctx.revert();
       ScrollTrigger.killAll();
     };
   }, []);
+
+  const animate = () => {
+    if (xPercent < -100) {
+      xPercent = 0;
+    }
+    else if (xPercent > 0) {
+      xPercent = -100;
+    }
+    gsap.set(firstText.current, { xPercent: xPercent })
+    gsap.set(secondText.current, { xPercent: xPercent })
+    requestAnimationFrame(animate);
+    xPercent -= 0.03 * direction;
+  }
 
   return (
     <motion.main variants={slideUp} initial="initial" animate="enter" className={styles.landing}>
@@ -49,58 +104,77 @@ export default function Home() {
         />
       </div>
 
-      <div className={styles.centerContainer}>
-        <div className={styles.smallText}>
-          <span onMouseEnter={handleTextHover}><HackerText text="Creative developer" /></span>
-        </div>
-        <h1 className={styles.largeText}>
-          <span className={styles.serifText}>Creating the</span> <br />unexpected
-        </h1>
-        <div className={styles.commandLineTrigger}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          <AnimatePresence mode="wait">
-            {isHovered ? (
-              <motion.span
-                key="hover"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
-                className={styles.commandLineTriggerText}
-              >
-                Press &quot;/&quot; for
-              </motion.span>
-            ) : (
-              <motion.span
-                key="default"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
-                className={styles.commandLineTriggerText}
-              >
-                ( Don&apos;t hover here )
-              </motion.span>
-            )}
-          </AnimatePresence>
-        </div>
-      </div>
+      <div className={styles.hangerOverlay}>
+        <div className={styles.hanger}>
+          <p className={styles.hangerText}>
+            <span onMouseEnter={handleTextHover}><HackerText text="From" /></span><br />
+            <span onMouseEnter={handleTextHover}><HackerText text="Sri Lanka" /></span>
+          </p>
 
-      <div className={styles.digitalBall}>
-        <div className={styles.digitalBallOverlay} />
-        <div className={styles.globe}>
-          <div className={styles.globeWrap}>
-            <div className={styles.circle} />
-            <div className={styles.circle} />
-            <div className={styles.circle} />
-            <div className={styles.circleHor} />
-            <div className={styles.circleHorMiddle} />
+          <svg
+            className={styles.hangerSvg}
+            width="300"
+            height="121"
+            viewBox="0 0 300 121"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <g fill="#1C1D20">
+              <path d="M239.633657,0 C272.770742,1.0182436e-15 299.633657,26.862915 299.633657,60 C299.633657,93.137085 272.770742,120 239.633657,120 L0,120 L0,0 L239.633657,0 Z M239.633657,18.7755102 C216.866,18.7755102 198.409167,37.232343 198.409167,60 C198.409167,82.767657 216.866,101.22449 239.633657,101.22449 C262.401314,101.22449 280.858147,82.767657 280.858147,60 C280.858147,37.232343 262.401314,18.7755102 239.633657,18.7755102 Z" />
+            </g>
+          </svg>
+
+          <div className={styles.digitalBall}>
+            <div className={styles.digitalBallOverlay} />
+            <div className={styles.globe}>
+              <div className={styles.globeWrap}>
+                <div className={styles.circle} />
+                <div className={styles.circle} />
+                <div className={styles.circle} />
+                <div className={styles.circleHor} />
+                <div className={styles.circleHorMiddle} />
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
+      <div className={styles.headerContainer}>
+        <div className={styles.headerRow}>
+          <div className={styles.headerCol}>
+            <div className={styles.headerAbove}>
+              <div className={styles.arrowBig}>
+                <svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <g fill="none" fillRule="evenodd">
+                    <g transform="translate(-1019, -279)" stroke="#FFFFFF" strokeWidth="1.5">
+                      <g transform="translate(1026, 286) rotate(90) translate(-1026, -286) translate(1020, 280)">
+                        <polyline points="2.76923077 0 12 0 12 9.23076923"></polyline>
+                        <line x1="12" y1="0" x2="0" y2="12"></line>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <h4 className={styles.subheading}>
+              <p onMouseEnter={handleTextHover}>
+                <HackerText text="Freelance" />
+              </p>
+              <p onMouseEnter={handleTextHover}>
+                <HackerText text="Creative" /> <HackerText text="Developer" />
+              </p>
+            </h4>
+          </div>
+        </div>
+      </div>
+
+      <div ref={sliderContainer} className={styles.sliderContainer}>
+        <div ref={slider} className={styles.slider}>
+          <p ref={firstText}>Menath Lakvindu -</p>
+          <p ref={secondText}>Menath Lakvindu -</p>
+        </div>
+      </div>
     </motion.main>
   )
 }

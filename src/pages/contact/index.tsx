@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
-import { Footer, FaqNew } from '@/layout'
+import { Footer } from '@/layout'
 import { ParallaxEffect, RandomUnderline, Magnetic, PagePreLoader } from '@/components'
 import Reveal from '@/components/effects/reveal'
 import { Contact } from '@/data'
@@ -57,7 +57,7 @@ const ContactPage = () => {
       </AnimatePresence>
 
       <Header theme="light" isLoading={!isPreloaderFinished} />
-
+      {/* <SplashCursor /> */}
       <ParallaxEffect>
         <div className={styles.contactPage}>
           {/* Hero Section  */}
@@ -178,8 +178,6 @@ const ContactPage = () => {
             </section>
           </Reveal>
           {/* FAQ Section */}
-          <FaqNew />
-
           <Reveal animation="fade-up" distance={28} duration={1500} once>
             <Footer />
           </Reveal>

@@ -121,10 +121,10 @@ export default function Curve() {
     return (
         <svg style={{
             position: 'absolute',
-            top: '-99px',
+            top: '-100px',
             left: 0,
             width: '100%',
-            height: '100px',
+            height: '101px',
             fill: 'white',
             stroke: 'none',
             zIndex: 1,

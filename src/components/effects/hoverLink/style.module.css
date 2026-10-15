@@ -34,7 +34,7 @@
 
 .container:hover .char,
 .container:focus-visible .char {
-    color: #ec4e39;
+    color: var(--hover-color, #ec4e39);
     animation: slide-up 0.25s forwards;
     animation-delay: calc(var(--index) * 0.05s);
 }

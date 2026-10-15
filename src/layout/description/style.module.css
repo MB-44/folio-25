@@ -78,6 +78,7 @@
     line-height: 1.4;
     margin: 0;
     font-weight: 300;
+    color: var(--color-primary);
 }
 
 .magneticWord {
@@ -88,6 +89,17 @@
 
 .magneticWord:hover {
     color: var(--color-brand-red);
+}
+
+.letter {
+    display: inline;
+    opacity: 0.2;
+    transition: color 0.2s ease;
+}
+
+.magneticWord:hover .letter {
+    color: var(--color-brand-red) !important;
+    opacity: 1 !important;
 }
 
 .highlight {

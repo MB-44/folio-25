@@ -9,10 +9,9 @@ import Footer from './footer';
 import Magnetic from '@/components/common/magnetic';
 
 const navItems = [
-  { title: "Main", href: "/" },
-  { title: "About", href: "/about" },
   { title: "Work", href: "/work" },
-
+  { title: "About", href: "/about" },
+  { title: "Vision", href: "/vision" },
 ];
 
 export default function Index() {

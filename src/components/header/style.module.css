@@ -21,14 +21,13 @@
 }
 
 .header .logo {
-    font-size: 16px;
+    font-size: 32px;
     display: flex;
+    align-items: center;
     cursor: pointer;
-}
-
-.header .logo p {
-    margin: 0px;
-    transition: all 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+    text-decoration: none;
+    color: inherit;
+    min-width: 160px;
 }
 
 .header .logo .name {
@@ -36,48 +35,67 @@
     position: relative;
     overflow: hidden;
     white-space: nowrap;
-    margin-left: 5px;
-    transition: all 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+    margin-left: 0;
 }
-
-.header .logo .name p {
-    position: relative;
-    transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
-}
-
-.header .logo .name p:nth-of-type(2) {
-    padding-left: 0.3em;
-}
-
-.header .logo .name p:nth-of-type(3) {
-    position: absolute;
-    left: 120px;
-    padding-left: 0.3em;
-}
-
-/* .header .logo:hover .copyright {
-    transform: rotate(360deg);
-} */
-
-/* .header .logo:hover .name {
-    padding-right: 30px;
-}
-
-.header .logo:hover .name .codeBy {
-    transform: translateX(-100%);
-}
-
-.header .logo:hover .name .menath {
-    transform: translateX(-65px);
-}
-
-.header .logo:hover .name .baddegama {
-    transform: translateX(-65px);
-} */
 
 .header .nav {
     display: flex;
     align-items: center;
+    opacity: 1;
+    transition: opacity 0.5s ease-out 0.18s;
+}
+
+.header .menath {
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: baseline;
+    overflow: hidden;
+}
+
+/* Individual logo parts */
+.logoM {
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.logoEnath {
+    display: inline-block;
+    max-width: 140px;
+    overflow: hidden;
+    white-space: nowrap;
+    transform-origin: left center;
+    transition:
+        max-width 0.4s cubic-bezier(0.76, 0, 0.24, 1),
+        opacity 0.25s cubic-bezier(0.76, 0, 0.24, 1),
+        transform 0.4s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.brandSuffix {
+    display: inline-block;
+    flex-shrink: 0;
+    transition: color 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.header .logo:hover .logoEnath {
+    max-width: 0;
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.header .logo:hover .brandSuffix {
+    color: #de322c;
+}
+
+.headerLoading .menath {
+    opacity: 0;
+}
+
+.headerLoading .nav {
+    opacity: 0;
+    pointer-events: none;
+    transition: none;
 }
 
 .header .nav .el {
@@ -138,8 +156,14 @@
 
 .contactButton .contactText {
     color: var(--color-white);
+    --hover-color: var(--color-white);
     font-size: 14px;
     font-weight: 500;
+}
+
+.contactButton:hover .contactText,
+.contactButton:hover .contactText * {
+    color: var(--color-white) !important;
 }
 
 .headerButtonContainer .button {
@@ -212,14 +236,6 @@
 }
 
 /* Link styling */
-.header .logo {
-    font-size: 16px;
-    display: flex;
-    cursor: pointer;
-    text-decoration: none;
-    color: inherit;
-}
-
 .header .logo:hover,
 .header .logo:visited,
 .header .logo:active,

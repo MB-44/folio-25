@@ -80,9 +80,9 @@ export default function Footer() {
 
           <div className={styles.navigation}>
             <div className={styles.navGroup}>
-              <Magnetic><Link href="/about" className={styles.navLink}>About</Link></Magnetic>
               <Magnetic><Link href="/work" className={styles.navLink}>Work</Link></Magnetic>
-              <Magnetic><Link href="/contact" className={styles.navLink}>Contact</Link></Magnetic>
+              <Magnetic><Link href="/about" className={styles.navLink}>About</Link></Magnetic>
+              <Magnetic><Link href="/vision" className={styles.navLink}>Vision</Link></Magnetic>
             </div>
             <div className={styles.navGroup}>
               {socialLinks.filter(l => l.visible).map(link => (
@@ -107,9 +107,11 @@ export default function Footer() {
 
         {/* LOGO SECTION */}
         <div className={styles.logoSection}>
-          <svg className={styles.largeLogo} viewBox="0 0 137 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <image href="/images/svg/test_logo.svg" width="100%" height="100%" />
-          </svg>
+          <img
+            src="/images/svg/menath-b-wide-editable.svg"
+            alt="menath.b"
+            className={styles.largeLogo}
+          />
         </div>
 
         {/* BOTTOM SECTION */}
@@ -130,8 +132,8 @@ export default function Footer() {
 
           <div className={styles.bottomRight}>
             <div className={styles.codeByContainer}>
-              <span className={styles.codeByText}>Code by</span>
-              <span className={styles.menathText}>Menath</span>
+              <span className={styles.codeByDefault}>Code by Menath</span>
+              <span className={styles.codeByHover}>menath<span className={styles.codeByDotB}>.b</span></span>
             </div>
           </div>
         </div>

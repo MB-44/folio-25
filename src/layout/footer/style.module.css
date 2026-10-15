@@ -76,7 +76,7 @@
   margin-top: auto;
   padding-top: 60px;
   margin-bottom: 20px;
-  font-family: monospace;
+  font-family: var(--font-family-main);
   font-size: 14px;
   color: rgba(12, 12, 12, 0.6);
   display: flex;
@@ -162,37 +162,53 @@
   transition: 0.3s ease;
 }
 
-/* --- Code by Menath Hover Effect (Replicated) --- */
-/* .bottomRight {
-  /* text-align: right; */
-/* } */
-
+/* --- Code by Menath Hover Effect --- */
 .codeByContainer {
-  display: flex;
+  display: inline-flex;
   position: relative;
   overflow: hidden;
   white-space: nowrap;
   cursor: pointer;
   font-weight: 500;
   color: #0c0c0c99;
+  height: 1.2em;
+  align-items: center;
 }
 
-.codeByText {
-  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
-  margin-right: 4px;
+.codeByDefault,
+.codeByHover {
+  display: block;
+  transition: transform 0.45s cubic-bezier(0.76, 0, 0.24, 1),
+              opacity 0.35s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
-.menathText {
-  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+.codeByDefault {
+  position: relative;
+  transform: translateY(0);
+  opacity: 1;
 }
 
-.codeByContainer:hover .codeByText {
-  transform: translateX(-100%);
+.codeByHover {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 110%);
+  opacity: 0;
+  color: #0c0c0c99;
+}
+
+.codeByDotB {
+  color: #de322c;
+}
+
+.codeByContainer:hover .codeByDefault {
+  transform: translateY(-110%);
   opacity: 0;
 }
 
-.codeByContainer:hover .menathText {
-  transform: translateX(-65px);
+.codeByContainer:hover .codeByHover {
+  transform: translate(-50%, 0);
+  opacity: 1;
 }
 
 .straightLinesEffect {

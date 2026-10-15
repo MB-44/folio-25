@@ -13,7 +13,7 @@ const ProcessNew: React.FC = () => {
                     <div className={styles.leftCol}>
                         <h4 className={styles.smallTitle}>My Approach For creativity</h4>
                         <img
-                            src="/images/ds-wallpaper.jpg" // Using a placeholder from existing images
+                            src="/images/potrait-menath.png" // Using a placeholder from existing images
                             alt="Process Approach"
                             className={styles.processImage}
                         />

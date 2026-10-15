@@ -23,8 +23,8 @@
 .arrow {
     position: absolute;
     left: 0;
-    width: 14px;
-    height: 14px;
+    width: 22px;
+    height: 22px;
     opacity: 0;
     transition: opacity 0.3s ease;
     top: 50%;
@@ -40,14 +40,14 @@
 }
 
 .contactItem:hover p {
-    transform: translateX(18px);
+    transform: translateX(30px);
 }
 
 .email,
 .phone,
 .socialLink {
     color: #b9b9b9;
-    font-size: 16px;
+    font-size: 22px;
     margin: 0;
     cursor: pointer;
     font-weight: 300;

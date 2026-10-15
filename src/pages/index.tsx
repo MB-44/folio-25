@@ -31,15 +31,16 @@ export default function Home() {
       async () => {
         const LocomotiveScroll = (await import('locomotive-scroll')).default
         const locomotiveScroll = new LocomotiveScroll();
-
-        setTimeout(() => {
-          setIsLoading(false);
-          document.body.style.cursor = 'default'
-          window.scrollTo(0, 0);
-        }, 2000);
+        document.body.style.cursor = 'default'
+        window.scrollTo(0, 0);
       }
     )()
   }, [])
+
+  const handlePreloaderComplete = () => {
+    setIsPreloaderFinished(true);
+    requestAnimationFrame(() => setIsLoading(false));
+  };
 
   return (
     <>
@@ -51,8 +52,8 @@ export default function Home() {
       </Head>
 
       <main>
-        <AnimatePresence mode="wait" onExitComplete={() => setIsPreloaderFinished(true)}>
-          {isLoading && <PreLoader />}
+        <AnimatePresence mode="wait">
+          {isLoading && <PreLoader onComplete={handlePreloaderComplete} />}
         </AnimatePresence>
 
         <Header isLoading={!isPreloaderFinished} />
@@ -60,7 +61,7 @@ export default function Home() {
           <Landing />
         </StickyScroll>
 
-        <div style={{ position: 'relative', zIndex: 10, backgroundColor: 'var(--color-background)' }}>
+        <div style={{ position: 'relative', zIndex: 10, backgroundColor: 'var(--color-background)', paddingBottom: '24px' }}>
           <Description />
           {/* <CreativeStickySection /> */}
           {/* <ExplainCreativity2 /> */}

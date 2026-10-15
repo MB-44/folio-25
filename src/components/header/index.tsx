@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import gsap from 'gsap';
-import { AudioControlButton, Rounded, Magnetic, HoverLink } from "@/components";
+import { Rounded, Magnetic, HoverLink } from "@/components";
 import styles from './style.module.css';
 import Nav from './nav';
 import AboutMenu from './aboutMenu';
@@ -101,10 +101,10 @@ export default function Header({ theme = 'dark', isLoading = false }: HeaderProp
 
     return (
         <>
-            <div ref={header} className={`${styles.header} ${theme === 'light' ? styles.headerLight : ''} ${isContactActive ? styles.hidden : ''}`}>
+            <div ref={header} className={`${styles.header} ${theme === 'light' ? styles.headerLight : ''} ${isContactActive ? styles.hidden : ''} ${isLoading ? styles.headerLoading : ''}`}>
                 <Link href="/" className={styles.logo}>
                     <div className={styles.name}>
-                        <p className={styles.menath}>Menath</p>
+                        <p className={styles.menath} data-brand-logo><span className={styles.logoM}>m</span><span className={styles.logoEnath}>enath</span><span className={styles.brandSuffix}>.b</span></p>
                     </div>
                 </Link>
                 <div className={styles.nav}>
@@ -116,14 +116,14 @@ export default function Header({ theme = 'dark', isLoading = false }: HeaderProp
                             </div>
                         </Magnetic>
                         <Magnetic>
-                            <div className={styles.el} onMouseEnter={handleNavItemHover} onClick={() => setIsAboutActive(true)}>
-                                <span style={{ cursor: 'pointer' }}>About</span>
+                            <div className={styles.el} onMouseEnter={handleNavItemHover}>
+                                <Link href="/about">About</Link>
                                 <div className={styles.indicator}></div>
                             </div>
                         </Magnetic>
                         <Magnetic>
-                            <div className={styles.el} onMouseEnter={handleNavItemHover} onClick={() => setIsAboutActive(true)}>
-                                <span style={{ cursor: 'pointer' }}>Vision</span>
+                            <div className={styles.el} onMouseEnter={handleNavItemHover}>
+                                <Link href="/vision">Vision</Link>
                                 <div className={styles.indicator}></div>
                             </div>
                         </Magnetic>
@@ -131,20 +131,13 @@ export default function Header({ theme = 'dark', isLoading = false }: HeaderProp
                     </div>
                 </div>
             </div>
-            {!isLoading && (
-                <AudioControlButton
-                    initialPlayState={false}
-                    onToggle={handleAudioToggle}
-                    loopAudioSrc="/audio/cosmic_drift.mp3"
-                    uiSoundSrc="/audio/ui.mp3"
-                />
-            )}
             <div ref={button} className={`${styles.headerButtonContainer} ${isContactActive ? styles.hidden : ''}`}>
                 <Rounded
                     className={styles.contactButton}
-                    backgroundColor="#ffffffff"
+                    backgroundColor="#de322c"
                 >
                     <HoverLink
+                        hoverColor="var(--color-white)"
                         className={`${styles.contactText}`}
                         onClick={() => setIsContactActive(true)}
                         style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}

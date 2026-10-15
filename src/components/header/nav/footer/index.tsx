@@ -19,9 +19,6 @@ export default function index() {
           <p className={styles.phone}>(+94) 76 814 6535</p>
         </div>
       </div>
-      <div className={styles.socialCol}>
-        <p className={styles.socialLink}>Instagram</p>
-      </div>
-    </div >
+    </div>
   )
-}
+}

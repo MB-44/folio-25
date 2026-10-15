@@ -1,0 +1,52 @@
+/* Container checks for hover generally */
+.container {
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+    /* Default to inline behavior if not overridden */
+    width: fit-content;
+}
+
+/* Text wrapper handles the clipping and shadow effect */
+.text {
+    text-shadow: 0 2ex currentColor;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: inherit;
+    overflow: hidden;
+    display: flex;
+    pointer-events: none;
+    /* Let clicks pass to container */
+}
+
+.char {
+    position: relative;
+    display: inline-block;
+}
+
+/* Trigger animation when container is hovered */
+.container:not(:hover):not(:focus-visible) .char {
+    animation: slide-down 0.25s forwards;
+    animation-delay: calc(var(--index) * 0.05s);
+}
+
+.container:hover .char,
+.container:focus-visible .char {
+    color: var(--hover-color, #ec4e39);
+    animation: slide-up 0.25s forwards;
+    animation-delay: calc(var(--index) * 0.05s);
+}
+
+@keyframes slide-up {
+    100% {
+        transform: translateY(-2ex);
+    }
+}
+
+@keyframes slide-down {
+    0% {
+        transform: translateY(-2ex);
+    }
+}

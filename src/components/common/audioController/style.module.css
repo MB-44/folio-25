@@ -1,0 +1,116 @@
+.statusRoot {
+  position: fixed;
+  left: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 999;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  /* Use difference to auto-contrast against background */
+  color: #ffffff;
+  mix-blend-mode: difference;
+
+  font-family: var(--font-family-main, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.statusRoot:hover {
+  transform: translateY(-1px);
+}
+
+.statusRoot:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 2px;
+}
+
+.iconWrapper {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dotOff {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background-color: currentColor;
+}
+
+.circleOn {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+  border-left-color: currentColor;
+  box-sizing: border-box;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.statusLabel {
+  opacity: 0;
+  transform: translateX(4px);
+  pointer-events: none;
+  white-space: nowrap;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.statusRoot:hover .statusLabel {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.statusOn {
+  /* additional future styling hook if needed */
+}
+
+.statusOff {
+  /* additional future styling hook if needed */
+}
+
+.cursorPrompt {
+  position: fixed;
+  z-index: 998;
+  pointer-events: none;
+
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  background: transparent;
+
+  color: #ffffff;
+  mix-blend-mode: difference;
+
+  font-family: var(--font-family-main, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  transform: translate(-9999px, -9999px);
+  transition: transform 0.08s ease-out;
+}
+

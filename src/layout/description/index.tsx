@@ -1,50 +1,74 @@
 import React, { useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import styles from './style.module.css';
 import { Magnetic } from '@/components';
-import { Home } from '@/data';
+import { Description } from '@/data';
 
-export default function Description() {
-    const text = Home.description;
-    const words = text.split(' ');
+export default function DescriptionComponent() {
+    const text = Description.description;
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useIsomorphicLayoutEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const container = containerRef.current;
+        if (!container) return;
+
+        const letters = container.querySelectorAll(`.${styles.letter}`);
+        if (!letters.length) return;
+
+        const ctx = gsap.context(() => {
+            gsap.fromTo(
+                letters,
+                { opacity: 0.2 },
+                {
+                    opacity: 1,
+                    ease: 'none',
+                    stagger: 0.05,
+                    scrollTrigger: {
+                        trigger: container,
+                        start: 'top 80%',
+                        end: 'bottom 60%',
+                        scrub: 1,
+                    },
+                }
+            );
+        }, container);
+
+        const timer = setTimeout(() => {
+            ScrollTrigger.refresh();
+        }, 200);
+
+        return () => {
+            clearTimeout(timer);
+            ctx.revert();
+        };
+    }, []);
 
     return (
-        <div className={styles.description}>
+        <div ref={containerRef} className={styles.description}>
             <div className={styles.content}>
-                <div className={styles.leftContent}>
-                    <button className={styles.talkButton}>
-                        <svg className={styles.arrow} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path 
-                                d="M9 5L9 14C9 14.5523 9.44772 15 10 15H19" 
-                                stroke="currentColor" 
-                                strokeWidth="2" 
-                                strokeLinecap="round" 
-                                strokeLinejoin="round"
-                            />
-                            <path 
-                                d="M15 11L19 15L15 19" 
-                                stroke="currentColor" 
-                                strokeWidth="2" 
-                                strokeLinecap="round" 
-                                strokeLinejoin="round"
-                            />
-                        </svg>
-                        <span>Let's talk</span>
-                    </button>
-                </div>
-                
                 <div className={styles.rightContent}>
-                    <p className={styles.descriptionText}>
-                        {words.map((word, index) => (
-                            <React.Fragment key={index}>
-                                <Magnetic>
-                                    <span className={styles.magneticWord}>
-                                        {word}
-                                    </span>
-                                </Magnetic>
-                                {index < words.length - 1 && ' '}
-                            </React.Fragment>
-                        ))}
-                    </p>
+                    {text.map((paragraph, i) => (
+                        <p key={i} className={styles.descriptionText}>
+                            {paragraph.split(' ').map((word, index, arr) => (
+                                <React.Fragment key={index}>
+                                    <Magnetic>
+                                        <span className={`${styles.magneticWord} ${(word === 'creative' || word === 'developer') ? styles.highlight : ''}`}>
+                                            {word.split('').map((char, charIndex) => (
+                                                <span key={charIndex} className={styles.letter}>
+                                                    {char}
+                                                </span>
+                                            ))}
+                                        </span>
+                                    </Magnetic>
+                                    {index < arr.length - 1 && ' '}
+                                </React.Fragment>
+                            ))}
+                        </p>
+                    ))}
                 </div>
             </div>
         </div>

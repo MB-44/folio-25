@@ -1,26 +1,71 @@
 .footer {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     width: 100%;
-    font-size: 15px;
-    /* text-transform: uppercase; */
-    gap: 20px; /* space between heading and links */
+    padding-bottom: 20px;
+    gap: 100px;
 }
 
-.footerHeading {
-    color: rgb(153, 153, 153);
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 11px;
-    margin: 0;
-}
-
-.footerLinks {
+.contactCol,
+.socialCol {
     display: flex;
-    gap: 40px; /* keep the social links spaced apart */
+    flex-direction: column;
+    gap: 5px;
 }
 
-.footerLinks a {
-    font-weight: 500;
-    text-decoration: none; /* removes underline */
+.contactItem {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.arrow {
+    position: absolute;
+    left: 0;
+    width: 22px;
+    height: 22px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.contactItem:hover .arrow {
+    opacity: 1;
+}
+
+.contactItem p {
+    transition: transform 0.3s ease;
+}
+
+.contactItem:hover p {
+    transform: translateX(30px);
+}
+
+.email,
+.phone,
+.socialLink {
+    color: #b9b9b9;
+    font-size: 22px;
+    margin: 0;
+    cursor: pointer;
+    font-weight: 300;
+    transition: 0.3s ease-in;
+}
+
+/* .email:hover,
+.phone:hover,
+.socialLink:hover {
+    color: #de322c;
+}
+
+/* Ensure only contact items trigger the color change for their specific text */
+/* .contactItem:hover .email,
+.contactItem:hover .phone {
+    color: #de322c;
+} */
+
+.socialLink:hover {
+    color: #de322c;
 }

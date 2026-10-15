@@ -12,27 +12,27 @@ interface Props {
   [key: string]: any;
 }
 
-export default function index({children, backgroundColor="#df332e", ...attributes}: Props) {
+export default function index({ children, backgroundColor = "#df332e", ...attributes }: Props) {
 
   const circle = useRef(null);
   let timeline = useRef<gsap.core.Timeline | null>(null);
   let timeoutId: string | number | NodeJS.Timeout | null | undefined = null;
-  useEffect( () => {
-    timeline.current = gsap.timeline({paused: true})
+  useEffect(() => {
+    timeline.current = gsap.timeline({ paused: true })
     timeline.current
-      .to(circle.current, {top: "-25%", width: "150%", duration: 0.4, ease: "power3.in"}, "enter")
-      .to(circle.current, {top: "-150%", width: "125%", duration: 0.25}, "exit")
+      .to(circle.current, { top: "-25%", width: "150%", duration: 0.4, ease: "power3.in" }, "enter")
+      .to(circle.current, { top: "-150%", width: "125%", duration: 0.25 }, "exit")
   }, [])
-  
+
   const manageMouseEnter = () => {
-    if(timeoutId) clearTimeout(timeoutId)
+    if (timeoutId) clearTimeout(timeoutId)
     if (timeline.current) {
       timeline.current.tweenFromTo('enter', 'exit');
     }
   }
 
   const manageMouseLeave = () => {
-    timeoutId = setTimeout( () => {
+    timeoutId = setTimeout(() => {
       if (timeline.current) {
         timeline.current.play();
       }
@@ -41,11 +41,11 @@ export default function index({children, backgroundColor="#df332e", ...attribute
 
   return (
     <Magnetic>
-      <div className={styles.roundedButton} style={{overflow: "hidden"}} onMouseEnter={() => {manageMouseEnter()}} onMouseLeave={() => {manageMouseLeave()}} {...attributes}>
-          {
-            children
-          }
-        <div ref={circle} style={{backgroundColor}} className={styles.circle}></div>
+      <div className={styles.roundedButton} style={{ overflow: "hidden" }} onMouseEnter={() => { manageMouseEnter() }} onMouseLeave={() => { manageMouseLeave() }} {...attributes}>
+        {
+          children
+        }
+        <div ref={circle} style={{ backgroundColor }} className={styles.circle}></div>
       </div>
     </Magnetic>
   )

@@ -1,0 +1,9 @@
+.word {
+    display: inline-block;
+    white-space: nowrap;
+    margin-right: 0.3em;
+}
+
+.word:last-child {
+    margin-right: 0;
+}

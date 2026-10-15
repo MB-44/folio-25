@@ -6,17 +6,22 @@ import { usePathname } from 'next/navigation';
 import { AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import gsap from 'gsap';
-import { AudioControlButton, Rounded, Magnetic } from "@/components";
+import { Rounded, Magnetic, HoverLink } from "@/components";
 import styles from './style.module.css';
 import Nav from './nav';
+import AboutMenu from './aboutMenu';
+import ContactPanel from '../contactPanel';
 
 interface HeaderProps {
     theme?: 'light' | 'dark';
+    isLoading?: boolean;
 }
 
-export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Element {
+export default function Header({ theme = 'dark', isLoading = false }: HeaderProps = {}): JSX.Element {
     const header = useRef<HTMLDivElement>(null);
     const [isActive, setIsActive] = useState<boolean>(false);
+    const [isAboutActive, setIsAboutActive] = useState<boolean>(false);
+    const [isContactActive, setIsContactActive] = useState<boolean>(false);
     const pathname = usePathname();
     const button = useRef<HTMLDivElement>(null);
     const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -33,6 +38,8 @@ export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Elemen
 
     useEffect(() => {
         if (isActive) setIsActive(false);
+        if (isAboutActive) setIsAboutActive(false);
+        if (isContactActive) setIsContactActive(false);
     }, [pathname]);
 
     useIsomorphicLayoutEffect(() => {
@@ -57,6 +64,19 @@ export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Elemen
             }
         });
 
+        // Footer detection - hide button when footer is visible
+        const footerTrigger = ScrollTrigger.create({
+            trigger: "footer",
+            start: "top bottom",
+            end: "top bottom",
+            onEnter: () => {
+                hide();
+            },
+            onLeaveBack: () => {
+                show();
+            }
+        });
+
         if (header.current) {
             const headerBottom = header.current.getBoundingClientRect().bottom + window.scrollY;
             if (window.scrollY >= headerBottom) { show(); hideHeader(); } else { hide(); showHeader(); }
@@ -64,6 +84,7 @@ export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Elemen
 
         return () => {
             st.kill();
+            footerTrigger.kill();
         };
     }, []);
 
@@ -80,15 +101,12 @@ export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Elemen
 
     return (
         <>
-            <div ref={header} className={`${styles.header} ${theme === 'light' ? styles.headerLight : ''}`}>
-                <Magnetic>
-                    <Link href="/" className={styles.logo}>
-                        <div className={styles.name}>
-                            <p className={styles.codeBy}>Code by</p>
-                            <p className={styles.menath}>Menath</p>
-                        </div>
-                    </Link>
-                </Magnetic>
+            <div ref={header} className={`${styles.header} ${theme === 'light' ? styles.headerLight : ''} ${isContactActive ? styles.hidden : ''} ${isLoading ? styles.headerLoading : ''}`}>
+                <Link href="/" className={styles.logo}>
+                    <div className={styles.name}>
+                        <p className={styles.menath} data-brand-logo><span className={styles.logoM}>m</span><span className={styles.logoEnath}>enath</span><span className={styles.brandSuffix}>.b</span></p>
+                    </div>
+                </Link>
                 <div className={styles.nav}>
                     <div className={styles.navLinks}>
                         <Magnetic>
@@ -105,22 +123,28 @@ export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Elemen
                         </Magnetic>
                         <Magnetic>
                             <div className={styles.el} onMouseEnter={handleNavItemHover}>
-                                <Link href="/contact">Contact</Link>
+                                <Link href="/vision">Vision</Link>
                                 <div className={styles.indicator}></div>
                             </div>
                         </Magnetic>
-                    </div>
-                    <div className={styles.audioButtonWrapper}>
-                        <AudioControlButton
-                            initialPlayState={false}
-                            onToggle={handleAudioToggle}
-                            loopAudioSrc="/audio/cosmic_drift.mp3"
-                            uiSoundSrc="/audio/ui.mp3"
-                        />
+
                     </div>
                 </div>
             </div>
-            <div ref={button} className={styles.headerButtonContainer}>
+            <div ref={button} className={`${styles.headerButtonContainer} ${isContactActive ? styles.hidden : ''}`}>
+                <Rounded
+                    className={styles.contactButton}
+                    backgroundColor="#de322c"
+                >
+                    <HoverLink
+                        hoverColor="var(--color-white)"
+                        className={`${styles.contactText}`}
+                        onClick={() => setIsContactActive(true)}
+                        style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                    >
+                        Let's talk
+                    </HoverLink>
+                </Rounded>
                 <Rounded onClick={() => { setIsActive(!isActive) }} className={`${styles.button}`}>
                     <Magnetic>
                         <div className={`${styles.burger} ${isActive ? styles.burgerActive : ""}`}></div>
@@ -133,6 +157,16 @@ export default function Header({ theme = 'dark' }: HeaderProps = {}): JSX.Elemen
                         <div className={styles.backdrop} onClick={() => setIsActive(false)} />
                         <Nav />
                     </>
+                )}
+            </AnimatePresence>
+            <AnimatePresence mode="wait">
+                {isAboutActive && (
+                    <AboutMenu close={() => setIsAboutActive(false)} />
+                )}
+            </AnimatePresence>
+            <AnimatePresence mode="wait">
+                {isContactActive && (
+                    <ContactPanel close={() => setIsContactActive(false)} />
                 )}
             </AnimatePresence>
         </>

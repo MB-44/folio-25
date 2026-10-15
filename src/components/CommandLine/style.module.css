@@ -1,0 +1,103 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(2px);
+    z-index: 99;
+}
+
+.panel {
+    height: 35vh;
+    /* 25% height + some buffer or exactly 25%? User said "25% of the screen". Let's go with 35vh to give breathing room for content */
+    /* Re-reading: "just a 25% of the screen". I'll stick close to that but ensure content fits. 30vh is safer. */
+    height: 30vh;
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    top: auto;
+    /* Reset top */
+    right: 0;
+    /* Full width */
+    z-index: 100;
+    box-shadow: 0px -10px 30px rgba(0, 0, 0, 0.05);
+    /* Shadow upwards */
+    color: black;
+}
+
+.body {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 40px;
+    padding-top: 60px;
+    /* Space for curve */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.topSection {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    /* Center align for bottom sheet? Or keep left? "input box should be in top below the title". */
+    /* Let's keep strict left alignment for terminal feel, or center for modern feel. Stick to left as implied by previous design, but maybe centered max-width? */
+    /* "Command Line" title usually left. */
+    align-items: flex-start;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #9ca3af;
+}
+
+.inputWrapper {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    /* Larger font */
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+    width: 100%;
+}
+
+.prefix {
+    margin-right: 0.5rem;
+    color: black;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.input {
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: black;
+    font-family: inherit;
+    font-weight: 500;
+}
+
+.input::placeholder {
+    color: #e5e7eb;
+}
+
+.footer {
+    color: #d1d5db;
+    font-size: 0.875rem;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}

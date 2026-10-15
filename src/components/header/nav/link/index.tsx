@@ -4,6 +4,8 @@ import styles from './style.module.css';
 import { slide, scale } from '../../animations';
 import { forwardRef } from 'react';
 
+
+
 interface Data {
   title: string;
   href: string;
@@ -35,7 +37,7 @@ const LinkItem = ({ data, isActive, setSelectedIndicator }: Props, ref: React.Re
         animate={isActive ? "open" : "closed"}
         className={styles.indicator}
       />
-      <NextLink href={href}>{title}</NextLink>
+      <NextLink href={href} style={{ fontWeight: isActive ? 500 : 300 }}>{title}</NextLink>
     </motion.div>
   );
 };

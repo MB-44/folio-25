@@ -5,6 +5,7 @@
   color: #161616;
   scroll-behavior: smooth;
   padding-top: 120px;
+  padding-bottom: 24px;
 }
 
 .heroSection {
@@ -24,7 +25,7 @@
   font-weight: 400;
   line-height: 1;
   margin: 150px 0 60px 0;
-  color: #0d0d0d;
+  color: var(--color-primary);
   letter-spacing: -0.02em;
   text-align: left;
   padding-left: 315px;
@@ -47,7 +48,7 @@
 .heroSubtitle {
   font-size: 15.2px;
   line-height: 1.6;
-  color: #666666;
+  color: var(--color-text-gray);
   margin: 0;
   max-width: 280px;
 }
@@ -78,19 +79,19 @@
   font-size: 16px;
   font-weight: 500;
   margin: 0;
-  color: #0d0d0d;
+  color: var(--color-primary);
   letter-spacing: -0.01em;
 }
 
 .profileRole {
   font-size: 14px;
-  color: #999999;
+  color: var(--color-text-light-gray);
   margin: 0;
   font-weight: 400;
 }
 
 .rightContent {
-  background: #f5f5f5;
+  background: var(--color-bg-gray);
   padding: 60px 80px;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -121,14 +122,14 @@
   font-weight: 400;
   line-height: 1.2;
   margin: 0 0 -10px 0;
-  color: #0d0d0d;
+  color: var(--color-primary);
   letter-spacing: -0.02em;
   transition: color 0.3s ease;
   cursor: pointer;
 }
 
 .emailTitle:hover {
-  color: #de322c;
+  color: var(--color-brand-red);
 }
 
 .contactForm {
@@ -161,14 +162,14 @@
 
 .input::placeholder,
 .textarea::placeholder {
-  color: #999999;
+  color: var(--color-text-light-gray);
   font-size: 18px;
 }
 
 .input:focus,
 .textarea:focus {
   outline: none;
-  border-bottom-color: #de322c;
+  border-bottom-color: var(--color-brand-red);
 }
 
 .textarea {
@@ -192,7 +193,7 @@
 .link,
 .submitLink {
   font-size: 23px;
-  color: #0d0d0d;
+  color: var(--color-primary);
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -219,11 +220,11 @@
 }
 
 .submitLink:hover {
-  color: #de322c;
+  color: var(--color-brand-red);
 }
 
 .submitLink:hover .arrow path {
-  stroke: #0d0d0d;
+  stroke: var(--color-primary);
 }
 
 .link {
@@ -240,23 +241,23 @@
 }
 
 .instagramLink .arrowSvg {
-  color: #de322c;
+  color: var(--color-brand-red);
   transform: rotate(0deg);
   transition: color 0.3s ease, transform 0.4s ease;
 }
 
 .instagramLink .linkText {
-  color: #0d0d0d;
+  color: var(--color-primary);
   transition: color 0.3s ease;
 }
 
 .instagramLink:hover .arrowSvg {
-  color: #0d0d0d;
+  color: var(--color-primary);
   transform: rotate(0deg);
 }
 
 .instagramLink:hover .linkText {
-  color: #de322c;
+  color: var(--color-brand-red);
   animation: scrollY 0.6s ease-in-out;
 }
 
@@ -306,7 +307,7 @@
 .arrowSvg {
   width: 20px;
   height: 20px;
-  color: #de322c;
+  color: var(--color-brand-red);
   transform: rotate(-45deg);
   transition: transform 0.4s ease;
   flex-shrink: 0;
@@ -332,7 +333,7 @@
 }
 
 .formSection {
-  background: #ffffff;
+  background: var(--color-background);
   padding: 100px 40px;
   border-top: 1px solid #1a1a1a;
 }
@@ -356,14 +357,14 @@
   font-weight: 500;
   line-height: 1.1;
   margin: 0 0 32px 0;
-  color: #161616;
+  color: var(--color-text-dark);
   letter-spacing: -0.02em;
 }
 
 .formText {
   font-size: 18px;
   line-height: 1.7;
-  color: #525050;
+  color: var(--color-text-dark-gray);
   margin: 0 0 20px 0;
   font-weight: 400;
 }
@@ -375,7 +376,7 @@
 .label {
   font-size: 14px;
   font-weight: 500;
-  color: #161616;
+  color: var(--color-text-dark);
   letter-spacing: 0.02em;
 }
 
@@ -394,7 +395,7 @@
 }
 
 .submitBtn:hover {
-  background: #e0e0e0;
+  background: var(--color-bg-hover);
   transform: translateY(-2px);
 }
 
@@ -410,11 +411,11 @@
 }
 
 .magneticWord:hover {
-  color: #de322c;
+  color: var(--color-brand-red);
 }
 
 .getInTouchSection {
-  background: #ffffff;
+  background: var(--color-background);
   padding: 60px 40px 120px;
 }
 
@@ -430,7 +431,7 @@
 }
 
 .getInTouchLeft {
-  color: #777777;
+  color: var(--color-secondary);
   display: flex;
   flex-direction: column;
 }
@@ -440,7 +441,7 @@
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 0;
-  color: #777777;
+  color: var(--color-secondary);
   display: inline-block;
   transition: transform 0.3s ease, color 0.3s ease;
   will-change: transform;
@@ -449,7 +450,7 @@
 
 .getInTouchTitle:hover {
   transform: translateX(10px);
-  color: #de322c;
+  color: var(--color-brand-red);
 }
 
 .getInTouchMiddle {
@@ -475,211 +476,19 @@
   line-height: 1.45;
   letter-spacing: -0.01em;
   font-weight: 600;
-  color: #0d0d0d;
+  color: var(--color-primary);
 }
 
 .getInTouchText p {
   font-size: 16px;
   line-height: 1.6;
-  color: #777777;
+  color: var(--color-secondary);
   margin: 0;
   font-weight: 400;
 }
 
 
-/* FAQ Section */
-.faqSection {
-  background: #ffffff;
-  color: #0d0d0d;
-  padding: 100px 40px 140px;
-  /* border-top: 1px solid #e0e0e0; */
-}
 
-.faqContainer {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.faqGrid {
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 0px;
-  align-items: start;
-}
-
-.faqHeader {
-  margin-bottom: 0;
-  padding-left: 0;
-}
-
-.faqTitle {
-  font-size: 110px;
-  font-weight: 500;
-  line-height: 1.1;
-  margin: 0 0 20px 0;
-  color: #161616;
-  letter-spacing: -0.02em;
-  text-align: left;
-  max-width: 420px;
-}
-
-.faqSubtitle {
-  font-size: 15.2px;
-  line-height: 1.6;
-  color: #6e6e6e;
-  margin: 0;
-  font-weight: 400;
-  text-align: left;
-  /* max-width: 420px; */
-  max-width: 280px;
-}
-
-.faqList {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.faqItem {
-  /* border-radius: 16px; */
-  background: #ffffff;
-  overflow: hidden;
-  border-bottom: none;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.faqItem::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(to right, #e0e0e0 0%, #e0e0e0 70%, transparent 100%);
-}
-
-.faqItem:hover::after {
-  background: linear-gradient(to right, #d0d0d0 0%, #d0d0d0 70%, transparent 100%);
-}
-
-.faqItem:hover {
-  border-color: #d0d0d0;
-}
-
-.faqButton {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  /* padding: 32px 36px; */
-  padding: 32px 36px 32px 0px;
-  background: transparent;
-  /* border-bottom: 1px solid #e0e0e0; */
-  border: none;
-  cursor: pointer;
-  text-align: left;
-  transition: background 0.3s ease;
-}
-
-.faqAskBtn {
-  font-size: 23px;
-  color: #0d0d0d;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 400;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: visible;
-  padding: 0;
-  margin-top: 90px;
-}
-
-.faqAskBtn span {
-  transition: transform 0.3s ease;
-  display: inline-block;
-}
-
-.faqAskBtn:hover span {
-  transform: translateX(10px);
-}
-
-.faqAskBtn:hover {
-  color: #de322c;
-}
-
-.faqAskBtn:hover .arrow path {
-  stroke: #0d0d0d;
-}
-
-.faqAskBtn .arrow {
-  flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-}
-
-/* .faqButton:hover {
-  background: #f5f5f5;
-} */
-
-.faqQuestion {
-  font-size: 20px;
-  font-weight: 500;
-  color: #161616;
-  line-height: 1.4;
-  letter-spacing: -0.01em;
-  flex: 1;
-  padding-right: 24px;
-}
-
-.faqIcon {
-  font-size: 28px;
-  color: #de322c;
-  font-weight: 300;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: transform 0.5s ease;
-}
-
-.faqIcon.open {
-  transform: rotate(180deg);
-}
-
-.faqAnswer {
-  /* max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease; */
-  display: grid;
-  grid-template-rows: 0fr;
-  overflow: hidden;
-  transition: grid-template-rows 0.6s ease, padding 0.6s ease;
-}
-
-.faqAnswer.open {
-  /* max-height: 500px;
-  padding: 0 36px 32px 0; */
-  grid-template-rows: 1fr;
-  padding: 0 36px 32px 0;
-}
-
-.faqAnswer p {
-  font-size: 15.2px;
-  line-height: 1.6;
-  color: #6e6e6e;
-  margin: 0;
-  font-weight: 400;
-  min-height: 0;
-}
 
 @media (max-width: 1200px) {
   .contentWrapper {
@@ -715,10 +524,7 @@
     position: static;
   }
 
-  .faqGrid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
+
 
   .getInTouchContainer {
     grid-template-columns: 1fr;

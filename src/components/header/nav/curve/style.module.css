@@ -1,9 +1,10 @@
-.svgCurve{
+.svgCurve {
     position: absolute;
     top: 0;
-    left: -99px;
-    width: 100px;
+    left: -59px;
+    width: 60px;
     height: 100%;
-    fill: rgb(41, 41, 41);
+    fill: #292929;
     stroke: none;
+    z-index: 1;
 }

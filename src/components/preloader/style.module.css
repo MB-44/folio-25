@@ -1,3 +1,10 @@
+.root {
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    pointer-events: none;
+}
+
 .introduction {
     height: 100vh;
     width: 100vw;
@@ -6,7 +13,38 @@
     justify-content: center;
     position: fixed;
     z-index: 99;
-    background-color: #de322c;
+    background-color: var(--color-brand-red);
+    pointer-events: auto;
+}
+
+.brandFly {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 200;
+    margin: 0;
+    padding: 0;
+    transform: translate(-50%, -50%);
+    color: var(--color-white);
+    font-family: var(--font-family-main);
+    font-size: clamp(2.75rem, 7.5vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    pointer-events: none;
+    will-change: transform;
+    animation: brandIn 0.35s cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+
+@keyframes brandIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .introduction svg {
@@ -17,12 +55,12 @@
 }
 
 .introduction svg path {
-    fill: #de322c;
+    fill: var(--color-brand-red);
 }
 
 .introduction p {
     display: flex;
-    color: #ffffff;
+    color: var(--color-white);
     font-size: 42px;
     align-items: center;
     position: absolute;
@@ -33,7 +71,7 @@
     display: block;
     width: 10px;
     height: 10px;
-    background-color: #ffffff;
+    background-color: var(--color-white);
     border-radius: 50%;
     margin-right: 10px;
 }

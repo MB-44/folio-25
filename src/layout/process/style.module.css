@@ -1,0 +1,234 @@
+.processSection {
+  background: #ffffff;
+  color: #0d0d0d;
+  padding: 240px 40px 140px;
+  font-family: "Kokto", sans-serif;
+}
+
+.processInner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 0px;
+  align-items: start;
+}
+
+.headerCol {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-right: 40px;
+}
+
+.stepsCol {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: 400px;
+}
+
+.eyebrow {
+  font-size: 15.2px;
+  line-height: 1.6;
+  color: var(--color-text-gray-2);
+  margin: 0;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.title {
+  font-size: 110px;
+  font-weight: 500;
+  line-height: 1.1;
+  margin: 0;
+  color: var(--color-text-dark);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.description {
+  font-size: 15.2px;
+  line-height: 1.8;
+  color: var(--color-text-gray-2);
+  margin: 24px 0 0 0;
+  font-weight: 400;
+  width: 450px;
+}
+
+.ctaButton {
+  font-size: 23px;
+  color: var(--color-primary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: visible;
+  padding: 0;
+  margin-top: 66px;
+  white-space: nowrap;
+}
+
+.ctaButton span {
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.ctaButton:hover span {
+  transform: translateX(10px);
+}
+
+.ctaButton:hover {
+  color: var(--color-brand-red);
+}
+
+.ctaButton:hover .arrow path {
+  stroke: var(--color-primary);
+}
+
+.ctaButton .arrow {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.stepCard {
+  background: var(--color-background);
+  overflow: hidden;
+  border-bottom: none;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 32px 36px 48px 0px;
+  border-radius: 0;
+  border: none;
+  display: block;
+}
+
+.stepCard::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, var(--color-bg-hover) 0%, var(--color-bg-hover) 70%, transparent 100%);
+}
+
+.stepCard:hover::after {
+  background: linear-gradient(to right, var(--color-border-light) 0%, var(--color-border-light) 70%, transparent 100%);
+}
+
+.stepArrow {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  transition: transform 0.3s ease;
+}
+
+.stepCard:hover .stepArrow {
+  transform: rotate(135deg);
+}
+
+.firstCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, var(--color-bg-hover) 0%, var(--color-bg-hover) 70%, transparent 100%);
+}
+
+.stepHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.stepNumber {
+  font-size: 14px;
+  line-height: 1;
+  color: var(--color-text-gray-2);
+  margin: 0;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-bg-hover);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.stepTitle {
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--color-text-dark);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  margin: 0;
+  flex: 1;
+}
+
+.stepDescription {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text-gray-2);
+  margin: 0 0 0 56px;
+  font-weight: 400;
+}
+
+@media (max-width: 1200px) {
+  .processInner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .headerCol {
+    padding-right: 0;
+  }
+
+  .stepsCol {
+    padding-left: 0;
+  }
+
+  .description {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .processSection {
+    padding: 80px 30px;
+  }
+
+  .title {
+    font-size: 60px;
+  }
+
+  .stepCard {
+    padding: 24px 24px 24px 0px;
+  }
+}
+
+@media (max-width: 640px) {
+  .processSection {
+    padding: 60px 20px;
+  }
+
+  .title {
+    font-size: 48px;
+  }
+}

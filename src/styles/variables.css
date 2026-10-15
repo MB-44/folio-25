@@ -1,0 +1,69 @@
+:root {
+    /* Colors */
+    --color-primary: #0d0d0d;
+    --color-secondary: #777777;
+    --color-accent: #8c8c8c;
+    --color-background: #ffffff;
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-brand-red: #de322c;
+    --color-brand-blue: #455CE9;
+    --color-brand-blue-light: #455CE9;
+
+    /* Additional Colors */
+    --color-text-dark: #161616;
+    --color-text-gray: #666666;
+    --color-text-gray-2: #6e6e6e;
+    --color-text-light-gray: #999999;
+    --color-bg-gray: #f5f5f5;
+    --color-border-light: #d0d0d0;
+    --color-text-dark-gray: #525050;
+    --color-bg-hover: #e0e0e0;
+
+    /* Fonts */
+    --font-family-main: "Kokto", sans-serif;
+    --font-family-secondary: "NeueMontreal", sans-serif;
+    --font-family-regular: "NeueMontreal Regular", sans-serif;
+    --font-family-new: "Kokto New", sans-serif;
+
+    /* Font Sizes */
+    --font-size-xs: 11px;
+    --font-size-sm: 14px;
+    --font-size-base: 16px;
+    --font-size-lg: 20px;
+    --font-size-xl: 24px;
+    --font-size-xxl: 28px;
+
+    /* Font Weights */
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* Webflow / Reference Design Tokens */
+    --swatch--white: #eaeaea;
+    --swatch--black: #070707;
+    --swatch--gray: #515151;
+    --swatch--light-dim: #ebebeb;
+    --swatch--dark-transparent: color-mix(in srgb, var(--swatch--black) 20%, transparent);
+    --swatch--brand-500: #c6fb50;
+    --swatch--brand-600: color-mix(in srgb, var(--swatch--brand-500), black 20%);
+    --swatch--brand-text: var(--swatch--black);
+    --swatch--brand-blue: #0055ff;
+    /* Added explicit blue based on previous context */
+
+    --site--viewport-max: 100;
+    --site--viewport-min: 20;
+
+    --_typography---font--primary-family: PPNeueMontreal, Arial, sans-serif;
+    --_typography---font--primary-medium: 500;
+    --_typography---font--primary-regular: 400;
+
+    --_typography---line-height--1-1: 1.1;
+    --_typography---letter-spacing--0-02em: -0.02em;
+
+    --_typography---font-size--h2: clamp(2 * 1rem, ((2 - ((4 - 2) / (var(--site--viewport-max) - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((4 - 2) / (var(--site--viewport-max) - var(--site--viewport-min))) * 100vw), 4 * 1rem);
+
+    --site--margin: clamp(1rem, .714286rem + 1.42857vw, 1rem);
+    --max-width--full: 100%;
+}

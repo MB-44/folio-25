@@ -1,11 +1,3 @@
-// common.ts
-
-import { title } from "process";
-
-export const Home = {
-  description: "I craft web experiences where beauty meets function — turning ideas into intuitive interfaces that come alive.",
-};
-
 export const Footer = {
   newsTitleLines: ["Stay", "connected"],
   newsSub: "Leave your email — I will write back.",
@@ -20,8 +12,8 @@ export const Footer = {
     href: "mailto:hello@menath.b"
   },
   bioLines: [
-    "I don’t just design — I help shape brands and",
-    "products that feel real, work beautifully, and grow with you."
+    "Just like in nature, nothing moves in straight lines, every motion influences the next.",
+    "Delays and easings create that organic rhythm, turning motion into flow."
   ],
   version: "2025 © Edition",
   localTimeLabel: "Local Time -"
@@ -58,7 +50,7 @@ export const About = {
   hero: {
     title: "About me",
     leftTitle: "Meet Menath",
-    middleDescription: "I've always wanted to make work I'm proud of. Every project is a chance to do something different, something we actually care about.",
+    middleDescription: "I've always wanted to make work I'm proud of. Every project is a chance to do something different, something I actually care about.",
     profile: {
       src: "images/profile/profileImage.png",
       alt: "Menath Baddegama",
@@ -111,7 +103,7 @@ export const Contact = {
     placeholders: {
       name: "Name *",
       email: "E-mail *",
-      message: "Message (Tell us about your project)"
+      message: "Message (Tell me about your project)"
     },
     submitLabel: "Get in touch"
   },
@@ -156,3 +148,80 @@ export const Contact = {
     }
   ]
 };
+
+export const Process = {
+  id: "process",
+  title: "My Process",
+  description:
+    "No guesswork — we research, test, and design around what truly works for your users.",
+  ctaLabel: "Schedule a consultation",
+  steps: [
+    {
+      id: "step-1",
+      stepNumber: "01",
+      title: "Research & Strategy",
+      description:
+        "We begin with interviews, data, and discovery to uncover user pains and business goals. Here we define your brand values, positioning, vision, and voice so everyone is aligned on the problem, the people, and the purpose.",
+    },
+    {
+      id: "step-2",
+      stepNumber: "02",
+      title: "Structure & Flow",
+      description:
+        "We map user journeys, sketch concepts, and build UX foundations — user flows, wireframes, and early tests — turning strategy into a clear, intuitive structure.",
+    },
+    {
+      id: "step-3",
+      stepNumber: "03",
+      title: "Visual Design & Prototyping",
+      description:
+        "We craft the visual language: design system, UI, motion, and brand identity. Then we pull it all together into an interactive prototype you can click through and test.",
+    },
+    {
+      id: "step-4",
+      stepNumber: "04",
+      title: "Launch, Test & Improve",
+      description:
+        "After launch, we learn from real users, real data, and real feedback. We refine and iterate, treating improvement as an ongoing part of the product.",
+    },
+  ],
+};
+
+export const ReachOut = {
+  title: "Reach Out",
+  subtitle: "If you want to start a project, share an idea or simply say hi, I want to hear from you.",
+  form: {
+    placeholders: {
+      firstName: "First name*",
+      lastName: "Last name*",
+      email: "Email Address*",
+      phone: "Phone number (+94 ...)*",
+      message: "Message (Tell me about your project)"
+    },
+    submitLabel: "Get In Touch"
+  }
+};
+
+export const Description = {
+  description: [
+    "Menath is a creative developer exploring where engineering meets visual storytelling. Working through experimentation and careful attention, crafting refined, atmospheric interfaces that feel intentional.",
+    "Ideas translate into user - focused experiences that drive brand growth. Collaborating with organizations globally, blending systematic thinking with creative exploration to deliver design solutions that resonate and feel authentic."
+  ]
+};
+
+export const TextSlider = {
+  text: "Build something together",
+};
+
+export const Work = {
+  heroTitle: "Design x dev"
+};
+
+export const ExplainGrid = {
+  text: "However, grids are just guidelines and breaking out of a grid can form completely different designs."
+};
+
+export const ScrollPin = {
+  backgroundText: ["RESEARCH", "STRATEGY", "DESIGN", "DEVELOP", "LAUNCH", "SCALE", "IMPACT"],
+  floatingLabel: "Make it happen"
+}

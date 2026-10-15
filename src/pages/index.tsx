@@ -2,27 +2,45 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import PreLoader from "@/components/preloader";
-import { Landing, Footer, Description, Intro } from "@/layout";
+import {
+  Landing,
+  Footer,
+  Description,
+  faq,
+  ProcessSection,
+  ScrollPin,
+  ReachOut,
+  TextSlider,
+  ExplainGrid,
+  // CreativeStickySection,
+  ExplainCreativity2,
+  ProcessNew
+} from "@/layout";
 import Header from "@/components/header";
 import { StickyScroll } from "@/components/effects";
+import { ParticleBackground } from "@/components";
+import CreativeStickySection from "@/layout/creativeCard";
+import FAQ from "@/layout/faq";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isPreloaderFinished, setIsPreloaderFinished] = useState(false);
 
   useEffect(() => {
     (
       async () => {
         const LocomotiveScroll = (await import('locomotive-scroll')).default
         const locomotiveScroll = new LocomotiveScroll();
-
-        setTimeout(() => {
-          setIsLoading(false);
-          document.body.style.cursor = 'default'
-          window.scrollTo(0, 0);
-        }, 2000);
+        document.body.style.cursor = 'default'
+        window.scrollTo(0, 0);
       }
     )()
   }, [])
+
+  const handlePreloaderComplete = () => {
+    setIsPreloaderFinished(true);
+    requestAnimationFrame(() => setIsLoading(false));
+  };
 
   return (
     <>
@@ -35,17 +53,26 @@ export default function Home() {
 
       <main>
         <AnimatePresence mode="wait">
-          {isLoading && <PreLoader />}
+          {isLoading && <PreLoader onComplete={handlePreloaderComplete} />}
         </AnimatePresence>
 
-        <Header />
+        <Header isLoading={!isPreloaderFinished} />
         <StickyScroll>
           <Landing />
         </StickyScroll>
 
-        <div style={{ position: 'relative', zIndex: 10, backgroundColor: '#ffffff' }}>
+        <div style={{ position: 'relative', zIndex: 10, backgroundColor: 'var(--color-background)', paddingBottom: '24px' }}>
           <Description />
-          <Intro />
+          {/* <CreativeStickySection /> */}
+          {/* <ExplainCreativity2 /> */}
+          {/* <ScrollPin /> */}
+          {/* <ExplainGrid /> */}
+          {/* <ParticleBackground /> */}
+          {/* <ProcessSection /> */}
+          <ProcessNew />
+          {/* <TextSlider /> */}
+          <FAQ />
+          <ReachOut />
           <Footer />
         </div>
       </main>

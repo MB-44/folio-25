@@ -5,9 +5,77 @@ import { useRef, useEffect, useState } from 'react';
 import { ScrollTrigger } from 'gsap/all';
 import { motion } from 'framer-motion';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
-import { HackerText } from "@/components";
 import styles from './style.module.css'
 import { slideUp } from './animation';
+
+
+// Typewriter hook: returns the currently displayed string
+function useTypewriter(fullText: string, startDelay = 0, speed = 60) {
+  const [displayed, setDisplayed] = useState('');
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    setDisplayed('');
+    setDone(false);
+    let i = 0;
+    const timeout = setTimeout(() => {
+      const interval = setInterval(() => {
+        i++;
+        setDisplayed(fullText.slice(0, i));
+        if (i >= fullText.length) {
+          clearInterval(interval);
+          setDone(true);
+        }
+      }, speed);
+      return () => clearInterval(interval);
+    }, startDelay);
+    return () => clearTimeout(timeout);
+  }, [fullText, startDelay, speed]);
+
+  return { displayed, done };
+}
+
+// Typewriter span: types out text, then enables HackerText on hover
+function TypewriterText({ text, startDelay = 0 }: { text: string; startDelay?: number }) {
+  const { displayed, done } = useTypewriter(text, startDelay);
+  const spanRef = useRef<HTMLSpanElement>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleMouseOver = () => {
+    if (!done || !spanRef.current) return;
+    const charSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let iteration = 0;
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(() => {
+      if (!spanRef.current) return;
+      spanRef.current.innerText = text
+        .split("")
+        .map((letter, index) => {
+          if (index < Math.floor(iteration)) return text[index];
+          if (letter.match(/[a-z]/)) return charSet.toLowerCase()[Math.floor(Math.random() * charSet.length)];
+          if (letter.match(/[A-Z]/)) return charSet[Math.floor(Math.random() * charSet.length)];
+          return letter;
+        })
+        .join("");
+      if (iteration >= text.length) clearInterval(intervalRef.current!);
+      iteration += 1 / 3;
+    }, 30);
+  };
+
+  useEffect(() => () => { if (intervalRef.current) clearInterval(intervalRef.current); }, []);
+
+  return (
+    <span
+      ref={spanRef}
+      style={{ cursor: 'pointer', display: 'inline-block', minWidth: done ? undefined : '1ch' }}
+      onMouseOver={handleMouseOver}
+      data-value={text}
+    >
+      {displayed}
+      {!done && <span style={{ opacity: 0.7 }}>|</span>}
+    </span>
+  );
+}
 
 export default function Home() {
   const firstText = useRef(null);
@@ -19,6 +87,18 @@ export default function Home() {
   let xPercent = 0;
   let direction = -1;
 
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const updateMousePosition = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', updateMousePosition);
+    return () => {
+      window.removeEventListener('mousemove', updateMousePosition);
+    };
+  }, []);
+
   useEffect(() => {
     audioRef.current = new Audio('/audio/ui_hover.mp3');
 
@@ -29,8 +109,6 @@ export default function Home() {
       }
     };
   }, []);
-
-
 
   const handleTextHover = () => {
     if (audioRef.current) {
@@ -44,13 +122,13 @@ export default function Home() {
 
     const ctx = gsap.context(() => {
       gsap.to(slider.current, {
-        x: () => -window.innerWidth * 0.8, // 0.3   
+        x: () => -window.innerWidth * 0.8,
         ease: 'none',
         scrollTrigger: {
           trigger: sliderContainer.current,
           start: 'top bottom',
           end: 'bottom top',
-          scrub: 1.2 // 0.5 - 1
+          scrub: 1.2
         }
       });
 
@@ -83,54 +161,15 @@ export default function Home() {
     xPercent -= 0.03 * direction;
   }
 
-
-
   return (
     <motion.main variants={slideUp} initial="initial" animate="enter" className={styles.landing}>
 
       <div className={styles.bg}>
         <Image
-          src="/images/ferrari-wallpaper.jpg"
+          src="/images/test_wallpaper.jpg"
           fill={true}
           alt="background"
         />
-      </div>
-
-      <div className={styles.hangerOverlay}>
-        <div className={styles.hanger}>
-          <p className={styles.hangerText}>
-            <span onMouseEnter={handleTextHover}><HackerText text="From" /></span><br />
-            <span onMouseEnter={handleTextHover}><HackerText text="Sri Lanka" /></span>
-          </p>
-
-          <svg
-            className={styles.hangerSvg}
-            width="300"
-            height="121"
-            viewBox="0 0 300 121"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <g fill="#1C1D20">
-              {/* <g fill="#df332e"> */}
-              <path d="M239.633657,0 C272.770742,1.0182436e-15 299.633657,26.862915 299.633657,60 C299.633657,93.137085 272.770742,120 239.633657,120 L0,120 L0,0 L239.633657,0 Z M239.633657,18.7755102 C216.866,18.7755102 198.409167,37.232343 198.409167,60 C198.409167,82.767657 216.866,101.22449 239.633657,101.22449 C262.401314,101.22449 280.858147,82.767657 280.858147,60 C280.858147,37.232343 262.401314,18.7755102 239.633657,18.7755102 Z" />
-            </g>
-          </svg>
-
-          <div className={styles.digitalBall}>
-            <div className={styles.digitalBallOverlay} />
-            <div className={styles.globe}>
-              <div className={styles.globeWrap}>
-                <div className={styles.circle} />
-                <div className={styles.circle} />
-                <div className={styles.circle} />
-                <div className={styles.circleHor} />
-                <div className={styles.circleHorMiddle} />
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       <div className={styles.headerContainer}>
@@ -150,18 +189,18 @@ export default function Home() {
                 </svg>
               </div>
             </div>
-            <h4 className={styles.subheading}>
-              <p onMouseEnter={handleTextHover}>
-                <HackerText text="Freelance" />
+            <h4 className={styles.subheading} onMouseEnter={handleTextHover}>
+              <p>
+                <TypewriterText text="Freelance" startDelay={800} />
               </p>
-              <p onMouseEnter={handleTextHover}>
-                <HackerText text="Creative Developer" />
+              <p>
+                <TypewriterText text="Creative" startDelay={1400} />{' '}
+                <TypewriterText text="Developer" startDelay={1900} />
               </p>
             </h4>
           </div>
         </div>
       </div>
-      {/* END NEW */}
 
       <div ref={sliderContainer} className={styles.sliderContainer}>
         <div ref={slider} className={styles.slider}>
@@ -169,14 +208,8 @@ export default function Home() {
           <p ref={secondText}>Menath Lakvindu -</p>
         </div>
       </div>
-
-      {/* <div data-scroll data-scroll-speed={0.1} className={styles.description}>
-        <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M8 8.5C8.27614 8.5 8.5 8.27614 8.5 8L8.5 3.5C8.5 3.22386 8.27614 3 8 3C7.72386 3 7.5 3.22386 7.5 3.5V7.5H3.5C3.22386 7.5 3 7.72386 3 8C3 8.27614 3.22386 8.5 3.5 8.5L8 8.5ZM0.646447 1.35355L7.64645 8.35355L8.35355 7.64645L1.35355 0.646447L0.646447 1.35355Z" fill="white"/>
-        </svg>
-        <p onMouseEnter={handleTextHover}><HackerText text='Freelance'/></p>
-        <p onMouseEnter={handleTextHover}><HackerText text='Creative Developer'/></p>
-      </div> */}
     </motion.main>
   )
 }
+
+

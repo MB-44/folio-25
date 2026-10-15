@@ -9,10 +9,9 @@ import Footer from './footer';
 import Magnetic from '@/components/common/magnetic';
 
 const navItems = [
-  { title: "Main", href: "/" },
   { title: "Work", href: "/work" },
   { title: "About", href: "/about" },
-  { title: "Contact", href: "/contact" },
+  { title: "Vision", href: "/vision" },
 ];
 
 export default function Index() {
@@ -29,9 +28,7 @@ export default function Index() {
     >
       <div className={styles.body}>
         <div onMouseLeave={() => { setSelectedIndicator(pathname); }} className={styles.nav}>
-          <div className={styles.header}>
-            <p>Navigation</p>
-          </div>
+
           {navItems.map((data, i) => (
             <Magnetic key={i}>
               <Link

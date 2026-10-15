@@ -1,5 +1,12 @@
 export { default as Landing } from './landing';
 export { default as Description } from './description';
-export { default as HomeIntro } from './homeIntro';
 export { default as Footer } from './footer';
-export { default as Intro } from "./intro";
+export { default as faq } from './faq';
+export { default as ProcessSection } from './process';
+export { default as ScrollPin } from './scrollPin';
+export { default as ReachOut } from './reachOut';
+export { default as TextSlider } from './textSlider';
+export { default as ExplainGrid } from './explainGrid';
+export { default as creativeStickySection } from './creativeCard';
+export { default as ExplainCreativity2 } from './explainCreativity2';
+export { default as ProcessNew } from './processNew';

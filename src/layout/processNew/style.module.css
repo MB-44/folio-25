@@ -1,0 +1,170 @@
+.processSection {
+    background: #ffffff;
+    color: #0d0d0d;
+    padding: 100px 40px 140px;
+    height: 100%;
+}
+
+.processContainer {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 352px 1fr;
+    /* Fixed width for left col, right col takes remaining space */
+    gap: 120px;
+    /* <--- ADJUST THIS GAP to change space between columns */
+    /* Adjust gap as needed */
+    align-items: start;
+}
+
+/* --- Left Column --- */
+.leftCol {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 352px;
+    /* Ensure fixed width matches the image */
+}
+
+.smallTitle {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    color: #666;
+    margin: 0;
+}
+
+.processImage {
+    width: 352px;
+    height: 352px;
+    object-fit: cover;
+    background-color: #f0f0f0;
+    /* Placeholder color */
+    /* border-radius: 4px; */
+    /* Optional rounded corners */
+}
+
+.stepsList {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    /* Removed gap, spacing handles by padding/border */
+}
+
+.stepItem {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #e0e0e0;
+    /* Horizontal separator */
+}
+
+/* Remove border from last item if desired - COMMENTED OUT to show line on last item too */
+/* .stepItem:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+} */
+
+
+.stepNumber {
+    font-size: 14px;
+    color: var(--color-brand-red);
+    /* Using brand color for numbering */
+    font-weight: 500;
+}
+
+.stepTitle {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--color-text-dark);
+    margin: 0;
+}
+
+/* --- Right Column --- */
+.rightCol {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    padding-top: 40px;
+    /* Align slightly lower if needed */
+}
+
+.largeDescription {
+    font-size: 44px;
+    /* Reduced from 60px */
+    /* "not that much large" - adjusted from 80px */
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--color-text-dark);
+    margin: 0;
+    white-space: pre-line;
+    /* Handle line breaks */
+    text-indent: 100px;
+}
+
+.ctaButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    padding: 0 32px;
+    border-radius: 100px;
+    background: #1a1a1a;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    align-self: flex-start;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.ctaButton:hover {
+    color: #1C1D20;
+}
+
+.ctaButton span {
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+
+/* Rounded component handles the hover fill via default or passed prop */
+
+.ctaArrow {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+    filter: invert(1);
+    /* Make black arrow white */
+}
+
+.ctaButton:hover .ctaArrow {
+    transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .processContainer {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .processImage {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1;
+        max-width: 352px;
+    }
+
+    .largeDescription {
+        font-size: 40px;
+    }
+}

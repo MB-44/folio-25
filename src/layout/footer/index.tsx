@@ -1,130 +1,143 @@
 'use client';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { Magnetic, RandomUnderline } from '@/components';
+import { Magnetic } from '@/components';
 import { Footer as FooterText, socialLinks } from '@/data';
 import styles from './style.module.css';
 import Clock from './clock';
 
+interface WeatherData {
+  temperature: number;
+  condition: string;
+}
+
 export default function Footer() {
-  const [time, setTime] = useState(new Date());
+  const [location, setLocation] = useState<string>('Searching ...');
+  const [weather, setWeather] = useState<WeatherData | null>(null);
 
   useEffect(() => {
-    const interval = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(interval);
+    fetch('https://ipapi.co/json/')
+      .then(res => res.json())
+      .then(data => {
+        if (data.city && data.country_name) {
+          setLocation(`${data.city}, ${data.country_name}`);
+
+          if (data.latitude && data.longitude) {
+            fetchWeather(data.latitude, data.longitude);
+          }
+        } else {
+          setLocation('Location Unavailable');
+        }
+      })
+      .catch(() => {
+        setLocation('Location Unavailable');
+      });
   }, []);
+
+  const fetchWeather = (lat: number, lon: number) => {
+    fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.current) {
+          setWeather({
+            temperature: data.current.temperature_2m,
+            condition: getWeatherCondition(data.current.weather_code)
+          });
+        }
+      })
+      .catch(err => console.error("Weather fetch failed", err));
+  };
+
+  function getWeatherCondition(code: number): string {
+    if (code === 0) return 'Clear sky';
+    if (code >= 1 && code <= 3) return 'Partly cloudy';
+    if (code >= 45 && code <= 48) return 'Fog';
+    if (code >= 51 && code <= 55) return 'Drizzle';
+    if (code >= 61 && code <= 65) return 'Rain';
+    if (code >= 71 && code <= 77) return 'Snow';
+    if (code >= 80 && code <= 82) return 'Showers';
+    if (code >= 95) return 'Thunderstorm';
+    return 'Clear sky';
+  }
 
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        {/* Top Section */}
-        <div className={styles.top}>
-          {/* Logo */}
-          <div className={styles.brandRow}>
-            <Link href="/" className={styles.logoLink} aria-label="Home">
-              <span className={styles.logo} />
-            </Link>
-            <div className={styles.brandFill} />
+
+        {/* TOP SECTION */}
+        <div className={styles.topSection}>
+          <div className={styles.bio}>
+            {FooterText.bioLines.map((line, i) => (
+              <span key={i} className={styles.bioLine}>
+                {line.split(/(straight lines)/gi).map((part, j) =>
+                  part.toLowerCase() === 'straight lines' ? (
+                    <span key={j} className={styles.straightLinesEffect}>{part}</span>
+                  ) : part
+                )}
+              </span>
+            ))}
           </div>
 
-          {/* News Letter Section */}
-          <div className={styles.newsletter}>
-            <div className={styles.newsHeading}>
-              <p className={styles.newsTitle}>
-                <span>{FooterText.newsTitleLines[0]}</span>
-                <span>{FooterText.newsTitleLines[1]}</span>
-              </p>
-              <p className={styles.newsSub}>
-                {FooterText.newsSub}
-              </p>
+          <div className={styles.navigation}>
+            <div className={styles.navGroup}>
+              <Magnetic><Link href="/work" className={styles.navLink}>Work</Link></Magnetic>
+              <Magnetic><Link href="/about" className={styles.navLink}>About</Link></Magnetic>
+              <Magnetic><Link href="/vision" className={styles.navLink}>Vision</Link></Magnetic>
             </div>
-            <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
-              <div className={styles.inputs}>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder={FooterText.form.placeholders.email}
-                  required
-                  className={styles.input}
-                />
-              </div>
-              <button type="submit" className={styles.cta} aria-label={FooterText.form.submitLabel}>
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M5 12H19"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M12 5L19 12L12 19"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-            </form>
-          </div>
-
-          {/* Navigation & Social Link Wrap */}
-          <div className={styles.linksWrap}>
-            <div className={styles.navCol}>
-              <Magnetic><Link href="/about" className={styles.link}>About</Link></Magnetic>
-              <Magnetic><Link href="/work" className={styles.link}>Work</Link></Magnetic>
-              <Magnetic><Link href="/contact" className={styles.link}>Contact</Link></Magnetic>
-            </div>
-            <div className={styles.socialCol}>
-              {socialLinks
-                .filter(link => link.visible)
-                .map(link => (
-                  <Magnetic key={link.name}>
-                    <a
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.link}
-                      aria-label={link.name}
-                    >
-                      {link.name}
-                    </a>
-                  </Magnetic>
-                ))}
+            <div className={styles.navGroup}>
+              {socialLinks.filter(l => l.visible).map(link => (
+                <Magnetic key={link.name}>
+                  <a href={link.url} target="_blank" rel="noopener noreferrer" className={styles.navLink}>
+                    {link.name}
+                  </a>
+                </Magnetic>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Bottom section */}
-        <div className={styles.bottom}>
-          <div className={styles.contactBlock}>
-            <a href={FooterText.contactEmail.href} className={styles.contactEmail}>
-              <RandomUnderline>{FooterText.contactEmail.display}</RandomUnderline>
-            </a>
+        {/* CONTEXT SECTION */}
+        <div className={styles.contextSection}>
+          <div>Local Time : <Clock /></div>
+          <div>{location}</div>
+          {weather && (
+            <div>{weather.condition} {weather.temperature}°C</div>
+          )}
+        </div>
+
+        {/* LOGO SECTION */}
+        <div className={styles.logoSection}>
+          <img
+            src="/images/svg/menath-b-wide-editable.svg"
+            alt="menath.b"
+            className={styles.largeLogo}
+          />
+        </div>
+
+        {/* BOTTOM SECTION */}
+        <div className={styles.bottomSection}>
+          <div className={styles.bottomLeft}>
+            <span>{new Date().getFullYear()}</span>
+            <span className={styles.copyrightIcon}>©</span>
+            <span>All right reserved</span>
           </div>
 
-          <div className={styles.bioBlock}>
-            <p className={styles.bioText}>
-              <span className={styles.line}>{FooterText.bioLines[0]}</span>
-              <span className={styles.line}>{FooterText.bioLines[1]}</span>
-            </p>
+          <div className={styles.bottomCenter}>
+            <Link href="/privacy" className={styles.legalLink}>Privacy</Link>
+            <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ margin: '0 8px' }}>
+              <circle cx="2" cy="2" r="2" fill="currentColor" fillOpacity="0.6" />
+            </svg>
+            <Link href="/terms" className={styles.legalLink}>Terms & Conditions</Link>
+          </div>
+
+          <div className={styles.bottomRight}>
+            <div className={styles.codeByContainer}>
+              <span className={styles.codeByDefault}>Code by Menath</span>
+              <span className={styles.codeByHover}>menath<span className={styles.codeByDotB}>.b</span></span>
+            </div>
           </div>
         </div>
 
-        {/* Meta Row */}
-        <div className={styles.metaRow}>
-          <p className={styles.version}>{FooterText.version}</p>
-          <p className={styles.localTime}>
-            {FooterText.localTimeLabel} <Clock />
-          </p>
-        </div>
       </div>
     </footer>
   );

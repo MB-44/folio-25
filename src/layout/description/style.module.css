@@ -1,18 +1,18 @@
 .description {
-    padding: 80px 40px 120px;
+    padding: 0px 40px 60px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     z-index: 10;
-    background-color: #ffffff;
+    background-color: var(--color-background);
 }
 
 .content {
     max-width: 1400px;
     width: 100%;
     display: grid;
-    grid-template-columns: 320px 1fr;
+    grid-template-columns: 1fr;
     gap: 0px;
     align-items: start;
 }
@@ -28,20 +28,21 @@
 .talkButton {
     background: none;
     border: none;
-    font-size: 23px;
-    font-weight: 400;
-    color: inherit;
+    font-size: x-large;
+    font-weight: 500;
+    color: var(--color-text-dark);
     cursor: pointer;
     padding: 0;
     display: flex;
     align-items: center;
     gap: 8px;
-    font-family: inherit;
+    font-family: var(--font-family-main);
     transition: color 0.3s ease;
+    letter-spacing: -0.01em;
 }
 
 .talkButton:hover {
-    color: #de322c;
+    color: var(--color-brand-red);
 }
 
 .talkButton span {
@@ -57,23 +58,27 @@
     flex-shrink: 0;
     width: 24px;
     height: 24px;
-    color: #de322c;
+    color: var(--color-brand-red);
     transition: color 0.3s ease;
 }
 
 .talkButton:hover .arrow {
-    color: #0d0d0d;
+    color: var(--color-primary);
 }
 
 .rightContent {
     padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .descriptionText {
-    font-size: 36px;
+    font-size: 2rem;
     line-height: 1.4;
     margin: 0;
     font-weight: 300;
+    color: var(--color-primary);
 }
 
 .magneticWord {
@@ -83,7 +88,38 @@
 }
 
 .magneticWord:hover {
-    color: #de322c;
+    color: var(--color-brand-red);
+}
+
+.letter {
+    display: inline;
+    opacity: 0.2;
+    transition: color 0.2s ease;
+}
+
+.magneticWord:hover .letter {
+    color: var(--color-brand-red) !important;
+    opacity: 1 !important;
+}
+
+.highlight {
+    position: relative;
+    text-decoration: none;
+}
+
+.highlight::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--color-brand-red);
+    transition: width 0.65s ease-out;
+}
+
+.highlight:hover::after {
+    width: 100%;
 }
 
 @media (max-width: 1200px) {
@@ -95,7 +131,7 @@
 
 @media (max-width: 1024px) {
     .description {
-        padding: 100px 50px;
+        padding: 0px 50px;
     }
 
     .content {
@@ -109,7 +145,7 @@
 
 @media (max-width: 768px) {
     .description {
-        padding: 80px 30px;
+        padding: 0px 30px;
     }
 
     .rightContent {

@@ -1,0 +1,78 @@
+.textSliderWrap {
+    margin-bottom: 250px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.textSliderWrap h1 {
+    font-weight: 400;
+    line-height: 1.2;
+    will-change: transform;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 100px;
+    margin: 0;
+    padding: 0;
+}
+
+#tsFirst,
+#tsSecond {
+    position: relative;
+}
+
+.textSliderWrap h1 span {
+    display: inline-block;
+    background-color: var(--yellow, #FFF555);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: -10px;
+    margin: 0 10px;
+}
+
+/* Responsive font sizes */
+@media screen and (max-width: 1480px) {
+    .textSliderWrap h1 {
+        font-size: 80px;
+    }
+
+    .textSliderWrap {
+        margin-bottom: 220px;
+    }
+}
+
+@media screen and (max-width: 1081px) {
+    .textSliderWrap h1 {
+        font-size: 76px;
+    }
+
+    .textSliderWrap {
+        margin-bottom: 200px;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .textSliderWrap h1 {
+        font-size: 70px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .textSliderWrap h1 {
+        font-size: 56px;
+    }
+
+    .textSliderWrap h1 span {
+        width: 14px;
+        height: 14px;
+        top: -14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .textSliderWrap h1 {
+        font-size: 50px;
+    }
+}
